@@ -1,0 +1,138 @@
+# Cluster analysis
+
+## Cluster prevalence
+
+Number of strategies each cluster was captured in.
+
+```{r cluster_prevalence, comment="", message=FALSE, warning=FALSE}
+cluster_prevalence <- cluster_counts %>%
+  filter(read_count>0) %>%
+  group_by(secondary_cluster) %>%
+  summarise(n_strategy = n_distinct(overall_strategy)) %>%
+  arrange(desc(n_strategy))
+
+#Arranged by phylum and cluster prevalence
+cluster_prevalence_phylum <- cluster_prevalence %>%
+  left_join(cluster_taxonomy,by="secondary_cluster") %>%
+   arrange(match(Phylum, rev(ref_tree$tip.label)))
+```
+
+## Cluster heatmap
+
+Overview of clusters per strategy.
+
+```{r cluster_heatmap, comment="", message=FALSE, warning=FALSE, fig.height=4, fig.width=10, fig.fullwidth=TRUE}
+cluster_counts %>%
+  left_join(cluster_taxonomy,by="secondary_cluster") %>%
+  mutate(Phylum=ifelse(is.na(Phylum),"Bacillota_A",Phylum)) %>%
+  mutate(secondary_cluster=factor(secondary_cluster,levels=rev(cluster_tree$tip.label))) %>%
+  mutate(overall_strategy=factor(overall_strategy,levels=rev(sec_cluster_number$overall_strategy)))  %>%
+  group_by(overall_strategy, secondary_cluster) %>%
+  sample_n(1) %>%
+  ungroup() %>%
+  ggplot(aes(x = secondary_cluster, y = overall_strategy, fill=Phylum)) +
+  geom_tile(color="#ffffff") +
+  scale_fill_manual(values=phylum_colors) +
+  theme_classic() +
+  theme(axis.text.x = element_blank(),
+        axis.title.y = element_blank()) +
+  xlab("MAG secondary cluster")
+```
+
+## Cluster abundance
+
+Maximum read count
+
+```{r maximum maximum_read_count, comment="", message=FALSE, warning=FALSE}
+maximum_read_count <- cluster_counts %>%
+  group_by(secondary_cluster) %>%
+  slice_max(order_by = read_count) %>%
+  ungroup()
+```
+
+```{r maximum_read_count_plot, comment="", message=FALSE, warning=FALSE, fig.height=4, fig.width=10, fig.fullwidth=TRUE}
+maximum_read_count %>%
+  mutate(secondary_cluster=factor(secondary_cluster,levels=rev(cluster_tree$tip.label))) %>%
+  ggplot(aes(x = secondary_cluster, y = read_count)) +
+  geom_col(color="#666666") +
+  theme_classic() +
+  theme(axis.text.x = element_blank()) +
+  labs(x="Secondary cluster", y="Number of reads")
+```
+
+## Cluster frequency
+
+Number of clusters each strategy recovered.
+
+```{r clusters_per_strategy, comment="", message=FALSE, warning=FALSE}
+cluster_number <- cluster_counts %>%
+  filter(read_count>0) %>%
+  group_by(overall_strategy) %>%
+  summarise(n = n_distinct(secondary_cluster)) %>%
+  arrange(desc(n)) %>%
+  mutate(overall_strategy=factor(overall_strategy,levels=rev(overall_strategy)))
+
+cluster_number %>%
+  rename(Strategy=overall_strategy) %>%
+  select(Strategy,n) %>%
+  tt()
+```
+
+```{r cluster_frequency_plot, comment="", message=FALSE, warning=FALSE, fig.height=4, fig.width=10, fig.fullwidth=TRUE}
+sec_cluster_number %>%
+  filter(overall_strategy != "cobinning_treatment") %>%
+  ggplot(aes(x = n, y = overall_strategy)) +
+  geom_col(color="#666666") +
+  coord_cartesian(xlim = c(90,200))+
+  theme_classic() +
+  theme() +
+  labs(x="Number of clusters", y="Strategy")
+```
+
+## MAG mapping
+
+Average percentage of read mapped in each strategy against the respective catalogue.
+
+```{r mag_mapping_strategy, comment="", message=FALSE, warning=FALSE}
+mag_mapping <- bin_counts %>%
+  mutate(sample = str_replace_all(sample, "_subsam", ""),
+         sample = str_replace_all(sample, "_M", "")) %>%
+  left_join(all_counts, by = join_by(sample)) %>%
+  summarise(mag_mapping = sum(read_count) / mean(total_count), .by = c(sample, overall_strategy)) %>%
+  summarise(mag_mapping = mean(mag_mapping), .by = overall_strategy) %>%
+  mutate(overall_strategy=factor(overall_strategy,levels=rev(cluster_number$overall_strategy)))
+
+mag_mapping %>%
+  filter(!is.na(overall_strategy)) %>%
+  rename(Strategy=overall_strategy,`Mapping %`=mag_mapping) %>%
+  mutate(`Mapping %`=`Mapping %`*100) %>%
+  tt()
+```
+
+```{r mag_mapping_strategy_plot, comment="", message=FALSE, warning=FALSE, fig.height=4, fig.width=10, fig.fullwidth=TRUE}
+mag_mapping %>%
+  filter(overall_strategy != "cobinning_treatment") %>%
+  ggplot(aes(x = mag_mapping, y = overall_strategy)) +
+  geom_col(color="#666666") +
+  coord_cartesian(xlim = c(0.6,0.9))+
+  theme_classic() +
+  theme() +
+  labs(x="Mapping percentage", y="Strategy")
+```
+
+## Read counts vs prevalence
+
+```{r read_count_vs_frequency, comment="", message=FALSE, warning=FALSE}
+maximum_read_count %>%
+  left_join(cluster_prevalence,by=join_by(secondary_cluster==secondary_cluster)) %>% 
+  left_join(cluster_taxonomy,by="secondary_cluster") %>%
+  select(read_count, n_strategy, Phylum) %>%
+  ggplot(aes(x = read_count, y = n_strategy, group=n_strategy, color=Phylum)) +
+      geom_boxplot(color="#999999", fill="#f4f4f4", outlier.shape = NA) +
+      scale_y_continuous(breaks=seq(1,10,1))+
+      scale_color_manual(values=phylum_colors) +
+      geom_jitter() +
+      theme_classic() +
+      theme() +
+      labs(x="Sequencing depth", y="Strategy prevalence")
+```

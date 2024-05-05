@@ -1,0 +1,180 @@
+# Data preparation
+
+## Metadata
+
+```{r load_bin_metadata, comment="", message=FALSE, warning=FALSE}
+bin_metadata <- read_delim("data/bin_metadata.tsv.gz") %>%
+  rename(genome=bin_id) %>%
+  mutate(comp_cont = completeness - contamination) %>%
+  mutate(overall_strategy = case_when(
+        overall_strategy == "individual_individual_binning" ~ "single_coverage",
+        overall_strategy == "cobinning_longitudinal" ~ "multicoverage_animal",
+        overall_strategy == "cobinning_cage_treatment" ~ "multicoverage_timepoint_all",
+        overall_strategy == "cobinning_treatment" ~ "multicoverage_timepoint_cage",
+        overall_strategy == "coassembly_longitudinal" ~ "coassembly_animal",
+        overall_strategy == "coassembly_treatment" ~ "coassembly_timepoint_all",
+        overall_strategy == "coassembly_cage_treatment" ~ "coassembly_timepoint_cage",
+        overall_strategy == "multi_split_longitudinal" ~ "multisplit_animal",
+        overall_strategy == "multi_split_treatment" ~ "multisplit_timepoint_all",
+        overall_strategy == "multi_split_cage_treatment" ~ "multisplit_timepoint_cage",
+        TRUE ~ overall_strategy)) %>%
+  mutate(assembly = case_when(
+        assembly == "individual" ~ "single_coverage",
+        assembly == "cobinning" ~ "multi_coverage",
+        assembly == "coassembly" ~ "coassembly",
+        assembly == "multi_split" ~ "multi_split",
+        TRUE ~ assembly)) %>%
+  mutate(strategy = case_when(
+        strategy == "individual_binning" ~ "NA",
+        strategy == "longitudinal" ~ "animal",
+        strategy == "treatment" ~ "timepoint_all",
+        strategy == "cage_treatment" ~ "timepoint_cage",
+        TRUE ~ strategy)) %>%
+  mutate(genome = str_replace(genome, "individual", "single_coverage"),
+         genome = str_replace(genome, "cobinning_long", "multicoverage_animal"),
+         genome = str_replace(genome, "cobinning_treat", "multicoverage_timepoint_all"),
+         genome = str_replace(genome, "cobinning_cage_treat", "multicoverage_timepoint_cage"),
+         genome = str_replace(genome, "coassembly_long", "coassembly_animal"),
+         genome = str_replace(genome, "coassembly_treat", "coassembly_timepoint_all"),
+         genome = str_replace(genome, "coassembly_cage_treat", "coassembly_timepoint_cage"),
+         genome = str_replace(genome, "vamb_long", "multisplit_animal"),
+         genome = str_replace(genome, "vamb_treat", "multisplit_timepoint_all"),
+         genome = str_replace(genome, "vamb_cage_treat", "multisplit_timepoint_cage"))
+
+strategies <- c("single_coverage",
+                "multicoverage_animal",
+                "multicoverage_timepoint_all",
+                "multicoverage_timepoint_cage",
+                "coassembly_animal",
+                "coassembly_timepoint_all",
+                "coassembly_timepoint_cage",
+                "multisplit_animal",
+                "multisplit_timepoint_all",
+                "multisplit_timepoint_cage")
+```
+
+```{r load_all_counts, comment="", message=FALSE, warning=FALSE}
+all_counts <- read_delim("data/all_counts.tsv", col_names = c("sample", "total_count")) %>%
+  mutate(total_count = total_count * 2)
+```
+
+## Read counts
+
+```{r load_strategy_counts, comment="", message=FALSE, warning=FALSE}
+import_count_data <- function(strategy) {
+  read_delim(file = paste0('data/count_tables/count_table_',strategy,'.tsv.gz')) %>%
+    rename(genome=Genome) %>%
+    filter(genome != "unmapped") %>%
+    pivot_longer(!genome,
+                 names_to = c("sample", ".value"),
+                 names_sep = " ") %>%
+    rename("read_count" = "Read") %>%
+    rename("covered_fraction" = "Covered") %>%
+    rename("MAG_length" = "Length") %>%
+    mutate(genome = str_replace_all(genome, "^", paste0(strategy, "_")),
+           genome = str_replace_all(genome, "_OP_OP", "_OP"),
+           genome = str_replace_all(genome, "vamb_long_C.*_C", "vamb_long_C")) %>%
+    left_join(bin_metadata, by = "genome") %>%
+    select(genome, sample, read_count, covered_fraction, MAG_length, primary_cluster, 
+           secondary_cluster, overall_strategy, assembly, strategy)
+}
+
+bin_counts <- purrr::map(strategies,import_count_data) %>%
+  list_rbind()
+```
+
+## Cluster taxonomy
+
+```{r load_cluster_taxonomy, comment="", message=FALSE, warning=FALSE}
+cluster_taxonomy <- read_delim("data/cluster_taxonomy.tsv") %>%
+  arrange(match(Phylum,rev(ref_tree$tip.label)))
+```
+
+## Cluster tree
+
+```{r load_cluster_tree, comment="", message=FALSE, warning=FALSE}
+cluster_tree <- read_tree(str_glue("data/cluster_tree.tre"))
+```
+
+### Normalise read counts
+
+Normalise read counts into genome counts.
+
+```{r normalise_bin_counts, comment="", message=FALSE, warning=FALSE}
+bin_counts_norm <- bin_counts %>%
+  filter(secondary_cluster %in% cluster_tree$tip.label) %>%
+  mutate(read_count = read_count*150/MAG_length)
+```
+
+### Filter read counts
+
+Filter out genome counts with coverage fraction under 30%.
+
+```{r filter_bin_counts, comment="", message=FALSE, warning=FALSE}
+bin_counts_norm_filt <- bin_counts_norm %>%
+  mutate(read_count = ifelse(covered_fraction>=0.3,read_count,0))
+```
+
+## Cluster counts
+
+Aggregate bins into clusters.
+
+```{r cluster_counts, comment="", message=FALSE, warning=FALSE}
+cluster_counts <- bin_counts_norm_filt %>%
+  group_by(sample,overall_strategy,secondary_cluster) %>%
+  summarise(read_count=sum(read_count), .groups="drop") %>%
+  filter(!is.na(overall_strategy)) %>%
+  select(secondary_cluster,overall_strategy,read_count)
+```
+
+## Cluster functions
+
+```{r load_cluster_kegg, comment="", message=FALSE, warning=FALSE}
+cluster_kegg <- read_delim("data/cluster_kegg.tsv")
+```
+
+## Color scheme
+
+[AlberdiLab](www.alberdilab.dk) projects use unified color schemes developed for the [Earth Hologenome Initiative](www.earthhologenome.org), to facilitate figure interpretation.
+
+```{r get_ehi_colors, comment="", message=FALSE, warning=FALSE}
+phylum_colors <- cluster_taxonomy %>%
+    left_join(read_tsv("https://raw.githubusercontent.com/earthhologenome/EHI_taxonomy_colour/main/ehi_phylum_colors.tsv") %>% mutate(phylum=gsub("p__","",phylum)), by=join_by(Phylum == phylum)) %>%
+    arrange(match(Phylum, ref_tree$tip.label)) %>%
+    select(Phylum, colors) %>%
+    unique() %>%
+    arrange(Phylum) %>%
+    select(colors) %>%
+    pull()
+```
+
+```{r strategy_colors, comment="", message=FALSE, warning=FALSE}
+strategy_colors <- c(single_coverage="#5254A3",
+                     multicoverage_animal="#637939",
+                     multicoverage_timepoint_all="#8CA252",
+                     multicoverage_timepoint_cage="#B5CF6B",
+                     coassembly_animal="#8C6D31",
+                     coassembly_timepoint_all="#BD9E39",
+                     coassembly_timepoint_cage="#E7BA52",
+                     multisplit_animal="#843C39",
+                     multisplit_timepoint_all="#AD494A",
+                     multisplit_timepoint_cage="#D6616B")
+```
+
+## Wrap working objects
+In the last step, the objects that are needed for downstream analyses are stored in an R object.
+
+```{r wrap_objects}
+save(bin_metadata,
+     strategies,
+     bin_counts, 
+     bin_counts_norm, 
+     bin_counts_norm_filt, 
+     cluster_counts, 
+     cluster_taxonomy,
+     cluster_tree,
+     cluster_kegg,
+     phylum_colors,
+     strategy_colors,
+     file = "data/data.Rdata")
+```

@@ -1,0 +1,75 @@
+# Functions
+
+```{r load_data_function}
+load("data/data.Rdata")
+```
+
+```{r function_overview_tsne, comment="", message=FALSE, warning=FALSE,  fig.height=8, fig.width=10, fig.fullwidth=TRUE}
+cluster_kegg_max <- cluster_kegg %>% 
+  filter(!is.na(secondary_cluster)) %>%
+  select(-overall_strategy) %>%
+  group_by(secondary_cluster) %>%
+  summarise(across(everything(), max, na.rm = TRUE))
+
+Rtsne(X=cluster_kegg_max %>% column_to_rownames(var="secondary_cluster"), dims = 2, check_duplicates = FALSE)$Y %>%
+  as.data.frame() %>%
+  mutate(secondary_cluster=cluster_kegg_max$secondary_cluster) %>%
+  rename(tSNE1=V1,tSNE2=V2) %>%
+  left_join(cluster_taxonomy,by="secondary_cluster") %>%
+  left_join(cluster_prevalence,by="secondary_cluster") %>%
+  ggplot(aes(x = tSNE1, y = tSNE2, color = Phylum, size=n_strategy))+
+        geom_point(shape=16, alpha=0.7) +
+        scale_color_manual(values=phylum_colors) +
+        theme_minimal() +
+        labs(color="Phylum", size="Number of strategies") +
+        guides(color = guide_legend(override.aes = list(size = 5)))
+```
+
+```{r function_differences}
+all_strategy_clusters <- cluster_prevalence %>% 
+  filter(n_strategy==10) %>% 
+  pull(secondary_cluster)
+
+# Filter clusters recovered in all strategies
+cluster_kegg_max_filt <- cluster_kegg_max %>%
+    filter(secondary_cluster %in% all_strategy_clusters) 
+
+cluster_kegg_proportion_max <- cluster_kegg %>%
+  filter(!is.na(secondary_cluster)) %>%
+  filter(secondary_cluster %in% all_strategy_clusters) %>%
+  group_by(secondary_cluster) %>%
+  mutate(across(where(is.numeric), ~ . / max(., na.rm = TRUE))) %>%
+  ungroup() %>%
+  rowwise() %>%
+  mutate(average = rowMeans(across(where(is.numeric)), na.rm = TRUE)) %>%
+  select(secondary_cluster,overall_strategy,average)
+  
+cluster_kegg_proportion_max %>%
+  group_by(overall_strategy) %>%
+  summarise(mean=mean(average),sd=sd(average)) %>%
+  tt()
+```
+
+```{r function_recovery_plot, comment="", message=FALSE, warning=FALSE, fig.height=6, fig.width=10, fig.fullwidth=TRUE}
+cluster_kegg_proportion_max %>%
+  left_join(cluster_taxonomy,by="secondary_cluster") %>%
+  ggplot(aes(x = average, y = overall_strategy, group=overall_strategy, color=Phylum)) +
+      geom_boxplot(color="#999999", fill="#f4f4f4", outlier.shape = NA) +
+      scale_color_manual(values=phylum_colors[-c(1,4,6,7)]) +
+      geom_jitter(alpha=0.3) +
+      theme_classic() +
+      theme() +
+      labs(x="Function recovery", y="Strategy")
+```
+
+```{r function_recovery_heatmap, comment="", message=FALSE, warning=FALSE, fig.height=4, fig.width=10, fig.fullwidth=TRUE}
+cluster_kegg_proportion_max %>%
+  mutate(secondary_cluster=factor(secondary_cluster,levels=rev(cluster_tree$tip.label[cluster_tree$tip.label %in% cluster_kegg_proportion_max$secondary_cluster]))) %>%
+  ggplot(aes(x=secondary_cluster,y=overall_strategy,fill=average))+
+    geom_tile()+
+    scale_fill_distiller(palette = "YlGnBu", direction = -1) +
+    theme_minimal() +
+    theme(axis.text.x = element_blank(),
+        axis.title.y = element_blank()) +
+    labs(y="Strategy",x="Clusters",fill="Function recovery")
+```

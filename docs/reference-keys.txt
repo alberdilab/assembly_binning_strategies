@@ -15,12 +15,14 @@ color-scheme
 wrap-working-objects
 cluster-analysis
 cluster-prevalence
+cluster-frequency
 cluster-heatmap
 cluster-abundance
-cluster-frequency
 mag-mapping
 read-counts-vs-prevalence
 bin-quality
 alpha-diversity
 beta-diversity
 functions
+trait-overview
+trait-recovery

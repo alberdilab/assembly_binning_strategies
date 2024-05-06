@@ -86,8 +86,7 @@ bin_counts <- purrr::map(strategies,import_count_data) %>%
 ## Cluster taxonomy
 
 ```{r load_cluster_taxonomy, comment="", message=FALSE, warning=FALSE}
-cluster_taxonomy <- read_delim("data/cluster_taxonomy.tsv") %>%
-  arrange(match(Phylum,rev(ref_tree$tip.label)))
+cluster_taxonomy <- read_delim("data/cluster_taxonomy.tsv")
 ```
 
 ## Cluster tree
@@ -140,7 +139,6 @@ cluster_kegg <- read_delim("data/cluster_kegg.tsv")
 ```{r get_ehi_colors, comment="", message=FALSE, warning=FALSE}
 phylum_colors <- cluster_taxonomy %>%
     left_join(read_tsv("https://raw.githubusercontent.com/earthhologenome/EHI_taxonomy_colour/main/ehi_phylum_colors.tsv") %>% mutate(phylum=gsub("p__","",phylum)), by=join_by(Phylum == phylum)) %>%
-    arrange(match(Phylum, ref_tree$tip.label)) %>%
     select(Phylum, colors) %>%
     unique() %>%
     arrange(Phylum) %>%

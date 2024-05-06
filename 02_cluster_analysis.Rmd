@@ -13,51 +13,7 @@ cluster_prevalence <- cluster_counts %>%
 
 #Arranged by phylum and cluster prevalence
 cluster_prevalence_phylum <- cluster_prevalence %>%
-  left_join(cluster_taxonomy,by="secondary_cluster") %>%
-   arrange(match(Phylum, rev(ref_tree$tip.label)))
-```
-
-## Cluster heatmap
-
-Overview of clusters per strategy.
-
-```{r cluster_heatmap, comment="", message=FALSE, warning=FALSE, fig.height=4, fig.width=10, fig.fullwidth=TRUE}
-cluster_counts %>%
-  left_join(cluster_taxonomy,by="secondary_cluster") %>%
-  mutate(Phylum=ifelse(is.na(Phylum),"Bacillota_A",Phylum)) %>%
-  mutate(secondary_cluster=factor(secondary_cluster,levels=rev(cluster_tree$tip.label))) %>%
-  mutate(overall_strategy=factor(overall_strategy,levels=rev(sec_cluster_number$overall_strategy)))  %>%
-  group_by(overall_strategy, secondary_cluster) %>%
-  sample_n(1) %>%
-  ungroup() %>%
-  ggplot(aes(x = secondary_cluster, y = overall_strategy, fill=Phylum)) +
-  geom_tile(color="#ffffff") +
-  scale_fill_manual(values=phylum_colors) +
-  theme_classic() +
-  theme(axis.text.x = element_blank(),
-        axis.title.y = element_blank()) +
-  xlab("MAG secondary cluster")
-```
-
-## Cluster abundance
-
-Maximum read count
-
-```{r maximum maximum_read_count, comment="", message=FALSE, warning=FALSE}
-maximum_read_count <- cluster_counts %>%
-  group_by(secondary_cluster) %>%
-  slice_max(order_by = read_count) %>%
-  ungroup()
-```
-
-```{r maximum_read_count_plot, comment="", message=FALSE, warning=FALSE, fig.height=4, fig.width=10, fig.fullwidth=TRUE}
-maximum_read_count %>%
-  mutate(secondary_cluster=factor(secondary_cluster,levels=rev(cluster_tree$tip.label))) %>%
-  ggplot(aes(x = secondary_cluster, y = read_count)) +
-  geom_col(color="#666666") +
-  theme_classic() +
-  theme(axis.text.x = element_blank()) +
-  labs(x="Secondary cluster", y="Number of reads")
+  left_join(cluster_taxonomy,by="secondary_cluster")
 ```
 
 ## Cluster frequency
@@ -79,7 +35,7 @@ cluster_number %>%
 ```
 
 ```{r cluster_frequency_plot, comment="", message=FALSE, warning=FALSE, fig.height=4, fig.width=10, fig.fullwidth=TRUE}
-sec_cluster_number %>%
+cluster_number %>%
   filter(overall_strategy != "cobinning_treatment") %>%
   ggplot(aes(x = n, y = overall_strategy)) +
   geom_col(color="#666666") +
@@ -87,6 +43,49 @@ sec_cluster_number %>%
   theme_classic() +
   theme() +
   labs(x="Number of clusters", y="Strategy")
+```
+
+## Cluster heatmap
+
+Overview of clusters per strategy.
+
+```{r cluster_heatmap, comment="", message=FALSE, warning=FALSE, fig.height=4, fig.width=10, fig.fullwidth=TRUE}
+cluster_counts %>%
+  left_join(cluster_taxonomy,by="secondary_cluster") %>%
+  mutate(Phylum=ifelse(is.na(Phylum),"Bacillota_A",Phylum)) %>%
+  mutate(secondary_cluster=factor(secondary_cluster,levels=rev(cluster_tree$tip.label))) %>%
+  mutate(overall_strategy=factor(overall_strategy,levels=rev(cluster_number$overall_strategy)))  %>%
+  group_by(overall_strategy, secondary_cluster) %>%
+  sample_n(1) %>%
+  ungroup() %>%
+  ggplot(aes(x = secondary_cluster, y = overall_strategy, fill=Phylum)) +
+  geom_tile(color="#ffffff") +
+  scale_fill_manual(values=phylum_colors) +
+  theme_classic() +
+  theme(axis.text.x = element_blank(),
+        axis.title.y = element_blank()) +
+  xlab("MAG clusters")
+```
+
+## Cluster abundance
+
+Maximum read count
+
+```{r maximum maximum_read_count, comment="", message=FALSE, warning=FALSE}
+maximum_read_count <- cluster_counts %>%
+  group_by(secondary_cluster) %>%
+  slice_max(order_by = read_count) %>%
+  ungroup()
+```
+
+```{r maximum_read_count_plot, comment="", message=FALSE, warning=FALSE, fig.height=4, fig.width=10, fig.fullwidth=TRUE}
+maximum_read_count %>%
+  mutate(secondary_cluster=factor(secondary_cluster,levels=rev(cluster_tree$tip.label))) %>%
+  ggplot(aes(x = secondary_cluster, y = read_count)) +
+  geom_col(color="#666666") +
+  theme_classic() +
+  theme(axis.text.x = element_blank()) +
+  labs(x="MAG clusters", y="Number of reads")
 ```
 
 ## MAG mapping

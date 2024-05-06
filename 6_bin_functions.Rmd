@@ -4,13 +4,59 @@
 load("data/data.Rdata")
 ```
 
-```{r function_overview_tsne, comment="", message=FALSE, warning=FALSE,  fig.height=8, fig.width=10, fig.fullwidth=TRUE}
+```{r kegg_max, comment="", message=FALSE, warning=FALSE}
 cluster_kegg_max <- cluster_kegg %>% 
   filter(!is.na(secondary_cluster)) %>%
   select(-overall_strategy) %>%
   group_by(secondary_cluster) %>%
   summarise(across(everything(), max, na.rm = TRUE))
+```
 
+## Trait overview
+
+```{r function_overview_heatmap, comment="", message=FALSE, warning=FALSE,  fig.height=8, fig.width=10, fig.fullwidth=TRUE}
+phylum_heatmap <- read_tsv("https://raw.githubusercontent.com/earthhologenome/EHI_taxonomy_colour/main/ehi_phylum_colors.tsv") %>%
+    right_join(cluster_taxonomy, by=join_by(phylum == Phylum)) %>%
+    filter(secondary_cluster %in% cluster_tree$tip.label) %>%
+    arrange(match(secondary_cluster, cluster_tree$tip.label)) %>%
+    select(secondary_cluster,phylum) %>%
+    mutate(phylum = factor(phylum, levels = unique(phylum))) %>%
+    filter(!is.na(secondary_cluster)) %>%
+    column_to_rownames(var = "secondary_cluster") 
+
+function_tree <- keep.tip(cluster_tree, tip=rownames(phylum_heatmap))
+
+function_table <- cluster_kegg_max %>%
+    filter(secondary_cluster %in% function_tree$tip.label) %>%
+    column_to_rownames(var="secondary_cluster")
+
+# Generate  basal tree
+function_tree <- force.ultrametric(function_tree, method="extend") %>%
+                ggtree(., size = 0.3) 
+
+#Add phylum colors next to the tree tips
+function_tree <- gheatmap(function_tree, phylum_heatmap, offset=0, width=0.1, colnames=FALSE) +
+            scale_fill_manual(values=phylum_colors) +
+            labs(fill="Phylum")
+
+#Reset fill scale to use a different colour profile in the heatmap
+function_tree <- function_tree + new_scale_fill()
+
+#Add functions heatmap
+function_tree <- gheatmap(function_tree, function_table, offset=0.5, width=3.5, colnames=FALSE) +
+            vexpand(.08) +
+            coord_cartesian(clip = "off") +
+            scale_fill_gradient(low = "#f4f4f4", high = "steelblue", na.value="white") +
+            labs(fill="GIFT")
+
+#Reset fill scale to use a different colour profile in the heatmap
+function_tree <- function_tree + new_scale_fill()
+
+function_tree
+```
+## Functional ordination
+
+```{r function_overview_tsne, comment="", message=FALSE, warning=FALSE,  fig.height=8, fig.width=10, fig.fullwidth=TRUE}
 Rtsne(X=cluster_kegg_max %>% column_to_rownames(var="secondary_cluster"), dims = 2, check_duplicates = FALSE)$Y %>%
   as.data.frame() %>%
   mutate(secondary_cluster=cluster_kegg_max$secondary_cluster) %>%
@@ -24,6 +70,8 @@ Rtsne(X=cluster_kegg_max %>% column_to_rownames(var="secondary_cluster"), dims =
         labs(color="Phylum", size="Number of strategies") +
         guides(color = guide_legend(override.aes = list(size = 5)))
 ```
+
+## Trait recovery
 
 ```{r function_differences}
 all_strategy_clusters <- cluster_prevalence %>% 
@@ -56,6 +104,7 @@ cluster_kegg_proportion_max %>%
   ggplot(aes(x = average, y = overall_strategy, group=overall_strategy, color=Phylum)) +
       geom_boxplot(color="#999999", fill="#f4f4f4", outlier.shape = NA) +
       scale_color_manual(values=phylum_colors[-c(1,4,6,7)]) +
+      xlim(0.8, 1)+
       geom_jitter(alpha=0.3) +
       theme_classic() +
       theme() +

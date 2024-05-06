@@ -2,7 +2,7 @@
 title: "AlberdiLab | Eisenhofer et al. in prep"
 subtitle: "Contrasting assembly and binning strategies recover different genome catalogues "
 author:
-  - Raphael Eisenhofer^[University of Copenhagen, raphael.eisenhofer@sund.ku.dk], Ostaizka Aizpurua^[University of Copenhagen, ostaizka.aizpurua@sund.ku.dk], Antton Alberdi^[University of Copenhagen, antton.alberdi@sund.ku.dk]
+  - Raphael Eisenhofer^[University of Copenhagen, raphael.eisenhofer@sund.ku.dk], Antton Alberdi^[University of Copenhagen, antton.alberdi@sund.ku.dk], Ostaizka Aizpurua^[University of Copenhagen, ostaizka.aizpurua@sund.ku.dk]
 date: "Latest update: `r Sys.Date()`"
 site: bookdown::bookdown_site
 documentclass: book

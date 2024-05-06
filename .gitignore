@@ -2,3 +2,5 @@
 .Rhistory
 .RData
 .Ruserdata
+data/taxonomy_tables
+data/trees

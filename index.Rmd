@@ -68,6 +68,7 @@ library(gridExtra)
 library(ggtreeExtra)
 library(ggtree)
 library(ggh4x)
+library(patchwork)
 
 # For statistics
 library(spaa)

@@ -2,14 +2,8 @@
 
 ## Load packages and import/wrangle data
 
-```{r load_data_function}
-load("data/data.Rdata")
 
-library(tidyverse)
-library(patchwork)
-```
-
-```{r import_data, comment="", message=FALSE, warning=FALSE}
+```{r import_runtime_data, comment="", message=FALSE, warning=FALSE}
 
 # Individual/coassembly had data collected using snakemake benchmark, so load these
 ind <- read_delim("data/runtime/ind_benchmark.tsv", 
@@ -26,7 +20,7 @@ import <- function(file){
            strategy = str_replace_all(strategy, "_report.tsv", ""))
 }
 
-df <- map(files, import) %>%
+df <- purrr::map(files, import) %>%
   bind_rows() %>%
 # Noticed an odd bug with snakemake report, 2 jobs have time values ~-900000000.. so filter them
 # Also noticed an outlier job with 824084 seconds (mean is 600 for that type)
@@ -92,18 +86,7 @@ df_filt <- df_filt %>%
 ```{r Figure A), comment="", message=FALSE, warning=FALSE}
 #Get sum per strategy, and rename strategies for consisitency with manuscript
 df_sum <- df_filt %>%
-  summarise(time_total_s = sum(time_s), .by = c("strategy", "job")) %>%
-  mutate(strategy = case_when(str_detect(strategy, "coassembly_long") ~ "coassembly animal",
-                              str_detect(strategy, "coassembly_treat") ~ "coassembly timepoint-all",
-                              str_detect(strategy, "coassembly_cage_treat") ~ "multi-coverage binning timepoint-cage",
-                              str_detect(strategy, "cobinning_long") ~ "multi-coverage binning animal",
-                              str_detect(strategy, "cobinning_cage_treat") ~ "coassembly timepoint-cage",
-                              str_detect(strategy, "vamb_long") ~ "multi-split animal",
-                              str_detect(strategy, "vamb_cage_treat") ~ "multi-split timepoint-cage",
-                              str_detect(strategy, "vamb_treat") ~ "multi-split timepoint-all",
-                              str_detect(strategy, "individual") ~ "single-coverage binning",
-                              ),
-  )
+  summarise(time_total_s = sum(time_s), .by = c("strategy", "job")) 
 
 
 
@@ -148,14 +131,14 @@ t4 = 4
 ################################################################################
 ### individual assembly
 df_sum_total_ind <- df_sum_total %>%
-  filter(strategy == "single-coverage binning") %>%
+  filter(strategy == "single-coverage") %>%
   mutate(sample_size = n2,
          n_treatments = t1,
          time_total_s = time_total_s / 5)
 #this creates sample_size 30, with time_total_s = 150 / 5 = 30
 
 indiv <- tibble(
-  strategy = "single-coverage binning",
+  strategy = "single-coverage",
   sample_size = c(n1, n3, n4, n1, n2, n3, n4, n1, n2, n3, n4, n1, n2, n3, n4),
   n_treatments = c(t1, t1, t1, t2, t2, t2, t2, t3, t3, t3, t3,  t4, t4, t4, t4)
 ) %>%
@@ -190,11 +173,11 @@ coassembly_df <- df_filt %>%
 #obviously more samples = longer assemblies, but this is just a simple estimate
 #note: divide by n samples in coassembly
 mean_coassembly_t <- coassembly_df %>%
-  filter(job == "Assembly" & strategy == "coassembly_treat") %>%
+  filter(job == "Assembly" & strategy == "coassembly_timepoint_all") %>%
   pull(time_s) %>%
   mean() / 30
 mean_coassembly_ct <- coassembly_df %>%
-  filter(job == "Assembly" & strategy == "coassembly_cage_treat") %>%
+  filter(job == "Assembly" & strategy == "coassembly_timepoint_cage") %>%
   pull(time_s) %>%
   mean() / 5
 
@@ -207,22 +190,22 @@ mean_mapping = coassembly_df %>%
   mean()
 
 mean_binning_t <- coassembly_df %>%
-  filter(job == "binning" & strategy == "coassembly_treat") %>%
+  filter(job == "binning" & strategy == "coassembly_timepoint_all") %>%
   pull(time_s) %>%
   mean() / 30
 mean_binning_ct <- coassembly_df %>%
-  filter(job == "binning" & strategy == "coassembly_cage_treat") %>%
+  filter(job == "binning" & strategy == "coassembly_timepoint_cage") %>%
   pull(time_s) %>%
   mean() / 5
 
 mean_binning = (mean_binning_t + mean_binning_ct) / 2
 
 mean_refinement_t <- coassembly_df %>%
-  filter(job == "refinement" & strategy == "coassembly_treat") %>%
+  filter(job == "refinement" & strategy == "coassembly_timepoint_all") %>%
   pull(time_s) %>%
   mean() / 30
 mean_refinement_ct <- coassembly_df %>%
-  filter(job == "refinement" & strategy == "coassembly_cage_treat") %>%
+  filter(job == "refinement" & strategy == "coassembly_timepoint_cage") %>%
   pull(time_s) %>%
   mean() / 5
 
@@ -253,7 +236,7 @@ fig_c <- coa %>%
 ################################################################################
 ### multi-coverage binning
 df_cob_cage_treat <- df_filt %>%
-  filter(strategy == "cobinning_cage_treat")
+  filter(strategy == "multi-coverage_timepoint_cage")
 
 #mean time for assembly?
 mean_assembly <- df_cob_cage_treat %>%
@@ -306,7 +289,7 @@ df_sum_total_ms <- df_sum_total %>%
   filter(str_detect(strategy, "^multi-split"))
 
 df_ms_cage_treat <- df_filt %>%
-  filter(strategy == "vamb_cage_treat")
+  filter(strategy == "multi-split_timepoint_cage")
 
 #mean time for assembly?
 mean_assembly <- df_ms_cage_treat %>%
@@ -316,10 +299,10 @@ mean_assembly <- df_ms_cage_treat %>%
 
 #How does checkm scale?
 checkm_t <- df_filt %>%
-  filter(job == "checkm" & strategy == "vamb_treat")
+  filter(job == "checkm" & strategy == "multi-split_timepoint_all")
 
 checkm_ct <- df_filt %>%
-  filter(job == "checkm" & strategy == "vamb_cage_treat")
+  filter(job == "checkm" & strategy == "multi-split_timepoint_cage")
 
 treat <- mean(checkm_t$time_s)
 cage_treat <- mean(checkm_ct$time_s)
@@ -332,10 +315,10 @@ mean_checkm <- (treat_ps + cage_treat_ps) / 2
 
 #How does vamb_multisplit scale?
 vamb_multisplit_t <- df_filt %>%
-  filter(job == "vamb_multisplit" & strategy == "vamb_treat")
+  filter(job == "vamb_multisplit" & strategy == "multi-split_timepoint_all")
 
 vamb_multisplit_ct <- df_filt %>%
-  filter(job == "vamb_multisplit" & strategy == "vamb_cage_treat")
+  filter(job == "vamb_multisplit" & strategy == "multi-split_timepoint_cage")
 
 treat <- mean(vamb_multisplit_t$time_s)
 cage_treat <- mean(vamb_multisplit_ct$time_s)
@@ -349,10 +332,10 @@ mean_vamb_multisplit <- (treat_ps + cage_treat_ps) / 2
 
 #How does assembly_mapping scale?
 mapping_t <- df_filt %>%
-  filter(job == "assembly_mapping" & strategy == "vamb_treat")
+  filter(job == "assembly_mapping" & strategy == "multi-split_timepoint_all")
 
 mapping_ct <- df_filt %>%
-  filter(job == "assembly_mapping" & strategy == "vamb_cage_treat")
+  filter(job == "assembly_mapping" & strategy == "multi-split_timepoint_cage")
 
 treat <- mean(mapping_t$time_s)
 cage_treat <- mean(mapping_ct$time_s)

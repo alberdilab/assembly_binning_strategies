@@ -1,4 +1,4 @@
-# Functions
+# Computational runetimes analysis
 
 ## Load packages and import/wrangle data
 

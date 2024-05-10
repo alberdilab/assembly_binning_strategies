@@ -19,6 +19,7 @@ cluster-frequency
 cluster-heatmap
 cluster-abundance
 mag-mapping
+domain-adjusted-mapping-rates-damr
 read-counts-vs-prevalence
 bin-quality
 alpha-diversity
@@ -26,7 +27,7 @@ beta-diversity
 functions
 trait-overview
 trait-recovery
-computational-runetimes-analysis
+computational-runtimes-analysis
 load-packages-and-importwrangle-data
 create-figure-a
 create-figure-b

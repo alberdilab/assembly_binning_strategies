@@ -119,6 +119,35 @@ mag_mapping %>%
   labs(x="Mapping percentage", y="Strategy")
 ```
 
+## Domain-adjusted mapping rates (DAMR)
+```{r DAMR, comment="", message=FALSE, warning=FALSE, fig.height=10, fig.width=10, fig.fullwidth=TRUE}
+
+#import SingleM estimates
+smf_files <- list.files(path = "data/singlem/", 
+                        pattern = "*tsv.gz", 
+                        full.names = T)
+
+smf_estimates <- purrr::map(smf_files, read_delim) %>%
+  bind_rows()
+
+mean_smf <- smf_estimates %>%
+  mutate(read_fraction = as.numeric(str_replace(read_fraction, "%", ""))) %>%
+  pull(read_fraction) %>%
+  mean()
+
+mag_mapping %>%
+  filter(!is.na(overall_strategy)) %>%
+  rename(Strategy=overall_strategy) %>%
+  mutate(mag_mapping = mag_mapping * 100,
+         DAMR = (mag_mapping / mean_smf) * 100,
+         DAMR = scales::number(if_else(DAMR > 100, 100, DAMR),
+                               accuracy = 0.1)
+         ) %>%
+  select(-mag_mapping) %>%
+  tt()
+
+```
+
 ## Read counts vs prevalence
 
 ```{r read_count_vs_frequency, comment="", message=FALSE, warning=FALSE}

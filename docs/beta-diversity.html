@@ -2055,7 +2055,8 @@ color: #a52929;
 <li class="chapter" data-level="3.3" data-path="cluster-analysis.html"><a href="cluster-analysis.html#cluster-heatmap"><i class="fa fa-check"></i><b>3.3</b> Cluster heatmap</a></li>
 <li class="chapter" data-level="3.4" data-path="cluster-analysis.html"><a href="cluster-analysis.html#cluster-abundance"><i class="fa fa-check"></i><b>3.4</b> Cluster abundance</a></li>
 <li class="chapter" data-level="3.5" data-path="cluster-analysis.html"><a href="cluster-analysis.html#mag-mapping"><i class="fa fa-check"></i><b>3.5</b> MAG mapping</a></li>
-<li class="chapter" data-level="3.6" data-path="cluster-analysis.html"><a href="cluster-analysis.html#read-counts-vs-prevalence"><i class="fa fa-check"></i><b>3.6</b> Read counts vs prevalence</a></li>
+<li class="chapter" data-level="3.6" data-path="cluster-analysis.html"><a href="cluster-analysis.html#domain-adjusted-mapping-rates-damr"><i class="fa fa-check"></i><b>3.6</b> Domain-adjusted mapping rates (DAMR)</a></li>
+<li class="chapter" data-level="3.7" data-path="cluster-analysis.html"><a href="cluster-analysis.html#read-counts-vs-prevalence"><i class="fa fa-check"></i><b>3.7</b> Read counts vs prevalence</a></li>
 </ul></li>
 <li class="part"><span><b>I Strategy analysis</b></span></li>
 <li class="chapter" data-level="4" data-path="bin-quality.html"><a href="bin-quality.html"><i class="fa fa-check"></i><b>4</b> Bin quality</a></li>
@@ -2066,12 +2067,12 @@ color: #a52929;
 <li class="chapter" data-level="7.1" data-path="functions.html"><a href="functions.html#trait-overview"><i class="fa fa-check"></i><b>7.1</b> Trait overview</a></li>
 <li class="chapter" data-level="7.2" data-path="functions.html"><a href="functions.html#trait-recovery"><i class="fa fa-check"></i><b>7.2</b> Trait recovery</a></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="computational-runetimes-analysis.html"><a href="computational-runetimes-analysis.html"><i class="fa fa-check"></i><b>8</b> Computational runetimes analysis</a>
+<li class="chapter" data-level="8" data-path="computational-runtimes-analysis.html"><a href="computational-runtimes-analysis.html"><i class="fa fa-check"></i><b>8</b> Computational runtimes analysis</a>
 <ul>
-<li class="chapter" data-level="8.1" data-path="computational-runetimes-analysis.html"><a href="computational-runetimes-analysis.html#load-packages-and-importwrangle-data"><i class="fa fa-check"></i><b>8.1</b> Load packages and import/wrangle data</a></li>
-<li class="chapter" data-level="8.2" data-path="computational-runetimes-analysis.html"><a href="computational-runetimes-analysis.html#create-figure-a"><i class="fa fa-check"></i><b>8.2</b> Create figure A)</a></li>
-<li class="chapter" data-level="8.3" data-path="computational-runetimes-analysis.html"><a href="computational-runetimes-analysis.html#create-figure-b"><i class="fa fa-check"></i><b>8.3</b> Create figure B)</a></li>
-<li class="chapter" data-level="8.4" data-path="computational-runetimes-analysis.html"><a href="computational-runetimes-analysis.html#patch-together-into-the-final-figure"><i class="fa fa-check"></i><b>8.4</b> Patch together into the final figure</a></li>
+<li class="chapter" data-level="8.1" data-path="computational-runtimes-analysis.html"><a href="computational-runtimes-analysis.html#load-packages-and-importwrangle-data"><i class="fa fa-check"></i><b>8.1</b> Load packages and import/wrangle data</a></li>
+<li class="chapter" data-level="8.2" data-path="computational-runtimes-analysis.html"><a href="computational-runtimes-analysis.html#create-figure-a"><i class="fa fa-check"></i><b>8.2</b> Create figure A)</a></li>
+<li class="chapter" data-level="8.3" data-path="computational-runtimes-analysis.html"><a href="computational-runtimes-analysis.html#create-figure-b"><i class="fa fa-check"></i><b>8.3</b> Create figure B)</a></li>
+<li class="chapter" data-level="8.4" data-path="computational-runtimes-analysis.html"><a href="computational-runtimes-analysis.html#patch-together-into-the-final-figure"><i class="fa fa-check"></i><b>8.4</b> Patch together into the final figure</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://www.alberdilab.dk" target="blank"><b>www.alberdilab.dk</b></a></li>
@@ -2097,35 +2098,35 @@ color: #a52929;
             <section class="normal" id="section-">
 <div id="beta-diversity" class="section level1 hasAnchor" number="6">
 <h1><span class="header-section-number">6</span> Beta diversity<a href="beta-diversity.html#beta-diversity" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<div class="sourceCode" id="cb31"><pre class="sourceCode r script-source"><code class="sourceCode r"><span id="cb31-1"><a href="beta-diversity.html#cb31-1" tabindex="-1"></a><span class="fu">load</span>(<span class="st">&quot;data/data.Rdata&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb32"><pre class="sourceCode r script-source"><code class="sourceCode r"><span id="cb32-1"><a href="beta-diversity.html#cb32-1" tabindex="-1"></a>beta_div <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
-<span id="cb32-2"><a href="beta-diversity.html#cb32-2" tabindex="-1"></a></span>
-<span id="cb32-3"><a href="beta-diversity.html#cb32-3" tabindex="-1"></a>n<span class="ot">=</span><span class="dv">0</span></span>
-<span id="cb32-4"><a href="beta-diversity.html#cb32-4" tabindex="-1"></a><span class="cf">for</span> (strategy <span class="cf">in</span> strategies){</span>
-<span id="cb32-5"><a href="beta-diversity.html#cb32-5" tabindex="-1"></a>  n<span class="ot">=</span>n<span class="sc">+</span><span class="dv">1</span></span>
-<span id="cb32-6"><a href="beta-diversity.html#cb32-6" tabindex="-1"></a>  bin_counts_norm_filt_strategy <span class="ot">&lt;-</span> bin_counts_norm_filt <span class="sc">%&gt;%</span></span>
-<span id="cb32-7"><a href="beta-diversity.html#cb32-7" tabindex="-1"></a>    <span class="fu">filter</span>(overall_strategy <span class="sc">==</span> {{strategy}}) <span class="sc">%&gt;%</span></span>
-<span id="cb32-8"><a href="beta-diversity.html#cb32-8" tabindex="-1"></a>    <span class="fu">select</span>(secondary_cluster,sample,read_count) <span class="sc">%&gt;%</span></span>
-<span id="cb32-9"><a href="beta-diversity.html#cb32-9" tabindex="-1"></a>    <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> <span class="st">&quot;sample&quot;</span>, <span class="at">values_from =</span> <span class="st">&quot;read_count&quot;</span>, <span class="at">values_fn =</span> sum) <span class="sc">%&gt;%</span></span>
-<span id="cb32-10"><a href="beta-diversity.html#cb32-10" tabindex="-1"></a>    <span class="fu">column_to_rownames</span>(<span class="at">var=</span><span class="st">&quot;secondary_cluster&quot;</span>)</span>
-<span id="cb32-11"><a href="beta-diversity.html#cb32-11" tabindex="-1"></a>    </span>
-<span id="cb32-12"><a href="beta-diversity.html#cb32-12" tabindex="-1"></a>   cluster_tree_strategy <span class="ot">&lt;-</span> <span class="fu">keep.tip</span>(cluster_tree, <span class="at">tip=</span><span class="fu">rownames</span>(bin_counts_norm_filt_strategy))</span>
-<span id="cb32-13"><a href="beta-diversity.html#cb32-13" tabindex="-1"></a>  </span>
-<span id="cb32-14"><a href="beta-diversity.html#cb32-14" tabindex="-1"></a>    beta_q0n <span class="ot">&lt;-</span> bin_counts_norm_filt_strategy <span class="sc">%&gt;%</span></span>
-<span id="cb32-15"><a href="beta-diversity.html#cb32-15" tabindex="-1"></a>      <span class="fu">hillpair</span>(., <span class="at">q=</span><span class="dv">0</span>, <span class="at">metric=</span><span class="st">&quot;C&quot;</span>) <span class="sc">%&gt;%</span> <span class="fu">as.dist</span>()</span>
-<span id="cb32-16"><a href="beta-diversity.html#cb32-16" tabindex="-1"></a>    </span>
-<span id="cb32-17"><a href="beta-diversity.html#cb32-17" tabindex="-1"></a>    beta_q1n <span class="ot">&lt;-</span> bin_counts_norm_filt_strategy <span class="sc">%&gt;%</span></span>
-<span id="cb32-18"><a href="beta-diversity.html#cb32-18" tabindex="-1"></a>      <span class="fu">hillpair</span>(., <span class="at">q=</span><span class="dv">1</span>, <span class="at">metric=</span><span class="st">&quot;C&quot;</span>)</span>
-<span id="cb32-19"><a href="beta-diversity.html#cb32-19" tabindex="-1"></a>    </span>
-<span id="cb32-20"><a href="beta-diversity.html#cb32-20" tabindex="-1"></a>    beta_q1p <span class="ot">&lt;-</span> bin_counts_norm_filt_strategy <span class="sc">%&gt;%</span></span>
-<span id="cb32-21"><a href="beta-diversity.html#cb32-21" tabindex="-1"></a>      <span class="fu">hillpair</span>(., <span class="at">q=</span><span class="dv">1</span>, <span class="at">metric=</span><span class="st">&quot;C&quot;</span>, <span class="at">tree =</span> cluster_tree_strategy)</span>
-<span id="cb32-22"><a href="beta-diversity.html#cb32-22" tabindex="-1"></a>  </span>
-<span id="cb32-23"><a href="beta-diversity.html#cb32-23" tabindex="-1"></a>  beta_div_strategy <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">q0n=</span>beta_q0n,<span class="at">q1n=</span>beta_q1n,<span class="at">q1p=</span>beta_q1p)</span>
-<span id="cb32-24"><a href="beta-diversity.html#cb32-24" tabindex="-1"></a>  beta_div[[n]] <span class="ot">&lt;-</span> beta_div_strategy</span>
-<span id="cb32-25"><a href="beta-diversity.html#cb32-25" tabindex="-1"></a>}</span>
-<span id="cb32-26"><a href="beta-diversity.html#cb32-26" tabindex="-1"></a></span>
-<span id="cb32-27"><a href="beta-diversity.html#cb32-27" tabindex="-1"></a><span class="fu">names</span>(beta_div) <span class="ot">&lt;-</span> strategies</span>
-<span id="cb32-28"><a href="beta-diversity.html#cb32-28" tabindex="-1"></a><span class="fu">save</span>(beta_div,<span class="at">file=</span><span class="st">&quot;results/beta_diversity.Rdata&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r script-source"><code class="sourceCode r"><span id="cb33-1"><a href="beta-diversity.html#cb33-1" tabindex="-1"></a><span class="fu">load</span>(<span class="st">&quot;data/data.Rdata&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r script-source"><code class="sourceCode r"><span id="cb34-1"><a href="beta-diversity.html#cb34-1" tabindex="-1"></a>beta_div <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
+<span id="cb34-2"><a href="beta-diversity.html#cb34-2" tabindex="-1"></a></span>
+<span id="cb34-3"><a href="beta-diversity.html#cb34-3" tabindex="-1"></a>n<span class="ot">=</span><span class="dv">0</span></span>
+<span id="cb34-4"><a href="beta-diversity.html#cb34-4" tabindex="-1"></a><span class="cf">for</span> (strategy <span class="cf">in</span> strategies){</span>
+<span id="cb34-5"><a href="beta-diversity.html#cb34-5" tabindex="-1"></a>  n<span class="ot">=</span>n<span class="sc">+</span><span class="dv">1</span></span>
+<span id="cb34-6"><a href="beta-diversity.html#cb34-6" tabindex="-1"></a>  bin_counts_norm_filt_strategy <span class="ot">&lt;-</span> bin_counts_norm_filt <span class="sc">%&gt;%</span></span>
+<span id="cb34-7"><a href="beta-diversity.html#cb34-7" tabindex="-1"></a>    <span class="fu">filter</span>(overall_strategy <span class="sc">==</span> {{strategy}}) <span class="sc">%&gt;%</span></span>
+<span id="cb34-8"><a href="beta-diversity.html#cb34-8" tabindex="-1"></a>    <span class="fu">select</span>(secondary_cluster,sample,read_count) <span class="sc">%&gt;%</span></span>
+<span id="cb34-9"><a href="beta-diversity.html#cb34-9" tabindex="-1"></a>    <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> <span class="st">&quot;sample&quot;</span>, <span class="at">values_from =</span> <span class="st">&quot;read_count&quot;</span>, <span class="at">values_fn =</span> sum) <span class="sc">%&gt;%</span></span>
+<span id="cb34-10"><a href="beta-diversity.html#cb34-10" tabindex="-1"></a>    <span class="fu">column_to_rownames</span>(<span class="at">var=</span><span class="st">&quot;secondary_cluster&quot;</span>)</span>
+<span id="cb34-11"><a href="beta-diversity.html#cb34-11" tabindex="-1"></a>    </span>
+<span id="cb34-12"><a href="beta-diversity.html#cb34-12" tabindex="-1"></a>   cluster_tree_strategy <span class="ot">&lt;-</span> <span class="fu">keep.tip</span>(cluster_tree, <span class="at">tip=</span><span class="fu">rownames</span>(bin_counts_norm_filt_strategy))</span>
+<span id="cb34-13"><a href="beta-diversity.html#cb34-13" tabindex="-1"></a>  </span>
+<span id="cb34-14"><a href="beta-diversity.html#cb34-14" tabindex="-1"></a>    beta_q0n <span class="ot">&lt;-</span> bin_counts_norm_filt_strategy <span class="sc">%&gt;%</span></span>
+<span id="cb34-15"><a href="beta-diversity.html#cb34-15" tabindex="-1"></a>      <span class="fu">hillpair</span>(., <span class="at">q=</span><span class="dv">0</span>, <span class="at">metric=</span><span class="st">&quot;C&quot;</span>) <span class="sc">%&gt;%</span> <span class="fu">as.dist</span>()</span>
+<span id="cb34-16"><a href="beta-diversity.html#cb34-16" tabindex="-1"></a>    </span>
+<span id="cb34-17"><a href="beta-diversity.html#cb34-17" tabindex="-1"></a>    beta_q1n <span class="ot">&lt;-</span> bin_counts_norm_filt_strategy <span class="sc">%&gt;%</span></span>
+<span id="cb34-18"><a href="beta-diversity.html#cb34-18" tabindex="-1"></a>      <span class="fu">hillpair</span>(., <span class="at">q=</span><span class="dv">1</span>, <span class="at">metric=</span><span class="st">&quot;C&quot;</span>)</span>
+<span id="cb34-19"><a href="beta-diversity.html#cb34-19" tabindex="-1"></a>    </span>
+<span id="cb34-20"><a href="beta-diversity.html#cb34-20" tabindex="-1"></a>    beta_q1p <span class="ot">&lt;-</span> bin_counts_norm_filt_strategy <span class="sc">%&gt;%</span></span>
+<span id="cb34-21"><a href="beta-diversity.html#cb34-21" tabindex="-1"></a>      <span class="fu">hillpair</span>(., <span class="at">q=</span><span class="dv">1</span>, <span class="at">metric=</span><span class="st">&quot;C&quot;</span>, <span class="at">tree =</span> cluster_tree_strategy)</span>
+<span id="cb34-22"><a href="beta-diversity.html#cb34-22" tabindex="-1"></a>  </span>
+<span id="cb34-23"><a href="beta-diversity.html#cb34-23" tabindex="-1"></a>  beta_div_strategy <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">q0n=</span>beta_q0n,<span class="at">q1n=</span>beta_q1n,<span class="at">q1p=</span>beta_q1p)</span>
+<span id="cb34-24"><a href="beta-diversity.html#cb34-24" tabindex="-1"></a>  beta_div[[n]] <span class="ot">&lt;-</span> beta_div_strategy</span>
+<span id="cb34-25"><a href="beta-diversity.html#cb34-25" tabindex="-1"></a>}</span>
+<span id="cb34-26"><a href="beta-diversity.html#cb34-26" tabindex="-1"></a></span>
+<span id="cb34-27"><a href="beta-diversity.html#cb34-27" tabindex="-1"></a><span class="fu">names</span>(beta_div) <span class="ot">&lt;-</span> strategies</span>
+<span id="cb34-28"><a href="beta-diversity.html#cb34-28" tabindex="-1"></a><span class="fu">save</span>(beta_div,<span class="at">file=</span><span class="st">&quot;results/beta_diversity.Rdata&quot;</span>)</span></code></pre></div>
 
 </div>
             </section>

@@ -24,7 +24,12 @@ read-counts-vs-prevalence
 bin-quality
 alpha-diversity
 beta-diversity
-functions
+diversity-calculations
+procrustes-analysis
+richness
+neutral
+phylogenetic
+functional-traits
 trait-overview
 trait-recovery
 computational-runtimes-analysis
@@ -32,3 +37,5 @@ load-packages-and-importwrangle-data
 create-figure-a
 create-figure-b
 patch-together-into-the-final-figure
+case-study-1
+case-study-2

@@ -1874,7 +1874,7 @@ a.anchor-section::before {content: '#';font-size: 80%;}
 
 <style type="text/css">
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -2061,11 +2061,20 @@ color: #a52929;
 <li class="part"><span><b>I Strategy analysis</b></span></li>
 <li class="chapter" data-level="4" data-path="bin-quality.html"><a href="bin-quality.html"><i class="fa fa-check"></i><b>4</b> Bin quality</a></li>
 <li class="chapter" data-level="5" data-path="alpha-diversity.html"><a href="alpha-diversity.html"><i class="fa fa-check"></i><b>5</b> Alpha diversity</a></li>
-<li class="chapter" data-level="6" data-path="beta-diversity.html"><a href="beta-diversity.html"><i class="fa fa-check"></i><b>6</b> Beta diversity</a></li>
-<li class="chapter" data-level="7" data-path="functions.html"><a href="functions.html"><i class="fa fa-check"></i><b>7</b> Functions</a>
+<li class="chapter" data-level="6" data-path="beta-diversity.html"><a href="beta-diversity.html"><i class="fa fa-check"></i><b>6</b> Beta diversity</a>
 <ul>
-<li class="chapter" data-level="7.1" data-path="functions.html"><a href="functions.html#trait-overview"><i class="fa fa-check"></i><b>7.1</b> Trait overview</a></li>
-<li class="chapter" data-level="7.2" data-path="functions.html"><a href="functions.html#trait-recovery"><i class="fa fa-check"></i><b>7.2</b> Trait recovery</a></li>
+<li class="chapter" data-level="6.1" data-path="beta-diversity.html"><a href="beta-diversity.html#diversity-calculations"><i class="fa fa-check"></i><b>6.1</b> Diversity calculations</a></li>
+<li class="chapter" data-level="6.2" data-path="beta-diversity.html"><a href="beta-diversity.html#procrustes-analysis"><i class="fa fa-check"></i><b>6.2</b> Procrustes analysis</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="beta-diversity.html"><a href="beta-diversity.html#richness"><i class="fa fa-check"></i><b>6.2.1</b> Richness</a></li>
+<li class="chapter" data-level="6.2.2" data-path="beta-diversity.html"><a href="beta-diversity.html#neutral"><i class="fa fa-check"></i><b>6.2.2</b> Neutral</a></li>
+<li class="chapter" data-level="6.2.3" data-path="beta-diversity.html"><a href="beta-diversity.html#phylogenetic"><i class="fa fa-check"></i><b>6.2.3</b> Phylogenetic</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="functional-traits.html"><a href="functional-traits.html"><i class="fa fa-check"></i><b>7</b> Functional traits</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="functional-traits.html"><a href="functional-traits.html#trait-overview"><i class="fa fa-check"></i><b>7.1</b> Trait overview</a></li>
+<li class="chapter" data-level="7.2" data-path="functional-traits.html"><a href="functional-traits.html#trait-recovery"><i class="fa fa-check"></i><b>7.2</b> Trait recovery</a></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="computational-runtimes-analysis.html"><a href="computational-runtimes-analysis.html"><i class="fa fa-check"></i><b>8</b> Computational runtimes analysis</a>
 <ul>
@@ -2074,6 +2083,8 @@ color: #a52929;
 <li class="chapter" data-level="8.3" data-path="computational-runtimes-analysis.html"><a href="computational-runtimes-analysis.html#create-figure-b"><i class="fa fa-check"></i><b>8.3</b> Create figure B)</a></li>
 <li class="chapter" data-level="8.4" data-path="computational-runtimes-analysis.html"><a href="computational-runtimes-analysis.html#patch-together-into-the-final-figure"><i class="fa fa-check"></i><b>8.4</b> Patch together into the final figure</a></li>
 </ul></li>
+<li class="chapter" data-level="9" data-path="case-study-1.html"><a href="case-study-1.html"><i class="fa fa-check"></i><b>9</b> Case study 1</a></li>
+<li class="chapter" data-level="10" data-path="case-study-2.html"><a href="case-study-2.html"><i class="fa fa-check"></i><b>10</b> Case study 2</a></li>
 <li class="divider"></li>
 <li><a href="https://www.alberdilab.dk" target="blank"><b>www.alberdilab.dk</b></a></li>
 <li><a href="https://www.earthhologenome.org" target="blank"><b>www.earthhologenome.org</b></a></li>
@@ -2106,8 +2117,8 @@ color: #a52929;
 <span id="cb3-4"><a href="data-preparation.html#cb3-4" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">overall_strategy =</span> <span class="fu">case_when</span>(</span>
 <span id="cb3-5"><a href="data-preparation.html#cb3-5" tabindex="-1"></a>        overall_strategy <span class="sc">==</span> <span class="st">&quot;individual_individual_binning&quot;</span> <span class="sc">~</span> <span class="st">&quot;single_coverage&quot;</span>,</span>
 <span id="cb3-6"><a href="data-preparation.html#cb3-6" tabindex="-1"></a>        overall_strategy <span class="sc">==</span> <span class="st">&quot;cobinning_longitudinal&quot;</span> <span class="sc">~</span> <span class="st">&quot;multicoverage_animal&quot;</span>,</span>
-<span id="cb3-7"><a href="data-preparation.html#cb3-7" tabindex="-1"></a>        overall_strategy <span class="sc">==</span> <span class="st">&quot;cobinning_cage_treatment&quot;</span> <span class="sc">~</span> <span class="st">&quot;multicoverage_timepoint_all&quot;</span>,</span>
-<span id="cb3-8"><a href="data-preparation.html#cb3-8" tabindex="-1"></a>        overall_strategy <span class="sc">==</span> <span class="st">&quot;cobinning_treatment&quot;</span> <span class="sc">~</span> <span class="st">&quot;multicoverage_timepoint_cage&quot;</span>,</span>
+<span id="cb3-7"><a href="data-preparation.html#cb3-7" tabindex="-1"></a>        overall_strategy <span class="sc">==</span> <span class="st">&quot;cobinning_treatment&quot;</span> <span class="sc">~</span> <span class="st">&quot;multicoverage_timepoint_all&quot;</span>,</span>
+<span id="cb3-8"><a href="data-preparation.html#cb3-8" tabindex="-1"></a>        overall_strategy <span class="sc">==</span> <span class="st">&quot;cobinning_cage_treatment&quot;</span> <span class="sc">~</span> <span class="st">&quot;multicoverage_timepoint_cage&quot;</span>,</span>
 <span id="cb3-9"><a href="data-preparation.html#cb3-9" tabindex="-1"></a>        overall_strategy <span class="sc">==</span> <span class="st">&quot;coassembly_longitudinal&quot;</span> <span class="sc">~</span> <span class="st">&quot;coassembly_animal&quot;</span>,</span>
 <span id="cb3-10"><a href="data-preparation.html#cb3-10" tabindex="-1"></a>        overall_strategy <span class="sc">==</span> <span class="st">&quot;coassembly_treatment&quot;</span> <span class="sc">~</span> <span class="st">&quot;coassembly_timepoint_all&quot;</span>,</span>
 <span id="cb3-11"><a href="data-preparation.html#cb3-11" tabindex="-1"></a>        overall_strategy <span class="sc">==</span> <span class="st">&quot;coassembly_cage_treatment&quot;</span> <span class="sc">~</span> <span class="st">&quot;coassembly_timepoint_cage&quot;</span>,</span>
@@ -2138,96 +2149,121 @@ color: #a52929;
 <span id="cb3-36"><a href="data-preparation.html#cb3-36" tabindex="-1"></a>         <span class="at">genome =</span> <span class="fu">str_replace</span>(genome, <span class="st">&quot;vamb_treat&quot;</span>, <span class="st">&quot;multisplit_timepoint_all&quot;</span>),</span>
 <span id="cb3-37"><a href="data-preparation.html#cb3-37" tabindex="-1"></a>         <span class="at">genome =</span> <span class="fu">str_replace</span>(genome, <span class="st">&quot;vamb_cage_treat&quot;</span>, <span class="st">&quot;multisplit_timepoint_cage&quot;</span>))</span>
 <span id="cb3-38"><a href="data-preparation.html#cb3-38" tabindex="-1"></a></span>
-<span id="cb3-39"><a href="data-preparation.html#cb3-39" tabindex="-1"></a>strategies <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;single_coverage&quot;</span>,</span>
-<span id="cb3-40"><a href="data-preparation.html#cb3-40" tabindex="-1"></a>                <span class="st">&quot;multicoverage_animal&quot;</span>,</span>
-<span id="cb3-41"><a href="data-preparation.html#cb3-41" tabindex="-1"></a>                <span class="st">&quot;multicoverage_timepoint_all&quot;</span>,</span>
-<span id="cb3-42"><a href="data-preparation.html#cb3-42" tabindex="-1"></a>                <span class="st">&quot;multicoverage_timepoint_cage&quot;</span>,</span>
-<span id="cb3-43"><a href="data-preparation.html#cb3-43" tabindex="-1"></a>                <span class="st">&quot;coassembly_animal&quot;</span>,</span>
-<span id="cb3-44"><a href="data-preparation.html#cb3-44" tabindex="-1"></a>                <span class="st">&quot;coassembly_timepoint_all&quot;</span>,</span>
-<span id="cb3-45"><a href="data-preparation.html#cb3-45" tabindex="-1"></a>                <span class="st">&quot;coassembly_timepoint_cage&quot;</span>,</span>
-<span id="cb3-46"><a href="data-preparation.html#cb3-46" tabindex="-1"></a>                <span class="st">&quot;multisplit_animal&quot;</span>,</span>
-<span id="cb3-47"><a href="data-preparation.html#cb3-47" tabindex="-1"></a>                <span class="st">&quot;multisplit_timepoint_all&quot;</span>,</span>
-<span id="cb3-48"><a href="data-preparation.html#cb3-48" tabindex="-1"></a>                <span class="st">&quot;multisplit_timepoint_cage&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r script-source"><code class="sourceCode r"><span id="cb4-1"><a href="data-preparation.html#cb4-1" tabindex="-1"></a>all_counts <span class="ot">&lt;-</span> <span class="fu">read_delim</span>(<span class="st">&quot;data/all_counts.tsv&quot;</span>, <span class="at">col_names =</span> <span class="fu">c</span>(<span class="st">&quot;sample&quot;</span>, <span class="st">&quot;total_count&quot;</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb4-2"><a href="data-preparation.html#cb4-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">total_count =</span> total_count <span class="sc">*</span> <span class="dv">2</span>)</span></code></pre></div>
+<span id="cb3-39"><a href="data-preparation.html#cb3-39" tabindex="-1"></a>assemblies <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;single_coverage&quot;</span>,</span>
+<span id="cb3-40"><a href="data-preparation.html#cb3-40" tabindex="-1"></a>                <span class="st">&quot;multi_coverage&quot;</span>,</span>
+<span id="cb3-41"><a href="data-preparation.html#cb3-41" tabindex="-1"></a>                <span class="st">&quot;coassembly&quot;</span>,</span>
+<span id="cb3-42"><a href="data-preparation.html#cb3-42" tabindex="-1"></a>                <span class="st">&quot;multi_split&quot;</span>)</span>
+<span id="cb3-43"><a href="data-preparation.html#cb3-43" tabindex="-1"></a></span>
+<span id="cb3-44"><a href="data-preparation.html#cb3-44" tabindex="-1"></a>strategies <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;single_coverage&quot;</span>,</span>
+<span id="cb3-45"><a href="data-preparation.html#cb3-45" tabindex="-1"></a>                <span class="st">&quot;multicoverage_animal&quot;</span>,</span>
+<span id="cb3-46"><a href="data-preparation.html#cb3-46" tabindex="-1"></a>                <span class="st">&quot;multicoverage_timepoint_all&quot;</span>,</span>
+<span id="cb3-47"><a href="data-preparation.html#cb3-47" tabindex="-1"></a>                <span class="st">&quot;multicoverage_timepoint_cage&quot;</span>,</span>
+<span id="cb3-48"><a href="data-preparation.html#cb3-48" tabindex="-1"></a>                <span class="st">&quot;coassembly_animal&quot;</span>,</span>
+<span id="cb3-49"><a href="data-preparation.html#cb3-49" tabindex="-1"></a>                <span class="st">&quot;coassembly_timepoint_all&quot;</span>,</span>
+<span id="cb3-50"><a href="data-preparation.html#cb3-50" tabindex="-1"></a>                <span class="st">&quot;coassembly_timepoint_cage&quot;</span>,</span>
+<span id="cb3-51"><a href="data-preparation.html#cb3-51" tabindex="-1"></a>                <span class="st">&quot;multisplit_animal&quot;</span>,</span>
+<span id="cb3-52"><a href="data-preparation.html#cb3-52" tabindex="-1"></a>                <span class="st">&quot;multisplit_timepoint_all&quot;</span>,</span>
+<span id="cb3-53"><a href="data-preparation.html#cb3-53" tabindex="-1"></a>                <span class="st">&quot;multisplit_timepoint_cage&quot;</span>)</span></code></pre></div>
 </div>
 <div id="read-counts" class="section level2 hasAnchor" number="2.2">
 <h2><span class="header-section-number">2.2</span> Read counts<a href="data-preparation.html#read-counts" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r script-source"><code class="sourceCode r"><span id="cb5-1"><a href="data-preparation.html#cb5-1" tabindex="-1"></a>import_count_data <span class="ot">&lt;-</span> <span class="cf">function</span>(strategy) {</span>
-<span id="cb5-2"><a href="data-preparation.html#cb5-2" tabindex="-1"></a>  <span class="fu">read_delim</span>(<span class="at">file =</span> <span class="fu">paste0</span>(<span class="st">&#39;data/count_tables/count_table_&#39;</span>,strategy,<span class="st">&#39;.tsv.gz&#39;</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb5-3"><a href="data-preparation.html#cb5-3" tabindex="-1"></a>    <span class="fu">rename</span>(<span class="at">genome=</span>Genome) <span class="sc">%&gt;%</span></span>
-<span id="cb5-4"><a href="data-preparation.html#cb5-4" tabindex="-1"></a>    <span class="fu">filter</span>(genome <span class="sc">!=</span> <span class="st">&quot;unmapped&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb5-5"><a href="data-preparation.html#cb5-5" tabindex="-1"></a>    <span class="fu">pivot_longer</span>(<span class="sc">!</span>genome,</span>
-<span id="cb5-6"><a href="data-preparation.html#cb5-6" tabindex="-1"></a>                 <span class="at">names_to =</span> <span class="fu">c</span>(<span class="st">&quot;sample&quot;</span>, <span class="st">&quot;.value&quot;</span>),</span>
-<span id="cb5-7"><a href="data-preparation.html#cb5-7" tabindex="-1"></a>                 <span class="at">names_sep =</span> <span class="st">&quot; &quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb5-8"><a href="data-preparation.html#cb5-8" tabindex="-1"></a>    <span class="fu">rename</span>(<span class="st">&quot;read_count&quot;</span> <span class="ot">=</span> <span class="st">&quot;Read&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb5-9"><a href="data-preparation.html#cb5-9" tabindex="-1"></a>    <span class="fu">rename</span>(<span class="st">&quot;covered_fraction&quot;</span> <span class="ot">=</span> <span class="st">&quot;Covered&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb5-10"><a href="data-preparation.html#cb5-10" tabindex="-1"></a>    <span class="fu">rename</span>(<span class="st">&quot;MAG_length&quot;</span> <span class="ot">=</span> <span class="st">&quot;Length&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb5-11"><a href="data-preparation.html#cb5-11" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">genome =</span> <span class="fu">str_replace_all</span>(genome, <span class="st">&quot;^&quot;</span>, <span class="fu">paste0</span>(strategy, <span class="st">&quot;_&quot;</span>)),</span>
-<span id="cb5-12"><a href="data-preparation.html#cb5-12" tabindex="-1"></a>           <span class="at">genome =</span> <span class="fu">str_replace_all</span>(genome, <span class="st">&quot;_OP_OP&quot;</span>, <span class="st">&quot;_OP&quot;</span>),</span>
-<span id="cb5-13"><a href="data-preparation.html#cb5-13" tabindex="-1"></a>           <span class="at">genome =</span> <span class="fu">str_replace_all</span>(genome, <span class="st">&quot;vamb_long_C.*_C&quot;</span>, <span class="st">&quot;vamb_long_C&quot;</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb5-14"><a href="data-preparation.html#cb5-14" tabindex="-1"></a>    <span class="fu">left_join</span>(bin_metadata, <span class="at">by =</span> <span class="st">&quot;genome&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb5-15"><a href="data-preparation.html#cb5-15" tabindex="-1"></a>    <span class="fu">select</span>(genome, sample, read_count, covered_fraction, MAG_length, primary_cluster, </span>
-<span id="cb5-16"><a href="data-preparation.html#cb5-16" tabindex="-1"></a>           secondary_cluster, overall_strategy, assembly, strategy)</span>
-<span id="cb5-17"><a href="data-preparation.html#cb5-17" tabindex="-1"></a>}</span>
-<span id="cb5-18"><a href="data-preparation.html#cb5-18" tabindex="-1"></a></span>
-<span id="cb5-19"><a href="data-preparation.html#cb5-19" tabindex="-1"></a>bin_counts <span class="ot">&lt;-</span> purrr<span class="sc">::</span><span class="fu">map</span>(strategies,import_count_data) <span class="sc">%&gt;%</span></span>
-<span id="cb5-20"><a href="data-preparation.html#cb5-20" tabindex="-1"></a>  <span class="fu">list_rbind</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r script-source"><code class="sourceCode r"><span id="cb4-1"><a href="data-preparation.html#cb4-1" tabindex="-1"></a>import_count_data <span class="ot">&lt;-</span> <span class="cf">function</span>(strategy) {</span>
+<span id="cb4-2"><a href="data-preparation.html#cb4-2" tabindex="-1"></a>  <span class="fu">read_delim</span>(<span class="at">file =</span> <span class="fu">paste0</span>(<span class="st">&#39;data/count_tables/count_table_&#39;</span>,strategy,<span class="st">&#39;.tsv.gz&#39;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb4-3"><a href="data-preparation.html#cb4-3" tabindex="-1"></a>    <span class="fu">rename</span>(<span class="at">genome=</span>Genome) <span class="sc">%&gt;%</span></span>
+<span id="cb4-4"><a href="data-preparation.html#cb4-4" tabindex="-1"></a>    <span class="fu">filter</span>(genome <span class="sc">!=</span> <span class="st">&quot;unmapped&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb4-5"><a href="data-preparation.html#cb4-5" tabindex="-1"></a>    <span class="fu">pivot_longer</span>(<span class="sc">!</span>genome,</span>
+<span id="cb4-6"><a href="data-preparation.html#cb4-6" tabindex="-1"></a>                 <span class="at">names_to =</span> <span class="fu">c</span>(<span class="st">&quot;sample&quot;</span>, <span class="st">&quot;.value&quot;</span>),</span>
+<span id="cb4-7"><a href="data-preparation.html#cb4-7" tabindex="-1"></a>                 <span class="at">names_sep =</span> <span class="st">&quot; &quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb4-8"><a href="data-preparation.html#cb4-8" tabindex="-1"></a>    <span class="fu">rename</span>(<span class="st">&quot;read_count&quot;</span> <span class="ot">=</span> <span class="st">&quot;Read&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb4-9"><a href="data-preparation.html#cb4-9" tabindex="-1"></a>    <span class="fu">rename</span>(<span class="st">&quot;covered_fraction&quot;</span> <span class="ot">=</span> <span class="st">&quot;Covered&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb4-10"><a href="data-preparation.html#cb4-10" tabindex="-1"></a>    <span class="fu">rename</span>(<span class="st">&quot;MAG_length&quot;</span> <span class="ot">=</span> <span class="st">&quot;Length&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb4-11"><a href="data-preparation.html#cb4-11" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">genome =</span> <span class="fu">str_replace_all</span>(genome, <span class="st">&quot;^&quot;</span>, <span class="fu">paste0</span>(strategy, <span class="st">&quot;_&quot;</span>)),</span>
+<span id="cb4-12"><a href="data-preparation.html#cb4-12" tabindex="-1"></a>           <span class="at">genome =</span> <span class="fu">str_replace_all</span>(genome, <span class="st">&quot;_OP_OP&quot;</span>, <span class="st">&quot;_OP&quot;</span>),</span>
+<span id="cb4-13"><a href="data-preparation.html#cb4-13" tabindex="-1"></a>           <span class="at">genome =</span> <span class="fu">str_replace_all</span>(genome, <span class="st">&quot;vamb_long_C.*_C&quot;</span>, <span class="st">&quot;vamb_long_C&quot;</span>),</span>
+<span id="cb4-14"><a href="data-preparation.html#cb4-14" tabindex="-1"></a>           <span class="at">sample =</span> <span class="fu">str_remove</span>(sample, <span class="st">&quot;_subsam_M&quot;</span>),</span>
+<span id="cb4-15"><a href="data-preparation.html#cb4-15" tabindex="-1"></a>           <span class="at">sample =</span> <span class="fu">str_remove</span>(sample, <span class="st">&quot;_subsam&quot;</span>),</span>
+<span id="cb4-16"><a href="data-preparation.html#cb4-16" tabindex="-1"></a>           <span class="at">sample =</span> <span class="fu">str_replace</span>(sample, <span class="st">&quot;CD&quot;</span>,<span class="st">&quot;CT&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb4-17"><a href="data-preparation.html#cb4-17" tabindex="-1"></a>    <span class="fu">left_join</span>(bin_metadata, <span class="at">by =</span> <span class="st">&quot;genome&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb4-18"><a href="data-preparation.html#cb4-18" tabindex="-1"></a>    <span class="fu">select</span>(genome, sample, read_count, covered_fraction, MAG_length, primary_cluster, </span>
+<span id="cb4-19"><a href="data-preparation.html#cb4-19" tabindex="-1"></a>           secondary_cluster, overall_strategy, assembly, strategy)</span>
+<span id="cb4-20"><a href="data-preparation.html#cb4-20" tabindex="-1"></a>}</span>
+<span id="cb4-21"><a href="data-preparation.html#cb4-21" tabindex="-1"></a></span>
+<span id="cb4-22"><a href="data-preparation.html#cb4-22" tabindex="-1"></a>bin_counts <span class="ot">&lt;-</span> purrr<span class="sc">::</span><span class="fu">map</span>(strategies,import_count_data) <span class="sc">%&gt;%</span></span>
+<span id="cb4-23"><a href="data-preparation.html#cb4-23" tabindex="-1"></a>  <span class="fu">list_rbind</span>()</span></code></pre></div>
 </div>
 <div id="cluster-taxonomy" class="section level2 hasAnchor" number="2.3">
 <h2><span class="header-section-number">2.3</span> Cluster taxonomy<a href="data-preparation.html#cluster-taxonomy" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r script-source"><code class="sourceCode r"><span id="cb6-1"><a href="data-preparation.html#cb6-1" tabindex="-1"></a>cluster_taxonomy <span class="ot">&lt;-</span> <span class="fu">read_delim</span>(<span class="st">&quot;data/cluster_taxonomy.tsv&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r script-source"><code class="sourceCode r"><span id="cb5-1"><a href="data-preparation.html#cb5-1" tabindex="-1"></a>cluster_taxonomy <span class="ot">&lt;-</span> <span class="fu">read_delim</span>(<span class="st">&quot;data/cluster_taxonomy.tsv&quot;</span>)</span></code></pre></div>
 </div>
 <div id="cluster-tree" class="section level2 hasAnchor" number="2.4">
 <h2><span class="header-section-number">2.4</span> Cluster tree<a href="data-preparation.html#cluster-tree" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r script-source"><code class="sourceCode r"><span id="cb7-1"><a href="data-preparation.html#cb7-1" tabindex="-1"></a>cluster_tree <span class="ot">&lt;-</span> <span class="fu">read_tree</span>(<span class="fu">str_glue</span>(<span class="st">&quot;data/cluster_tree.tre&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r script-source"><code class="sourceCode r"><span id="cb6-1"><a href="data-preparation.html#cb6-1" tabindex="-1"></a>cluster_tree <span class="ot">&lt;-</span> <span class="fu">read_tree</span>(<span class="fu">str_glue</span>(<span class="st">&quot;data/cluster_tree.tre&quot;</span>))</span></code></pre></div>
 <div id="normalise-read-counts" class="section level3 hasAnchor" number="2.4.1">
 <h3><span class="header-section-number">2.4.1</span> Normalise read counts<a href="data-preparation.html#normalise-read-counts" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Normalise read counts into genome counts.</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r script-source"><code class="sourceCode r"><span id="cb8-1"><a href="data-preparation.html#cb8-1" tabindex="-1"></a>bin_counts_norm <span class="ot">&lt;-</span> bin_counts <span class="sc">%&gt;%</span></span>
-<span id="cb8-2"><a href="data-preparation.html#cb8-2" tabindex="-1"></a>  <span class="fu">filter</span>(secondary_cluster <span class="sc">%in%</span> cluster_tree<span class="sc">$</span>tip.label) <span class="sc">%&gt;%</span></span>
-<span id="cb8-3"><a href="data-preparation.html#cb8-3" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">read_count =</span> read_count<span class="sc">*</span><span class="dv">150</span><span class="sc">/</span>MAG_length)</span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r script-source"><code class="sourceCode r"><span id="cb7-1"><a href="data-preparation.html#cb7-1" tabindex="-1"></a>bin_counts_norm <span class="ot">&lt;-</span> bin_counts <span class="sc">%&gt;%</span></span>
+<span id="cb7-2"><a href="data-preparation.html#cb7-2" tabindex="-1"></a>  <span class="fu">filter</span>(secondary_cluster <span class="sc">%in%</span> cluster_tree<span class="sc">$</span>tip.label) <span class="sc">%&gt;%</span></span>
+<span id="cb7-3"><a href="data-preparation.html#cb7-3" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">read_count =</span> read_count<span class="sc">*</span><span class="dv">150</span><span class="sc">/</span>MAG_length)</span></code></pre></div>
 </div>
 <div id="filter-read-counts" class="section level3 hasAnchor" number="2.4.2">
 <h3><span class="header-section-number">2.4.2</span> Filter read counts<a href="data-preparation.html#filter-read-counts" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Filter out genome counts with coverage fraction under 30%.</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r script-source"><code class="sourceCode r"><span id="cb9-1"><a href="data-preparation.html#cb9-1" tabindex="-1"></a>bin_counts_norm_filt <span class="ot">&lt;-</span> bin_counts_norm <span class="sc">%&gt;%</span></span>
-<span id="cb9-2"><a href="data-preparation.html#cb9-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">read_count =</span> <span class="fu">ifelse</span>(covered_fraction<span class="sc">&gt;=</span><span class="fl">0.3</span>,read_count,<span class="dv">0</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r script-source"><code class="sourceCode r"><span id="cb8-1"><a href="data-preparation.html#cb8-1" tabindex="-1"></a>bin_counts_norm_filt <span class="ot">&lt;-</span> bin_counts_norm <span class="sc">%&gt;%</span></span>
+<span id="cb8-2"><a href="data-preparation.html#cb8-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">read_count =</span> <span class="fu">ifelse</span>(covered_fraction<span class="sc">&gt;=</span><span class="fl">0.3</span>,read_count,<span class="dv">0</span>))</span></code></pre></div>
 </div>
 </div>
 <div id="cluster-counts" class="section level2 hasAnchor" number="2.5">
 <h2><span class="header-section-number">2.5</span> Cluster counts<a href="data-preparation.html#cluster-counts" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Aggregate bins into clusters.</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r script-source"><code class="sourceCode r"><span id="cb10-1"><a href="data-preparation.html#cb10-1" tabindex="-1"></a>cluster_counts <span class="ot">&lt;-</span> bin_counts_norm_filt <span class="sc">%&gt;%</span></span>
-<span id="cb10-2"><a href="data-preparation.html#cb10-2" tabindex="-1"></a>  <span class="fu">group_by</span>(sample,overall_strategy,secondary_cluster) <span class="sc">%&gt;%</span></span>
-<span id="cb10-3"><a href="data-preparation.html#cb10-3" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">read_count=</span><span class="fu">sum</span>(read_count), <span class="at">.groups=</span><span class="st">&quot;drop&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb10-4"><a href="data-preparation.html#cb10-4" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(overall_strategy)) <span class="sc">%&gt;%</span></span>
-<span id="cb10-5"><a href="data-preparation.html#cb10-5" tabindex="-1"></a>  <span class="fu">select</span>(secondary_cluster,overall_strategy,read_count)</span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r script-source"><code class="sourceCode r"><span id="cb9-1"><a href="data-preparation.html#cb9-1" tabindex="-1"></a>cluster_counts <span class="ot">&lt;-</span> bin_counts_norm_filt <span class="sc">%&gt;%</span></span>
+<span id="cb9-2"><a href="data-preparation.html#cb9-2" tabindex="-1"></a>  <span class="fu">group_by</span>(sample,overall_strategy,secondary_cluster) <span class="sc">%&gt;%</span></span>
+<span id="cb9-3"><a href="data-preparation.html#cb9-3" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">read_count=</span><span class="fu">sum</span>(read_count), <span class="at">.groups=</span><span class="st">&quot;drop&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb9-4"><a href="data-preparation.html#cb9-4" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(overall_strategy)) <span class="sc">%&gt;%</span></span>
+<span id="cb9-5"><a href="data-preparation.html#cb9-5" tabindex="-1"></a>  <span class="fu">select</span>(secondary_cluster,overall_strategy,read_count)</span></code></pre></div>
 </div>
 <div id="cluster-functions" class="section level2 hasAnchor" number="2.6">
 <h2><span class="header-section-number">2.6</span> Cluster functions<a href="data-preparation.html#cluster-functions" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r script-source"><code class="sourceCode r"><span id="cb11-1"><a href="data-preparation.html#cb11-1" tabindex="-1"></a>cluster_kegg <span class="ot">&lt;-</span> <span class="fu">read_delim</span>(<span class="st">&quot;data/cluster_kegg.tsv&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r script-source"><code class="sourceCode r"><span id="cb10-1"><a href="data-preparation.html#cb10-1" tabindex="-1"></a>cluster_kegg <span class="ot">&lt;-</span> <span class="fu">read_delim</span>(<span class="st">&quot;data/cluster_kegg.tsv&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb10-2"><a href="data-preparation.html#cb10-2" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>genome) <span class="sc">%&gt;%</span></span>
+<span id="cb10-3"><a href="data-preparation.html#cb10-3" tabindex="-1"></a>  <span class="fu">group_by</span>(secondary_cluster,overall_strategy) <span class="sc">%&gt;%</span></span>
+<span id="cb10-4"><a href="data-preparation.html#cb10-4" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="fu">across</span>(<span class="fu">where</span>(is.numeric), max)) <span class="sc">%&gt;%</span></span>
+<span id="cb10-5"><a href="data-preparation.html#cb10-5" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">overall_strategy =</span> <span class="fu">case_when</span>(</span>
+<span id="cb10-6"><a href="data-preparation.html#cb10-6" tabindex="-1"></a>        overall_strategy <span class="sc">==</span> <span class="st">&quot;individual_individual_binning&quot;</span> <span class="sc">~</span> <span class="st">&quot;single_coverage&quot;</span>,</span>
+<span id="cb10-7"><a href="data-preparation.html#cb10-7" tabindex="-1"></a>        overall_strategy <span class="sc">==</span> <span class="st">&quot;cobinning_longitudinal&quot;</span> <span class="sc">~</span> <span class="st">&quot;multicoverage_animal&quot;</span>,</span>
+<span id="cb10-8"><a href="data-preparation.html#cb10-8" tabindex="-1"></a>        overall_strategy <span class="sc">==</span> <span class="st">&quot;cobinning_treatment&quot;</span> <span class="sc">~</span> <span class="st">&quot;multicoverage_timepoint_all&quot;</span>,</span>
+<span id="cb10-9"><a href="data-preparation.html#cb10-9" tabindex="-1"></a>        overall_strategy <span class="sc">==</span> <span class="st">&quot;cobinning_cage_treatment&quot;</span> <span class="sc">~</span> <span class="st">&quot;multicoverage_timepoint_cage&quot;</span>,</span>
+<span id="cb10-10"><a href="data-preparation.html#cb10-10" tabindex="-1"></a>        overall_strategy <span class="sc">==</span> <span class="st">&quot;coassembly_longitudinal&quot;</span> <span class="sc">~</span> <span class="st">&quot;coassembly_animal&quot;</span>,</span>
+<span id="cb10-11"><a href="data-preparation.html#cb10-11" tabindex="-1"></a>        overall_strategy <span class="sc">==</span> <span class="st">&quot;coassembly_treatment&quot;</span> <span class="sc">~</span> <span class="st">&quot;coassembly_timepoint_all&quot;</span>,</span>
+<span id="cb10-12"><a href="data-preparation.html#cb10-12" tabindex="-1"></a>        overall_strategy <span class="sc">==</span> <span class="st">&quot;coassembly_cage_treatment&quot;</span> <span class="sc">~</span> <span class="st">&quot;coassembly_timepoint_cage&quot;</span>,</span>
+<span id="cb10-13"><a href="data-preparation.html#cb10-13" tabindex="-1"></a>        overall_strategy <span class="sc">==</span> <span class="st">&quot;multi_split_longitudinal&quot;</span> <span class="sc">~</span> <span class="st">&quot;multisplit_animal&quot;</span>,</span>
+<span id="cb10-14"><a href="data-preparation.html#cb10-14" tabindex="-1"></a>        overall_strategy <span class="sc">==</span> <span class="st">&quot;multi_split_treatment&quot;</span> <span class="sc">~</span> <span class="st">&quot;multisplit_timepoint_all&quot;</span>,</span>
+<span id="cb10-15"><a href="data-preparation.html#cb10-15" tabindex="-1"></a>        overall_strategy <span class="sc">==</span> <span class="st">&quot;multi_split_cage_treatment&quot;</span> <span class="sc">~</span> <span class="st">&quot;multisplit_timepoint_cage&quot;</span>,</span>
+<span id="cb10-16"><a href="data-preparation.html#cb10-16" tabindex="-1"></a>        <span class="cn">TRUE</span> <span class="sc">~</span> overall_strategy))</span></code></pre></div>
 </div>
 <div id="color-scheme" class="section level2 hasAnchor" number="2.7">
 <h2><span class="header-section-number">2.7</span> Color scheme<a href="data-preparation.html#color-scheme" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p><a href="www.alberdilab.dk">AlberdiLab</a> projects use unified color schemes developed for the <a href="www.earthhologenome.org">Earth Hologenome Initiative</a>, to facilitate figure interpretation.</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r script-source"><code class="sourceCode r"><span id="cb12-1"><a href="data-preparation.html#cb12-1" tabindex="-1"></a>phylum_colors <span class="ot">&lt;-</span> cluster_taxonomy <span class="sc">%&gt;%</span></span>
-<span id="cb12-2"><a href="data-preparation.html#cb12-2" tabindex="-1"></a>    <span class="fu">left_join</span>(<span class="fu">read_tsv</span>(<span class="st">&quot;https://raw.githubusercontent.com/earthhologenome/EHI_taxonomy_colour/main/ehi_phylum_colors.tsv&quot;</span>) <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">phylum=</span><span class="fu">gsub</span>(<span class="st">&quot;p__&quot;</span>,<span class="st">&quot;&quot;</span>,phylum)), <span class="at">by=</span><span class="fu">join_by</span>(Phylum <span class="sc">==</span> phylum)) <span class="sc">%&gt;%</span></span>
-<span id="cb12-3"><a href="data-preparation.html#cb12-3" tabindex="-1"></a>    <span class="fu">select</span>(Phylum, colors) <span class="sc">%&gt;%</span></span>
-<span id="cb12-4"><a href="data-preparation.html#cb12-4" tabindex="-1"></a>    <span class="fu">unique</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb12-5"><a href="data-preparation.html#cb12-5" tabindex="-1"></a>    <span class="fu">arrange</span>(Phylum) <span class="sc">%&gt;%</span></span>
-<span id="cb12-6"><a href="data-preparation.html#cb12-6" tabindex="-1"></a>    <span class="fu">select</span>(colors) <span class="sc">%&gt;%</span></span>
-<span id="cb12-7"><a href="data-preparation.html#cb12-7" tabindex="-1"></a>    <span class="fu">pull</span>()</span></code></pre></div>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r script-source"><code class="sourceCode r"><span id="cb13-1"><a href="data-preparation.html#cb13-1" tabindex="-1"></a>strategy_colors <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="at">single_coverage=</span><span class="st">&quot;#5254A3&quot;</span>,</span>
-<span id="cb13-2"><a href="data-preparation.html#cb13-2" tabindex="-1"></a>                     <span class="at">multicoverage_animal=</span><span class="st">&quot;#637939&quot;</span>,</span>
-<span id="cb13-3"><a href="data-preparation.html#cb13-3" tabindex="-1"></a>                     <span class="at">multicoverage_timepoint_all=</span><span class="st">&quot;#8CA252&quot;</span>,</span>
-<span id="cb13-4"><a href="data-preparation.html#cb13-4" tabindex="-1"></a>                     <span class="at">multicoverage_timepoint_cage=</span><span class="st">&quot;#B5CF6B&quot;</span>,</span>
-<span id="cb13-5"><a href="data-preparation.html#cb13-5" tabindex="-1"></a>                     <span class="at">coassembly_animal=</span><span class="st">&quot;#8C6D31&quot;</span>,</span>
-<span id="cb13-6"><a href="data-preparation.html#cb13-6" tabindex="-1"></a>                     <span class="at">coassembly_timepoint_all=</span><span class="st">&quot;#BD9E39&quot;</span>,</span>
-<span id="cb13-7"><a href="data-preparation.html#cb13-7" tabindex="-1"></a>                     <span class="at">coassembly_timepoint_cage=</span><span class="st">&quot;#E7BA52&quot;</span>,</span>
-<span id="cb13-8"><a href="data-preparation.html#cb13-8" tabindex="-1"></a>                     <span class="at">multisplit_animal=</span><span class="st">&quot;#843C39&quot;</span>,</span>
-<span id="cb13-9"><a href="data-preparation.html#cb13-9" tabindex="-1"></a>                     <span class="at">multisplit_timepoint_all=</span><span class="st">&quot;#AD494A&quot;</span>,</span>
-<span id="cb13-10"><a href="data-preparation.html#cb13-10" tabindex="-1"></a>                     <span class="at">multisplit_timepoint_cage=</span><span class="st">&quot;#D6616B&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r script-source"><code class="sourceCode r"><span id="cb11-1"><a href="data-preparation.html#cb11-1" tabindex="-1"></a>phylum_colors <span class="ot">&lt;-</span> cluster_taxonomy <span class="sc">%&gt;%</span></span>
+<span id="cb11-2"><a href="data-preparation.html#cb11-2" tabindex="-1"></a>    <span class="fu">left_join</span>(<span class="fu">read_tsv</span>(<span class="st">&quot;https://raw.githubusercontent.com/earthhologenome/EHI_taxonomy_colour/main/ehi_phylum_colors.tsv&quot;</span>) <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">phylum=</span><span class="fu">gsub</span>(<span class="st">&quot;p__&quot;</span>,<span class="st">&quot;&quot;</span>,phylum)), <span class="at">by=</span><span class="fu">join_by</span>(Phylum <span class="sc">==</span> phylum)) <span class="sc">%&gt;%</span></span>
+<span id="cb11-3"><a href="data-preparation.html#cb11-3" tabindex="-1"></a>    <span class="fu">select</span>(Phylum, colors) <span class="sc">%&gt;%</span></span>
+<span id="cb11-4"><a href="data-preparation.html#cb11-4" tabindex="-1"></a>    <span class="fu">unique</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb11-5"><a href="data-preparation.html#cb11-5" tabindex="-1"></a>    <span class="fu">arrange</span>(Phylum) <span class="sc">%&gt;%</span></span>
+<span id="cb11-6"><a href="data-preparation.html#cb11-6" tabindex="-1"></a>    <span class="fu">select</span>(colors) <span class="sc">%&gt;%</span></span>
+<span id="cb11-7"><a href="data-preparation.html#cb11-7" tabindex="-1"></a>    <span class="fu">pull</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r script-source"><code class="sourceCode r"><span id="cb12-1"><a href="data-preparation.html#cb12-1" tabindex="-1"></a>strategy_colors <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="at">single_coverage=</span><span class="st">&quot;#5254A3&quot;</span>,</span>
+<span id="cb12-2"><a href="data-preparation.html#cb12-2" tabindex="-1"></a>                     <span class="at">multicoverage_animal=</span><span class="st">&quot;#637939&quot;</span>,</span>
+<span id="cb12-3"><a href="data-preparation.html#cb12-3" tabindex="-1"></a>                     <span class="at">multicoverage_timepoint_all=</span><span class="st">&quot;#8CA252&quot;</span>,</span>
+<span id="cb12-4"><a href="data-preparation.html#cb12-4" tabindex="-1"></a>                     <span class="at">multicoverage_timepoint_cage=</span><span class="st">&quot;#B5CF6B&quot;</span>,</span>
+<span id="cb12-5"><a href="data-preparation.html#cb12-5" tabindex="-1"></a>                     <span class="at">coassembly_animal=</span><span class="st">&quot;#8C6D31&quot;</span>,</span>
+<span id="cb12-6"><a href="data-preparation.html#cb12-6" tabindex="-1"></a>                     <span class="at">coassembly_timepoint_all=</span><span class="st">&quot;#BD9E39&quot;</span>,</span>
+<span id="cb12-7"><a href="data-preparation.html#cb12-7" tabindex="-1"></a>                     <span class="at">coassembly_timepoint_cage=</span><span class="st">&quot;#E7BA52&quot;</span>,</span>
+<span id="cb12-8"><a href="data-preparation.html#cb12-8" tabindex="-1"></a>                     <span class="at">multisplit_animal=</span><span class="st">&quot;#843C39&quot;</span>,</span>
+<span id="cb12-9"><a href="data-preparation.html#cb12-9" tabindex="-1"></a>                     <span class="at">multisplit_timepoint_all=</span><span class="st">&quot;#AD494A&quot;</span>,</span>
+<span id="cb12-10"><a href="data-preparation.html#cb12-10" tabindex="-1"></a>                     <span class="at">multisplit_timepoint_cage=</span><span class="st">&quot;#D6616B&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r script-source"><code class="sourceCode r"><span id="cb13-1"><a href="data-preparation.html#cb13-1" tabindex="-1"></a>assembly_colors <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="at">single_coverage=</span><span class="st">&quot;#5254A3&quot;</span>,</span>
+<span id="cb13-2"><a href="data-preparation.html#cb13-2" tabindex="-1"></a>                     <span class="at">multi_coverage=</span><span class="st">&quot;#8CA252&quot;</span>,</span>
+<span id="cb13-3"><a href="data-preparation.html#cb13-3" tabindex="-1"></a>                     <span class="at">coassembly=</span><span class="st">&quot;#BD9E39&quot;</span>,</span>
+<span id="cb13-4"><a href="data-preparation.html#cb13-4" tabindex="-1"></a>                     <span class="at">multi_split=</span><span class="st">&quot;#AD494A&quot;</span>)</span></code></pre></div>
 </div>
 <div id="wrap-working-objects" class="section level2 hasAnchor" number="2.8">
 <h2><span class="header-section-number">2.8</span> Wrap working objects<a href="data-preparation.html#wrap-working-objects" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -2243,7 +2279,8 @@ color: #a52929;
 <span id="cb14-9"><a href="data-preparation.html#cb14-9" tabindex="-1"></a>     cluster_kegg,</span>
 <span id="cb14-10"><a href="data-preparation.html#cb14-10" tabindex="-1"></a>     phylum_colors,</span>
 <span id="cb14-11"><a href="data-preparation.html#cb14-11" tabindex="-1"></a>     strategy_colors,</span>
-<span id="cb14-12"><a href="data-preparation.html#cb14-12" tabindex="-1"></a>     <span class="at">file =</span> <span class="st">&quot;data/data.Rdata&quot;</span>)</span></code></pre></div>
+<span id="cb14-12"><a href="data-preparation.html#cb14-12" tabindex="-1"></a>     assembly_colors,</span>
+<span id="cb14-13"><a href="data-preparation.html#cb14-13" tabindex="-1"></a>     <span class="at">file =</span> <span class="st">&quot;data/data.Rdata&quot;</span>)</span></code></pre></div>
 
 </div>
 </div>

@@ -1,0 +1,393 @@
+# Computational runtimes analysis
+
+## Load packages and import/wrangle data
+
+
+```{r import_runtime_data, comment="", message=FALSE, warning=FALSE}
+
+# Individual/coassembly had data collected using snakemake benchmark, so load these
+ind <- read_delim("data/runtime/ind_benchmark.tsv", 
+                  col_names = c("job", "time_s", "strategy"))
+coassembly <- read_delim("data/runtime/coassembly_benchmark.tsv", 
+                  col_names = c("job", "time_s", "strategy"))
+
+# import data into tidy format
+files <- list.files("data/runtime", "*report.tsv", full.names = T)
+
+import <- function(file){
+  read_delim(file, col_names = c("job", "time_s")) %>%
+    mutate(strategy = str_replace(file, "data/runtime/", ""),
+           strategy = str_replace_all(strategy, "_report.tsv", ""))
+}
+
+df <- purrr::map(files, import) %>%
+  bind_rows() %>%
+# Noticed an odd bug with snakemake report, 2 jobs have time values ~-900000000.. so filter them
+# Also noticed an outlier job with 824084 seconds (mean is 600 for that type)
+  filter(time_s > 0 & time_s < 800000) %>%
+  bind_rows(., ind, coassembly) %>%
+  mutate(job = str_replace_all(job, "metaWRAP_binning", "binning"),
+         job = str_replace_all(job, "metaWRAP_refinement", "refinement"))
+
+#Subset for comparable jobs
+jobs <- c("binning", "refinement", "mapping", 
+          "Assembly", "assembly_mapping", "checkm", "vamb_multisplit")
+
+#filter by jobs of interest
+df_filt <- df %>%
+  filter(job %in% jobs) %>%
+  mutate(job = str_replace_all(job, "^mapping", "assembly_mapping")) %>%
+  filter(strategy != "cobinning_treat")
+
+#Add ind assembly times for cobinning/multi-split
+time_total_s_ind <- df_filt %>%
+  filter(strategy == "individual" & job == "Assembly") %>%
+  pull(time_s)
+
+
+df_cobinning_cage_treat <- tibble(
+  strategy = "cobinning_cage_treat",
+  job = "Assembly",
+  time_s = time_total_s_ind
+)
+
+df_cobinning_long <- tibble(
+  strategy = "cobinning_long",
+  job = "Assembly",
+  time_s = time_total_s_ind
+)
+
+df_vamb_cage_treat <- tibble(
+  strategy = "vamb_cage_treat",
+  job = "Assembly",
+  time_s = time_total_s_ind
+)
+
+df_vamb_treat <- tibble(
+  strategy = "vamb_treat",
+  job = "Assembly",
+  time_s = time_total_s_ind
+)
+
+df_vamb_long <- tibble(
+  strategy = "vamb_long",
+  job = "Assembly",
+  time_s = time_total_s_ind
+)
+
+df_filt <- df_filt %>%
+  bind_rows(df_cobinning_cage_treat, df_cobinning_long, df_vamb_cage_treat,
+            df_vamb_treat, df_vamb_long)
+
+```
+
+## Create figure A)
+
+```{r Figure A), comment="", message=FALSE, warning=FALSE}
+#Get sum per strategy, and rename strategies for consisitency with manuscript
+df_sum <- df_filt %>%
+  summarise(time_total_s = sum(time_s), .by = c("strategy", "job")) 
+
+
+
+#Plotting
+colours <- c("#E69F00", "#56B4E9", "#009E73", "#F0E442", 
+             "#0072B2", "#D55E00", "#CC79A7", "#000000")
+
+fig_a <- df_sum %>% 
+  ggplot(aes(x = strategy, y = time_total_s / 3600, fill = job)) +
+  geom_bar(stat = "identity") +
+  theme_classic() +
+  theme(axis.text.x = element_text(angle = 45, size = 13, hjust = 1),
+        axis.text.y = element_text(size = 14),
+        axis.title = element_text(size = 14, face = "bold"),
+        axis.title.x = element_blank()) +
+  scale_fill_manual(values = colours) +
+  labs(y = "Time (hours)")
+  
+
+#Save total time summary for another figure
+df_sum_total <- df_sum %>%
+  summarise(time_total_s = sum(time_total_s), .by = strategy)
+
+write_delim(df_sum_total, "data/runtime_total.tsv")
+```
+
+
+## Create figure B)
+
+```{r Figures B-E, comment="", message=FALSE, warning=FALSE}
+
+#sample size and treatment variables
+n1 = 15
+n2 = 30
+n3 = 60
+n4 = 120
+t1 = 1
+t2 = 2
+t3 = 3
+t4 = 4
+
+################################################################################
+### individual assembly
+df_sum_total_ind <- df_sum_total %>%
+  filter(strategy == "single-coverage") %>%
+  mutate(sample_size = n2,
+         n_treatments = t1,
+         time_total_s = time_total_s / 5)
+#this creates sample_size 30, with time_total_s = 150 / 5 = 30
+
+indiv <- tibble(
+  strategy = "single-coverage",
+  sample_size = c(n1, n3, n4, n1, n2, n3, n4, n1, n2, n3, n4, n1, n2, n3, n4),
+  n_treatments = c(t1, t1, t1, t2, t2, t2, t2, t3, t3, t3, t3,  t4, t4, t4, t4)
+) %>%
+  bind_rows(., df_sum_total_ind) %>%
+  mutate(time_total_s = (df_sum_total_ind$time_total_s / 30) * sample_size * n_treatments)
+#note df_sum_total_ind$time_total_s / 30 = estimated time per sample.
+
+fig_b <- indiv %>%
+  ggplot(aes(x = sample_size, y = time_total_s / 3600, 
+             group = n_treatments, colour = n_treatments)) +
+  geom_line() +
+  geom_point() +
+  scale_x_continuous(breaks = c(n1, n2, n3, n4)) +
+  theme_classic() +
+  theme(axis.title = element_text(face = "bold", size = 14),
+        axis.text = element_text(size = 14),
+        axis.title.x = element_blank()) +
+  ylab("Time (hours)") +
+  ggtitle("Single-coverage binning")
+  
+
+################################################################################
+### coassembly
+df_sum_total_coa <- df_sum_total %>%
+  filter(str_detect(strategy, "^coassembly"))
+
+#Pull coassembly job times
+coassembly_df <- df_filt %>%
+  filter(str_detect(strategy, "^coassembly"))
+
+#Get mean times across coassembly strategies
+#obviously more samples = longer assemblies, but this is just a simple estimate
+#note: divide by n samples in coassembly
+mean_coassembly_t <- coassembly_df %>%
+  filter(job == "Assembly" & strategy == "coassembly_timepoint_all") %>%
+  pull(time_s) %>%
+  mean() / 30
+mean_coassembly_ct <- coassembly_df %>%
+  filter(job == "Assembly" & strategy == "coassembly_timepoint_cage") %>%
+  pull(time_s) %>%
+  mean() / 5
+
+mean_coassembly = (mean_coassembly_t + mean_coassembly_ct) / 2
+
+#Do same for other jobs
+mean_mapping = coassembly_df %>%
+  filter(job == "assembly_mapping") %>%
+  pull(time_s) %>%
+  mean()
+
+mean_binning_t <- coassembly_df %>%
+  filter(job == "binning" & strategy == "coassembly_timepoint_all") %>%
+  pull(time_s) %>%
+  mean() / 30
+mean_binning_ct <- coassembly_df %>%
+  filter(job == "binning" & strategy == "coassembly_timepoint_cage") %>%
+  pull(time_s) %>%
+  mean() / 5
+
+mean_binning = (mean_binning_t + mean_binning_ct) / 2
+
+mean_refinement_t <- coassembly_df %>%
+  filter(job == "refinement" & strategy == "coassembly_timepoint_all") %>%
+  pull(time_s) %>%
+  mean() / 30
+mean_refinement_ct <- coassembly_df %>%
+  filter(job == "refinement" & strategy == "coassembly_timepoint_cage") %>%
+  pull(time_s) %>%
+  mean() / 5
+
+mean_refinement = (mean_refinement_t + mean_refinement_ct) / 2
+
+
+#create tibble with estimatess
+coa <- tibble(
+  strategy = "coassembly",
+  sample_size = c(n1, n2, n3, n4, n1, n2, n3, n4, n1, n2, n3, n4, n1, n2, n3, n4),
+  n_treatments = c(t1, t1, t1, t1, t2, t2, t2, t2, t3, t3, t3, t3,  t4, t4, t4, t4)
+) %>%
+  mutate(time_total_s = (mean_coassembly * sample_size * n_treatments) + (mean_mapping * sample_size * n_treatments) + (mean_binning * sample_size * n_treatments) + (mean_refinement * sample_size * n_treatments))
+
+fig_c <- coa %>%
+  ggplot(aes(x = sample_size, y = time_total_s / 3600, 
+             group = n_treatments, colour = n_treatments)) +
+  geom_line() +
+  geom_point() +
+  scale_x_continuous(breaks = c(n1, n2, n3, n4)) +
+  theme_classic() +
+  theme(axis.title = element_text(face = "bold", size = 14),
+        axis.text = element_text(size = 14),
+        axis.title.y = element_blank(),
+        axis.title.x = element_blank()) +
+  ggtitle("Coassembly")
+
+################################################################################
+### multi-coverage binning
+df_cob_cage_treat <- df_filt %>%
+  filter(strategy == "multi-coverage_timepoint_cage")
+
+#mean time for assembly?
+mean_assembly <- df_cob_cage_treat %>%
+  filter(job == "Assembly") %>%
+  pull(time_s) %>%
+  mean()
+
+#mean time for mapping?
+mean_mapping <- df_cob_cage_treat %>%
+  filter(job == "assembly_mapping") %>%
+  pull(time_s) %>%
+  mean()
+
+#mean time for binning?
+mean_binning <- df_cob_cage_treat %>%
+  filter(job == "binning") %>%
+  pull(time_s) %>%
+  mean()
+
+#mean time for refinement?
+mean_refinement <- df_cob_cage_treat %>%
+  filter(job == "refinement") %>%
+  pull(time_s) %>%
+  mean()
+
+cob <- tibble(
+  strategy = "multi-coverage binning",
+  sample_size = c(n1, n2, n3, n4, n1, n2, n3, n4, n1, n2, n3, n4, n1, n2, n3, n4),
+  n_treatments = c(t1, t1, t1, t1, t2, t2, t2, t2, t3, t3, t3, t3,  t4, t4, t4, t4)
+) %>%
+  mutate(time_total_s = (mean_assembly * sample_size * n_treatments) + (mean_mapping * (sample_size^2) * n_treatments) + (mean_binning * sample_size * n_treatments) + (mean_refinement * sample_size * n_treatments))
+#scaling is sample_size, so sample_size^2 -- e.g. 2 samples = 2 * 2 mappings, 3 samples = 3 * 3 mappings, etc.
+
+fig_d <- cob %>%
+  ggplot(aes(x = sample_size, y = time_total_s / 3600, 
+             group = n_treatments, colour = n_treatments)) +
+  geom_line() +
+  geom_point() +
+  scale_x_continuous(breaks = c(n1, n2, n3, n4)) +
+  theme_classic() +
+  theme(axis.text = element_text(size = 14),
+        axis.title = element_text(size = 14, face = "bold")) +
+  xlab("Number of samples") +
+  ylab("Time (hours)") +
+  ggtitle("Multi-coverage binning")
+
+################################################################################
+### multi-split
+df_sum_total_ms <- df_sum_total %>%
+  filter(str_detect(strategy, "^multi-split"))
+
+df_ms_cage_treat <- df_filt %>%
+  filter(strategy == "multi-split_timepoint_cage")
+
+#mean time for assembly?
+mean_assembly <- df_ms_cage_treat %>%
+  filter(job == "Assembly") %>%
+  pull(time_s) %>%
+  mean()
+
+#How does checkm scale?
+checkm_t <- df_filt %>%
+  filter(job == "checkm" & strategy == "multi-split_timepoint_all")
+
+checkm_ct <- df_filt %>%
+  filter(job == "checkm" & strategy == "multi-split_timepoint_cage")
+
+treat <- mean(checkm_t$time_s)
+cage_treat <- mean(checkm_ct$time_s)
+
+#per sample?
+treat_ps <- treat / 30
+cage_treat_ps <- cage_treat / 5
+#pretty similar, so for simplicity (and given it's a fraction of the pipeline's time, let's assume the mean of the two)
+mean_checkm <- (treat_ps + cage_treat_ps) / 2
+
+#How does vamb_multisplit scale?
+vamb_multisplit_t <- df_filt %>%
+  filter(job == "vamb_multisplit" & strategy == "multi-split_timepoint_all")
+
+vamb_multisplit_ct <- df_filt %>%
+  filter(job == "vamb_multisplit" & strategy == "multi-split_timepoint_cage")
+
+treat <- mean(vamb_multisplit_t$time_s)
+cage_treat <- mean(vamb_multisplit_ct$time_s)
+
+#per sample?
+treat_ps <- treat / 30
+cage_treat_ps <- cage_treat / 5
+#pretty similar, so for simplicity (and given it's a fraction of the pipeline's time, let's assume the mean of the two)
+mean_vamb_multisplit <- (treat_ps + cage_treat_ps) / 2
+
+
+#How does assembly_mapping scale?
+mapping_t <- df_filt %>%
+  filter(job == "assembly_mapping" & strategy == "multi-split_timepoint_all")
+
+mapping_ct <- df_filt %>%
+  filter(job == "assembly_mapping" & strategy == "multi-split_timepoint_cage")
+
+treat <- mean(mapping_t$time_s)
+cage_treat <- mean(mapping_ct$time_s)
+
+# more samples combined = larger reference = longer mapping time
+# Find scaling exponent (note, treat has 30 samples, cage_treat 5)
+alpha <- log(treat / cage_treat) / log(30 / 5)
+
+# Calculate a proportionality constant (choose cage_treat arbitrarily)
+k <- cage_treat / (5) ^ alpha
+
+# Function to estimate time for 1 sample to map to combined references
+estimate_time <- function(n) {
+  k * (n) ^ alpha
+}
+
+# Estimation for 15, 30, 60, and 120 samples combined
+n_values <- c(15, 30, 60, 120)
+mapping_estimated_times <- sapply(n_values, estimate_time)
+
+
+# Create tibble with estimates
+ms <- tibble(
+  strategy = "multi-split",
+  sample_size = c(n1, n2, n3, n4, n1, n2, n3, n4, n1, n2, n3, n4, n1, n2, n3, n4),
+  n_treatments = c(t1, t1, t1, t1, t2, t2, t2, t2, t3, t3, t3, t3,  t4, t4, t4, t4)
+) %>%
+  mutate(time_total_s = (mean_assembly * sample_size * n_treatments) + (mapping_estimated_times * sample_size * n_treatments) + (mean_vamb_multisplit * sample_size * n_treatments) + (mean_checkm * sample_size * n_treatments))
+
+fig_e <- ms %>%
+  ggplot(aes(x = sample_size, y = time_total_s / 3600, 
+             group = n_treatments, colour = n_treatments)) +
+  geom_line() +
+  geom_point() +
+  scale_x_continuous(breaks = c(n1, n2, n3, n4)) +
+  theme_classic() +
+  theme(axis.title = element_text(face = "bold", size = 14),
+        axis.text = element_text(size = 14),
+        axis.title.y = element_blank(),) +
+  xlab("Number of samples") +
+  ggtitle("Multi-split")
+
+
+```
+
+## Patch together into the final figure
+
+
+```{r plot figure, comment="", message=FALSE, warning=FALSE, fig.height=10, fig.width=12, fig.fullwidth=TRUE}
+fig_a /
+  (fig_b + fig_c + fig_d + fig_e) +
+  plot_layout(guides = 'collect') 
+
+```
+

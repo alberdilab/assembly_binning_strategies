@@ -9,8 +9,8 @@ bin_metadata <- read_delim("data/bin_metadata.tsv.gz") %>%
   mutate(overall_strategy = case_when(
         overall_strategy == "individual_individual_binning" ~ "single_coverage",
         overall_strategy == "cobinning_longitudinal" ~ "multicoverage_animal",
-        overall_strategy == "cobinning_cage_treatment" ~ "multicoverage_timepoint_all",
-        overall_strategy == "cobinning_treatment" ~ "multicoverage_timepoint_cage",
+        overall_strategy == "cobinning_treatment" ~ "multicoverage_timepoint_all",
+        overall_strategy == "cobinning_cage_treatment" ~ "multicoverage_timepoint_cage",
         overall_strategy == "coassembly_longitudinal" ~ "coassembly_animal",
         overall_strategy == "coassembly_treatment" ~ "coassembly_timepoint_all",
         overall_strategy == "coassembly_cage_treatment" ~ "coassembly_timepoint_cage",
@@ -41,6 +41,11 @@ bin_metadata <- read_delim("data/bin_metadata.tsv.gz") %>%
          genome = str_replace(genome, "vamb_treat", "multisplit_timepoint_all"),
          genome = str_replace(genome, "vamb_cage_treat", "multisplit_timepoint_cage"))
 
+assemblies <- c("single_coverage",
+                "multi_coverage",
+                "coassembly",
+                "multi_split")
+
 strategies <- c("single_coverage",
                 "multicoverage_animal",
                 "multicoverage_timepoint_all",
@@ -51,11 +56,6 @@ strategies <- c("single_coverage",
                 "multisplit_animal",
                 "multisplit_timepoint_all",
                 "multisplit_timepoint_cage")
-```
-
-```{r load_all_counts, comment="", message=FALSE, warning=FALSE}
-all_counts <- read_delim("data/all_counts.tsv", col_names = c("sample", "total_count")) %>%
-  mutate(total_count = total_count * 2)
 ```
 
 ## Read counts
@@ -73,7 +73,10 @@ import_count_data <- function(strategy) {
     rename("MAG_length" = "Length") %>%
     mutate(genome = str_replace_all(genome, "^", paste0(strategy, "_")),
            genome = str_replace_all(genome, "_OP_OP", "_OP"),
-           genome = str_replace_all(genome, "vamb_long_C.*_C", "vamb_long_C")) %>%
+           genome = str_replace_all(genome, "vamb_long_C.*_C", "vamb_long_C"),
+           sample = str_remove(sample, "_subsam_M"),
+           sample = str_remove(sample, "_subsam"),
+           sample = str_replace(sample, "CD","CT")) %>%
     left_join(bin_metadata, by = "genome") %>%
     select(genome, sample, read_count, covered_fraction, MAG_length, primary_cluster, 
            secondary_cluster, overall_strategy, assembly, strategy)
@@ -129,7 +132,22 @@ cluster_counts <- bin_counts_norm_filt %>%
 ## Cluster functions
 
 ```{r load_cluster_kegg, comment="", message=FALSE, warning=FALSE}
-cluster_kegg <- read_delim("data/cluster_kegg.tsv")
+cluster_kegg <- read_delim("data/cluster_kegg.tsv") %>%
+  select(-genome) %>%
+  group_by(secondary_cluster,overall_strategy) %>%
+  summarise(across(where(is.numeric), max)) %>%
+  mutate(overall_strategy = case_when(
+        overall_strategy == "individual_individual_binning" ~ "single_coverage",
+        overall_strategy == "cobinning_longitudinal" ~ "multicoverage_animal",
+        overall_strategy == "cobinning_treatment" ~ "multicoverage_timepoint_all",
+        overall_strategy == "cobinning_cage_treatment" ~ "multicoverage_timepoint_cage",
+        overall_strategy == "coassembly_longitudinal" ~ "coassembly_animal",
+        overall_strategy == "coassembly_treatment" ~ "coassembly_timepoint_all",
+        overall_strategy == "coassembly_cage_treatment" ~ "coassembly_timepoint_cage",
+        overall_strategy == "multi_split_longitudinal" ~ "multisplit_animal",
+        overall_strategy == "multi_split_treatment" ~ "multisplit_timepoint_all",
+        overall_strategy == "multi_split_cage_treatment" ~ "multisplit_timepoint_cage",
+        TRUE ~ overall_strategy))
 ```
 
 ## Color scheme
@@ -159,6 +177,13 @@ strategy_colors <- c(single_coverage="#5254A3",
                      multisplit_timepoint_cage="#D6616B")
 ```
 
+```{r assembly_colors, comment="", message=FALSE, warning=FALSE}
+assembly_colors <- c(single_coverage="#5254A3",
+                     multi_coverage="#8CA252",
+                     coassembly="#BD9E39",
+                     multi_split="#AD494A")
+```
+
 ## Wrap working objects
 In the last step, the objects that are needed for downstream analyses are stored in an R object.
 
@@ -174,5 +199,6 @@ save(bin_metadata,
      cluster_kegg,
      phylum_colors,
      strategy_colors,
+     assembly_colors,
      file = "data/data.Rdata")
 ```

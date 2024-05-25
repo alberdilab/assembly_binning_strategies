@@ -1,0 +1,76 @@
+# Case study 1
+
+```{r beta_trios, comment="", message=FALSE, warning=FALSE}
+sample_list <- bin_counts %>%
+  select(sample) %>% 
+  unique() %>% 
+  mutate(animal=substr(sample,1,5)) %>%
+  mutate(timepoint=substr(sample,6,7)) %>%
+  filter(timepoint %in% c("OP","HR","CR")) %>%
+  group_by(animal) %>%
+  group_split() %>%
+  set_names(map_chr(., ~.x$animal[1]))
+
+animals <- names(sample_list)
+```
+
+
+```{r case1_beta, comment="", message=FALSE, warning=FALSE}
+beta_dissimilarities <- tibble()
+for (strategy in strategies){
+  for (animal in animals){
+    samples <- sample_list[[animal]] %>% pull(sample)
+    counts <- bin_counts_norm_filt %>%
+      filter(overall_strategy == {{strategy}}) %>%
+      filter(sample %in% samples) %>%
+      select(secondary_cluster,sample,read_count) %>%
+      pivot_wider(names_from = "sample", values_from = "read_count", values_fn = sum) %>%
+      mutate(across(where(is.double), ~ ./sum(.))) %>%
+      column_to_rownames(var="secondary_cluster") 
+    tree <- cluster_tree %>% keep.tip(., tip=rownames(counts))
+    diss <- tibble(animal=animal, strategy=strategy) %>%
+      mutate(richness=hilldiss(data=counts,metric="C",q=0)) %>%
+      mutate(neutral=hilldiss(data=counts,metric="C",q=1)) %>%
+      mutate(phylo=hilldiss(data=counts,metric="C",q=1,tree=tree))
+    beta_dissimilarities <- bind_rows(beta_dissimilarities,diss)
+  }
+}   
+
+#Extract metadata from sample names
+beta_dissimilarities <- beta_dissimilarities %>%
+  mutate(sex=substr(animal,4,4)) %>%
+  mutate(cage=substr(animal,1,3))
+
+```
+
+```{r case2_beta_test, comment="", message=FALSE, warning=FALSE}
+beta_tests <- beta_dissimilarities %>%
+    group_by(strategy) %>%
+    summarise(
+      model_richness = list(kruskal.test(richness ~ sex)),
+      model_neutral = list(kruskal.test(neutral ~ sex)),
+      model_phylo = list(kruskal.test(phylo ~ sex))) %>%
+    ungroup() %>%
+    select(strategy,model_richness,model_neutral,model_phylo) %>%
+    unique() %>%
+    rowwise() %>%
+    mutate(richess_estimate = unlist(model_richness)[1],richness_pvalue = unlist(model_richness)[3]) %>%
+    mutate(neutral_estimate = unlist(model_neutral)[1],neutral_pvalue = unlist(model_neutral)[3]) %>%
+    mutate(phylo_estimate = unlist(model_phylo)[1],phylo_estimate = unlist(model_phylo)[3])
+
+beta_tests %>%
+  select(strategy,richess_estimate,richness_pvalue) %>%
+  tt()  |> 
+      style_tt(
+        i = which(beta_tests$richness_pvalue > 0.05),
+        background = "#ffd7cf")
+```
+
+```{r case2_beta_plot, comment="", message=FALSE, warning=FALSE, fig.height=4, fig.width=10, fig.fullwidth=TRUE}
+beta_dissimilarities %>%
+  ggplot(aes(x=sex,y=richness,color=strategy))+
+    geom_boxplot(outlier.shape = NA)+
+    scale_color_manual(values=strategy_colors)+
+    facet_grid(~strategy)+
+    theme_light()
+```

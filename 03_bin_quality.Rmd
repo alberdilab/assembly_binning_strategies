@@ -1,0 +1,67 @@
+# (PART) Strategy analysis {-}
+# Bin quality
+
+```{r load_data_quality}
+load("data/data.Rdata")
+```
+
+```{r bin_quality_biplot}
+#Generate quality biplot
+bin_metadata %>%
+  select(genome,completeness,contamination,overall_strategy, assembly, size) %>%
+  ggplot(aes(x=completeness,y=contamination,size=size,color=overall_strategy)) +
+              geom_point(alpha=0.3, size=1.5) +
+              scale_color_manual(values=strategy_colors)+
+              ylim(c(10,0)) +
+              labs(y= "Contamination", x = "Completeness") +
+              theme_classic() +
+              theme(legend.position = "none")
+```
+
+```{r completeness_barplot, fig.height=4, fig.width=10, fig.fullwidth=TRUE}
+bin_metadata %>%
+  select(genome,completeness,contamination,overall_strategy, assembly, size) %>%
+  mutate(assembly=factor(assembly,levels=assemblies)) %>%
+  ggplot(aes(y=completeness,x=overall_strategy, group=overall_strategy, color=overall_strategy)) +
+      geom_jitter(alpha=0.1)+
+      geom_boxplot(outlier.shape = NA)+
+              scale_color_manual(values=strategy_colors)+
+              facet_grid(~assembly, space = "free", scale="free")+
+              labs(x = "Strategies", y="Completeness") +
+              theme_classic() +
+              theme(legend.position = "none")
+```
+
+```{r completeness_density, fig.height=4, fig.width=10, fig.fullwidth=TRUE}
+bin_metadata %>%
+  select(genome,completeness,contamination,overall_strategy, assembly, size) %>%
+  ggplot(aes(x=completeness,color=assembly)) +
+              geom_density(alpha=0.3, size=1.5, linewidth=1) +
+              scale_color_manual(values=assembly_colors)+
+              labs(x = "Completeness", y="Density") +
+              theme_classic()
+```
+
+```{r contamination_barplot, fig.height=4, fig.width=10, fig.fullwidth=TRUE}
+bin_metadata %>%
+  select(genome,completeness,contamination,overall_strategy, assembly, size) %>%
+  ggplot(aes(y=contamination,x=overall_strategy, group=overall_strategy, color=overall_strategy)) +
+      geom_jitter(alpha=0.1)+
+      geom_boxplot(outlier.shape = NA)+
+              scale_color_manual(values=strategy_colors)+
+              facet_grid(~assembly, space = "free", scale="free")+
+              labs(x = "Strategies", y="Contamination") +
+              theme_classic() +
+              theme(legend.position = "none")
+```
+
+```{r contamination_density, fig.height=4, fig.width=10, fig.fullwidth=TRUE}
+bin_metadata %>%
+  select(genome,completeness,contamination,assembly, size) %>%
+  ggplot(aes(x=contamination,color=assembly,)) +
+              geom_density(alpha=0.3, size=1.5, linewidth=1) +
+              scale_color_manual(values=assembly_colors)+
+              labs(x = "Contamination", y="Density") +
+              theme_classic()
+```
+

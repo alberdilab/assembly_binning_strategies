@@ -1,4 +1,4 @@
-# Functions
+# Functional traits
 
 ```{r load_data_function}
 load("data/data.Rdata")

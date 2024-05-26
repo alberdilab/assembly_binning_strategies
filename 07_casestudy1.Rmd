@@ -68,9 +68,12 @@ beta_tests %>%
 
 ```{r case2_beta_plot, comment="", message=FALSE, warning=FALSE, fig.height=4, fig.width=10, fig.fullwidth=TRUE}
 beta_dissimilarities %>%
-  ggplot(aes(x=sex,y=richness,color=strategy))+
+  mutate(strategy=factor(strategy,levels=strategies)) %>%
+  ggplot(aes(x=sex,y=richness,color=strategy, fill=strategy)) +
     geom_boxplot(outlier.shape = NA)+
     scale_color_manual(values=strategy_colors)+
+    scale_fill_manual(values=paste0(strategy_colors,"50"))+
     facet_grid(~strategy)+
-    theme_light()
+    theme_light() +
+    theme(legend.position = "none")
 ```

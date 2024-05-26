@@ -55,6 +55,38 @@ for (strategy in strategies){
 
 all_p_values <- imap_dfr(community_kegg_comparison_list, ~ .x %>%
   mutate(strategy = .y))
+
+all_p_values %>%
+  mutate(trend=ifelse(p_value_adj<0.05 & estimate>0,"hot","neutral")) %>%
+  mutate(trend=ifelse(p_value_adj<0.05 & estimate<0,"cold",trend)) %>%
+  group_by(trait, trend) %>%
+  summarise(count = n()) %>%
+  ungroup() %>%
+  pivot_wider(values_from="count",names_from="trend") %>%
+  tt()
+
+#Maximum number of significances
+all_p_values %>%
+  mutate(trend=ifelse(p_value_adj<0.05 & estimate>0,"hot","neutral")) %>%
+  mutate(trend=ifelse(p_value_adj<0.05 & estimate<0,"cold",trend)) %>%
+  group_by(strategy, trend) %>%
+  summarise(count = n()) %>%
+  ungroup() %>%
+  pivot_wider(values_from="count",names_from="trend") %>%
+  tt()
+
+#Non-ambiguous
+trends %>%
+  mutate(ambituous = !(neutral == 10 | hot == 10 | cold == 10)) %>%
+  filter(ambituous == FALSE) %>%
+  nrow()
+
+#Ambiguous
+trends %>%
+  mutate(ambituous = !(neutral == 10 | hot == 10 | cold == 10)) %>%
+  filter(is.na(ambituous)) %>%
+  nrow()
+
 ```
 
 ```{r case2_kegg_comparison_plot, comment="", message=FALSE, warning=FALSE, fig.height=4, fig.width=10, fig.fullwidth=TRUE}
@@ -76,6 +108,6 @@ functional_tree <- all_p_values %>%
 
 gheatmap(functional_tree, functional_trends, offset=0.15, colnames=FALSE, width=8) +
   geom_tiplab(size=2, align=TRUE) +
-  scale_fill_manual(values=c("#e0766e","#f4f4f4","#78bacf"))
+  scale_fill_manual(values=c("#78bacf","#e0766e","#f4f4f4"))
 
 ```

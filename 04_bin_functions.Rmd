@@ -122,3 +122,20 @@ cluster_kegg_proportion_max %>%
         axis.title.y = element_blank()) +
     labs(y="Strategy",x="Clusters",fill="Function recovery")
 ```
+
+```{r function_recovery_vs_completeness, comment="", message=FALSE, warning=FALSE, fig.height=4, fig.width=10, fig.fullwidth=TRUE}
+completeness_stats <- bin_metadata %>%
+  select(genome,completeness,contamination,overall_strategy, assembly, size) %>%
+  group_by(overall_strategy) %>%
+  summarise(completeness=mean(completeness))
+
+functions_stats <- cluster_kegg_proportion_max %>%
+  group_by(overall_strategy) %>%
+  summarise(functions=mean(average))
+
+full_join(completeness_stats,functions_stats,by="overall_strategy") %>%
+  ggplot(aes(x=functions,y=completeness, color=overall_strategy))+
+    geom_point()+
+    scale_color_manual(values=strategy_colors)+
+    theme_minimal()
+```

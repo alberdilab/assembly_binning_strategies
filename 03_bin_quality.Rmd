@@ -45,6 +45,7 @@ bin_metadata %>%
 ```{r contamination_barplot, fig.height=4, fig.width=10, fig.fullwidth=TRUE}
 bin_metadata %>%
   select(genome,completeness,contamination,overall_strategy, assembly, size) %>%
+  mutate(assembly=factor(assembly,levels=assemblies)) %>%
   ggplot(aes(y=contamination,x=overall_strategy, group=overall_strategy, color=overall_strategy)) +
       geom_jitter(alpha=0.1)+
       geom_boxplot(outlier.shape = NA)+

@@ -93,9 +93,10 @@ maximum_read_count %>%
 Average percentage of read mapped in each strategy against the respective catalogue.
 
 ```{r mag_mapping_strategy, comment="", message=FALSE, warning=FALSE}
+all_counts <- read_delim("data/all_counts.tsv", col_names = c("sample", "total_count")) %>%
+  mutate(total_count = total_count * 2)
+
 mag_mapping <- bin_counts %>%
-  mutate(sample = str_replace_all(sample, "_subsam", ""),
-         sample = str_replace_all(sample, "_M", "")) %>%
   left_join(all_counts, by = join_by(sample)) %>%
   summarise(mag_mapping = sum(read_count) / mean(total_count), .by = c(sample, overall_strategy)) %>%
   summarise(mag_mapping = mean(mag_mapping), .by = overall_strategy) %>%

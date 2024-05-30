@@ -1,5 +1,9 @@
 # Cluster analysis
 
+```{r load_data_cluster}
+load("data/data.Rdata")
+```
+
 ## Cluster prevalence
 
 Number of strategies each cluster was captured in.
@@ -164,4 +168,65 @@ maximum_read_count %>%
       theme_classic() +
       theme() +
       labs(x="Sequencing depth", y="Strategy prevalence")
+```
+
+## Read abundances
+
+### Per animal
+
+```{r read_abundances_animal, comment="", message=FALSE, warning=FALSE, fig.height=12, fig.width=10, fig.fullwidth=TRUE}
+bin_counts_norm_filt %>%
+    select(secondary_cluster,sample,read_count,overall_strategy) %>%
+    group_by(secondary_cluster,overall_strategy,sample) %>%
+    summarise(read_count=sum(read_count)) %>% 
+    mutate(animal=substr(sample,1,5)) %>% 
+    mutate(overall_strategy=factor(overall_strategy,levels=cluster_tree$tip.label)) %>% 
+    ggplot(aes(y=sample,x=secondary_cluster, fill=read_count))+
+      geom_tile()+
+      scale_fill_distiller(palette = "GnBu", direction = -1) +
+      facet_nested(animal ~ ., space="free", scales="free") +
+      theme(axis.text.x=element_blank(),
+            axis.text.y=element_blank(),
+            strip.text.y = element_text(angle = 0)) +
+      labs(y="Samples",x="Clusters",fill="Abundance")
+```
+
+### Per timepoint
+
+```{r read_abundances_timepoint, comment="", message=FALSE, warning=FALSE, fig.height=12, fig.width=10, fig.fullwidth=TRUE}
+bin_counts_norm_filt %>%
+    select(secondary_cluster,sample,read_count,overall_strategy) %>%
+    group_by(secondary_cluster,overall_strategy,sample) %>%
+    summarise(read_count=sum(read_count)) %>% 
+    mutate(timepoint=factor(substr(sample,6,7),levels=c("OP","HT","HR","CT","CR")))%>%
+    mutate(overall_strategy=factor(overall_strategy,levels=cluster_tree$tip.label)) %>% 
+    ggplot(aes(y=sample,x=secondary_cluster, fill=read_count))+
+      geom_tile()+
+      scale_fill_distiller(palette = "GnBu", direction = -1) +
+      facet_nested(timepoint ~ ., space="free", scales="free") +
+      theme(axis.text.x=element_blank(),
+            axis.text.y=element_blank(),
+            strip.text.y = element_text(angle = 0)) +
+      labs(y="Samples",x="Clusters",fill="Abundance")
+      
+```
+
+### Per timepoint + cage
+
+```{r read_abundances_timepoint_cage, comment="", message=FALSE, warning=FALSE, fig.height=12, fig.width=10, fig.fullwidth=TRUE}
+bin_counts_norm_filt %>%
+    select(secondary_cluster,sample,read_count,overall_strategy) %>%
+    group_by(secondary_cluster,overall_strategy,sample) %>%
+    summarise(read_count=sum(read_count)) %>% 
+    mutate(timepoint=factor(substr(sample,6,7),levels=c("OP","HT","HR","CT","CR")))%>%
+    mutate(cage=substr(sample,1,3)) %>% 
+    mutate(overall_strategy=factor(overall_strategy,levels=cluster_tree$tip.label)) %>% 
+    ggplot(aes(y=sample,x=secondary_cluster, fill=read_count))+
+      geom_tile()+
+      scale_fill_distiller(palette = "GnBu", direction = -1) +
+      facet_nested(timepoint + cage ~ ., space="free", scales="free") +
+      theme(axis.text.x=element_blank(),
+            axis.text.y=element_blank(),
+            strip.text.y = element_text(angle = 0)) +
+      labs(y="Samples",x="Clusters",fill="Abundance")
 ```

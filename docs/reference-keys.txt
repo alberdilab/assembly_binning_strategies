@@ -21,6 +21,10 @@ cluster-abundance
 mag-mapping
 domain-adjusted-mapping-rates-damr
 read-counts-vs-prevalence
+read-abundances
+per-animal
+per-timepoint
+per-timepoint-cage
 bin-quality
 functional-traits
 trait-overview

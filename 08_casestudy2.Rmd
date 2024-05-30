@@ -74,19 +74,6 @@ all_p_values %>%
   ungroup() %>%
   pivot_wider(values_from="count",names_from="trend") %>%
   tt()
-
-#Non-ambiguous
-trends %>%
-  mutate(ambituous = !(neutral == 10 | hot == 10 | cold == 10)) %>%
-  filter(ambituous == FALSE) %>%
-  nrow()
-
-#Ambiguous
-trends %>%
-  mutate(ambituous = !(neutral == 10 | hot == 10 | cold == 10)) %>%
-  filter(is.na(ambituous)) %>%
-  nrow()
-
 ```
 
 ```{r case2_kegg_comparison_plot, comment="", message=FALSE, warning=FALSE, fig.height=4, fig.width=10, fig.fullwidth=TRUE}

@@ -114,9 +114,10 @@ cluster_kegg_proportion_max %>%
 ```{r function_recovery_heatmap, comment="", message=FALSE, warning=FALSE, fig.height=4, fig.width=10, fig.fullwidth=TRUE}
 cluster_kegg_proportion_max %>%
   mutate(secondary_cluster=factor(secondary_cluster,levels=rev(cluster_tree$tip.label[cluster_tree$tip.label %in% cluster_kegg_proportion_max$secondary_cluster]))) %>%
+   mutate(overall_strategy=factor(overall_strategy,levels=rev(strategies))) %>%
   ggplot(aes(x=secondary_cluster,y=overall_strategy,fill=average))+
     geom_tile()+
-    scale_fill_distiller(palette = "YlGnBu", direction = -1) +
+    scale_fill_distiller(palette = "GnBu", direction = -1) +
     theme_minimal() +
     theme(axis.text.x = element_blank(),
         axis.title.y = element_blank()) +
@@ -134,8 +135,9 @@ functions_stats <- cluster_kegg_proportion_max %>%
   summarise(functions=mean(average))
 
 full_join(completeness_stats,functions_stats,by="overall_strategy") %>%
+  mutate(overall_strategy=factor(overall_strategy,levels=strategies)) %>%
   ggplot(aes(x=functions,y=completeness, color=overall_strategy))+
-    geom_point()+
+    geom_point(size=3, alpha=0.8)+
     scale_color_manual(values=strategy_colors)+
     theme_minimal()
 ```

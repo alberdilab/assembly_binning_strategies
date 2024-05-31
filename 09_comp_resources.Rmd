@@ -9,7 +9,12 @@
 ind <- read_delim("data/runtime/ind_benchmark.tsv", 
                   col_names = c("job", "time_s", "strategy"))
 coassembly <- read_delim("data/runtime/coassembly_benchmark.tsv", 
-                  col_names = c("job", "time_s", "strategy"))
+                  col_names = c("job", "time_s", "strategy")) %>%
+  mutate(strategy = case_when(strategy == "coassembly_treat" ~ "coassembly_timepoint_all",
+                              strategy == "coassembly_cage_treat" ~ "coassembly_timepoint_cage",
+                              strategy == "coassembly_long" ~ "coassembly_animal"
+                              )
+  )
 
 # import data into tidy format
 files <- list.files("data/runtime", "*report.tsv", full.names = T)
@@ -36,48 +41,47 @@ jobs <- c("binning", "refinement", "mapping",
 #filter by jobs of interest
 df_filt <- df %>%
   filter(job %in% jobs) %>%
-  mutate(job = str_replace_all(job, "^mapping", "assembly_mapping")) %>%
-  filter(strategy != "cobinning_treat")
+  mutate(job = str_replace_all(job, "^mapping", "assembly_mapping"))
 
 #Add ind assembly times for cobinning/multi-split
 time_total_s_ind <- df_filt %>%
-  filter(strategy == "individual" & job == "Assembly") %>%
+  filter(strategy == "single-coverage" & job == "Assembly") %>%
   pull(time_s)
 
 
-df_cobinning_cage_treat <- tibble(
-  strategy = "cobinning_cage_treat",
+df_multi_coverage_timepoint_cage <- tibble(
+  strategy = "multi-coverage_timepoint_cage",
   job = "Assembly",
   time_s = time_total_s_ind
 )
 
-df_cobinning_long <- tibble(
-  strategy = "cobinning_long",
+df_multi_coverage_animal <- tibble(
+  strategy = "multi-coverage_animal",
   job = "Assembly",
   time_s = time_total_s_ind
 )
 
-df_vamb_cage_treat <- tibble(
-  strategy = "vamb_cage_treat",
+df_multisplit_timepoint_cage <- tibble(
+  strategy = "multi-split_timepoint_cage",
   job = "Assembly",
   time_s = time_total_s_ind
 )
 
-df_vamb_treat <- tibble(
-  strategy = "vamb_treat",
+df_multisplit_timepoint_all <- tibble(
+  strategy = "multi-split_timepoint_all",
   job = "Assembly",
   time_s = time_total_s_ind
 )
 
-df_vamb_long <- tibble(
-  strategy = "vamb_long",
+df_multisplit_animal <- tibble(
+  strategy = "multi-split_animal",
   job = "Assembly",
   time_s = time_total_s_ind
 )
 
 df_filt <- df_filt %>%
-  bind_rows(df_cobinning_cage_treat, df_cobinning_long, df_vamb_cage_treat,
-            df_vamb_treat, df_vamb_long)
+  bind_rows(df_multi_coverage_timepoint_cage, df_multi_coverage_animal, df_multisplit_timepoint_cage,
+            df_multisplit_timepoint_all, df_multisplit_animal)
 
 ```
 
@@ -235,34 +239,34 @@ fig_c <- coa %>%
 
 ################################################################################
 ### multi-coverage binning
-df_cob_cage_treat <- df_filt %>%
+df_multicoverage_timepoint_cage <- df_filt %>%
   filter(strategy == "multi-coverage_timepoint_cage")
 
 #mean time for assembly?
-mean_assembly <- df_cob_cage_treat %>%
-  filter(job == "Assembly") %>%
+mean_assembly <- df_filt %>%
+  filter(strategy == "single-coverage" | job == "Assembly") %>%
   pull(time_s) %>%
   mean()
 
 #mean time for mapping?
-mean_mapping <- df_cob_cage_treat %>%
+mean_mapping <- df_multicoverage_timepoint_cage %>%
   filter(job == "assembly_mapping") %>%
   pull(time_s) %>%
   mean()
 
 #mean time for binning?
-mean_binning <- df_cob_cage_treat %>%
+mean_binning <- df_multicoverage_timepoint_cage %>%
   filter(job == "binning") %>%
   pull(time_s) %>%
   mean()
 
 #mean time for refinement?
-mean_refinement <- df_cob_cage_treat %>%
+mean_refinement <- df_multicoverage_timepoint_cage %>%
   filter(job == "refinement") %>%
   pull(time_s) %>%
   mean()
 
-cob <- tibble(
+multicov <- tibble(
   strategy = "multi-coverage binning",
   sample_size = c(n1, n2, n3, n4, n1, n2, n3, n4, n1, n2, n3, n4, n1, n2, n3, n4),
   n_treatments = c(t1, t1, t1, t1, t2, t2, t2, t2, t3, t3, t3, t3,  t4, t4, t4, t4)
@@ -270,7 +274,7 @@ cob <- tibble(
   mutate(time_total_s = (mean_assembly * sample_size * n_treatments) + (mean_mapping * (sample_size^2) * n_treatments) + (mean_binning * sample_size * n_treatments) + (mean_refinement * sample_size * n_treatments))
 #scaling is sample_size, so sample_size^2 -- e.g. 2 samples = 2 * 2 mappings, 3 samples = 3 * 3 mappings, etc.
 
-fig_d <- cob %>%
+fig_d <- multicov %>%
   ggplot(aes(x = sample_size, y = time_total_s / 3600, 
              group = n_treatments, colour = n_treatments)) +
   geom_line() +
@@ -288,64 +292,64 @@ fig_d <- cob %>%
 df_sum_total_ms <- df_sum_total %>%
   filter(str_detect(strategy, "^multi-split"))
 
-df_ms_cage_treat <- df_filt %>%
+df_ms_timepoint_cage <- df_filt %>%
   filter(strategy == "multi-split_timepoint_cage")
 
 #mean time for assembly?
-mean_assembly <- df_ms_cage_treat %>%
+mean_assembly <- df_ms_timepoint_cage %>%
   filter(job == "Assembly") %>%
   pull(time_s) %>%
   mean()
 
 #How does checkm scale?
-checkm_t <- df_filt %>%
+checkm_all <- df_filt %>%
   filter(job == "checkm" & strategy == "multi-split_timepoint_all")
 
-checkm_ct <- df_filt %>%
+checkm_cage <- df_filt %>%
   filter(job == "checkm" & strategy == "multi-split_timepoint_cage")
 
-treat <- mean(checkm_t$time_s)
-cage_treat <- mean(checkm_ct$time_s)
+checkm_timepoint_all <- mean(checkm_all$time_s)
+checkm_timepoint_cage <- mean(checkm_cage$time_s)
 
 #per sample?
-treat_ps <- treat / 30
-cage_treat_ps <- cage_treat / 5
+checkm_timepoint_all_ps <- checkm_timepoint_all / 30
+checkm_timepoint_cage_ps <- checkm_timepoint_cage / 5
 #pretty similar, so for simplicity (and given it's a fraction of the pipeline's time, let's assume the mean of the two)
-mean_checkm <- (treat_ps + cage_treat_ps) / 2
+mean_checkm <- (checkm_timepoint_all_ps + checkm_timepoint_cage_ps) / 2
 
 #How does vamb_multisplit scale?
-vamb_multisplit_t <- df_filt %>%
+vamb_multisplit_timepoint_all <- df_filt %>%
   filter(job == "vamb_multisplit" & strategy == "multi-split_timepoint_all")
 
-vamb_multisplit_ct <- df_filt %>%
+vamb_multisplit_timepoint_cage <- df_filt %>%
   filter(job == "vamb_multisplit" & strategy == "multi-split_timepoint_cage")
 
-treat <- mean(vamb_multisplit_t$time_s)
-cage_treat <- mean(vamb_multisplit_ct$time_s)
+vamb_all <- mean(vamb_multisplit_timepoint_all$time_s)
+vamb_cage <- mean(vamb_multisplit_timepoint_cage$time_s)
 
 #per sample?
-treat_ps <- treat / 30
-cage_treat_ps <- cage_treat / 5
+vamb_all_ps <- vamb_all / 30
+vamb_cage_ps <- vamb_cage / 5
 #pretty similar, so for simplicity (and given it's a fraction of the pipeline's time, let's assume the mean of the two)
-mean_vamb_multisplit <- (treat_ps + cage_treat_ps) / 2
+mean_vamb <- (vamb_all_ps + vamb_cage_ps) / 2
 
 
 #How does assembly_mapping scale?
-mapping_t <- df_filt %>%
+mapping_all <- df_filt %>%
   filter(job == "assembly_mapping" & strategy == "multi-split_timepoint_all")
 
-mapping_ct <- df_filt %>%
+mapping_cage <- df_filt %>%
   filter(job == "assembly_mapping" & strategy == "multi-split_timepoint_cage")
 
-treat <- mean(mapping_t$time_s)
-cage_treat <- mean(mapping_ct$time_s)
+mean_mapping_all <- mean(mapping_all$time_s)
+mean_mapping_cage <- mean(mapping_cage$time_s)
 
 # more samples combined = larger reference = longer mapping time
 # Find scaling exponent (note, treat has 30 samples, cage_treat 5)
-alpha <- log(treat / cage_treat) / log(30 / 5)
+alpha <- log(mean_mapping_all / mean_mapping_cage) / log(30 / 5)
 
 # Calculate a proportionality constant (choose cage_treat arbitrarily)
-k <- cage_treat / (5) ^ alpha
+k <- mean_mapping_cage / (5) ^ alpha
 
 # Function to estimate time for 1 sample to map to combined references
 estimate_time <- function(n) {
@@ -363,7 +367,7 @@ ms <- tibble(
   sample_size = c(n1, n2, n3, n4, n1, n2, n3, n4, n1, n2, n3, n4, n1, n2, n3, n4),
   n_treatments = c(t1, t1, t1, t1, t2, t2, t2, t2, t3, t3, t3, t3,  t4, t4, t4, t4)
 ) %>%
-  mutate(time_total_s = (mean_assembly * sample_size * n_treatments) + (mapping_estimated_times * sample_size * n_treatments) + (mean_vamb_multisplit * sample_size * n_treatments) + (mean_checkm * sample_size * n_treatments))
+  mutate(time_total_s = (mean_assembly * sample_size * n_treatments) + (mapping_estimated_times * sample_size * n_treatments) + (mean_vamb * sample_size * n_treatments) + (mean_checkm * sample_size * n_treatments))
 
 fig_e <- ms %>%
   ggplot(aes(x = sample_size, y = time_total_s / 3600, 

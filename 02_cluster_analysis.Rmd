@@ -133,22 +133,28 @@ smf_files <- list.files(path = "data/singlem/",
                         full.names = T)
 
 smf_estimates <- purrr::map(smf_files, read_delim) %>%
-  bind_rows()
+  bind_rows() %>%
+  mutate(sample = str_replace(sample, "_subsam_M_1", ""))
 
-mean_smf <- smf_estimates %>%
-  mutate(read_fraction = as.numeric(str_replace(read_fraction, "%", ""))) %>%
-  pull(read_fraction) %>%
-  mean()
+mag_mapping_per_sample <- bin_counts %>%
+  left_join(all_counts, by = join_by(sample)) %>%
+  summarise(mag_mapping = sum(read_count) / mean(total_count), .by = c(overall_strategy, sample)) %>%
+  mutate(mag_mapping = mag_mapping * 100)
 
-mag_mapping %>%
+smf_mapping <- mag_mapping_per_sample %>%
+  inner_join(., smf_estimates, by = join_by(sample)) %>%
+  mutate(read_fraction = as.numeric(str_replace(read_fraction, "%", "")),
+         DAMR = (mag_mapping / read_fraction) * 100)
+
+smf_mapping %>%
   filter(!is.na(overall_strategy)) %>%
   rename(Strategy=overall_strategy) %>%
-  mutate(mag_mapping = mag_mapping * 100,
-         DAMR = (mag_mapping / mean_smf) * 100,
-         DAMR = scales::number(if_else(DAMR > 100, 100, DAMR),
-                               accuracy = 0.1)
-         ) %>%
-  select(-mag_mapping) %>%
+  summarise(mean_DAMR = mean(DAMR), 
+            sd_DAMR = scales::number(sd(DAMR), accuracy = 0.1), 
+            min_DAMR = scales::number(min(DAMR), accuracy = 0.1),
+            .by = Strategy) %>%
+  mutate(mean_DAMR = scales::number(if_else(mean_DAMR > 100, 100, mean_DAMR), 
+                                    accuracy = 0.1)) %>%
   tt()
 
 ```

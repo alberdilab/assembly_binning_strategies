@@ -1,1559 +1,1324 @@
-genome n_contigs pass.GUNC
-ALL_dreped_coassembly_cage_treat_C03_CD_bin.37 124 TRUE
-ALL_dreped_coassembly_cage_treat_C03_CD_bin.77 817 FALSE
-ALL_dreped_coassembly_cage_treat_C03_CR_bin.56 40 TRUE
-ALL_dreped_coassembly_cage_treat_C03_HT_bin.36 51 TRUE
-ALL_dreped_coassembly_cage_treat_C03_OP_bin.15 563 TRUE
-ALL_dreped_coassembly_cage_treat_C05_CD_bin.67 514 TRUE
-ALL_dreped_coassembly_cage_treat_C05_CR_bin.48 157 TRUE
-ALL_dreped_coassembly_cage_treat_C05_HR_bin.45 339 TRUE
-ALL_dreped_coassembly_cage_treat_C05_OP_bin.38 384 TRUE
-ALL_dreped_coassembly_cage_treat_C06_CR_bin.8 536 TRUE
-ALL_dreped_coassembly_cage_treat_C06_OP_bin.55 556 TRUE
-ALL_dreped_coassembly_cage_treat_C10_CD_bin.18 104 TRUE
-ALL_dreped_coassembly_cage_treat_C10_CR_bin.71 506 TRUE
-ALL_dreped_coassembly_cage_treat_C10_HR_bin.20 31 TRUE
-ALL_dreped_coassembly_cage_treat_C10_HR_bin.73 572 TRUE
-ALL_dreped_coassembly_cage_treat_C10_HT_bin.15 494 TRUE
-ALL_dreped_coassembly_cage_treat_C10_OP_bin.4 641 TRUE
-ALL_dreped_coassembly_cage_treat_C10_OP_bin.58 78 TRUE
-ALL_dreped_coassembly_cage_treat_C10_OP_bin.63 162 TRUE
-ALL_dreped_coassembly_cage_treat_C11_HR_bin.6 199 TRUE
-ALL_dreped_coassembly_cage_treat_C11_OP_bin.40 661 TRUE
-ALL_dreped_coassembly_cage_treat_C12_CD_bin.67 700 FALSE
-ALL_dreped_coassembly_cage_treat_C12_CR_bin.72 559 TRUE
-ALL_dreped_coassembly_cage_treat_C12_CR_bin.9 121 TRUE
-ALL_dreped_coassembly_cage_treat_C12_HT_bin.36 485 TRUE
-ALL_dreped_coassembly_cage_treat_C12_HT_bin.37 38 TRUE
-ALL_dreped_coassembly_long_C03M1_bin.6 476 TRUE
-ALL_dreped_coassembly_long_C03M1_bin.63 34 TRUE
-ALL_dreped_coassembly_long_C03M2_bin.14 706 FALSE
-ALL_dreped_coassembly_long_C03M2_bin.15 615 FALSE
-ALL_dreped_coassembly_long_C03M3_bin.1 149 TRUE
-ALL_dreped_coassembly_long_C03M4_bin.27 247 TRUE
-ALL_dreped_coassembly_long_C03M4_bin.60 76 TRUE
-ALL_dreped_coassembly_long_C03M4_bin.63 223 TRUE
-ALL_dreped_coassembly_long_C05M1_bin.43 378 TRUE
-ALL_dreped_coassembly_long_C05M3_bin.2 238 TRUE
-ALL_dreped_coassembly_long_C05M3_bin.30 149 TRUE
-ALL_dreped_coassembly_long_C05M3_bin.32 794 TRUE
-ALL_dreped_coassembly_long_C05M3_bin.5 109 TRUE
-ALL_dreped_coassembly_long_C05M3_bin.50 115 TRUE
-ALL_dreped_coassembly_long_C05M5_bin.38 108 TRUE
-ALL_dreped_coassembly_long_C06M1_bin.15 549 TRUE
-ALL_dreped_coassembly_long_C06M1_bin.51 196 TRUE
-ALL_dreped_coassembly_long_C06M2_bin.43 292 FALSE
-ALL_dreped_coassembly_long_C06M5_bin.10 212 TRUE
-ALL_dreped_coassembly_long_C06M5_bin.26 596 TRUE
-ALL_dreped_coassembly_long_C06M5_bin.43 804 TRUE
-ALL_dreped_coassembly_long_C06M5_bin.55 130 TRUE
-ALL_dreped_coassembly_long_C10F1_bin.67 622 TRUE
-ALL_dreped_coassembly_long_C10F3_bin.26 80 TRUE
-ALL_dreped_coassembly_long_C10F4_bin.31 176 TRUE
-ALL_dreped_coassembly_long_C10F4_bin.44 64 TRUE
-ALL_dreped_coassembly_long_C10F4_bin.50 677 TRUE
-ALL_dreped_coassembly_long_C10F5_bin.23 614 TRUE
-ALL_dreped_coassembly_long_C10F5_bin.40 475 TRUE
-ALL_dreped_coassembly_long_C11F1_bin.10 192 TRUE
-ALL_dreped_coassembly_long_C11F1_bin.44 206 TRUE
-ALL_dreped_coassembly_long_C11F2_bin.59 96 TRUE
-ALL_dreped_coassembly_long_C11F2_bin.61 180 TRUE
-ALL_dreped_coassembly_long_C11F2_bin.65 503 TRUE
-ALL_dreped_coassembly_long_C11F3_bin.5 188 TRUE
-ALL_dreped_coassembly_long_C11F5_bin.30 185 TRUE
-ALL_dreped_coassembly_long_C11F5_bin.64 547 TRUE
-ALL_dreped_coassembly_long_C12F1_bin.26 248 TRUE
-ALL_dreped_coassembly_long_C12F1_bin.31 111 TRUE
-ALL_dreped_coassembly_long_C12F2_bin.48 196 TRUE
-ALL_dreped_coassembly_long_C12F2_bin.57 749 FALSE
-ALL_dreped_coassembly_long_C12F2_bin.58 647 FALSE
-ALL_dreped_coassembly_long_C12F3_bin.10 864 TRUE
-ALL_dreped_coassembly_long_C12F3_bin.30 39 TRUE
-ALL_dreped_coassembly_long_C12F3_bin.8 165 TRUE
-ALL_dreped_coassembly_long_C12F5_bin.18 64 TRUE
-ALL_dreped_coassembly_long_C12F5_bin.29 407 TRUE
-ALL_dreped_coassembly_long_C12F5_bin.33 153 TRUE
-ALL_dreped_coassembly_long_C12F5_bin.40 109 TRUE
-ALL_dreped_coassembly_long_C12F5_bin.42 239 TRUE
-ALL_dreped_coassembly_long_C12F5_bin.5 115 TRUE
-ALL_dreped_coassembly_long_C12F5_bin.6 144 TRUE
-ALL_dreped_coassembly_treat_CD_bin.101 333 TRUE
-ALL_dreped_coassembly_treat_CD_bin.102 107 TRUE
-ALL_dreped_coassembly_treat_CD_bin.103 676 TRUE
-ALL_dreped_coassembly_treat_CD_bin.107 159 TRUE
-ALL_dreped_coassembly_treat_CD_bin.109 100 TRUE
-ALL_dreped_coassembly_treat_CD_bin.132 62 TRUE
-ALL_dreped_coassembly_treat_CD_bin.138 279 TRUE
-ALL_dreped_coassembly_treat_CD_bin.53 652 TRUE
-ALL_dreped_coassembly_treat_CD_bin.61 130 TRUE
-ALL_dreped_coassembly_treat_CD_bin.68 607 TRUE
-ALL_dreped_coassembly_treat_CD_bin.69 231 TRUE
-ALL_dreped_coassembly_treat_CR_bin.10 128 TRUE
-ALL_dreped_coassembly_treat_CR_bin.110 195 TRUE
-ALL_dreped_coassembly_treat_CR_bin.113 391 TRUE
-ALL_dreped_coassembly_treat_CR_bin.129 506 TRUE
-ALL_dreped_coassembly_treat_CR_bin.133 85 TRUE
-ALL_dreped_coassembly_treat_CR_bin.17 712 TRUE
-ALL_dreped_coassembly_treat_CR_bin.18 234 TRUE
-ALL_dreped_coassembly_treat_CR_bin.21 655 TRUE
-ALL_dreped_coassembly_treat_CR_bin.23 198 TRUE
-ALL_dreped_coassembly_treat_CR_bin.27 382 TRUE
-ALL_dreped_coassembly_treat_CR_bin.46 270 FALSE
-ALL_dreped_coassembly_treat_CR_bin.55 146 TRUE
-ALL_dreped_coassembly_treat_CR_bin.79 146 TRUE
-ALL_dreped_coassembly_treat_HR_bin.13 521 TRUE
-ALL_dreped_coassembly_treat_HR_bin.138 160 TRUE
-ALL_dreped_coassembly_treat_HR_bin.25 598 TRUE
-ALL_dreped_coassembly_treat_HR_bin.4 288 TRUE
-ALL_dreped_coassembly_treat_HR_bin.41 129 TRUE
-ALL_dreped_coassembly_treat_HR_bin.52 879 TRUE
-ALL_dreped_coassembly_treat_HR_bin.59 765 TRUE
-ALL_dreped_coassembly_treat_HR_bin.78 149 TRUE
-ALL_dreped_coassembly_treat_HR_bin.85 56 TRUE
-ALL_dreped_coassembly_treat_HT_bin.1 279 TRUE
-ALL_dreped_coassembly_treat_HT_bin.109 28 TRUE
-ALL_dreped_coassembly_treat_HT_bin.114 54 TRUE
-ALL_dreped_coassembly_treat_HT_bin.12 362 TRUE
-ALL_dreped_coassembly_treat_HT_bin.132 470 TRUE
-ALL_dreped_coassembly_treat_HT_bin.133 57 TRUE
-ALL_dreped_coassembly_treat_HT_bin.27 61 TRUE
-ALL_dreped_coassembly_treat_HT_bin.3 275 TRUE
-ALL_dreped_coassembly_treat_HT_bin.33 462 TRUE
-ALL_dreped_coassembly_treat_HT_bin.52 231 TRUE
-ALL_dreped_coassembly_treat_HT_bin.57 523 TRUE
-ALL_dreped_coassembly_treat_HT_bin.77 78 TRUE
-ALL_dreped_coassembly_treat_HT_bin.8 337 TRUE
-ALL_dreped_coassembly_treat_HT_bin.87 259 TRUE
-ALL_dreped_coassembly_treat_HT_bin.96 111 TRUE
-ALL_dreped_coassembly_treat_OP_bin.110 256 TRUE
-ALL_dreped_coassembly_treat_OP_bin.116 517 TRUE
-ALL_dreped_coassembly_treat_OP_bin.2 654 TRUE
-ALL_dreped_coassembly_treat_OP_bin.44 267 FALSE
-ALL_dreped_coassembly_treat_OP_bin.53 77 TRUE
-ALL_dreped_coassembly_treat_OP_bin.55 34 TRUE
-ALL_dreped_coassembly_treat_OP_bin.57 320 TRUE
-ALL_dreped_coassembly_treat_OP_bin.6 537 TRUE
-ALL_dreped_coassembly_treat_OP_bin.64 121 TRUE
-ALL_dreped_coassembly_treat_OP_bin.75 344 TRUE
-ALL_dreped_coassembly_treat_OP_bin.76 244 TRUE
-ALL_dreped_coassembly_treat_OP_bin.83 108 TRUE
-ALL_dreped_coassembly_treat_OP_bin.86 877 TRUE
-ALL_dreped_coassembly_treat_OP_bin.96 565 TRUE
-ALL_dreped_cobinning_cage_treat_C03M2CD_subsam_contigs.fasta_bin.13 110 TRUE
-ALL_dreped_cobinning_cage_treat_C03M2CD_subsam_contigs.fasta_bin.19 251 TRUE
-ALL_dreped_cobinning_cage_treat_C03M2HR_subsam_contigs.fasta_bin.28 79 FALSE
-ALL_dreped_cobinning_cage_treat_C03M3CD_subsam_contigs.fasta_bin.22 118 TRUE
-ALL_dreped_cobinning_cage_treat_C05M1CD_subsam_contigs.fasta_bin.23 120 TRUE
-ALL_dreped_cobinning_cage_treat_C05M1CR_subsam_contigs.fasta_bin.19 480 TRUE
-ALL_dreped_cobinning_cage_treat_C05M1CR_subsam_contigs.fasta_bin.5 129 TRUE
-ALL_dreped_cobinning_cage_treat_C05M3CR_subsam_contigs.fasta_bin.22 1092 TRUE
-ALL_dreped_cobinning_cage_treat_C05M5CR_subsam_contigs.fasta_bin.25 26 TRUE
-ALL_dreped_cobinning_cage_treat_C05M5OP_subsam_contigs.fasta_bin.23 39 TRUE
-ALL_dreped_cobinning_cage_treat_C06M3CR_subsam_contigs.fasta_bin.20 554 TRUE
-ALL_dreped_cobinning_cage_treat_C06M5HR_subsam_contigs.fasta_bin.15 100 TRUE
-ALL_dreped_cobinning_cage_treat_C10F1CD_subsam_contigs.fasta_bin.7 132 TRUE
-ALL_dreped_cobinning_cage_treat_C10F1CR_subsam_contigs.fasta_bin.11 550 TRUE
-ALL_dreped_cobinning_cage_treat_C10F1CR_subsam_contigs.fasta_bin.29 200 TRUE
-ALL_dreped_cobinning_cage_treat_C10F4CD_subsam_contigs.fasta_bin.11 525 TRUE
-ALL_dreped_cobinning_cage_treat_C10F4CR_subsam_contigs.fasta_bin.13 550 TRUE
-ALL_dreped_cobinning_cage_treat_C11F2CR_subsam_contigs.fasta_bin.10 202 TRUE
-ALL_dreped_cobinning_cage_treat_C11F2CR_subsam_contigs.fasta_bin.19 103 TRUE
-ALL_dreped_cobinning_cage_treat_C11F4HT_subsam_contigs.fasta_bin.7 1160 TRUE
-ALL_dreped_cobinning_cage_treat_C12F2OP_subsam_contigs.fasta_bin.4 625 TRUE
-ALL_dreped_cobinning_cage_treat_C12F3HR_subsam_contigs.fasta_bin.24 103 TRUE
-ALL_dreped_cobinning_cage_treat_C12F3OP_subsam_contigs.fasta_bin.21 126 TRUE
-ALL_dreped_cobinning_cage_treat_C12F4CD_subsam_contigs.fasta_bin.15 129 TRUE
-ALL_dreped_cobinning_cage_treat_C12F5HT_subsam_contigs.fasta_bin.15 45 TRUE
-ALL_dreped_cobinning_cage_treat_C12F5OP_subsam_contigs.fasta_bin.8 318 TRUE
-ALL_dreped_cobinning_long_C03M1CR_subsam_contigs.fasta_bin.22 885 FALSE
-ALL_dreped_cobinning_long_C03M1CR_subsam_contigs.fasta_bin.5 504 TRUE
-ALL_dreped_cobinning_long_C03M2HR_subsam_contigs.fasta_bin.27 252 TRUE
-ALL_dreped_cobinning_long_C03M3HT_subsam_contigs.fasta_bin.8 152 TRUE
-ALL_dreped_cobinning_long_C03M4HT_subsam_contigs.fasta_bin.12 334 TRUE
-ALL_dreped_cobinning_long_C05M1CR_subsam_contigs.fasta_bin.2 384 TRUE
-ALL_dreped_cobinning_long_C05M5CR_subsam_contigs.fasta_bin.12 206 TRUE
-ALL_dreped_cobinning_long_C06M1CD_subsam_contigs.fasta_bin.10 269 TRUE
-ALL_dreped_cobinning_long_C10F1CD_subsam_contigs.fasta_bin.13 131 TRUE
-ALL_dreped_cobinning_long_C10F2HR_subsam_contigs.fasta_bin.20 637 TRUE
-ALL_dreped_cobinning_long_C10F2HT_subsam_contigs.fasta_bin.10 12 TRUE
-ALL_dreped_cobinning_long_C10F4OP_subsam_contigs.fasta_bin.22 688 FALSE
-ALL_dreped_cobinning_long_C10F5CD_subsam_contigs.fasta_bin.10 343 TRUE
-ALL_dreped_cobinning_long_C11F3HR_subsam_contigs.fasta_bin.6 312 TRUE
-ALL_dreped_cobinning_long_C11F5HT_subsam_contigs.fasta_bin.4 223 TRUE
-ALL_dreped_cobinning_long_C11F5OP_subsam_contigs.fasta_bin.6 23 TRUE
-ALL_dreped_cobinning_long_C12F3HR_subsam_contigs.fasta_bin.23 907 TRUE
-ALL_dreped_cobinning_long_C12F3HT_subsam_contigs.fasta_bin.16 629 TRUE
-ALL_dreped_cobinning_treat_C03M1CD_subsam_contigs.fasta_bin.7 545 TRUE
-ALL_dreped_cobinning_treat_C05M1OP_subsam_contigs.fasta_bin.27 440 TRUE
-ALL_dreped_cobinning_treat_C10F1CR_subsam_contigs.fasta_bin.23 757 TRUE
-ALL_dreped_cobinning_treat_C10F1HT_subsam_contigs.fasta_bin.19 82 TRUE
-ALL_dreped_cobinning_treat_C11F1OP_subsam_contigs.fasta_bin.24 524 TRUE
-ALL_dreped_cobinning_treat_C11F1OP_subsam_contigs.fasta_bin.25 164 TRUE
-ALL_dreped_individual_C03M3HT_subsam_bin.8 255 TRUE
-ALL_dreped_individual_C05M1CR_subsam_bin.1 53 TRUE
-ALL_dreped_individual_C06M2CD_subsam_bin.17 270 TRUE
-ALL_dreped_individual_C06M3OP_subsam_bin.18 109 TRUE
-ALL_dreped_individual_C10F3CR_subsam_bin.33 179 TRUE
-ALL_dreped_individual_C12F2HR_subsam_bin.26 33 TRUE
-ALL_dreped_individual_C12F5CR_subsam_bin.16 230 TRUE
-ALL_dreped_vamb_cage_treat_C10_CR_vae_4897 53 TRUE
-ALL_dreped_vamb_cage_treat_C10_CR_vae_5309 267 TRUE
-ALL_dreped_vamb_cage_treat_C11_CR_vae_414 48 TRUE
-ALL_dreped_vamb_cage_treat_C11_HR_vae_1325 35 TRUE
-ALL_dreped_vamb_cage_treat_C11_OP_vae_1624 72 TRUE
-ALL_dreped_vamb_long_C03M1_vae_641 169 TRUE
-ALL_dreped_vamb_long_C03M3_vae_58 4 TRUE
-ALL_dreped_vamb_long_C05M1_vae_317 45 TRUE
-ALL_dreped_vamb_long_C05M1_vae_5516 102 TRUE
-ALL_dreped_vamb_long_C05M5_vae_16955 53 TRUE
-ALL_dreped_vamb_long_C10F5_vae_1461 121 TRUE
-ALL_dreped_vamb_long_C12F3_vae_14835 91 TRUE
-ALL_dreped_vamb_treat_CD_vae_6142 443 TRUE
-ALL_dreped_vamb_treat_CR_vae_4629 134 TRUE
-ALL_dreped_vamb_treat_CR_vae_464 47 TRUE
-ALL_dreped_vamb_treat_CR_vae_498 48 TRUE
-ALL_dreped_vamb_treat_CR_vae_5176 97 TRUE
-ALL_dreped_vamb_treat_CR_vae_52 44 TRUE
-ALL_dreped_vamb_treat_CR_vae_523 82 TRUE
-ALL_dreped_vamb_treat_CR_vae_540 44 TRUE
-ALL_dreped_vamb_treat_CR_vae_563 132 TRUE
-ALL_dreped_vamb_treat_CR_vae_574 114 TRUE
-ALL_dreped_vamb_treat_CR_vae_616 53 TRUE
-ALL_dreped_vamb_treat_CR_vae_697 45 TRUE
-ALL_dreped_vamb_treat_CR_vae_729 13 TRUE
-ALL_dreped_vamb_treat_CR_vae_766 120 TRUE
-ALL_dreped_vamb_treat_CR_vae_775 199 TRUE
-ALL_dreped_vamb_treat_CR_vae_786 112 TRUE
-ALL_dreped_vamb_treat_CR_vae_802 96 TRUE
-ALL_dreped_vamb_treat_CR_vae_829 210 TRUE
-ALL_dreped_vamb_treat_CR_vae_856 68 TRUE
-ALL_dreped_vamb_treat_CR_vae_869 122 TRUE
-ALL_dreped_vamb_treat_CR_vae_9 6 TRUE
-ALL_dreped_vamb_treat_CR_vae_913 63 TRUE
-ALL_dreped_vamb_treat_HR_vae_476 91 TRUE
-ALL_dreped_vamb_treat_HT_vae_306 71 TRUE
-ALL_dreped_vamb_treat_HT_vae_575 47 TRUE
-ALL_dreped_vamb_treat_OP_OP_vae_995 699 TRUE
-coassembly_cage_treat_C03_CD_bin.13 480 TRUE
-coassembly_cage_treat_C03_CD_bin.19 58 TRUE
-coassembly_cage_treat_C03_CD_bin.25 131 TRUE
-coassembly_cage_treat_C03_CD_bin.27 496 TRUE
-coassembly_cage_treat_C03_CD_bin.29 72 TRUE
-coassembly_cage_treat_C03_CD_bin.37 124 TRUE
-coassembly_cage_treat_C03_CD_bin.52 478 TRUE
-coassembly_cage_treat_C03_CD_bin.56 899 TRUE
-coassembly_cage_treat_C03_CD_bin.62 181 TRUE
-coassembly_cage_treat_C03_CD_bin.73 381 TRUE
-coassembly_cage_treat_C03_CD_bin.77 817 FALSE
-coassembly_cage_treat_C03_CR_bin.14 299 TRUE
-coassembly_cage_treat_C03_CR_bin.15 61 TRUE
-coassembly_cage_treat_C03_CR_bin.18 344 TRUE
-coassembly_cage_treat_C03_CR_bin.24 257 TRUE
-coassembly_cage_treat_C03_CR_bin.31 234 TRUE
-coassembly_cage_treat_C03_CR_bin.34 114 TRUE
-coassembly_cage_treat_C03_CR_bin.44 139 TRUE
-coassembly_cage_treat_C03_CR_bin.56 40 TRUE
-coassembly_cage_treat_C03_CR_bin.6 437 TRUE
-coassembly_cage_treat_C03_CR_bin.62 129 TRUE
-coassembly_cage_treat_C03_CR_bin.65 37 TRUE
-coassembly_cage_treat_C03_CR_bin.66 103 FALSE
-coassembly_cage_treat_C03_HR_bin.1 348 TRUE
-coassembly_cage_treat_C03_HR_bin.12 195 TRUE
-coassembly_cage_treat_C03_HR_bin.14 320 TRUE
-coassembly_cage_treat_C03_HR_bin.6 477 TRUE
-coassembly_cage_treat_C03_HT_bin.1 21 TRUE
-coassembly_cage_treat_C03_HT_bin.11 19 TRUE
-coassembly_cage_treat_C03_HT_bin.19 141 TRUE
-coassembly_cage_treat_C03_HT_bin.21 99 TRUE
-coassembly_cage_treat_C03_HT_bin.28 14 TRUE
-coassembly_cage_treat_C03_HT_bin.29 332 TRUE
-coassembly_cage_treat_C03_HT_bin.34 79 TRUE
-coassembly_cage_treat_C03_HT_bin.36 51 TRUE
-coassembly_cage_treat_C03_HT_bin.48 194 TRUE
-coassembly_cage_treat_C03_HT_bin.7 337 TRUE
-coassembly_cage_treat_C03_HT_bin.8 400 FALSE
-coassembly_cage_treat_C03_OP_bin.15 563 TRUE
-coassembly_cage_treat_C05_CD_bin.23 51 TRUE
-coassembly_cage_treat_C05_CD_bin.34 527 FALSE
-coassembly_cage_treat_C05_CD_bin.38 48 TRUE
-coassembly_cage_treat_C05_CD_bin.4 170 TRUE
-coassembly_cage_treat_C05_CD_bin.47 45 TRUE
-coassembly_cage_treat_C05_CD_bin.50 311 TRUE
-coassembly_cage_treat_C05_CD_bin.52 33 TRUE
-coassembly_cage_treat_C05_CD_bin.62 544 FALSE
-coassembly_cage_treat_C05_CD_bin.67 514 TRUE
-coassembly_cage_treat_C05_CR_bin.39 504 TRUE
-coassembly_cage_treat_C05_CR_bin.48 157 TRUE
-coassembly_cage_treat_C05_CR_bin.52 244 TRUE
-coassembly_cage_treat_C05_HR_bin.13 103 TRUE
-coassembly_cage_treat_C05_HR_bin.23 34 TRUE
-coassembly_cage_treat_C05_HR_bin.45 339 TRUE
-coassembly_cage_treat_C05_HR_bin.50 45 TRUE
-coassembly_cage_treat_C05_HR_bin.52 133 TRUE
-coassembly_cage_treat_C05_HR_bin.56 323 TRUE
-coassembly_cage_treat_C05_HR_bin.58 203 TRUE
-coassembly_cage_treat_C05_HR_bin.70 727 TRUE
-coassembly_cage_treat_C05_HR_bin.8 220 TRUE
-coassembly_cage_treat_C05_HT_bin.37 211 TRUE
-coassembly_cage_treat_C05_OP_bin.2 75 TRUE
-coassembly_cage_treat_C05_OP_bin.26 87 TRUE
-coassembly_cage_treat_C05_OP_bin.28 51 TRUE
-coassembly_cage_treat_C05_OP_bin.38 384 TRUE
-coassembly_cage_treat_C05_OP_bin.9 362 TRUE
-coassembly_cage_treat_C06_CD_bin.54 148 TRUE
-coassembly_cage_treat_C06_CD_bin.56 133 TRUE
-coassembly_cage_treat_C06_CR_bin.22 100 TRUE
-coassembly_cage_treat_C06_CR_bin.34 234 TRUE
-coassembly_cage_treat_C06_CR_bin.55 49 TRUE
-coassembly_cage_treat_C06_CR_bin.8 536 TRUE
-coassembly_cage_treat_C06_HR_bin.3 332 TRUE
-coassembly_cage_treat_C06_HR_bin.42 7 TRUE
-coassembly_cage_treat_C06_HR_bin.7 148 TRUE
-coassembly_cage_treat_C06_OP_bin.2 715 TRUE
-coassembly_cage_treat_C06_OP_bin.31 121 TRUE
-coassembly_cage_treat_C06_OP_bin.43 52 TRUE
-coassembly_cage_treat_C06_OP_bin.47 262 TRUE
-coassembly_cage_treat_C06_OP_bin.55 556 TRUE
-coassembly_cage_treat_C06_OP_bin.56 158 TRUE
-coassembly_cage_treat_C06_OP_bin.57 441 TRUE
-coassembly_cage_treat_C10_CD_bin.14 165 TRUE
-coassembly_cage_treat_C10_CD_bin.18 104 TRUE
-coassembly_cage_treat_C10_CD_bin.30 620 TRUE
-coassembly_cage_treat_C10_CD_bin.49 154 TRUE
-coassembly_cage_treat_C10_CD_bin.58 404 TRUE
-coassembly_cage_treat_C10_CD_bin.7 25 TRUE
-coassembly_cage_treat_C10_CD_bin.74 59 TRUE
-coassembly_cage_treat_C10_CR_bin.12 45 TRUE
-coassembly_cage_treat_C10_CR_bin.16 53 TRUE
-coassembly_cage_treat_C10_CR_bin.2 19 TRUE
-coassembly_cage_treat_C10_CR_bin.3 91 TRUE
-coassembly_cage_treat_C10_CR_bin.34 598 FALSE
-coassembly_cage_treat_C10_CR_bin.5 188 TRUE
-coassembly_cage_treat_C10_CR_bin.58 183 TRUE
-coassembly_cage_treat_C10_CR_bin.62 42 TRUE
-coassembly_cage_treat_C10_CR_bin.71 506 TRUE
-coassembly_cage_treat_C10_HR_bin.17 96 TRUE
-coassembly_cage_treat_C10_HR_bin.20 31 TRUE
-coassembly_cage_treat_C10_HR_bin.56 86 TRUE
-coassembly_cage_treat_C10_HR_bin.73 572 TRUE
-coassembly_cage_treat_C10_HT_bin.1 14 TRUE
-coassembly_cage_treat_C10_HT_bin.15 494 TRUE
-coassembly_cage_treat_C10_HT_bin.46 44 TRUE
-coassembly_cage_treat_C10_OP_bin.12 126 TRUE
-coassembly_cage_treat_C10_OP_bin.14 418 TRUE
-coassembly_cage_treat_C10_OP_bin.16 102 TRUE
-coassembly_cage_treat_C10_OP_bin.29 216 TRUE
-coassembly_cage_treat_C10_OP_bin.33 171 TRUE
-coassembly_cage_treat_C10_OP_bin.39 124 TRUE
-coassembly_cage_treat_C10_OP_bin.4 641 TRUE
-coassembly_cage_treat_C10_OP_bin.48 667 TRUE
-coassembly_cage_treat_C10_OP_bin.58 78 TRUE
-coassembly_cage_treat_C10_OP_bin.63 162 TRUE
-coassembly_cage_treat_C10_OP_bin.69 141 TRUE
-coassembly_cage_treat_C11_CD_bin.30 192 TRUE
-coassembly_cage_treat_C11_CD_bin.43 210 TRUE
-coassembly_cage_treat_C11_CD_bin.45 479 TRUE
-coassembly_cage_treat_C11_CR_bin.10 108 TRUE
-coassembly_cage_treat_C11_CR_bin.14 431 TRUE
-coassembly_cage_treat_C11_CR_bin.25 176 TRUE
-coassembly_cage_treat_C11_CR_bin.48 92 TRUE
-coassembly_cage_treat_C11_CR_bin.70 105 TRUE
-coassembly_cage_treat_C11_CR_bin.71 291 TRUE
-coassembly_cage_treat_C11_HR_bin.13 243 TRUE
-coassembly_cage_treat_C11_HR_bin.14 50 TRUE
-coassembly_cage_treat_C11_HR_bin.18 336 TRUE
-coassembly_cage_treat_C11_HR_bin.41 87 TRUE
-coassembly_cage_treat_C11_HR_bin.6 199 TRUE
-coassembly_cage_treat_C11_HT_bin.24 167 TRUE
-coassembly_cage_treat_C11_HT_bin.30 49 TRUE
-coassembly_cage_treat_C11_HT_bin.48 303 FALSE
-coassembly_cage_treat_C11_OP_bin.1 64 TRUE
-coassembly_cage_treat_C11_OP_bin.28 130 TRUE
-coassembly_cage_treat_C11_OP_bin.3 30 TRUE
-coassembly_cage_treat_C11_OP_bin.39 78 TRUE
-coassembly_cage_treat_C11_OP_bin.41 42 TRUE
-coassembly_cage_treat_C11_OP_bin.49 12 TRUE
-coassembly_cage_treat_C11_OP_bin.55 200 TRUE
-coassembly_cage_treat_C12_CD_bin.21 100 TRUE
-coassembly_cage_treat_C12_CD_bin.3 707 TRUE
-coassembly_cage_treat_C12_CD_bin.40 61 TRUE
-coassembly_cage_treat_C12_CD_bin.5 65 TRUE
-coassembly_cage_treat_C12_CD_bin.53 713 TRUE
-coassembly_cage_treat_C12_CD_bin.60 96 TRUE
-coassembly_cage_treat_C12_CD_bin.65 220 TRUE
-coassembly_cage_treat_C12_CD_bin.67 700 FALSE
-coassembly_cage_treat_C12_CR_bin.16 116 TRUE
-coassembly_cage_treat_C12_CR_bin.17 698 TRUE
-coassembly_cage_treat_C12_CR_bin.50 74 TRUE
-coassembly_cage_treat_C12_CR_bin.60 557 TRUE
-coassembly_cage_treat_C12_CR_bin.62 549 TRUE
-coassembly_cage_treat_C12_CR_bin.68 262 TRUE
-coassembly_cage_treat_C12_CR_bin.9 121 TRUE
-coassembly_cage_treat_C12_HT_bin.29 369 TRUE
-coassembly_cage_treat_C12_HT_bin.36 485 TRUE
-coassembly_cage_treat_C12_HT_bin.37 38 TRUE
-coassembly_cage_treat_C12_HT_bin.40 50 TRUE
-coassembly_cage_treat_C12_OP_bin.10 141 TRUE
-coassembly_cage_treat_C12_OP_bin.37 402 TRUE
-coassembly_cage_treat_C12_OP_bin.40 162 TRUE
-coassembly_cage_treat_C12_OP_bin.51 571 TRUE
-coassembly_cage_treat_C12_OP_bin.52 516 TRUE
-coassembly_long_C03M1_bin.24 125 TRUE
-coassembly_long_C03M1_bin.53 480 TRUE
-coassembly_long_C03M1_bin.55 131 TRUE
-coassembly_long_C03M1_bin.6 476 TRUE
-coassembly_long_C03M1_bin.63 34 TRUE
-coassembly_long_C03M2_bin.14 706 FALSE
-coassembly_long_C03M2_bin.38 295 TRUE
-coassembly_long_C03M2_bin.57 45 TRUE
-coassembly_long_C03M3_bin.1 149 TRUE
-coassembly_long_C03M3_bin.15 150 TRUE
-coassembly_long_C03M3_bin.23 123 TRUE
-coassembly_long_C03M3_bin.26 7 TRUE
-coassembly_long_C03M3_bin.31 77 TRUE
-coassembly_long_C03M3_bin.56 47 TRUE
-coassembly_long_C03M3_bin.67 104 TRUE
-coassembly_long_C03M4_bin.1 70 TRUE
-coassembly_long_C03M4_bin.12 513 TRUE
-coassembly_long_C03M4_bin.13 92 TRUE
-coassembly_long_C03M4_bin.27 247 TRUE
-coassembly_long_C03M4_bin.40 97 TRUE
-coassembly_long_C03M4_bin.50 154 TRUE
-coassembly_long_C03M4_bin.60 76 TRUE
-coassembly_long_C03M4_bin.63 223 TRUE
-coassembly_long_C05M1_bin.28 180 TRUE
-coassembly_long_C05M1_bin.43 378 TRUE
-coassembly_long_C05M1_bin.53 172 TRUE
-coassembly_long_C05M1_bin.55 150 TRUE
-coassembly_long_C05M1_bin.58 208 TRUE
-coassembly_long_C05M1_bin.61 670 TRUE
-coassembly_long_C05M1_bin.68 43 TRUE
-coassembly_long_C05M2_bin.18 90 TRUE
-coassembly_long_C05M2_bin.30 97 TRUE
-coassembly_long_C05M2_bin.49 35 TRUE
-coassembly_long_C05M2_bin.57 188 TRUE
-coassembly_long_C05M3_bin.12 142 TRUE
-coassembly_long_C05M3_bin.2 238 TRUE
-coassembly_long_C05M3_bin.23 58 TRUE
-coassembly_long_C05M3_bin.30 149 TRUE
-coassembly_long_C05M3_bin.32 794 TRUE
-coassembly_long_C05M3_bin.5 109 TRUE
-coassembly_long_C05M3_bin.50 115 TRUE
-coassembly_long_C05M3_bin.53 439 TRUE
-coassembly_long_C05M3_bin.59 48 TRUE
-coassembly_long_C05M4_bin.10 48 TRUE
-coassembly_long_C05M4_bin.26 50 TRUE
-coassembly_long_C05M4_bin.30 142 TRUE
-coassembly_long_C05M4_bin.43 31 TRUE
-coassembly_long_C05M5_bin.13 475 FALSE
-coassembly_long_C05M5_bin.19 32 TRUE
-coassembly_long_C05M5_bin.33 58 TRUE
-coassembly_long_C05M5_bin.34 141 TRUE
-coassembly_long_C05M5_bin.38 108 TRUE
-coassembly_long_C05M5_bin.43 448 TRUE
-coassembly_long_C05M5_bin.46 683 FALSE
-coassembly_long_C05M5_bin.62 66 TRUE
-coassembly_long_C05M5_bin.67 37 TRUE
-coassembly_long_C05M5_bin.9 119 TRUE
-coassembly_long_C06M1_bin.15 549 TRUE
-coassembly_long_C06M1_bin.28 6 TRUE
-coassembly_long_C06M1_bin.51 196 TRUE
-coassembly_long_C06M2_bin.43 292 FALSE
-coassembly_long_C06M2_bin.46 110 TRUE
-coassembly_long_C06M2_bin.49 559 TRUE
-coassembly_long_C06M3_bin.2 30 TRUE
-coassembly_long_C06M4_bin.6 119 TRUE
-coassembly_long_C06M5_bin.10 212 TRUE
-coassembly_long_C06M5_bin.14 60 TRUE
-coassembly_long_C06M5_bin.18 166 TRUE
-coassembly_long_C06M5_bin.20 64 TRUE
-coassembly_long_C06M5_bin.24 112 TRUE
-coassembly_long_C06M5_bin.43 804 TRUE
-coassembly_long_C06M5_bin.44 17 TRUE
-coassembly_long_C06M5_bin.49 22 TRUE
-coassembly_long_C06M5_bin.55 130 TRUE
-coassembly_long_C10F1_bin.21 65 TRUE
-coassembly_long_C10F1_bin.25 339 TRUE
-coassembly_long_C10F1_bin.27 181 TRUE
-coassembly_long_C10F1_bin.34 500 TRUE
-coassembly_long_C10F1_bin.40 106 TRUE
-coassembly_long_C10F1_bin.51 473 TRUE
-coassembly_long_C10F1_bin.57 138 TRUE
-coassembly_long_C10F1_bin.65 102 TRUE
-coassembly_long_C10F1_bin.67 622 TRUE
-coassembly_long_C10F2_bin.11 204 TRUE
-coassembly_long_C10F2_bin.16 21 TRUE
-coassembly_long_C10F2_bin.22 533 TRUE
-coassembly_long_C10F2_bin.3 171 TRUE
-coassembly_long_C10F2_bin.36 410 TRUE
-coassembly_long_C10F2_bin.48 62 TRUE
-coassembly_long_C10F2_bin.49 290 TRUE
-coassembly_long_C10F2_bin.51 276 TRUE
-coassembly_long_C10F2_bin.53 46 TRUE
-coassembly_long_C10F3_bin.15 60 TRUE
-coassembly_long_C10F3_bin.26 80 TRUE
-coassembly_long_C10F3_bin.38 162 TRUE
-coassembly_long_C10F3_bin.45 203 TRUE
-coassembly_long_C10F4_bin.31 176 TRUE
-coassembly_long_C10F4_bin.44 64 TRUE
-coassembly_long_C10F4_bin.5 134 TRUE
-coassembly_long_C10F4_bin.50 677 TRUE
-coassembly_long_C10F5_bin.10 393 TRUE
-coassembly_long_C10F5_bin.17 22 TRUE
-coassembly_long_C10F5_bin.23 614 TRUE
-coassembly_long_C10F5_bin.29 230 TRUE
-coassembly_long_C10F5_bin.31 131 TRUE
-coassembly_long_C10F5_bin.39 229 TRUE
-coassembly_long_C10F5_bin.40 475 TRUE
-coassembly_long_C10F5_bin.5 376 TRUE
-coassembly_long_C10F5_bin.54 225 TRUE
-coassembly_long_C10F5_bin.8 168 TRUE
-coassembly_long_C11F1_bin.10 192 TRUE
-coassembly_long_C11F1_bin.44 206 TRUE
-coassembly_long_C11F1_bin.8 237 TRUE
-coassembly_long_C11F2_bin.26 105 TRUE
-coassembly_long_C11F2_bin.29 85 TRUE
-coassembly_long_C11F2_bin.39 83 TRUE
-coassembly_long_C11F2_bin.51 143 TRUE
-coassembly_long_C11F2_bin.58 150 TRUE
-coassembly_long_C11F2_bin.59 96 TRUE
-coassembly_long_C11F2_bin.61 180 TRUE
-coassembly_long_C11F2_bin.65 503 TRUE
-coassembly_long_C11F3_bin.33 136 TRUE
-coassembly_long_C11F3_bin.5 188 TRUE
-coassembly_long_C11F3_bin.7 54 TRUE
-coassembly_long_C11F4_bin.1 53 TRUE
-coassembly_long_C11F4_bin.28 100 TRUE
-coassembly_long_C11F4_bin.52 153 TRUE
-coassembly_long_C11F4_bin.61 102 TRUE
-coassembly_long_C11F5_bin.14 227 TRUE
-coassembly_long_C11F5_bin.26 43 TRUE
-coassembly_long_C11F5_bin.30 185 TRUE
-coassembly_long_C11F5_bin.42 388 TRUE
-coassembly_long_C11F5_bin.60 490 TRUE
-coassembly_long_C11F5_bin.64 547 TRUE
-coassembly_long_C12F1_bin.28 105 TRUE
-coassembly_long_C12F1_bin.31 111 TRUE
-coassembly_long_C12F1_bin.39 174 TRUE
-coassembly_long_C12F2_bin.26 157 TRUE
-coassembly_long_C12F2_bin.29 33 TRUE
-coassembly_long_C12F2_bin.48 196 TRUE
-coassembly_long_C12F2_bin.57 749 FALSE
-coassembly_long_C12F2_bin.58 647 FALSE
-coassembly_long_C12F2_bin.6 191 TRUE
-coassembly_long_C12F2_bin.9 46 TRUE
-coassembly_long_C12F3_bin.10 864 TRUE
-coassembly_long_C12F3_bin.21 95 TRUE
-coassembly_long_C12F3_bin.30 39 TRUE
-coassembly_long_C12F3_bin.32 33 TRUE
-coassembly_long_C12F3_bin.42 50 TRUE
-coassembly_long_C12F3_bin.8 165 TRUE
-coassembly_long_C12F4_bin.45 150 TRUE
-coassembly_long_C12F5_bin.12 136 TRUE
-coassembly_long_C12F5_bin.13 233 TRUE
-coassembly_long_C12F5_bin.14 40 TRUE
-coassembly_long_C12F5_bin.18 64 TRUE
-coassembly_long_C12F5_bin.22 617 TRUE
-coassembly_long_C12F5_bin.24 241 TRUE
-coassembly_long_C12F5_bin.29 407 TRUE
-coassembly_long_C12F5_bin.33 153 TRUE
-coassembly_long_C12F5_bin.40 109 TRUE
-coassembly_long_C12F5_bin.42 239 TRUE
-coassembly_long_C12F5_bin.44 48 TRUE
-coassembly_long_C12F5_bin.47 130 TRUE
-coassembly_long_C12F5_bin.48 104 TRUE
-coassembly_long_C12F5_bin.49 521 TRUE
-coassembly_long_C12F5_bin.54 40 TRUE
-coassembly_long_C12F5_bin.6 144 TRUE
-coassembly_treat_CD_bin.101 333 TRUE
-coassembly_treat_CD_bin.102 107 TRUE
-coassembly_treat_CD_bin.103 676 TRUE
-coassembly_treat_CD_bin.107 159 TRUE
-coassembly_treat_CD_bin.109 100 TRUE
-coassembly_treat_CD_bin.125 46 TRUE
-coassembly_treat_CD_bin.128 212 TRUE
-coassembly_treat_CD_bin.132 62 TRUE
-coassembly_treat_CD_bin.138 279 TRUE
-coassembly_treat_CD_bin.19 183 TRUE
-coassembly_treat_CD_bin.2 234 TRUE
-coassembly_treat_CD_bin.23 397 TRUE
-coassembly_treat_CD_bin.26 96 TRUE
-coassembly_treat_CD_bin.28 127 TRUE
-coassembly_treat_CD_bin.29 26 TRUE
-coassembly_treat_CD_bin.3 443 TRUE
-coassembly_treat_CD_bin.31 39 TRUE
-coassembly_treat_CD_bin.38 12 TRUE
-coassembly_treat_CD_bin.39 220 TRUE
-coassembly_treat_CD_bin.41 158 TRUE
-coassembly_treat_CD_bin.42 274 TRUE
-coassembly_treat_CD_bin.48 38 TRUE
-coassembly_treat_CD_bin.5 28 TRUE
-coassembly_treat_CD_bin.50 136 TRUE
-coassembly_treat_CD_bin.51 118 TRUE
-coassembly_treat_CD_bin.53 652 TRUE
-coassembly_treat_CD_bin.55 39 TRUE
-coassembly_treat_CD_bin.57 109 TRUE
-coassembly_treat_CD_bin.6 117 TRUE
-coassembly_treat_CD_bin.61 130 TRUE
-coassembly_treat_CD_bin.68 607 TRUE
-coassembly_treat_CD_bin.69 231 TRUE
-coassembly_treat_CD_bin.76 134 TRUE
-coassembly_treat_CD_bin.77 216 TRUE
-coassembly_treat_CD_bin.79 379 TRUE
-coassembly_treat_CD_bin.80 91 TRUE
-coassembly_treat_CD_bin.85 147 FALSE
-coassembly_treat_CD_bin.93 72 TRUE
-coassembly_treat_CD_bin.94 314 TRUE
-coassembly_treat_CD_bin.96 147 TRUE
-coassembly_treat_CD_bin.99 154 TRUE
-coassembly_treat_CR_bin.10 128 TRUE
-coassembly_treat_CR_bin.103 306 TRUE
-coassembly_treat_CR_bin.107 127 TRUE
-coassembly_treat_CR_bin.110 195 TRUE
-coassembly_treat_CR_bin.113 391 TRUE
-coassembly_treat_CR_bin.117 31 TRUE
-coassembly_treat_CR_bin.129 506 TRUE
-coassembly_treat_CR_bin.133 85 TRUE
-coassembly_treat_CR_bin.14 102 TRUE
-coassembly_treat_CR_bin.17 712 TRUE
-coassembly_treat_CR_bin.18 234 TRUE
-coassembly_treat_CR_bin.21 655 TRUE
-coassembly_treat_CR_bin.23 198 TRUE
-coassembly_treat_CR_bin.27 382 TRUE
-coassembly_treat_CR_bin.36 314 TRUE
-coassembly_treat_CR_bin.40 375 TRUE
-coassembly_treat_CR_bin.46 270 FALSE
-coassembly_treat_CR_bin.48 32 TRUE
-coassembly_treat_CR_bin.5 221 TRUE
-coassembly_treat_CR_bin.53 228 TRUE
-coassembly_treat_CR_bin.55 146 TRUE
-coassembly_treat_CR_bin.57 207 TRUE
-coassembly_treat_CR_bin.60 258 TRUE
-coassembly_treat_CR_bin.65 119 TRUE
-coassembly_treat_CR_bin.67 217 TRUE
-coassembly_treat_CR_bin.70 241 TRUE
-coassembly_treat_CR_bin.77 136 TRUE
-coassembly_treat_CR_bin.79 146 TRUE
-coassembly_treat_CR_bin.81 228 TRUE
-coassembly_treat_CR_bin.99 325 TRUE
-coassembly_treat_HR_bin.120 91 TRUE
-coassembly_treat_HR_bin.13 521 TRUE
-coassembly_treat_HR_bin.132 231 TRUE
-coassembly_treat_HR_bin.138 160 TRUE
-coassembly_treat_HR_bin.18 130 TRUE
-coassembly_treat_HR_bin.25 598 TRUE
-coassembly_treat_HR_bin.39 234 TRUE
-coassembly_treat_HR_bin.4 288 TRUE
-coassembly_treat_HR_bin.41 129 TRUE
-coassembly_treat_HR_bin.48 209 FALSE
-coassembly_treat_HR_bin.52 879 TRUE
-coassembly_treat_HR_bin.70 463 TRUE
-coassembly_treat_HR_bin.71 44 TRUE
-coassembly_treat_HR_bin.78 149 TRUE
-coassembly_treat_HR_bin.82 596 TRUE
-coassembly_treat_HR_bin.85 56 TRUE
-coassembly_treat_HR_bin.90 150 TRUE
-coassembly_treat_HR_bin.93 166 TRUE
-coassembly_treat_HR_bin.95 220 TRUE
-coassembly_treat_HT_bin.1 279 TRUE
-coassembly_treat_HT_bin.101 42 TRUE
-coassembly_treat_HT_bin.103 58 TRUE
-coassembly_treat_HT_bin.104 67 TRUE
-coassembly_treat_HT_bin.109 28 TRUE
-coassembly_treat_HT_bin.113 389 TRUE
-coassembly_treat_HT_bin.114 54 TRUE
-coassembly_treat_HT_bin.115 262 TRUE
-coassembly_treat_HT_bin.12 362 TRUE
-coassembly_treat_HT_bin.121 42 TRUE
-coassembly_treat_HT_bin.123 109 TRUE
-coassembly_treat_HT_bin.125 219 TRUE
-coassembly_treat_HT_bin.132 470 TRUE
-coassembly_treat_HT_bin.133 57 TRUE
-coassembly_treat_HT_bin.136 218 TRUE
-coassembly_treat_HT_bin.137 251 TRUE
-coassembly_treat_HT_bin.14 481 TRUE
-coassembly_treat_HT_bin.21 103 TRUE
-coassembly_treat_HT_bin.27 61 TRUE
-coassembly_treat_HT_bin.28 43 TRUE
-coassembly_treat_HT_bin.3 275 TRUE
-coassembly_treat_HT_bin.32 237 TRUE
-coassembly_treat_HT_bin.33 462 TRUE
-coassembly_treat_HT_bin.42 133 TRUE
-coassembly_treat_HT_bin.45 159 TRUE
-coassembly_treat_HT_bin.48 570 TRUE
-coassembly_treat_HT_bin.51 162 TRUE
-coassembly_treat_HT_bin.52 231 TRUE
-coassembly_treat_HT_bin.57 523 TRUE
-coassembly_treat_HT_bin.6 143 FALSE
-coassembly_treat_HT_bin.60 51 TRUE
-coassembly_treat_HT_bin.7 121 TRUE
-coassembly_treat_HT_bin.72 38 TRUE
-coassembly_treat_HT_bin.75 35 TRUE
-coassembly_treat_HT_bin.77 78 TRUE
-coassembly_treat_HT_bin.8 337 TRUE
-coassembly_treat_HT_bin.82 162 TRUE
-coassembly_treat_HT_bin.85 243 TRUE
-coassembly_treat_HT_bin.87 259 TRUE
-coassembly_treat_HT_bin.89 64 TRUE
-coassembly_treat_HT_bin.96 111 TRUE
-coassembly_treat_OP_bin.10 65 TRUE
-coassembly_treat_OP_bin.104 351 TRUE
-coassembly_treat_OP_bin.110 256 TRUE
-coassembly_treat_OP_bin.112 598 TRUE
-coassembly_treat_OP_bin.116 517 TRUE
-coassembly_treat_OP_bin.119 239 TRUE
-coassembly_treat_OP_bin.12 172 TRUE
-coassembly_treat_OP_bin.123 449 TRUE
-coassembly_treat_OP_bin.124 70 TRUE
-coassembly_treat_OP_bin.126 121 TRUE
-coassembly_treat_OP_bin.129 84 TRUE
-coassembly_treat_OP_bin.131 68 TRUE
-coassembly_treat_OP_bin.134 237 TRUE
-coassembly_treat_OP_bin.15 289 TRUE
-coassembly_treat_OP_bin.16 50 TRUE
-coassembly_treat_OP_bin.2 654 TRUE
-coassembly_treat_OP_bin.24 313 TRUE
-coassembly_treat_OP_bin.26 431 TRUE
-coassembly_treat_OP_bin.3 245 TRUE
-coassembly_treat_OP_bin.34 158 TRUE
-coassembly_treat_OP_bin.38 49 TRUE
-coassembly_treat_OP_bin.41 72 TRUE
-coassembly_treat_OP_bin.44 267 FALSE
-coassembly_treat_OP_bin.45 61 TRUE
-coassembly_treat_OP_bin.46 42 TRUE
-coassembly_treat_OP_bin.49 130 TRUE
-coassembly_treat_OP_bin.5 79 TRUE
-coassembly_treat_OP_bin.53 77 TRUE
-coassembly_treat_OP_bin.55 34 TRUE
-coassembly_treat_OP_bin.57 320 TRUE
-coassembly_treat_OP_bin.58 34 TRUE
-coassembly_treat_OP_bin.6 537 TRUE
-coassembly_treat_OP_bin.60 76 TRUE
-coassembly_treat_OP_bin.64 121 TRUE
-coassembly_treat_OP_bin.67 156 TRUE
-coassembly_treat_OP_bin.71 163 TRUE
-coassembly_treat_OP_bin.72 255 TRUE
-coassembly_treat_OP_bin.75 344 TRUE
-coassembly_treat_OP_bin.76 244 TRUE
-coassembly_treat_OP_bin.82 108 TRUE
-coassembly_treat_OP_bin.83 108 TRUE
-coassembly_treat_OP_bin.86 877 TRUE
-coassembly_treat_OP_bin.87 131 TRUE
-coassembly_treat_OP_bin.91 295 TRUE
-coassembly_treat_OP_bin.92 85 TRUE
-cobinning_cage_treat_C03M1CD_subsam_contigs.fasta_bin.13 97 TRUE
-cobinning_cage_treat_C03M1CD_subsam_contigs.fasta_bin.30 656 TRUE
-cobinning_cage_treat_C03M1CR_subsam_contigs.fasta_bin.25 104 TRUE
-cobinning_cage_treat_C03M1HR_subsam_contigs.fasta_bin.3 317 TRUE
-cobinning_cage_treat_C03M1OP_subsam_contigs.fasta_bin.11 112 TRUE
-cobinning_cage_treat_C03M1OP_subsam_contigs.fasta_bin.22 262 TRUE
-cobinning_cage_treat_C03M1OP_subsam_contigs.fasta_bin.5 189 TRUE
-cobinning_cage_treat_C03M2CD_subsam_contigs.fasta_bin.11 170 TRUE
-cobinning_cage_treat_C03M2CD_subsam_contigs.fasta_bin.13 110 TRUE
-cobinning_cage_treat_C03M2CD_subsam_contigs.fasta_bin.19 251 TRUE
-cobinning_cage_treat_C03M2CD_subsam_contigs.fasta_bin.20 79 TRUE
-cobinning_cage_treat_C03M2CR_subsam_contigs.fasta_bin.13 73 TRUE
-cobinning_cage_treat_C03M2HR_subsam_contigs.fasta_bin.24 105 TRUE
-cobinning_cage_treat_C03M2HR_subsam_contigs.fasta_bin.28 79 FALSE
-cobinning_cage_treat_C03M2HR_subsam_contigs.fasta_bin.6 365 TRUE
-cobinning_cage_treat_C03M3CD_subsam_contigs.fasta_bin.17 372 TRUE
-cobinning_cage_treat_C03M3CD_subsam_contigs.fasta_bin.22 118 TRUE
-cobinning_cage_treat_C03M3CD_subsam_contigs.fasta_bin.23 235 TRUE
-cobinning_cage_treat_C03M3HT_subsam_contigs.fasta_bin.28 465 TRUE
-cobinning_cage_treat_C03M3HT_subsam_contigs.fasta_bin.4 160 TRUE
-cobinning_cage_treat_C03M3OP_subsam_contigs.fasta_bin.13 5 TRUE
-cobinning_cage_treat_C03M4CD_subsam_contigs.fasta_bin.14 69 TRUE
-cobinning_cage_treat_C03M4CR_subsam_contigs.fasta_bin.14 30 TRUE
-cobinning_cage_treat_C03M4CR_subsam_contigs.fasta_bin.16 88 TRUE
-cobinning_cage_treat_C03M4CR_subsam_contigs.fasta_bin.2 183 TRUE
-cobinning_cage_treat_C03M4CR_subsam_contigs.fasta_bin.24 157 TRUE
-cobinning_cage_treat_C03M4CR_subsam_contigs.fasta_bin.27 551 TRUE
-cobinning_cage_treat_C03M4CR_subsam_contigs.fasta_bin.7 122 TRUE
-cobinning_cage_treat_C03M4HT_subsam_contigs.fasta_bin.7 334 TRUE
-cobinning_cage_treat_C03M4OP_subsam_contigs.fasta_bin.20 285 TRUE
-cobinning_cage_treat_C03M5CR_subsam_contigs.fasta_bin.10 88 TRUE
-cobinning_cage_treat_C03M5HT_subsam_contigs.fasta_bin.16 41 TRUE
-cobinning_cage_treat_C03M5OP_subsam_contigs.fasta_bin.21 127 TRUE
-cobinning_cage_treat_C05M1CD_subsam_contigs.fasta_bin.23 120 TRUE
-cobinning_cage_treat_C05M1CR_subsam_contigs.fasta_bin.19 480 TRUE
-cobinning_cage_treat_C05M1CR_subsam_contigs.fasta_bin.20 58 TRUE
-cobinning_cage_treat_C05M1CR_subsam_contigs.fasta_bin.28 50 TRUE
-cobinning_cage_treat_C05M1CR_subsam_contigs.fasta_bin.30 113 TRUE
-cobinning_cage_treat_C05M1CR_subsam_contigs.fasta_bin.5 129 TRUE
-cobinning_cage_treat_C05M1HT_subsam_contigs.fasta_bin.17 45 TRUE
-cobinning_cage_treat_C05M1OP_subsam_contigs.fasta_bin.15 459 TRUE
-cobinning_cage_treat_C05M2CR_subsam_contigs.fasta_bin.6 209 TRUE
-cobinning_cage_treat_C05M2OP_subsam_contigs.fasta_bin.29 507 TRUE
-cobinning_cage_treat_C05M3HR_subsam_contigs.fasta_bin.7 311 TRUE
-cobinning_cage_treat_C05M4CD_subsam_contigs.fasta_bin.5 460 TRUE
-cobinning_cage_treat_C05M4HR_subsam_contigs.fasta_bin.18 71 TRUE
-cobinning_cage_treat_C05M4OP_subsam_contigs.fasta_bin.16 169 TRUE
-cobinning_cage_treat_C05M4OP_subsam_contigs.fasta_bin.3 74 TRUE
-cobinning_cage_treat_C05M5CD_subsam_contigs.fasta_bin.18 84 TRUE
-cobinning_cage_treat_C05M5CD_subsam_contigs.fasta_bin.33 578 TRUE
-cobinning_cage_treat_C05M5CR_subsam_contigs.fasta_bin.17 62 TRUE
-cobinning_cage_treat_C05M5CR_subsam_contigs.fasta_bin.25 26 TRUE
-cobinning_cage_treat_C05M5OP_subsam_contigs.fasta_bin.23 39 TRUE
-cobinning_cage_treat_C06M1CD_subsam_contigs.fasta_bin.7 267 TRUE
-cobinning_cage_treat_C06M2CD_subsam_contigs.fasta_bin.4 11 TRUE
-cobinning_cage_treat_C06M2OP_subsam_contigs.fasta_bin.21 547 TRUE
-cobinning_cage_treat_C06M3CR_subsam_contigs.fasta_bin.26 67 TRUE
-cobinning_cage_treat_C06M3HT_subsam_contigs.fasta_bin.17 48 TRUE
-cobinning_cage_treat_C06M3OP_subsam_contigs.fasta_bin.14 50 TRUE
-cobinning_cage_treat_C06M3OP_subsam_contigs.fasta_bin.9 162 TRUE
-cobinning_cage_treat_C06M4HR_subsam_contigs.fasta_bin.15 299 FALSE
-cobinning_cage_treat_C06M4OP_subsam_contigs.fasta_bin.19 433 TRUE
-cobinning_cage_treat_C06M5CR_subsam_contigs.fasta_bin.2 526 TRUE
-cobinning_cage_treat_C06M5HR_subsam_contigs.fasta_bin.15 100 TRUE
-cobinning_cage_treat_C06M5HT_subsam_contigs.fasta_bin.7 21 TRUE
-cobinning_cage_treat_C10F1CD_subsam_contigs.fasta_bin.13 515 TRUE
-cobinning_cage_treat_C10F1CD_subsam_contigs.fasta_bin.7 132 TRUE
-cobinning_cage_treat_C10F1CR_subsam_contigs.fasta_bin.29 200 TRUE
-cobinning_cage_treat_C10F1HR_subsam_contigs.fasta_bin.1 216 TRUE
-cobinning_cage_treat_C10F1OP_subsam_contigs.fasta_bin.21 284 TRUE
-cobinning_cage_treat_C10F1OP_subsam_contigs.fasta_bin.25 526 TRUE
-cobinning_cage_treat_C10F1OP_subsam_contigs.fasta_bin.6 99 TRUE
-cobinning_cage_treat_C10F2CD_subsam_contigs.fasta_bin.3 25 TRUE
-cobinning_cage_treat_C10F2CR_subsam_contigs.fasta_bin.11 46 TRUE
-cobinning_cage_treat_C10F2HT_subsam_contigs.fasta_bin.14 11 TRUE
-cobinning_cage_treat_C10F2OP_subsam_contigs.fasta_bin.10 193 TRUE
-cobinning_cage_treat_C10F3CD_subsam_contigs.fasta_bin.10 210 TRUE
-cobinning_cage_treat_C10F3CD_subsam_contigs.fasta_bin.11 79 TRUE
-cobinning_cage_treat_C10F3CR_subsam_contigs.fasta_bin.12 71 TRUE
-cobinning_cage_treat_C10F3CR_subsam_contigs.fasta_bin.9 303 TRUE
-cobinning_cage_treat_C10F3HR_subsam_contigs.fasta_bin.1 161 TRUE
-cobinning_cage_treat_C10F3HR_subsam_contigs.fasta_bin.12 40 TRUE
-cobinning_cage_treat_C10F3HR_subsam_contigs.fasta_bin.8 100 TRUE
-cobinning_cage_treat_C10F4CD_subsam_contigs.fasta_bin.11 525 TRUE
-cobinning_cage_treat_C10F4CD_subsam_contigs.fasta_bin.21 110 TRUE
-cobinning_cage_treat_C10F4CD_subsam_contigs.fasta_bin.7 96 TRUE
-cobinning_cage_treat_C10F4CR_subsam_contigs.fasta_bin.21 109 TRUE
-cobinning_cage_treat_C10F4HR_subsam_contigs.fasta_bin.12 272 FALSE
-cobinning_cage_treat_C10F4HR_subsam_contigs.fasta_bin.20 31 TRUE
-cobinning_cage_treat_C10F4OP_subsam_contigs.fasta_bin.16 87 TRUE
-cobinning_cage_treat_C10F5CR_subsam_contigs.fasta_bin.1 156 TRUE
-cobinning_cage_treat_C10F5OP_subsam_contigs.fasta_bin.29 581 TRUE
-cobinning_cage_treat_C11F1CD_subsam_contigs.fasta_bin.6 508 TRUE
-cobinning_cage_treat_C11F1OP_subsam_contigs.fasta_bin.20 153 TRUE
-cobinning_cage_treat_C11F1OP_subsam_contigs.fasta_bin.3 770 FALSE
-cobinning_cage_treat_C11F2CD_subsam_contigs.fasta_bin.3 239 TRUE
-cobinning_cage_treat_C11F2CR_subsam_contigs.fasta_bin.10 202 TRUE
-cobinning_cage_treat_C11F2CR_subsam_contigs.fasta_bin.19 103 TRUE
-cobinning_cage_treat_C11F2HR_subsam_contigs.fasta_bin.29 135 TRUE
-cobinning_cage_treat_C11F3HR_subsam_contigs.fasta_bin.10 197 TRUE
-cobinning_cage_treat_C11F3HT_subsam_contigs.fasta_bin.12 63 TRUE
-cobinning_cage_treat_C11F3HT_subsam_contigs.fasta_bin.18 33 TRUE
-cobinning_cage_treat_C11F4HR_subsam_contigs.fasta_bin.5 70 TRUE
-cobinning_cage_treat_C11F4OP_subsam_contigs.fasta_bin.23 101 TRUE
-cobinning_cage_treat_C11F5CR_subsam_contigs.fasta_bin.13 444 TRUE
-cobinning_cage_treat_C11F5CR_subsam_contigs.fasta_bin.14 123 TRUE
-cobinning_cage_treat_C11F5HT_subsam_contigs.fasta_bin.15 63 TRUE
-cobinning_cage_treat_C11F5HT_subsam_contigs.fasta_bin.16 212 TRUE
-cobinning_cage_treat_C11F5OP_subsam_contigs.fasta_bin.12 73 TRUE
-cobinning_cage_treat_C11F5OP_subsam_contigs.fasta_bin.22 25 TRUE
-cobinning_cage_treat_C11F5OP_subsam_contigs.fasta_bin.5 210 TRUE
-cobinning_cage_treat_C12F1CD_subsam_contigs.fasta_bin.20 418 TRUE
-cobinning_cage_treat_C12F3CR_subsam_contigs.fasta_bin.17 228 TRUE
-cobinning_cage_treat_C12F3CR_subsam_contigs.fasta_bin.29 738 TRUE
-cobinning_cage_treat_C12F3CR_subsam_contigs.fasta_bin.31 101 TRUE
-cobinning_cage_treat_C12F3HR_subsam_contigs.fasta_bin.24 103 TRUE
-cobinning_cage_treat_C12F3HT_subsam_contigs.fasta_bin.12 28 TRUE
-cobinning_cage_treat_C12F3HT_subsam_contigs.fasta_bin.4 583 TRUE
-cobinning_cage_treat_C12F3HT_subsam_contigs.fasta_bin.7 120 TRUE
-cobinning_cage_treat_C12F3OP_subsam_contigs.fasta_bin.21 126 TRUE
-cobinning_cage_treat_C12F4CD_subsam_contigs.fasta_bin.15 129 TRUE
-cobinning_cage_treat_C12F4OP_subsam_contigs.fasta_bin.3 46 TRUE
-cobinning_cage_treat_C12F5CD_subsam_contigs.fasta_bin.1 791 TRUE
-cobinning_cage_treat_C12F5CR_subsam_contigs.fasta_bin.15 242 TRUE
-cobinning_cage_treat_C12F5HT_subsam_contigs.fasta_bin.14 40 TRUE
-cobinning_cage_treat_C12F5HT_subsam_contigs.fasta_bin.15 45 TRUE
-cobinning_cage_treat_C12F5OP_subsam_contigs.fasta_bin.11 497 TRUE
-cobinning_cage_treat_C12F5OP_subsam_contigs.fasta_bin.8 318 TRUE
-cobinning_long_C03M1CD_subsam_contigs.fasta_bin.10 97 TRUE
-cobinning_long_C03M1CD_subsam_contigs.fasta_bin.22 599 TRUE
-cobinning_long_C03M1CR_subsam_contigs.fasta_bin.5 504 TRUE
-cobinning_long_C03M1OP_subsam_contigs.fasta_bin.17 201 TRUE
-cobinning_long_C03M1OP_subsam_contigs.fasta_bin.25 296 TRUE
-cobinning_long_C03M2CD_subsam_contigs.fasta_bin.19 79 TRUE
-cobinning_long_C03M2CD_subsam_contigs.fasta_bin.3 219 TRUE
-cobinning_long_C03M2CD_subsam_contigs.fasta_bin.33 147 TRUE
-cobinning_long_C03M2CR_subsam_contigs.fasta_bin.3 71 TRUE
-cobinning_long_C03M2HR_subsam_contigs.fasta_bin.27 252 TRUE
-cobinning_long_C03M3CD_subsam_contigs.fasta_bin.19 253 TRUE
-cobinning_long_C03M3CD_subsam_contigs.fasta_bin.3 298 TRUE
-cobinning_long_C03M3HT_subsam_contigs.fasta_bin.31 24 TRUE
-cobinning_long_C03M3HT_subsam_contigs.fasta_bin.8 152 TRUE
-cobinning_long_C03M3HT_subsam_contigs.fasta_bin.9 489 FALSE
-cobinning_long_C03M3OP_subsam_contigs.fasta_bin.15 5 TRUE
-cobinning_long_C03M4CR_subsam_contigs.fasta_bin.11 144 TRUE
-cobinning_long_C03M4CR_subsam_contigs.fasta_bin.14 604 TRUE
-cobinning_long_C03M4CR_subsam_contigs.fasta_bin.19 215 TRUE
-cobinning_long_C03M4CR_subsam_contigs.fasta_bin.21 122 TRUE
-cobinning_long_C03M4CR_subsam_contigs.fasta_bin.36 31 TRUE
-cobinning_long_C03M4HT_subsam_contigs.fasta_bin.12 334 TRUE
-cobinning_long_C03M4OP_subsam_contigs.fasta_bin.6 284 TRUE
-cobinning_long_C03M5CR_subsam_contigs.fasta_bin.4 80 TRUE
-cobinning_long_C05M1CD_subsam_contigs.fasta_bin.2 73 TRUE
-cobinning_long_C05M1CR_subsam_contigs.fasta_bin.10 120 TRUE
-cobinning_long_C05M1CR_subsam_contigs.fasta_bin.17 444 TRUE
-cobinning_long_C05M1CR_subsam_contigs.fasta_bin.18 96 TRUE
-cobinning_long_C05M1CR_subsam_contigs.fasta_bin.2 384 TRUE
-cobinning_long_C05M1CR_subsam_contigs.fasta_bin.22 53 TRUE
-cobinning_long_C05M1CR_subsam_contigs.fasta_bin.24 132 TRUE
-cobinning_long_C05M1CR_subsam_contigs.fasta_bin.4 48 TRUE
-cobinning_long_C05M1OP_subsam_contigs.fasta_bin.24 506 TRUE
-cobinning_long_C05M2CR_subsam_contigs.fasta_bin.14 212 TRUE
-cobinning_long_C05M2CR_subsam_contigs.fasta_bin.29 44 TRUE
-cobinning_long_C05M2OP_subsam_contigs.fasta_bin.16 467 TRUE
-cobinning_long_C05M3HR_subsam_contigs.fasta_bin.16 108 TRUE
-cobinning_long_C05M3HR_subsam_contigs.fasta_bin.5 102 TRUE
-cobinning_long_C05M3HR_subsam_contigs.fasta_bin.7 304 TRUE
-cobinning_long_C05M4CD_subsam_contigs.fasta_bin.3 463 FALSE
-cobinning_long_C05M4HR_subsam_contigs.fasta_bin.25 84 TRUE
-cobinning_long_C05M4OP_subsam_contigs.fasta_bin.17 162 TRUE
-cobinning_long_C05M5CD_subsam_contigs.fasta_bin.1 37 TRUE
-cobinning_long_C05M5CD_subsam_contigs.fasta_bin.25 74 TRUE
-cobinning_long_C05M5CR_subsam_contigs.fasta_bin.12 206 TRUE
-cobinning_long_C05M5CR_subsam_contigs.fasta_bin.31 45 TRUE
-cobinning_long_C05M5CR_subsam_contigs.fasta_bin.7 51 TRUE
-cobinning_long_C05M5OP_subsam_contigs.fasta_bin.23 40 TRUE
-cobinning_long_C06M1CD_subsam_contigs.fasta_bin.10 269 TRUE
-cobinning_long_C06M1HR_subsam_contigs.fasta_bin.2 130 TRUE
-cobinning_long_C06M1OP_subsam_contigs.fasta_bin.18 875 TRUE
-cobinning_long_C06M2CD_subsam_contigs.fasta_bin.16 11 TRUE
-cobinning_long_C06M2CD_subsam_contigs.fasta_bin.21 118 TRUE
-cobinning_long_C06M2CR_subsam_contigs.fasta_bin.21 96 TRUE
-cobinning_long_C06M2HR_subsam_contigs.fasta_bin.16 101 TRUE
-cobinning_long_C06M2OP_subsam_contigs.fasta_bin.13 597 TRUE
-cobinning_long_C06M3HT_subsam_contigs.fasta_bin.6 48 TRUE
-cobinning_long_C06M3OP_subsam_contigs.fasta_bin.4 51 TRUE
-cobinning_long_C06M3OP_subsam_contigs.fasta_bin.5 149 TRUE
-cobinning_long_C06M4CD_subsam_contigs.fasta_bin.5 82 FALSE
-cobinning_long_C06M4HT_subsam_contigs.fasta_bin.7 36 TRUE
-cobinning_long_C06M4OP_subsam_contigs.fasta_bin.12 448 TRUE
-cobinning_long_C06M5CR_subsam_contigs.fasta_bin.2 433 TRUE
-cobinning_long_C06M5HT_subsam_contigs.fasta_bin.2 60 TRUE
-cobinning_long_C06M5HT_subsam_contigs.fasta_bin.3 21 TRUE
-cobinning_long_C06M5OP_subsam_contigs.fasta_bin.4 199 TRUE
-cobinning_long_C10F1CD_subsam_contigs.fasta_bin.13 131 TRUE
-cobinning_long_C10F1HR_subsam_contigs.fasta_bin.19 246 TRUE
-cobinning_long_C10F1OP_subsam_contigs.fasta_bin.10 59 TRUE
-cobinning_long_C10F1OP_subsam_contigs.fasta_bin.11 330 FALSE
-cobinning_long_C10F1OP_subsam_contigs.fasta_bin.33 576 TRUE
-cobinning_long_C10F1OP_subsam_contigs.fasta_bin.5 534 TRUE
-cobinning_long_C10F1OP_subsam_contigs.fasta_bin.7 110 TRUE
-cobinning_long_C10F2CD_subsam_contigs.fasta_bin.3 23 TRUE
-cobinning_long_C10F2CR_subsam_contigs.fasta_bin.15 161 TRUE
-cobinning_long_C10F2CR_subsam_contigs.fasta_bin.25 549 TRUE
-cobinning_long_C10F2HR_subsam_contigs.fasta_bin.12 360 TRUE
-cobinning_long_C10F2HT_subsam_contigs.fasta_bin.10 12 TRUE
-cobinning_long_C10F2OP_subsam_contigs.fasta_bin.10 92 TRUE
-cobinning_long_C10F3CD_subsam_contigs.fasta_bin.24 128 TRUE
-cobinning_long_C10F3CR_subsam_contigs.fasta_bin.18 57 TRUE
-cobinning_long_C10F3CR_subsam_contigs.fasta_bin.22 344 TRUE
-cobinning_long_C10F3CR_subsam_contigs.fasta_bin.23 236 TRUE
-cobinning_long_C10F3HR_subsam_contigs.fasta_bin.12 93 TRUE
-cobinning_long_C10F3HT_subsam_contigs.fasta_bin.12 28 TRUE
-cobinning_long_C10F3OP_subsam_contigs.fasta_bin.7 71 TRUE
-cobinning_long_C10F4CD_subsam_contigs.fasta_bin.8 481 TRUE
-cobinning_long_C10F4HR_subsam_contigs.fasta_bin.25 99 TRUE
-cobinning_long_C10F4OP_subsam_contigs.fasta_bin.25 87 TRUE
-cobinning_long_C10F5CD_subsam_contigs.fasta_bin.10 343 TRUE
-cobinning_long_C10F5CR_subsam_contigs.fasta_bin.18 171 TRUE
-cobinning_long_C10F5CR_subsam_contigs.fasta_bin.24 118 TRUE
-cobinning_long_C10F5HR_subsam_contigs.fasta_bin.27 621 TRUE
-cobinning_long_C10F5OP_subsam_contigs.fasta_bin.4 534 TRUE
-cobinning_long_C11F1CD_subsam_contigs.fasta_bin.19 478 TRUE
-cobinning_long_C11F1CD_subsam_contigs.fasta_bin.22 237 TRUE
-cobinning_long_C11F1CR_subsam_contigs.fasta_bin.1 621 TRUE
-cobinning_long_C11F1CR_subsam_contigs.fasta_bin.18 64 TRUE
-cobinning_long_C11F1OP_subsam_contigs.fasta_bin.24 680 TRUE
-cobinning_long_C11F2CR_subsam_contigs.fasta_bin.6 58 TRUE
-cobinning_long_C11F2HR_subsam_contigs.fasta_bin.6 130 TRUE
-cobinning_long_C11F2HR_subsam_contigs.fasta_bin.7 48 TRUE
-cobinning_long_C11F3HR_subsam_contigs.fasta_bin.6 312 TRUE
-cobinning_long_C11F3HT_subsam_contigs.fasta_bin.2 39 TRUE
-cobinning_long_C11F3OP_subsam_contigs.fasta_bin.7 426 TRUE
-cobinning_long_C11F4CR_subsam_contigs.fasta_bin.5 112 TRUE
-cobinning_long_C11F4OP_subsam_contigs.fasta_bin.26 79 TRUE
-cobinning_long_C11F4OP_subsam_contigs.fasta_bin.6 616 TRUE
-cobinning_long_C11F5CR_subsam_contigs.fasta_bin.13 395 TRUE
-cobinning_long_C11F5CR_subsam_contigs.fasta_bin.27 113 TRUE
-cobinning_long_C11F5HT_subsam_contigs.fasta_bin.14 443 TRUE
-cobinning_long_C11F5HT_subsam_contigs.fasta_bin.3 192 TRUE
-cobinning_long_C11F5HT_subsam_contigs.fasta_bin.4 223 TRUE
-cobinning_long_C11F5OP_subsam_contigs.fasta_bin.11 56 TRUE
-cobinning_long_C11F5OP_subsam_contigs.fasta_bin.31 219 TRUE
-cobinning_long_C11F5OP_subsam_contigs.fasta_bin.6 23 TRUE
-cobinning_long_C12F1OP_subsam_contigs.fasta_bin.5 94 TRUE
-cobinning_long_C12F3CR_subsam_contigs.fasta_bin.15 819 TRUE
-cobinning_long_C12F3CR_subsam_contigs.fasta_bin.18 223 TRUE
-cobinning_long_C12F3CR_subsam_contigs.fasta_bin.33 78 TRUE
-cobinning_long_C12F3HR_subsam_contigs.fasta_bin.8 182 TRUE
-cobinning_long_C12F3HT_subsam_contigs.fasta_bin.15 29 TRUE
-cobinning_long_C12F3HT_subsam_contigs.fasta_bin.16 629 TRUE
-cobinning_long_C12F3HT_subsam_contigs.fasta_bin.28 88 TRUE
-cobinning_long_C12F3HT_subsam_contigs.fasta_bin.3 837 FALSE
-cobinning_long_C12F3HT_subsam_contigs.fasta_bin.5 116 TRUE
-cobinning_long_C12F3OP_subsam_contigs.fasta_bin.28 135 TRUE
-cobinning_long_C12F4HR_subsam_contigs.fasta_bin.18 157 TRUE
-cobinning_long_C12F5CD_subsam_contigs.fasta_bin.12 679 TRUE
-cobinning_long_C12F5CD_subsam_contigs.fasta_bin.18 33 TRUE
-cobinning_long_C12F5CR_subsam_contigs.fasta_bin.17 152 TRUE
-cobinning_long_C12F5CR_subsam_contigs.fasta_bin.6 76 TRUE
-cobinning_long_C12F5HT_subsam_contigs.fasta_bin.15 593 TRUE
-cobinning_long_C12F5HT_subsam_contigs.fasta_bin.6 38 TRUE
-cobinning_long_C12F5HT_subsam_contigs.fasta_bin.8 40 TRUE
-cobinning_long_C12F5OP_subsam_contigs.fasta_bin.20 175 TRUE
-cobinning_long_C12F5OP_subsam_contigs.fasta_bin.4 79 TRUE
-cobinning_treat_C03M1CD_subsam_contigs.fasta_bin.12 100 TRUE
-cobinning_treat_C03M1CD_subsam_contigs.fasta_bin.16 136 TRUE
-cobinning_treat_C03M1CD_subsam_contigs.fasta_bin.20 85 TRUE
-cobinning_treat_C03M1CD_subsam_contigs.fasta_bin.23 797 TRUE
-cobinning_treat_C03M1CD_subsam_contigs.fasta_bin.28 472 TRUE
-cobinning_treat_C03M1CD_subsam_contigs.fasta_bin.6 130 TRUE
-cobinning_treat_C03M1CD_subsam_contigs.fasta_bin.7 545 TRUE
-cobinning_treat_C03M1CD_subsam_contigs.fasta_bin.9 7 TRUE
-cobinning_treat_C03M1CR_subsam_contigs.fasta_bin.14 482 TRUE
-cobinning_treat_C03M1CR_subsam_contigs.fasta_bin.16 770 TRUE
-cobinning_treat_C03M1CR_subsam_contigs.fasta_bin.7 84 TRUE
-cobinning_treat_C03M1HR_subsam_contigs.fasta_bin.11 41 TRUE
-cobinning_treat_C03M1HR_subsam_contigs.fasta_bin.2 245 TRUE
-cobinning_treat_C03M1HR_subsam_contigs.fasta_bin.8 66 TRUE
-cobinning_treat_C03M1HT_subsam_contigs.fasta_bin.1 109 FALSE
-cobinning_treat_C03M1HT_subsam_contigs.fasta_bin.11 6 TRUE
-cobinning_treat_C03M1HT_subsam_contigs.fasta_bin.12 288 TRUE
-cobinning_treat_C03M1HT_subsam_contigs.fasta_bin.15 51 TRUE
-cobinning_treat_C03M1HT_subsam_contigs.fasta_bin.16 71 TRUE
-cobinning_treat_C03M1HT_subsam_contigs.fasta_bin.7 182 TRUE
-cobinning_treat_C03M1OP_subsam_contigs.fasta_bin.1 359 TRUE
-cobinning_treat_C03M1OP_subsam_contigs.fasta_bin.2 453 TRUE
-cobinning_treat_C03M1OP_subsam_contigs.fasta_bin.24 204 TRUE
-cobinning_treat_C03M1OP_subsam_contigs.fasta_bin.26 79 TRUE
-cobinning_treat_C03M1OP_subsam_contigs.fasta_bin.5 139 TRUE
-cobinning_treat_C03M1OP_subsam_contigs.fasta_bin.6 19 TRUE
-cobinning_treat_C03M1OP_subsam_contigs.fasta_bin.9 143 TRUE
-cobinning_treat_C05M1CD_subsam_contigs.fasta_bin.26 113 TRUE
-cobinning_treat_C05M1CD_subsam_contigs.fasta_bin.28 140 TRUE
-cobinning_treat_C05M1CD_subsam_contigs.fasta_bin.4 172 TRUE
-cobinning_treat_C05M1CD_subsam_contigs.fasta_bin.8 109 TRUE
-cobinning_treat_C05M1CR_subsam_contigs.fasta_bin.19 114 TRUE
-cobinning_treat_C05M1CR_subsam_contigs.fasta_bin.21 51 TRUE
-cobinning_treat_C05M1CR_subsam_contigs.fasta_bin.24 50 TRUE
-cobinning_treat_C05M1CR_subsam_contigs.fasta_bin.25 415 TRUE
-cobinning_treat_C05M1CR_subsam_contigs.fasta_bin.29 436 TRUE
-cobinning_treat_C05M1CR_subsam_contigs.fasta_bin.3 157 TRUE
-cobinning_treat_C05M1CR_subsam_contigs.fasta_bin.5 117 TRUE
-cobinning_treat_C05M1CR_subsam_contigs.fasta_bin.7 16 TRUE
-cobinning_treat_C05M1HR_subsam_contigs.fasta_bin.11 179 TRUE
-cobinning_treat_C05M1HR_subsam_contigs.fasta_bin.13 91 TRUE
-cobinning_treat_C05M1HR_subsam_contigs.fasta_bin.15 316 TRUE
-cobinning_treat_C05M1HR_subsam_contigs.fasta_bin.6 250 TRUE
-cobinning_treat_C05M1HT_subsam_contigs.fasta_bin.10 52 TRUE
-cobinning_treat_C05M1HT_subsam_contigs.fasta_bin.20 78 TRUE
-cobinning_treat_C05M1HT_subsam_contigs.fasta_bin.27 140 TRUE
-cobinning_treat_C05M1OP_subsam_contigs.fasta_bin.27 440 TRUE
-cobinning_treat_C06M1CD_subsam_contigs.fasta_bin.4 258 TRUE
-cobinning_treat_C06M1CR_subsam_contigs.fasta_bin.23 273 TRUE
-cobinning_treat_C06M1CR_subsam_contigs.fasta_bin.27 108 TRUE
-cobinning_treat_C06M1CR_subsam_contigs.fasta_bin.9 237 TRUE
-cobinning_treat_C06M1HR_subsam_contigs.fasta_bin.1 103 TRUE
-cobinning_treat_C06M1HR_subsam_contigs.fasta_bin.10 426 TRUE
-cobinning_treat_C06M1HT_subsam_contigs.fasta_bin.26 120 TRUE
-cobinning_treat_C06M1HT_subsam_contigs.fasta_bin.5 307 TRUE
-cobinning_treat_C06M1HT_subsam_contigs.fasta_bin.8 415 TRUE
-cobinning_treat_C06M1OP_subsam_contigs.fasta_bin.16 130 TRUE
-cobinning_treat_C06M1OP_subsam_contigs.fasta_bin.2 950 TRUE
-cobinning_treat_C06M1OP_subsam_contigs.fasta_bin.3 124 TRUE
-cobinning_treat_C10F1CD_subsam_contigs.fasta_bin.12 179 TRUE
-cobinning_treat_C10F1CR_subsam_contigs.fasta_bin.1 177 TRUE
-cobinning_treat_C10F1CR_subsam_contigs.fasta_bin.13 366 TRUE
-cobinning_treat_C10F1CR_subsam_contigs.fasta_bin.16 174 TRUE
-cobinning_treat_C10F1CR_subsam_contigs.fasta_bin.18 453 TRUE
-cobinning_treat_C10F1CR_subsam_contigs.fasta_bin.19 88 TRUE
-cobinning_treat_C10F1CR_subsam_contigs.fasta_bin.26 56 TRUE
-cobinning_treat_C10F1CR_subsam_contigs.fasta_bin.30 199 TRUE
-cobinning_treat_C10F1HR_subsam_contigs.fasta_bin.18 217 TRUE
-cobinning_treat_C10F1HR_subsam_contigs.fasta_bin.5 57 TRUE
-cobinning_treat_C10F1HR_subsam_contigs.fasta_bin.6 392 TRUE
-cobinning_treat_C10F1HT_subsam_contigs.fasta_bin.19 82 TRUE
-cobinning_treat_C10F1OP_subsam_contigs.fasta_bin.10 406 TRUE
-cobinning_treat_C10F1OP_subsam_contigs.fasta_bin.11 310 TRUE
-cobinning_treat_C10F1OP_subsam_contigs.fasta_bin.17 313 FALSE
-cobinning_treat_C10F1OP_subsam_contigs.fasta_bin.19 104 TRUE
-cobinning_treat_C10F1OP_subsam_contigs.fasta_bin.24 239 TRUE
-cobinning_treat_C10F1OP_subsam_contigs.fasta_bin.25 534 TRUE
-cobinning_treat_C10F1OP_subsam_contigs.fasta_bin.28 356 TRUE
-cobinning_treat_C10F1OP_subsam_contigs.fasta_bin.30 628 TRUE
-cobinning_treat_C10F1OP_subsam_contigs.fasta_bin.31 874 TRUE
-cobinning_treat_C10F1OP_subsam_contigs.fasta_bin.4 129 TRUE
-cobinning_treat_C11F1CD_subsam_contigs.fasta_bin.13 259 TRUE
-cobinning_treat_C11F1CD_subsam_contigs.fasta_bin.19 510 TRUE
-cobinning_treat_C11F1CD_subsam_contigs.fasta_bin.20 137 TRUE
-cobinning_treat_C11F1CR_subsam_contigs.fasta_bin.1 119 TRUE
-cobinning_treat_C11F1CR_subsam_contigs.fasta_bin.21 566 TRUE
-cobinning_treat_C11F1CR_subsam_contigs.fasta_bin.23 228 TRUE
-cobinning_treat_C11F1CR_subsam_contigs.fasta_bin.3 541 TRUE
-cobinning_treat_C11F1HT_subsam_contigs.fasta_bin.10 40 TRUE
-cobinning_treat_C11F1HT_subsam_contigs.fasta_bin.13 375 TRUE
-cobinning_treat_C11F1HT_subsam_contigs.fasta_bin.14 738 TRUE
-cobinning_treat_C11F1HT_subsam_contigs.fasta_bin.2 44 TRUE
-cobinning_treat_C11F1OP_subsam_contigs.fasta_bin.24 524 TRUE
-cobinning_treat_C11F1OP_subsam_contigs.fasta_bin.25 164 TRUE
-individual_C03M1CD_subsam_bin.10 83 TRUE
-individual_C03M1OP_subsam_bin.20 163 TRUE
-individual_C03M1OP_subsam_bin.23 419 TRUE
-individual_C03M2CD_subsam_bin.13 116 TRUE
-individual_C03M2CD_subsam_bin.23 161 TRUE
-individual_C03M2CD_subsam_bin.3 96 TRUE
-individual_C03M2CR_subsam_bin.8 68 TRUE
-individual_C03M2HR_subsam_bin.25 57 TRUE
-individual_C03M2HR_subsam_bin.7 120 TRUE
-individual_C03M2HT_subsam_bin.4 75 FALSE
-individual_C03M2OP_subsam_bin.13 740 TRUE
-individual_C03M3CD_subsam_bin.13 352 TRUE
-individual_C03M3CD_subsam_bin.24 485 TRUE
-individual_C03M3HT_subsam_bin.8 255 TRUE
-individual_C03M3OP_subsam_bin.11 5 TRUE
-individual_C03M3OP_subsam_bin.9 98 TRUE
-individual_C03M4CD_subsam_bin.15 192 TRUE
-individual_C03M4CR_subsam_bin.15 126 TRUE
-individual_C03M4CR_subsam_bin.17 30 TRUE
-individual_C03M4CR_subsam_bin.20 197 TRUE
-individual_C03M4CR_subsam_bin.26 506 TRUE
-individual_C03M4HT_subsam_bin.14 393 TRUE
-individual_C03M4OP_subsam_bin.16 222 TRUE
-individual_C03M5CR_subsam_bin.18 90 TRUE
-individual_C03M5HT_subsam_bin.7 28 TRUE
-individual_C03M5OP_subsam_bin.14 83 TRUE
-individual_C05M1CR_subsam_bin.1 53 TRUE
-individual_C05M1CR_subsam_bin.20 48 TRUE
-individual_C05M1CR_subsam_bin.4 109 TRUE
-individual_C05M1HT_subsam_bin.5 59 TRUE
-individual_C05M1OP_subsam_bin.1 31 TRUE
-individual_C05M2OP_subsam_bin.12 795 TRUE
-individual_C05M2OP_subsam_bin.2 206 TRUE
-individual_C05M2OP_subsam_bin.20 97 TRUE
-individual_C05M3CR_subsam_bin.14 306 TRUE
-individual_C05M3HR_subsam_bin.28 276 TRUE
-individual_C05M3HT_subsam_bin.17 95 TRUE
-individual_C05M3HT_subsam_bin.24 205 TRUE
-individual_C05M4CD_subsam_bin.2 58 TRUE
-individual_C05M4HR_subsam_bin.19 70 TRUE
-individual_C05M4OP_subsam_bin.17 160 TRUE
-individual_C05M5CR_subsam_bin.17 28 TRUE
-individual_C05M5CR_subsam_bin.33 48 TRUE
-individual_C05M5OP_subsam_bin.4 42 TRUE
-individual_C06M1CD_subsam_bin.9 120 TRUE
-individual_C06M1HR_subsam_bin.2 200 TRUE
-individual_C06M1OP_subsam_bin.25 718 TRUE
-individual_C06M2CD_subsam_bin.17 270 TRUE
-individual_C06M2CD_subsam_bin.18 9 TRUE
-individual_C06M2HR_subsam_bin.21 94 TRUE
-individual_C06M2HT_subsam_bin.11 62 TRUE
-individual_C06M2OP_subsam_bin.17 549 TRUE
-individual_C06M3CR_subsam_bin.4 71 TRUE
-individual_C06M3HT_subsam_bin.10 48 TRUE
-individual_C06M3OP_subsam_bin.15 49 TRUE
-individual_C06M3OP_subsam_bin.18 109 TRUE
-individual_C06M4HR_subsam_bin.1 105 TRUE
-individual_C06M4OP_subsam_bin.7 416 TRUE
-individual_C06M5CR_subsam_bin.18 454 TRUE
-individual_C10F1CD_subsam_bin.10 127 TRUE
-individual_C10F1CD_subsam_bin.19 133 TRUE
-individual_C10F1CR_subsam_bin.9 121 TRUE
-individual_C10F1HR_subsam_bin.17 201 TRUE
-individual_C10F1OP_subsam_bin.10 207 TRUE
-individual_C10F1OP_subsam_bin.23 1307 TRUE
-individual_C10F1OP_subsam_bin.24 102 TRUE
-individual_C10F2CD_subsam_bin.15 22 TRUE
-individual_C10F2CD_subsam_bin.7 12 TRUE
-individual_C10F2CR_subsam_bin.1 89 TRUE
-individual_C10F2HR_subsam_bin.15 280 TRUE
-individual_C10F2OP_subsam_bin.13 97 TRUE
-individual_C10F3CR_subsam_bin.15 61 TRUE
-individual_C10F3CR_subsam_bin.33 179 TRUE
-individual_C10F3OP_subsam_bin.13 108 TRUE
-individual_C10F3OP_subsam_bin.4 64 TRUE
-individual_C10F4HR_subsam_bin.25 236 FALSE
-individual_C10F4HT_subsam_bin.5 95 TRUE
-individual_C10F4OP_subsam_bin.16 80 TRUE
-individual_C10F5CR_subsam_bin.19 99 TRUE
-individual_C10F5CR_subsam_bin.7 142 TRUE
-individual_C10F5HR_subsam_bin.21 232 TRUE
-individual_C10F5OP_subsam_bin.20 422 TRUE
-individual_C10F5OP_subsam_bin.29 137 TRUE
-individual_C11F1CD_subsam_bin.3 60 TRUE
-individual_C11F1CD_subsam_bin.9 381 TRUE
-individual_C11F1CR_subsam_bin.23 512 TRUE
-individual_C11F1CR_subsam_bin.6 49 TRUE
-individual_C11F1OP_subsam_bin.18 161 TRUE
-individual_C11F2CD_subsam_bin.15 35 TRUE
-individual_C11F2CR_subsam_bin.19 135 TRUE
-individual_C11F2HR_subsam_bin.12 49 TRUE
-individual_C11F2HR_subsam_bin.16 399 TRUE
-individual_C11F3HR_subsam_bin.4 255 TRUE
-individual_C11F3HT_subsam_bin.20 67 TRUE
-individual_C11F3HT_subsam_bin.3 63 TRUE
-individual_C11F4CR_subsam_bin.13 47 TRUE
-individual_C11F4CR_subsam_bin.2 82 TRUE
-individual_C11F4HT_subsam_bin.17 1374 TRUE
-individual_C11F4OP_subsam_bin.24 110 TRUE
-individual_C11F5CR_subsam_bin.2 112 TRUE
-individual_C11F5CR_subsam_bin.3 436 TRUE
-individual_C11F5CR_subsam_bin.5 160 TRUE
-individual_C11F5OP_subsam_bin.10 203 TRUE
-individual_C11F5OP_subsam_bin.16 115 FALSE
-individual_C11F5OP_subsam_bin.26 22 TRUE
-individual_C12F1CD_subsam_bin.9 276 TRUE
-individual_C12F1OP_subsam_bin.11 85 TRUE
-individual_C12F2HR_subsam_bin.26 33 TRUE
-individual_C12F2HT_subsam_bin.23 258 TRUE
-individual_C12F3CR_subsam_bin.14 961 FALSE
-individual_C12F3CR_subsam_bin.7 66 TRUE
-individual_C12F3HR_subsam_bin.12 94 TRUE
-individual_C12F3HT_subsam_bin.10 27 TRUE
-individual_C12F3HT_subsam_bin.24 150 TRUE
-individual_C12F4CD_subsam_bin.21 484 TRUE
-individual_C12F4HR_subsam_bin.10 144 TRUE
-individual_C12F5CR_subsam_bin.16 230 TRUE
-individual_C12F5HT_subsam_bin.2 37 TRUE
-individual_C12F5HT_subsam_bin.5 45 TRUE
-individual_C12F5OP_subsam_bin.18 145 TRUE
-individual_C12F5OP_subsam_bin.4 496 TRUE
-vamb_cage_treat_C03_CD_vae_1007 129 TRUE
-vamb_cage_treat_C03_CD_vae_1055 327 TRUE
-vamb_cage_treat_C03_CD_vae_1115 187 TRUE
-vamb_cage_treat_C03_CD_vae_1287 120 TRUE
-vamb_cage_treat_C03_CD_vae_17951 186 TRUE
-vamb_cage_treat_C03_CD_vae_2348 116 TRUE
-vamb_cage_treat_C03_CD_vae_2453 243 TRUE
-vamb_cage_treat_C03_CD_vae_367 69 TRUE
-vamb_cage_treat_C03_CD_vae_846 114 TRUE
-vamb_cage_treat_C03_CR_vae_12918 463 TRUE
-vamb_cage_treat_C03_CR_vae_1441 85 TRUE
-vamb_cage_treat_C03_CR_vae_157 27 TRUE
-vamb_cage_treat_C03_CR_vae_5877 118 TRUE
-vamb_cage_treat_C03_HR_vae_13543 80 TRUE
-vamb_cage_treat_C03_HT_vae_20 31 TRUE
-vamb_cage_treat_C03_HT_vae_2521 339 TRUE
-vamb_cage_treat_C03_HT_vae_4163 68 TRUE
-vamb_cage_treat_C03_HT_vae_6478 143 TRUE
-vamb_cage_treat_C03_HT_vae_9172 328 TRUE
-vamb_cage_treat_C03_OP_vae_118 5 TRUE
-vamb_cage_treat_C03_OP_vae_1426 163 TRUE
-vamb_cage_treat_C03_OP_vae_17543 351 TRUE
-vamb_cage_treat_C03_OP_vae_4880 226 TRUE
-vamb_cage_treat_C03_OP_vae_4907 88 TRUE
-vamb_cage_treat_C03_OP_vae_5589 104 TRUE
-vamb_cage_treat_C03_OP_vae_9691 157 TRUE
-vamb_cage_treat_C05_CD_vae_13985 323 TRUE
-vamb_cage_treat_C05_CD_vae_18831 111 TRUE
-vamb_cage_treat_C05_CD_vae_4911 127 TRUE
-vamb_cage_treat_C05_CD_vae_717 69 TRUE
-vamb_cage_treat_C05_CD_vae_758 34 TRUE
-vamb_cage_treat_C05_CR_vae_1948 46 TRUE
-vamb_cage_treat_C05_CR_vae_1971 44 TRUE
-vamb_cage_treat_C05_CR_vae_3705 32 TRUE
-vamb_cage_treat_C05_CR_vae_876 49 TRUE
-vamb_cage_treat_C05_HR_vae_1207 236 TRUE
-vamb_cage_treat_C05_HR_vae_4659 68 TRUE
-vamb_cage_treat_C05_HR_vae_5309 195 TRUE
-vamb_cage_treat_C05_HR_vae_692 96 TRUE
-vamb_cage_treat_C05_HR_vae_7645 122 TRUE
-vamb_cage_treat_C05_HT_vae_13587 54 TRUE
-vamb_cage_treat_C05_HT_vae_5858 90 TRUE
-vamb_cage_treat_C05_HT_vae_627 41 TRUE
-vamb_cage_treat_C05_OP_vae_10804 144 TRUE
-vamb_cage_treat_C05_OP_vae_1156 39 TRUE
-vamb_cage_treat_C05_OP_vae_724 176 TRUE
-vamb_cage_treat_C06_CD_vae_11973 87 TRUE
-vamb_cage_treat_C06_CD_vae_15493 73 TRUE
-vamb_cage_treat_C06_CD_vae_16455 114 TRUE
-vamb_cage_treat_C06_CD_vae_233 9 TRUE
-vamb_cage_treat_C06_CR_vae_18631 53 TRUE
-vamb_cage_treat_C06_CR_vae_2190 68 TRUE
-vamb_cage_treat_C06_HR_vae_13822 216 TRUE
-vamb_cage_treat_C06_HR_vae_16915 32 TRUE
-vamb_cage_treat_C06_HT_vae_3256 57 TRUE
-vamb_cage_treat_C06_HT_vae_457 21 TRUE
-vamb_cage_treat_C06_HT_vae_504 46 TRUE
-vamb_cage_treat_C06_OP_vae_1469 338 TRUE
-vamb_cage_treat_C06_OP_vae_2464 59 TRUE
-vamb_cage_treat_C06_OP_vae_2747 143 TRUE
-vamb_cage_treat_C06_OP_vae_552 51 TRUE
-vamb_cage_treat_C10_CD_vae_1319 23 TRUE
-vamb_cage_treat_C10_CD_vae_1490 77 TRUE
-vamb_cage_treat_C10_CD_vae_538 57 TRUE
-vamb_cage_treat_C10_CD_vae_960 13 TRUE
-vamb_cage_treat_C10_CR_vae_1076 122 TRUE
-vamb_cage_treat_C10_CR_vae_4897 53 TRUE
-vamb_cage_treat_C10_CR_vae_5003 169 TRUE
-vamb_cage_treat_C10_CR_vae_5309 267 TRUE
-vamb_cage_treat_C10_HR_vae_1121 310 TRUE
-vamb_cage_treat_C10_HR_vae_12804 291 FALSE
-vamb_cage_treat_C10_HR_vae_1587 84 TRUE
-vamb_cage_treat_C10_HR_vae_4383 78 TRUE
-vamb_cage_treat_C10_HR_vae_5479 116 TRUE
-vamb_cage_treat_C10_HR_vae_859 175 TRUE
-vamb_cage_treat_C10_OP_vae_12880 135 TRUE
-vamb_cage_treat_C10_OP_vae_1368 89 TRUE
-vamb_cage_treat_C10_OP_vae_2401 229 TRUE
-vamb_cage_treat_C10_OP_vae_256 92 TRUE
-vamb_cage_treat_C10_OP_vae_295 104 TRUE
-vamb_cage_treat_C10_OP_vae_4406 431 TRUE
-vamb_cage_treat_C11_CR_vae_1015 86 TRUE
-vamb_cage_treat_C11_CR_vae_13630 344 TRUE
-vamb_cage_treat_C11_CR_vae_15801 130 TRUE
-vamb_cage_treat_C11_CR_vae_16418 77 TRUE
-vamb_cage_treat_C11_CR_vae_16882 76 TRUE
-vamb_cage_treat_C11_CR_vae_414 48 TRUE
-vamb_cage_treat_C11_HR_vae_1325 35 TRUE
-vamb_cage_treat_C11_HR_vae_1338 246 TRUE
-vamb_cage_treat_C11_HR_vae_5726 84 TRUE
-vamb_cage_treat_C11_HT_vae_1580 105 TRUE
-vamb_cage_treat_C11_HT_vae_4716 14 TRUE
-vamb_cage_treat_C11_OP_vae_1624 72 TRUE
-vamb_cage_treat_C11_OP_vae_2262 219 TRUE
-vamb_cage_treat_C11_OP_vae_2483 115 TRUE
-vamb_cage_treat_C11_OP_vae_7296 196 TRUE
-vamb_cage_treat_C12_CD_vae_10183 520 TRUE
-vamb_cage_treat_C12_CD_vae_12881 154 TRUE
-vamb_cage_treat_C12_CD_vae_1556 312 TRUE
-vamb_cage_treat_C12_CD_vae_233 126 TRUE
-vamb_cage_treat_C12_CR_vae_1194 179 TRUE
-vamb_cage_treat_C12_CR_vae_229 57 TRUE
-vamb_cage_treat_C12_HR_vae_1725 198 TRUE
-vamb_cage_treat_C12_HR_vae_7538 83 TRUE
-vamb_cage_treat_C12_HT_vae_221 106 TRUE
-vamb_cage_treat_C12_HT_vae_3259 24 TRUE
-vamb_cage_treat_C12_OP_vae_315 97 TRUE
-vamb_cage_treat_C12_OP_vae_5425 150 TRUE
-vamb_cage_treat_C12_OP_vae_5780 360 TRUE
-vamb_cage_treat_C12_OP_vae_610 36 TRUE
-vamb_long_C03M1_vae_1056 105 TRUE
-vamb_long_C03M1_vae_16416 154 TRUE
-vamb_long_C03M1_vae_641 169 TRUE
-vamb_long_C03M1_vae_7918 55 TRUE
-vamb_long_C03M2_vae_13899 193 TRUE
-vamb_long_C03M2_vae_1437 94 TRUE
-vamb_long_C03M2_vae_159 142 TRUE
-vamb_long_C03M2_vae_388 66 TRUE
-vamb_long_C03M2_vae_416 31 TRUE
-vamb_long_C03M2_vae_601 92 TRUE
-vamb_long_C03M2_vae_6535 207 TRUE
-vamb_long_C03M3_vae_1043 34 TRUE
-vamb_long_C03M3_vae_17856 147 TRUE
-vamb_long_C03M3_vae_21537 78 TRUE
-vamb_long_C03M3_vae_30 115 TRUE
-vamb_long_C03M3_vae_4874 116 TRUE
-vamb_long_C03M3_vae_5424 49 TRUE
-vamb_long_C03M3_vae_58 4 TRUE
-vamb_long_C03M3_vae_587 320 TRUE
-vamb_long_C03M4_vae_15476 252 TRUE
-vamb_long_C03M4_vae_1659 196 TRUE
-vamb_long_C03M4_vae_4633 31 TRUE
-vamb_long_C03M4_vae_784 115 TRUE
-vamb_long_C03M5_vae_19583 71 TRUE
-vamb_long_C03M5_vae_7411 390 TRUE
-vamb_long_C05M1_vae_13214 135 TRUE
-vamb_long_C05M1_vae_15820 116 TRUE
-vamb_long_C05M1_vae_2380 118 TRUE
-vamb_long_C05M1_vae_317 45 TRUE
-vamb_long_C05M1_vae_4614 72 TRUE
-vamb_long_C05M1_vae_5516 102 TRUE
-vamb_long_C05M1_vae_6076 210 TRUE
-vamb_long_C05M2_vae_16103 194 TRUE
-vamb_long_C05M3_vae_1521 257 TRUE
-vamb_long_C05M4_vae_16532 60 TRUE
-vamb_long_C05M4_vae_17114 95 TRUE
-vamb_long_C05M4_vae_20057 72 TRUE
-vamb_long_C05M4_vae_3651 140 TRUE
-vamb_long_C05M5_vae_16955 53 TRUE
-vamb_long_C05M5_vae_17393 95 TRUE
-vamb_long_C05M5_vae_21148 147 TRUE
-vamb_long_C05M5_vae_39 71 TRUE
-vamb_long_C05M5_vae_4152 26 TRUE
-vamb_long_C05M5_vae_6962 68 TRUE
-vamb_long_C05M5_vae_7388 45 TRUE
-vamb_long_C05M5_vae_978 88 TRUE
-vamb_long_C06M1_vae_13751 247 TRUE
-vamb_long_C06M1_vae_2949 135 TRUE
-vamb_long_C06M2_vae_133 76 TRUE
-vamb_long_C06M2_vae_15533 548 TRUE
-vamb_long_C06M2_vae_1846 49 TRUE
-vamb_long_C06M2_vae_22007 86 TRUE
-vamb_long_C06M2_vae_444 9 TRUE
-vamb_long_C06M3_C06M3_vae_1672 53 TRUE
-vamb_long_C06M4_vae_22445 192 TRUE
-vamb_long_C06M4_vae_5628 341 TRUE
-vamb_long_C06M5_C06M5_vae_1154 75 FALSE
-vamb_long_C06M5_C06M5_vae_351 20 TRUE
-vamb_long_C06M5_C06M5_vae_5756 161 TRUE
-vamb_long_C06M5_C06M5_vae_5819 47 TRUE
-vamb_long_C10F1_vae_1071 97 TRUE
-vamb_long_C10F1_vae_238 127 TRUE
-vamb_long_C10F1_vae_5286 161 TRUE
-vamb_long_C10F1_vae_724 44 TRUE
-vamb_long_C10F1_vae_8693 193 TRUE
-vamb_long_C10F2_vae_2929 9 TRUE
-vamb_long_C10F2_vae_30755 63 TRUE
-vamb_long_C10F2_vae_3777 184 TRUE
-vamb_long_C10F3_vae_11601 92 TRUE
-vamb_long_C10F3_vae_182 54 TRUE
-vamb_long_C10F3_vae_247 27 TRUE
-vamb_long_C10F3_vae_25476 70 TRUE
-vamb_long_C10F3_vae_28153 83 TRUE
-vamb_long_C10F3_vae_30 49 TRUE
-vamb_long_C10F4_vae_19790 90 TRUE
-vamb_long_C10F4_vae_47 83 TRUE
-vamb_long_C10F5_vae_1461 121 TRUE
-vamb_long_C10F5_vae_18548 503 TRUE
-vamb_long_C10F5_vae_18565 397 TRUE
-vamb_long_C10F5_vae_19384 76 TRUE
-vamb_long_C10F5_vae_732 122 TRUE
-vamb_long_C11F1_vae_1119 53 TRUE
-vamb_long_C11F1_vae_1833 100 TRUE
-vamb_long_C11F1_vae_2277 437 TRUE
-vamb_long_C11F1_vae_2313 513 TRUE
-vamb_long_C11F2_C11F2_vae_143 38 TRUE
-vamb_long_C11F2_C11F2_vae_2607 48 TRUE
-vamb_long_C11F4_vae_1743 91 TRUE
-vamb_long_C11F4_vae_19836 62 TRUE
-vamb_long_C11F4_vae_2879 94 TRUE
-vamb_long_C11F5_vae_10964 147 TRUE
-vamb_long_C11F5_vae_16201 124 TRUE
-vamb_long_C11F5_vae_20246 175 TRUE
-vamb_long_C11F5_vae_21910 161 TRUE
-vamb_long_C11F5_vae_24111 215 TRUE
-vamb_long_C11F5_vae_672 68 TRUE
-vamb_long_C11F5_vae_8351 408 TRUE
-vamb_long_C12F1_vae_19122 105 TRUE
-vamb_long_C12F1_vae_21169 279 TRUE
-vamb_long_C12F1_vae_721 87 TRUE
-vamb_long_C12F3_vae_134 27 TRUE
-vamb_long_C12F3_vae_14835 91 TRUE
-vamb_long_C12F3_vae_22051 63 TRUE
-vamb_long_C12F4_vae_16684 16 TRUE
-vamb_long_C12F5_vae_124 53 TRUE
-vamb_long_C12F5_vae_17965 127 TRUE
-vamb_long_C12F5_vae_23772 37 TRUE
-vamb_treat_CD_vae_1022 298 TRUE
-vamb_treat_CD_vae_111 42 TRUE
-vamb_treat_CD_vae_1293 330 TRUE
-vamb_treat_CD_vae_1368 482 TRUE
-vamb_treat_CD_vae_1498 107 TRUE
-vamb_treat_CD_vae_1692 362 TRUE
-vamb_treat_CD_vae_1766 207 TRUE
-vamb_treat_CD_vae_2043 163 TRUE
-vamb_treat_CD_vae_2073 129 TRUE
-vamb_treat_CD_vae_2310 92 TRUE
-vamb_treat_CD_vae_2358 283 TRUE
-vamb_treat_CD_vae_260 436 FALSE
-vamb_treat_CD_vae_2606 190 TRUE
-vamb_treat_CD_vae_2650 132 TRUE
-vamb_treat_CD_vae_2800 813 TRUE
-vamb_treat_CD_vae_2842 60 TRUE
-vamb_treat_CD_vae_6144 277 TRUE
-vamb_treat_CD_vae_878 169 TRUE
-vamb_treat_CD_vae_981 14 TRUE
-vamb_treat_CR_vae_1012 234 TRUE
-vamb_treat_CR_vae_1030 118 TRUE
-vamb_treat_CR_vae_1062 50 TRUE
-vamb_treat_CR_vae_1112 39 TRUE
-vamb_treat_CR_vae_1296 265 TRUE
-vamb_treat_CR_vae_1406 48 TRUE
-vamb_treat_CR_vae_1492 132 TRUE
-vamb_treat_CR_vae_1512 186 TRUE
-vamb_treat_CR_vae_1734 158 TRUE
-vamb_treat_CR_vae_1918 406 TRUE
-vamb_treat_CR_vae_2139 296 TRUE
-vamb_treat_CR_vae_214 120 TRUE
-vamb_treat_CR_vae_2201 451 TRUE
-vamb_treat_CR_vae_2661 369 TRUE
-vamb_treat_CR_vae_2687 219 TRUE
-vamb_treat_CR_vae_3078 354 TRUE
-vamb_treat_CR_vae_330 616 TRUE
-vamb_treat_CR_vae_388 50 TRUE
-vamb_treat_CR_vae_415 34 TRUE
-vamb_treat_CR_vae_4218 85 TRUE
-vamb_treat_CR_vae_4629 134 TRUE
-vamb_treat_CR_vae_464 47 TRUE
-vamb_treat_CR_vae_498 48 TRUE
-vamb_treat_CR_vae_5176 97 TRUE
-vamb_treat_CR_vae_52 44 TRUE
-vamb_treat_CR_vae_523 82 TRUE
-vamb_treat_CR_vae_540 44 TRUE
-vamb_treat_CR_vae_563 132 TRUE
-vamb_treat_CR_vae_574 114 TRUE
-vamb_treat_CR_vae_5845 216 TRUE
-vamb_treat_CR_vae_616 53 TRUE
-vamb_treat_CR_vae_65 511 TRUE
-vamb_treat_CR_vae_697 45 TRUE
-vamb_treat_CR_vae_729 13 TRUE
-vamb_treat_CR_vae_766 120 TRUE
-vamb_treat_CR_vae_775 199 TRUE
-vamb_treat_CR_vae_786 112 TRUE
-vamb_treat_CR_vae_802 96 TRUE
-vamb_treat_CR_vae_829 210 TRUE
-vamb_treat_CR_vae_856 68 TRUE
-vamb_treat_CR_vae_869 122 TRUE
-vamb_treat_CR_vae_9 6 TRUE
-vamb_treat_CR_vae_913 63 TRUE
-vamb_treat_HR_vae_1066 37 TRUE
-vamb_treat_HR_vae_1119 274 TRUE
-vamb_treat_HR_vae_1672 266 TRUE
-vamb_treat_HR_vae_1867 283 TRUE
-vamb_treat_HR_vae_2225 173 TRUE
-vamb_treat_HR_vae_2412 217 TRUE
-vamb_treat_HR_vae_2484 159 TRUE
-vamb_treat_HR_vae_265 260 TRUE
-vamb_treat_HR_vae_4177 59 TRUE
-vamb_treat_HR_vae_4212 117 TRUE
-vamb_treat_HR_vae_476 91 TRUE
-vamb_treat_HR_vae_4770 74 TRUE
-vamb_treat_HR_vae_873 97 TRUE
-vamb_treat_HR_vae_979 51 TRUE
-vamb_treat_HT_vae_11 20 TRUE
-vamb_treat_HT_vae_1704 158 TRUE
-vamb_treat_HT_vae_215 355 TRUE
-vamb_treat_HT_vae_2588 263 TRUE
-vamb_treat_HT_vae_306 71 TRUE
-vamb_treat_HT_vae_3159 138 TRUE
-vamb_treat_HT_vae_320 129 TRUE
-vamb_treat_HT_vae_3236 114 TRUE
-vamb_treat_HT_vae_329 47 TRUE
-vamb_treat_HT_vae_373 31 TRUE
-vamb_treat_HT_vae_575 47 TRUE
-vamb_treat_HT_vae_7404 63 TRUE
-vamb_treat_HT_vae_756 451 FALSE
-vamb_treat_HT_vae_927 165 TRUE
-vamb_treat_OP_OP_vae_1049 135 TRUE
-vamb_treat_OP_OP_vae_1073 111 TRUE
-vamb_treat_OP_OP_vae_1081 5 TRUE
-vamb_treat_OP_OP_vae_111 184 TRUE
-vamb_treat_OP_OP_vae_1149 69 TRUE
-vamb_treat_OP_OP_vae_1256 235 TRUE
-vamb_treat_OP_OP_vae_1389 586 TRUE
-vamb_treat_OP_OP_vae_1467 409 TRUE
-vamb_treat_OP_OP_vae_1746 275 TRUE
-vamb_treat_OP_OP_vae_181 52 TRUE
-vamb_treat_OP_OP_vae_1878 236 TRUE
-vamb_treat_OP_OP_vae_2047 226 TRUE
-vamb_treat_OP_OP_vae_2363 121 TRUE
-vamb_treat_OP_OP_vae_2476 173 TRUE
-vamb_treat_OP_OP_vae_2579 179 TRUE
-vamb_treat_OP_OP_vae_2695 174 TRUE
-vamb_treat_OP_OP_vae_296 161 TRUE
-vamb_treat_OP_OP_vae_2993 323 TRUE
-vamb_treat_OP_OP_vae_3220 72 TRUE
-vamb_treat_OP_OP_vae_3759 208 TRUE
-vamb_treat_OP_OP_vae_448 60 TRUE
-vamb_treat_OP_OP_vae_556 363 TRUE
-vamb_treat_OP_OP_vae_627 277 TRUE
-vamb_treat_OP_OP_vae_715 233 TRUE
-vamb_treat_OP_OP_vae_755 772 TRUE
-vamb_treat_OP_OP_vae_784 83 TRUE
-vamb_treat_OP_OP_vae_787 367 TRUE
-vamb_treat_OP_OP_vae_894 116 TRUE
-vamb_treat_OP_OP_vae_995 699 TRUE
+genome n_contigs pass.GUNC overall_strategy
+coassembly_cage_treat_C03_CD_bin.13 480 TRUE coassembly_timepoint_cage
+coassembly_cage_treat_C03_CD_bin.19 58 TRUE coassembly_timepoint_cage
+coassembly_cage_treat_C03_CD_bin.25 131 TRUE coassembly_timepoint_cage
+coassembly_cage_treat_C03_CD_bin.27 496 TRUE coassembly_timepoint_cage
+coassembly_cage_treat_C03_CD_bin.29 72 TRUE coassembly_timepoint_cage
+coassembly_cage_treat_C03_CD_bin.37 124 TRUE coassembly_timepoint_cage
+coassembly_cage_treat_C03_CD_bin.52 478 TRUE coassembly_timepoint_cage
+coassembly_cage_treat_C03_CD_bin.56 899 TRUE coassembly_timepoint_cage
+coassembly_cage_treat_C03_CD_bin.62 181 TRUE coassembly_timepoint_cage
+coassembly_cage_treat_C03_CD_bin.73 381 TRUE coassembly_timepoint_cage
+coassembly_cage_treat_C03_CD_bin.77 817 FALSE coassembly_timepoint_cage
+coassembly_cage_treat_C03_CR_bin.14 299 TRUE coassembly_timepoint_cage
+coassembly_cage_treat_C03_CR_bin.15 61 TRUE coassembly_timepoint_cage
+coassembly_cage_treat_C03_CR_bin.18 344 TRUE coassembly_timepoint_cage
+coassembly_cage_treat_C03_CR_bin.24 257 TRUE coassembly_timepoint_cage
+coassembly_cage_treat_C03_CR_bin.31 234 TRUE coassembly_timepoint_cage
+coassembly_cage_treat_C03_CR_bin.34 114 TRUE coassembly_timepoint_cage
+coassembly_cage_treat_C03_CR_bin.44 139 TRUE coassembly_timepoint_cage
+coassembly_cage_treat_C03_CR_bin.56 40 TRUE coassembly_timepoint_cage
+coassembly_cage_treat_C03_CR_bin.6 437 TRUE coassembly_timepoint_cage
+coassembly_cage_treat_C03_CR_bin.62 129 TRUE coassembly_timepoint_cage
+coassembly_cage_treat_C03_CR_bin.65 37 TRUE coassembly_timepoint_cage
+coassembly_cage_treat_C03_CR_bin.66 103 FALSE coassembly_timepoint_cage
+coassembly_cage_treat_C03_HR_bin.1 348 TRUE coassembly_timepoint_cage
+coassembly_cage_treat_C03_HR_bin.12 195 TRUE coassembly_timepoint_cage
+coassembly_cage_treat_C03_HR_bin.14 320 TRUE coassembly_timepoint_cage
+coassembly_cage_treat_C03_HR_bin.6 477 TRUE coassembly_timepoint_cage
+coassembly_cage_treat_C03_HT_bin.1 21 TRUE coassembly_timepoint_cage
+coassembly_cage_treat_C03_HT_bin.11 19 TRUE coassembly_timepoint_cage
+coassembly_cage_treat_C03_HT_bin.19 141 TRUE coassembly_timepoint_cage
+coassembly_cage_treat_C03_HT_bin.21 99 TRUE coassembly_timepoint_cage
+coassembly_cage_treat_C03_HT_bin.28 14 TRUE coassembly_timepoint_cage
+coassembly_cage_treat_C03_HT_bin.29 332 TRUE coassembly_timepoint_cage
+coassembly_cage_treat_C03_HT_bin.34 79 TRUE coassembly_timepoint_cage
+coassembly_cage_treat_C03_HT_bin.36 51 TRUE coassembly_timepoint_cage
+coassembly_cage_treat_C03_HT_bin.48 194 TRUE coassembly_timepoint_cage
+coassembly_cage_treat_C03_HT_bin.7 337 TRUE coassembly_timepoint_cage
+coassembly_cage_treat_C03_HT_bin.8 400 FALSE coassembly_timepoint_cage
+coassembly_cage_treat_C03_OP_bin.15 563 TRUE coassembly_timepoint_cage
+coassembly_cage_treat_C05_CD_bin.23 51 TRUE coassembly_timepoint_cage
+coassembly_cage_treat_C05_CD_bin.34 527 FALSE coassembly_timepoint_cage
+coassembly_cage_treat_C05_CD_bin.38 48 TRUE coassembly_timepoint_cage
+coassembly_cage_treat_C05_CD_bin.4 170 TRUE coassembly_timepoint_cage
+coassembly_cage_treat_C05_CD_bin.47 45 TRUE coassembly_timepoint_cage
+coassembly_cage_treat_C05_CD_bin.50 311 TRUE coassembly_timepoint_cage
+coassembly_cage_treat_C05_CD_bin.52 33 TRUE coassembly_timepoint_cage
+coassembly_cage_treat_C05_CD_bin.62 544 FALSE coassembly_timepoint_cage
+coassembly_cage_treat_C05_CD_bin.67 514 TRUE coassembly_timepoint_cage
+coassembly_cage_treat_C05_CR_bin.39 504 TRUE coassembly_timepoint_cage
+coassembly_cage_treat_C05_CR_bin.48 157 TRUE coassembly_timepoint_cage
+coassembly_cage_treat_C05_CR_bin.52 244 TRUE coassembly_timepoint_cage
+coassembly_cage_treat_C05_HR_bin.13 103 TRUE coassembly_timepoint_cage
+coassembly_cage_treat_C05_HR_bin.23 34 TRUE coassembly_timepoint_cage
+coassembly_cage_treat_C05_HR_bin.45 339 TRUE coassembly_timepoint_cage
+coassembly_cage_treat_C05_HR_bin.50 45 TRUE coassembly_timepoint_cage
+coassembly_cage_treat_C05_HR_bin.52 133 TRUE coassembly_timepoint_cage
+coassembly_cage_treat_C05_HR_bin.56 323 TRUE coassembly_timepoint_cage
+coassembly_cage_treat_C05_HR_bin.58 203 TRUE coassembly_timepoint_cage
+coassembly_cage_treat_C05_HR_bin.70 727 TRUE coassembly_timepoint_cage
+coassembly_cage_treat_C05_HR_bin.8 220 TRUE coassembly_timepoint_cage
+coassembly_cage_treat_C05_HT_bin.37 211 TRUE coassembly_timepoint_cage
+coassembly_cage_treat_C05_OP_bin.2 75 TRUE coassembly_timepoint_cage
+coassembly_cage_treat_C05_OP_bin.26 87 TRUE coassembly_timepoint_cage
+coassembly_cage_treat_C05_OP_bin.28 51 TRUE coassembly_timepoint_cage
+coassembly_cage_treat_C05_OP_bin.38 384 TRUE coassembly_timepoint_cage
+coassembly_cage_treat_C05_OP_bin.9 362 TRUE coassembly_timepoint_cage
+coassembly_cage_treat_C06_CD_bin.54 148 TRUE coassembly_timepoint_cage
+coassembly_cage_treat_C06_CD_bin.56 133 TRUE coassembly_timepoint_cage
+coassembly_cage_treat_C06_CR_bin.22 100 TRUE coassembly_timepoint_cage
+coassembly_cage_treat_C06_CR_bin.34 234 TRUE coassembly_timepoint_cage
+coassembly_cage_treat_C06_CR_bin.55 49 TRUE coassembly_timepoint_cage
+coassembly_cage_treat_C06_CR_bin.8 536 TRUE coassembly_timepoint_cage
+coassembly_cage_treat_C06_HR_bin.3 332 TRUE coassembly_timepoint_cage
+coassembly_cage_treat_C06_HR_bin.42 7 TRUE coassembly_timepoint_cage
+coassembly_cage_treat_C06_HR_bin.7 148 TRUE coassembly_timepoint_cage
+coassembly_cage_treat_C06_OP_bin.2 715 TRUE coassembly_timepoint_cage
+coassembly_cage_treat_C06_OP_bin.31 121 TRUE coassembly_timepoint_cage
+coassembly_cage_treat_C06_OP_bin.43 52 TRUE coassembly_timepoint_cage
+coassembly_cage_treat_C06_OP_bin.47 262 TRUE coassembly_timepoint_cage
+coassembly_cage_treat_C06_OP_bin.55 556 TRUE coassembly_timepoint_cage
+coassembly_cage_treat_C06_OP_bin.56 158 TRUE coassembly_timepoint_cage
+coassembly_cage_treat_C06_OP_bin.57 441 TRUE coassembly_timepoint_cage
+coassembly_cage_treat_C10_CD_bin.14 165 TRUE coassembly_timepoint_cage
+coassembly_cage_treat_C10_CD_bin.18 104 TRUE coassembly_timepoint_cage
+coassembly_cage_treat_C10_CD_bin.30 620 TRUE coassembly_timepoint_cage
+coassembly_cage_treat_C10_CD_bin.49 154 TRUE coassembly_timepoint_cage
+coassembly_cage_treat_C10_CD_bin.58 404 TRUE coassembly_timepoint_cage
+coassembly_cage_treat_C10_CD_bin.7 25 TRUE coassembly_timepoint_cage
+coassembly_cage_treat_C10_CD_bin.74 59 TRUE coassembly_timepoint_cage
+coassembly_cage_treat_C10_CR_bin.12 45 TRUE coassembly_timepoint_cage
+coassembly_cage_treat_C10_CR_bin.16 53 TRUE coassembly_timepoint_cage
+coassembly_cage_treat_C10_CR_bin.2 19 TRUE coassembly_timepoint_cage
+coassembly_cage_treat_C10_CR_bin.3 91 TRUE coassembly_timepoint_cage
+coassembly_cage_treat_C10_CR_bin.34 598 FALSE coassembly_timepoint_cage
+coassembly_cage_treat_C10_CR_bin.5 188 TRUE coassembly_timepoint_cage
+coassembly_cage_treat_C10_CR_bin.58 183 TRUE coassembly_timepoint_cage
+coassembly_cage_treat_C10_CR_bin.62 42 TRUE coassembly_timepoint_cage
+coassembly_cage_treat_C10_CR_bin.71 506 TRUE coassembly_timepoint_cage
+coassembly_cage_treat_C10_HR_bin.17 96 TRUE coassembly_timepoint_cage
+coassembly_cage_treat_C10_HR_bin.20 31 TRUE coassembly_timepoint_cage
+coassembly_cage_treat_C10_HR_bin.56 86 TRUE coassembly_timepoint_cage
+coassembly_cage_treat_C10_HR_bin.73 572 TRUE coassembly_timepoint_cage
+coassembly_cage_treat_C10_HT_bin.1 14 TRUE coassembly_timepoint_cage
+coassembly_cage_treat_C10_HT_bin.15 494 TRUE coassembly_timepoint_cage
+coassembly_cage_treat_C10_HT_bin.46 44 TRUE coassembly_timepoint_cage
+coassembly_cage_treat_C10_OP_bin.12 126 TRUE coassembly_timepoint_cage
+coassembly_cage_treat_C10_OP_bin.14 418 TRUE coassembly_timepoint_cage
+coassembly_cage_treat_C10_OP_bin.16 102 TRUE coassembly_timepoint_cage
+coassembly_cage_treat_C10_OP_bin.29 216 TRUE coassembly_timepoint_cage
+coassembly_cage_treat_C10_OP_bin.33 171 TRUE coassembly_timepoint_cage
+coassembly_cage_treat_C10_OP_bin.39 124 TRUE coassembly_timepoint_cage
+coassembly_cage_treat_C10_OP_bin.4 641 TRUE coassembly_timepoint_cage
+coassembly_cage_treat_C10_OP_bin.48 667 TRUE coassembly_timepoint_cage
+coassembly_cage_treat_C10_OP_bin.58 78 TRUE coassembly_timepoint_cage
+coassembly_cage_treat_C10_OP_bin.63 162 TRUE coassembly_timepoint_cage
+coassembly_cage_treat_C10_OP_bin.69 141 TRUE coassembly_timepoint_cage
+coassembly_cage_treat_C11_CD_bin.30 192 TRUE coassembly_timepoint_cage
+coassembly_cage_treat_C11_CD_bin.43 210 TRUE coassembly_timepoint_cage
+coassembly_cage_treat_C11_CD_bin.45 479 TRUE coassembly_timepoint_cage
+coassembly_cage_treat_C11_CR_bin.10 108 TRUE coassembly_timepoint_cage
+coassembly_cage_treat_C11_CR_bin.14 431 TRUE coassembly_timepoint_cage
+coassembly_cage_treat_C11_CR_bin.25 176 TRUE coassembly_timepoint_cage
+coassembly_cage_treat_C11_CR_bin.48 92 TRUE coassembly_timepoint_cage
+coassembly_cage_treat_C11_CR_bin.70 105 TRUE coassembly_timepoint_cage
+coassembly_cage_treat_C11_CR_bin.71 291 TRUE coassembly_timepoint_cage
+coassembly_cage_treat_C11_HR_bin.13 243 TRUE coassembly_timepoint_cage
+coassembly_cage_treat_C11_HR_bin.14 50 TRUE coassembly_timepoint_cage
+coassembly_cage_treat_C11_HR_bin.18 336 TRUE coassembly_timepoint_cage
+coassembly_cage_treat_C11_HR_bin.41 87 TRUE coassembly_timepoint_cage
+coassembly_cage_treat_C11_HR_bin.6 199 TRUE coassembly_timepoint_cage
+coassembly_cage_treat_C11_HT_bin.24 167 TRUE coassembly_timepoint_cage
+coassembly_cage_treat_C11_HT_bin.30 49 TRUE coassembly_timepoint_cage
+coassembly_cage_treat_C11_HT_bin.48 303 FALSE coassembly_timepoint_cage
+coassembly_cage_treat_C11_OP_bin.1 64 TRUE coassembly_timepoint_cage
+coassembly_cage_treat_C11_OP_bin.28 130 TRUE coassembly_timepoint_cage
+coassembly_cage_treat_C11_OP_bin.3 30 TRUE coassembly_timepoint_cage
+coassembly_cage_treat_C11_OP_bin.39 78 TRUE coassembly_timepoint_cage
+coassembly_cage_treat_C11_OP_bin.41 42 TRUE coassembly_timepoint_cage
+coassembly_cage_treat_C11_OP_bin.49 12 TRUE coassembly_timepoint_cage
+coassembly_cage_treat_C11_OP_bin.55 200 TRUE coassembly_timepoint_cage
+coassembly_cage_treat_C12_CD_bin.21 100 TRUE coassembly_timepoint_cage
+coassembly_cage_treat_C12_CD_bin.3 707 TRUE coassembly_timepoint_cage
+coassembly_cage_treat_C12_CD_bin.40 61 TRUE coassembly_timepoint_cage
+coassembly_cage_treat_C12_CD_bin.5 65 TRUE coassembly_timepoint_cage
+coassembly_cage_treat_C12_CD_bin.53 713 TRUE coassembly_timepoint_cage
+coassembly_cage_treat_C12_CD_bin.60 96 TRUE coassembly_timepoint_cage
+coassembly_cage_treat_C12_CD_bin.65 220 TRUE coassembly_timepoint_cage
+coassembly_cage_treat_C12_CD_bin.67 700 FALSE coassembly_timepoint_cage
+coassembly_cage_treat_C12_CR_bin.16 116 TRUE coassembly_timepoint_cage
+coassembly_cage_treat_C12_CR_bin.17 698 TRUE coassembly_timepoint_cage
+coassembly_cage_treat_C12_CR_bin.50 74 TRUE coassembly_timepoint_cage
+coassembly_cage_treat_C12_CR_bin.60 557 TRUE coassembly_timepoint_cage
+coassembly_cage_treat_C12_CR_bin.62 549 TRUE coassembly_timepoint_cage
+coassembly_cage_treat_C12_CR_bin.68 262 TRUE coassembly_timepoint_cage
+coassembly_cage_treat_C12_CR_bin.9 121 TRUE coassembly_timepoint_cage
+coassembly_cage_treat_C12_HT_bin.29 369 TRUE coassembly_timepoint_cage
+coassembly_cage_treat_C12_HT_bin.36 485 TRUE coassembly_timepoint_cage
+coassembly_cage_treat_C12_HT_bin.37 38 TRUE coassembly_timepoint_cage
+coassembly_cage_treat_C12_HT_bin.40 50 TRUE coassembly_timepoint_cage
+coassembly_cage_treat_C12_OP_bin.10 141 TRUE coassembly_timepoint_cage
+coassembly_cage_treat_C12_OP_bin.37 402 TRUE coassembly_timepoint_cage
+coassembly_cage_treat_C12_OP_bin.40 162 TRUE coassembly_timepoint_cage
+coassembly_cage_treat_C12_OP_bin.51 571 TRUE coassembly_timepoint_cage
+coassembly_cage_treat_C12_OP_bin.52 516 TRUE coassembly_timepoint_cage
+coassembly_long_C03M1_bin.24 125 TRUE coassembly_animal
+coassembly_long_C03M1_bin.53 480 TRUE coassembly_animal
+coassembly_long_C03M1_bin.55 131 TRUE coassembly_animal
+coassembly_long_C03M1_bin.6 476 TRUE coassembly_animal
+coassembly_long_C03M1_bin.63 34 TRUE coassembly_animal
+coassembly_long_C03M2_bin.14 706 FALSE coassembly_animal
+coassembly_long_C03M2_bin.38 295 TRUE coassembly_animal
+coassembly_long_C03M2_bin.57 45 TRUE coassembly_animal
+coassembly_long_C03M3_bin.1 149 TRUE coassembly_animal
+coassembly_long_C03M3_bin.15 150 TRUE coassembly_animal
+coassembly_long_C03M3_bin.23 123 TRUE coassembly_animal
+coassembly_long_C03M3_bin.26 7 TRUE coassembly_animal
+coassembly_long_C03M3_bin.31 77 TRUE coassembly_animal
+coassembly_long_C03M3_bin.56 47 TRUE coassembly_animal
+coassembly_long_C03M3_bin.67 104 TRUE coassembly_animal
+coassembly_long_C03M4_bin.1 70 TRUE coassembly_animal
+coassembly_long_C03M4_bin.12 513 TRUE coassembly_animal
+coassembly_long_C03M4_bin.13 92 TRUE coassembly_animal
+coassembly_long_C03M4_bin.27 247 TRUE coassembly_animal
+coassembly_long_C03M4_bin.40 97 TRUE coassembly_animal
+coassembly_long_C03M4_bin.50 154 TRUE coassembly_animal
+coassembly_long_C03M4_bin.60 76 TRUE coassembly_animal
+coassembly_long_C03M4_bin.63 223 TRUE coassembly_animal
+coassembly_long_C05M1_bin.28 180 TRUE coassembly_animal
+coassembly_long_C05M1_bin.43 378 TRUE coassembly_animal
+coassembly_long_C05M1_bin.53 172 TRUE coassembly_animal
+coassembly_long_C05M1_bin.55 150 TRUE coassembly_animal
+coassembly_long_C05M1_bin.58 208 TRUE coassembly_animal
+coassembly_long_C05M1_bin.61 670 TRUE coassembly_animal
+coassembly_long_C05M1_bin.68 43 TRUE coassembly_animal
+coassembly_long_C05M2_bin.18 90 TRUE coassembly_animal
+coassembly_long_C05M2_bin.30 97 TRUE coassembly_animal
+coassembly_long_C05M2_bin.49 35 TRUE coassembly_animal
+coassembly_long_C05M2_bin.57 188 TRUE coassembly_animal
+coassembly_long_C05M3_bin.12 142 TRUE coassembly_animal
+coassembly_long_C05M3_bin.2 238 TRUE coassembly_animal
+coassembly_long_C05M3_bin.23 58 TRUE coassembly_animal
+coassembly_long_C05M3_bin.30 149 TRUE coassembly_animal
+coassembly_long_C05M3_bin.32 794 TRUE coassembly_animal
+coassembly_long_C05M3_bin.5 109 TRUE coassembly_animal
+coassembly_long_C05M3_bin.50 115 TRUE coassembly_animal
+coassembly_long_C05M3_bin.53 439 TRUE coassembly_animal
+coassembly_long_C05M3_bin.59 48 TRUE coassembly_animal
+coassembly_long_C05M4_bin.10 48 TRUE coassembly_animal
+coassembly_long_C05M4_bin.26 50 TRUE coassembly_animal
+coassembly_long_C05M4_bin.30 142 TRUE coassembly_animal
+coassembly_long_C05M4_bin.43 31 TRUE coassembly_animal
+coassembly_long_C05M5_bin.13 475 FALSE coassembly_animal
+coassembly_long_C05M5_bin.19 32 TRUE coassembly_animal
+coassembly_long_C05M5_bin.33 58 TRUE coassembly_animal
+coassembly_long_C05M5_bin.34 141 TRUE coassembly_animal
+coassembly_long_C05M5_bin.38 108 TRUE coassembly_animal
+coassembly_long_C05M5_bin.43 448 TRUE coassembly_animal
+coassembly_long_C05M5_bin.46 683 FALSE coassembly_animal
+coassembly_long_C05M5_bin.62 66 TRUE coassembly_animal
+coassembly_long_C05M5_bin.67 37 TRUE coassembly_animal
+coassembly_long_C05M5_bin.9 119 TRUE coassembly_animal
+coassembly_long_C06M1_bin.15 549 TRUE coassembly_animal
+coassembly_long_C06M1_bin.28 6 TRUE coassembly_animal
+coassembly_long_C06M1_bin.51 196 TRUE coassembly_animal
+coassembly_long_C06M2_bin.43 292 FALSE coassembly_animal
+coassembly_long_C06M2_bin.46 110 TRUE coassembly_animal
+coassembly_long_C06M2_bin.49 559 TRUE coassembly_animal
+coassembly_long_C06M3_bin.2 30 TRUE coassembly_animal
+coassembly_long_C06M4_bin.6 119 TRUE coassembly_animal
+coassembly_long_C06M5_bin.10 212 TRUE coassembly_animal
+coassembly_long_C06M5_bin.14 60 TRUE coassembly_animal
+coassembly_long_C06M5_bin.18 166 TRUE coassembly_animal
+coassembly_long_C06M5_bin.20 64 TRUE coassembly_animal
+coassembly_long_C06M5_bin.24 112 TRUE coassembly_animal
+coassembly_long_C06M5_bin.43 804 TRUE coassembly_animal
+coassembly_long_C06M5_bin.44 17 TRUE coassembly_animal
+coassembly_long_C06M5_bin.49 22 TRUE coassembly_animal
+coassembly_long_C06M5_bin.55 130 TRUE coassembly_animal
+coassembly_long_C10F1_bin.21 65 TRUE coassembly_animal
+coassembly_long_C10F1_bin.25 339 TRUE coassembly_animal
+coassembly_long_C10F1_bin.27 181 TRUE coassembly_animal
+coassembly_long_C10F1_bin.34 500 TRUE coassembly_animal
+coassembly_long_C10F1_bin.40 106 TRUE coassembly_animal
+coassembly_long_C10F1_bin.51 473 TRUE coassembly_animal
+coassembly_long_C10F1_bin.57 138 TRUE coassembly_animal
+coassembly_long_C10F1_bin.65 102 TRUE coassembly_animal
+coassembly_long_C10F1_bin.67 622 TRUE coassembly_animal
+coassembly_long_C10F2_bin.11 204 TRUE coassembly_animal
+coassembly_long_C10F2_bin.16 21 TRUE coassembly_animal
+coassembly_long_C10F2_bin.22 533 TRUE coassembly_animal
+coassembly_long_C10F2_bin.3 171 TRUE coassembly_animal
+coassembly_long_C10F2_bin.36 410 TRUE coassembly_animal
+coassembly_long_C10F2_bin.48 62 TRUE coassembly_animal
+coassembly_long_C10F2_bin.49 290 TRUE coassembly_animal
+coassembly_long_C10F2_bin.51 276 TRUE coassembly_animal
+coassembly_long_C10F2_bin.53 46 TRUE coassembly_animal
+coassembly_long_C10F3_bin.15 60 TRUE coassembly_animal
+coassembly_long_C10F3_bin.26 80 TRUE coassembly_animal
+coassembly_long_C10F3_bin.38 162 TRUE coassembly_animal
+coassembly_long_C10F3_bin.45 203 TRUE coassembly_animal
+coassembly_long_C10F4_bin.31 176 TRUE coassembly_animal
+coassembly_long_C10F4_bin.44 64 TRUE coassembly_animal
+coassembly_long_C10F4_bin.5 134 TRUE coassembly_animal
+coassembly_long_C10F4_bin.50 677 TRUE coassembly_animal
+coassembly_long_C10F5_bin.10 393 TRUE coassembly_animal
+coassembly_long_C10F5_bin.17 22 TRUE coassembly_animal
+coassembly_long_C10F5_bin.23 614 TRUE coassembly_animal
+coassembly_long_C10F5_bin.29 230 TRUE coassembly_animal
+coassembly_long_C10F5_bin.31 131 TRUE coassembly_animal
+coassembly_long_C10F5_bin.39 229 TRUE coassembly_animal
+coassembly_long_C10F5_bin.40 475 TRUE coassembly_animal
+coassembly_long_C10F5_bin.5 376 TRUE coassembly_animal
+coassembly_long_C10F5_bin.54 225 TRUE coassembly_animal
+coassembly_long_C10F5_bin.8 168 TRUE coassembly_animal
+coassembly_long_C11F1_bin.10 192 TRUE coassembly_animal
+coassembly_long_C11F1_bin.44 206 TRUE coassembly_animal
+coassembly_long_C11F1_bin.8 237 TRUE coassembly_animal
+coassembly_long_C11F2_bin.26 105 TRUE coassembly_animal
+coassembly_long_C11F2_bin.29 85 TRUE coassembly_animal
+coassembly_long_C11F2_bin.39 83 TRUE coassembly_animal
+coassembly_long_C11F2_bin.51 143 TRUE coassembly_animal
+coassembly_long_C11F2_bin.58 150 TRUE coassembly_animal
+coassembly_long_C11F2_bin.59 96 TRUE coassembly_animal
+coassembly_long_C11F2_bin.61 180 TRUE coassembly_animal
+coassembly_long_C11F2_bin.65 503 TRUE coassembly_animal
+coassembly_long_C11F3_bin.33 136 TRUE coassembly_animal
+coassembly_long_C11F3_bin.5 188 TRUE coassembly_animal
+coassembly_long_C11F3_bin.7 54 TRUE coassembly_animal
+coassembly_long_C11F4_bin.1 53 TRUE coassembly_animal
+coassembly_long_C11F4_bin.28 100 TRUE coassembly_animal
+coassembly_long_C11F4_bin.52 153 TRUE coassembly_animal
+coassembly_long_C11F4_bin.61 102 TRUE coassembly_animal
+coassembly_long_C11F5_bin.14 227 TRUE coassembly_animal
+coassembly_long_C11F5_bin.26 43 TRUE coassembly_animal
+coassembly_long_C11F5_bin.30 185 TRUE coassembly_animal
+coassembly_long_C11F5_bin.42 388 TRUE coassembly_animal
+coassembly_long_C11F5_bin.60 490 TRUE coassembly_animal
+coassembly_long_C11F5_bin.64 547 TRUE coassembly_animal
+coassembly_long_C12F1_bin.28 105 TRUE coassembly_animal
+coassembly_long_C12F1_bin.31 111 TRUE coassembly_animal
+coassembly_long_C12F1_bin.39 174 TRUE coassembly_animal
+coassembly_long_C12F2_bin.26 157 TRUE coassembly_animal
+coassembly_long_C12F2_bin.29 33 TRUE coassembly_animal
+coassembly_long_C12F2_bin.48 196 TRUE coassembly_animal
+coassembly_long_C12F2_bin.57 749 FALSE coassembly_animal
+coassembly_long_C12F2_bin.58 647 FALSE coassembly_animal
+coassembly_long_C12F2_bin.6 191 TRUE coassembly_animal
+coassembly_long_C12F2_bin.9 46 TRUE coassembly_animal
+coassembly_long_C12F3_bin.10 864 TRUE coassembly_animal
+coassembly_long_C12F3_bin.21 95 TRUE coassembly_animal
+coassembly_long_C12F3_bin.30 39 TRUE coassembly_animal
+coassembly_long_C12F3_bin.32 33 TRUE coassembly_animal
+coassembly_long_C12F3_bin.42 50 TRUE coassembly_animal
+coassembly_long_C12F3_bin.8 165 TRUE coassembly_animal
+coassembly_long_C12F4_bin.45 150 TRUE coassembly_animal
+coassembly_long_C12F5_bin.12 136 TRUE coassembly_animal
+coassembly_long_C12F5_bin.13 233 TRUE coassembly_animal
+coassembly_long_C12F5_bin.14 40 TRUE coassembly_animal
+coassembly_long_C12F5_bin.18 64 TRUE coassembly_animal
+coassembly_long_C12F5_bin.22 617 TRUE coassembly_animal
+coassembly_long_C12F5_bin.24 241 TRUE coassembly_animal
+coassembly_long_C12F5_bin.29 407 TRUE coassembly_animal
+coassembly_long_C12F5_bin.33 153 TRUE coassembly_animal
+coassembly_long_C12F5_bin.40 109 TRUE coassembly_animal
+coassembly_long_C12F5_bin.42 239 TRUE coassembly_animal
+coassembly_long_C12F5_bin.44 48 TRUE coassembly_animal
+coassembly_long_C12F5_bin.47 130 TRUE coassembly_animal
+coassembly_long_C12F5_bin.48 104 TRUE coassembly_animal
+coassembly_long_C12F5_bin.49 521 TRUE coassembly_animal
+coassembly_long_C12F5_bin.54 40 TRUE coassembly_animal
+coassembly_long_C12F5_bin.6 144 TRUE coassembly_animal
+coassembly_treat_CD_bin.101 333 TRUE coassembly_timepoint_all
+coassembly_treat_CD_bin.102 107 TRUE coassembly_timepoint_all
+coassembly_treat_CD_bin.103 676 TRUE coassembly_timepoint_all
+coassembly_treat_CD_bin.107 159 TRUE coassembly_timepoint_all
+coassembly_treat_CD_bin.109 100 TRUE coassembly_timepoint_all
+coassembly_treat_CD_bin.125 46 TRUE coassembly_timepoint_all
+coassembly_treat_CD_bin.128 212 TRUE coassembly_timepoint_all
+coassembly_treat_CD_bin.132 62 TRUE coassembly_timepoint_all
+coassembly_treat_CD_bin.138 279 TRUE coassembly_timepoint_all
+coassembly_treat_CD_bin.19 183 TRUE coassembly_timepoint_all
+coassembly_treat_CD_bin.2 234 TRUE coassembly_timepoint_all
+coassembly_treat_CD_bin.23 397 TRUE coassembly_timepoint_all
+coassembly_treat_CD_bin.26 96 TRUE coassembly_timepoint_all
+coassembly_treat_CD_bin.28 127 TRUE coassembly_timepoint_all
+coassembly_treat_CD_bin.29 26 TRUE coassembly_timepoint_all
+coassembly_treat_CD_bin.3 443 TRUE coassembly_timepoint_all
+coassembly_treat_CD_bin.31 39 TRUE coassembly_timepoint_all
+coassembly_treat_CD_bin.38 12 TRUE coassembly_timepoint_all
+coassembly_treat_CD_bin.39 220 TRUE coassembly_timepoint_all
+coassembly_treat_CD_bin.41 158 TRUE coassembly_timepoint_all
+coassembly_treat_CD_bin.42 274 TRUE coassembly_timepoint_all
+coassembly_treat_CD_bin.48 38 TRUE coassembly_timepoint_all
+coassembly_treat_CD_bin.5 28 TRUE coassembly_timepoint_all
+coassembly_treat_CD_bin.50 136 TRUE coassembly_timepoint_all
+coassembly_treat_CD_bin.51 118 TRUE coassembly_timepoint_all
+coassembly_treat_CD_bin.53 652 TRUE coassembly_timepoint_all
+coassembly_treat_CD_bin.55 39 TRUE coassembly_timepoint_all
+coassembly_treat_CD_bin.57 109 TRUE coassembly_timepoint_all
+coassembly_treat_CD_bin.6 117 TRUE coassembly_timepoint_all
+coassembly_treat_CD_bin.61 130 TRUE coassembly_timepoint_all
+coassembly_treat_CD_bin.68 607 TRUE coassembly_timepoint_all
+coassembly_treat_CD_bin.69 231 TRUE coassembly_timepoint_all
+coassembly_treat_CD_bin.76 134 TRUE coassembly_timepoint_all
+coassembly_treat_CD_bin.77 216 TRUE coassembly_timepoint_all
+coassembly_treat_CD_bin.79 379 TRUE coassembly_timepoint_all
+coassembly_treat_CD_bin.80 91 TRUE coassembly_timepoint_all
+coassembly_treat_CD_bin.85 147 FALSE coassembly_timepoint_all
+coassembly_treat_CD_bin.93 72 TRUE coassembly_timepoint_all
+coassembly_treat_CD_bin.94 314 TRUE coassembly_timepoint_all
+coassembly_treat_CD_bin.96 147 TRUE coassembly_timepoint_all
+coassembly_treat_CD_bin.99 154 TRUE coassembly_timepoint_all
+coassembly_treat_CR_bin.10 128 TRUE coassembly_timepoint_all
+coassembly_treat_CR_bin.103 306 TRUE coassembly_timepoint_all
+coassembly_treat_CR_bin.107 127 TRUE coassembly_timepoint_all
+coassembly_treat_CR_bin.110 195 TRUE coassembly_timepoint_all
+coassembly_treat_CR_bin.113 391 TRUE coassembly_timepoint_all
+coassembly_treat_CR_bin.117 31 TRUE coassembly_timepoint_all
+coassembly_treat_CR_bin.129 506 TRUE coassembly_timepoint_all
+coassembly_treat_CR_bin.133 85 TRUE coassembly_timepoint_all
+coassembly_treat_CR_bin.14 102 TRUE coassembly_timepoint_all
+coassembly_treat_CR_bin.17 712 TRUE coassembly_timepoint_all
+coassembly_treat_CR_bin.18 234 TRUE coassembly_timepoint_all
+coassembly_treat_CR_bin.21 655 TRUE coassembly_timepoint_all
+coassembly_treat_CR_bin.23 198 TRUE coassembly_timepoint_all
+coassembly_treat_CR_bin.27 382 TRUE coassembly_timepoint_all
+coassembly_treat_CR_bin.36 314 TRUE coassembly_timepoint_all
+coassembly_treat_CR_bin.40 375 TRUE coassembly_timepoint_all
+coassembly_treat_CR_bin.46 270 FALSE coassembly_timepoint_all
+coassembly_treat_CR_bin.48 32 TRUE coassembly_timepoint_all
+coassembly_treat_CR_bin.5 221 TRUE coassembly_timepoint_all
+coassembly_treat_CR_bin.53 228 TRUE coassembly_timepoint_all
+coassembly_treat_CR_bin.55 146 TRUE coassembly_timepoint_all
+coassembly_treat_CR_bin.57 207 TRUE coassembly_timepoint_all
+coassembly_treat_CR_bin.60 258 TRUE coassembly_timepoint_all
+coassembly_treat_CR_bin.65 119 TRUE coassembly_timepoint_all
+coassembly_treat_CR_bin.67 217 TRUE coassembly_timepoint_all
+coassembly_treat_CR_bin.70 241 TRUE coassembly_timepoint_all
+coassembly_treat_CR_bin.77 136 TRUE coassembly_timepoint_all
+coassembly_treat_CR_bin.79 146 TRUE coassembly_timepoint_all
+coassembly_treat_CR_bin.81 228 TRUE coassembly_timepoint_all
+coassembly_treat_CR_bin.99 325 TRUE coassembly_timepoint_all
+coassembly_treat_HR_bin.120 91 TRUE coassembly_timepoint_all
+coassembly_treat_HR_bin.13 521 TRUE coassembly_timepoint_all
+coassembly_treat_HR_bin.132 231 TRUE coassembly_timepoint_all
+coassembly_treat_HR_bin.138 160 TRUE coassembly_timepoint_all
+coassembly_treat_HR_bin.18 130 TRUE coassembly_timepoint_all
+coassembly_treat_HR_bin.25 598 TRUE coassembly_timepoint_all
+coassembly_treat_HR_bin.39 234 TRUE coassembly_timepoint_all
+coassembly_treat_HR_bin.4 288 TRUE coassembly_timepoint_all
+coassembly_treat_HR_bin.41 129 TRUE coassembly_timepoint_all
+coassembly_treat_HR_bin.48 209 FALSE coassembly_timepoint_all
+coassembly_treat_HR_bin.52 879 TRUE coassembly_timepoint_all
+coassembly_treat_HR_bin.70 463 TRUE coassembly_timepoint_all
+coassembly_treat_HR_bin.71 44 TRUE coassembly_timepoint_all
+coassembly_treat_HR_bin.78 149 TRUE coassembly_timepoint_all
+coassembly_treat_HR_bin.82 596 TRUE coassembly_timepoint_all
+coassembly_treat_HR_bin.85 56 TRUE coassembly_timepoint_all
+coassembly_treat_HR_bin.90 150 TRUE coassembly_timepoint_all
+coassembly_treat_HR_bin.93 166 TRUE coassembly_timepoint_all
+coassembly_treat_HR_bin.95 220 TRUE coassembly_timepoint_all
+coassembly_treat_HT_bin.1 279 TRUE coassembly_timepoint_all
+coassembly_treat_HT_bin.101 42 TRUE coassembly_timepoint_all
+coassembly_treat_HT_bin.103 58 TRUE coassembly_timepoint_all
+coassembly_treat_HT_bin.104 67 TRUE coassembly_timepoint_all
+coassembly_treat_HT_bin.109 28 TRUE coassembly_timepoint_all
+coassembly_treat_HT_bin.113 389 TRUE coassembly_timepoint_all
+coassembly_treat_HT_bin.114 54 TRUE coassembly_timepoint_all
+coassembly_treat_HT_bin.115 262 TRUE coassembly_timepoint_all
+coassembly_treat_HT_bin.12 362 TRUE coassembly_timepoint_all
+coassembly_treat_HT_bin.121 42 TRUE coassembly_timepoint_all
+coassembly_treat_HT_bin.123 109 TRUE coassembly_timepoint_all
+coassembly_treat_HT_bin.125 219 TRUE coassembly_timepoint_all
+coassembly_treat_HT_bin.132 470 TRUE coassembly_timepoint_all
+coassembly_treat_HT_bin.133 57 TRUE coassembly_timepoint_all
+coassembly_treat_HT_bin.136 218 TRUE coassembly_timepoint_all
+coassembly_treat_HT_bin.137 251 TRUE coassembly_timepoint_all
+coassembly_treat_HT_bin.14 481 TRUE coassembly_timepoint_all
+coassembly_treat_HT_bin.21 103 TRUE coassembly_timepoint_all
+coassembly_treat_HT_bin.27 61 TRUE coassembly_timepoint_all
+coassembly_treat_HT_bin.28 43 TRUE coassembly_timepoint_all
+coassembly_treat_HT_bin.3 275 TRUE coassembly_timepoint_all
+coassembly_treat_HT_bin.32 237 TRUE coassembly_timepoint_all
+coassembly_treat_HT_bin.33 462 TRUE coassembly_timepoint_all
+coassembly_treat_HT_bin.42 133 TRUE coassembly_timepoint_all
+coassembly_treat_HT_bin.45 159 TRUE coassembly_timepoint_all
+coassembly_treat_HT_bin.48 570 TRUE coassembly_timepoint_all
+coassembly_treat_HT_bin.51 162 TRUE coassembly_timepoint_all
+coassembly_treat_HT_bin.52 231 TRUE coassembly_timepoint_all
+coassembly_treat_HT_bin.57 523 TRUE coassembly_timepoint_all
+coassembly_treat_HT_bin.6 143 FALSE coassembly_timepoint_all
+coassembly_treat_HT_bin.60 51 TRUE coassembly_timepoint_all
+coassembly_treat_HT_bin.7 121 TRUE coassembly_timepoint_all
+coassembly_treat_HT_bin.72 38 TRUE coassembly_timepoint_all
+coassembly_treat_HT_bin.75 35 TRUE coassembly_timepoint_all
+coassembly_treat_HT_bin.77 78 TRUE coassembly_timepoint_all
+coassembly_treat_HT_bin.8 337 TRUE coassembly_timepoint_all
+coassembly_treat_HT_bin.82 162 TRUE coassembly_timepoint_all
+coassembly_treat_HT_bin.85 243 TRUE coassembly_timepoint_all
+coassembly_treat_HT_bin.87 259 TRUE coassembly_timepoint_all
+coassembly_treat_HT_bin.89 64 TRUE coassembly_timepoint_all
+coassembly_treat_HT_bin.96 111 TRUE coassembly_timepoint_all
+coassembly_treat_OP_bin.10 65 TRUE coassembly_timepoint_all
+coassembly_treat_OP_bin.104 351 TRUE coassembly_timepoint_all
+coassembly_treat_OP_bin.110 256 TRUE coassembly_timepoint_all
+coassembly_treat_OP_bin.112 598 TRUE coassembly_timepoint_all
+coassembly_treat_OP_bin.116 517 TRUE coassembly_timepoint_all
+coassembly_treat_OP_bin.119 239 TRUE coassembly_timepoint_all
+coassembly_treat_OP_bin.12 172 TRUE coassembly_timepoint_all
+coassembly_treat_OP_bin.123 449 TRUE coassembly_timepoint_all
+coassembly_treat_OP_bin.124 70 TRUE coassembly_timepoint_all
+coassembly_treat_OP_bin.126 121 TRUE coassembly_timepoint_all
+coassembly_treat_OP_bin.129 84 TRUE coassembly_timepoint_all
+coassembly_treat_OP_bin.131 68 TRUE coassembly_timepoint_all
+coassembly_treat_OP_bin.134 237 TRUE coassembly_timepoint_all
+coassembly_treat_OP_bin.15 289 TRUE coassembly_timepoint_all
+coassembly_treat_OP_bin.16 50 TRUE coassembly_timepoint_all
+coassembly_treat_OP_bin.2 654 TRUE coassembly_timepoint_all
+coassembly_treat_OP_bin.24 313 TRUE coassembly_timepoint_all
+coassembly_treat_OP_bin.26 431 TRUE coassembly_timepoint_all
+coassembly_treat_OP_bin.3 245 TRUE coassembly_timepoint_all
+coassembly_treat_OP_bin.34 158 TRUE coassembly_timepoint_all
+coassembly_treat_OP_bin.38 49 TRUE coassembly_timepoint_all
+coassembly_treat_OP_bin.41 72 TRUE coassembly_timepoint_all
+coassembly_treat_OP_bin.44 267 FALSE coassembly_timepoint_all
+coassembly_treat_OP_bin.45 61 TRUE coassembly_timepoint_all
+coassembly_treat_OP_bin.46 42 TRUE coassembly_timepoint_all
+coassembly_treat_OP_bin.49 130 TRUE coassembly_timepoint_all
+coassembly_treat_OP_bin.5 79 TRUE coassembly_timepoint_all
+coassembly_treat_OP_bin.53 77 TRUE coassembly_timepoint_all
+coassembly_treat_OP_bin.55 34 TRUE coassembly_timepoint_all
+coassembly_treat_OP_bin.57 320 TRUE coassembly_timepoint_all
+coassembly_treat_OP_bin.58 34 TRUE coassembly_timepoint_all
+coassembly_treat_OP_bin.6 537 TRUE coassembly_timepoint_all
+coassembly_treat_OP_bin.60 76 TRUE coassembly_timepoint_all
+coassembly_treat_OP_bin.64 121 TRUE coassembly_timepoint_all
+coassembly_treat_OP_bin.67 156 TRUE coassembly_timepoint_all
+coassembly_treat_OP_bin.71 163 TRUE coassembly_timepoint_all
+coassembly_treat_OP_bin.72 255 TRUE coassembly_timepoint_all
+coassembly_treat_OP_bin.75 344 TRUE coassembly_timepoint_all
+coassembly_treat_OP_bin.76 244 TRUE coassembly_timepoint_all
+coassembly_treat_OP_bin.82 108 TRUE coassembly_timepoint_all
+coassembly_treat_OP_bin.83 108 TRUE coassembly_timepoint_all
+coassembly_treat_OP_bin.86 877 TRUE coassembly_timepoint_all
+coassembly_treat_OP_bin.87 131 TRUE coassembly_timepoint_all
+coassembly_treat_OP_bin.91 295 TRUE coassembly_timepoint_all
+coassembly_treat_OP_bin.92 85 TRUE coassembly_timepoint_all
+cobinning_cage_treat_C03M1CD_subsam_contigs.fasta_bin.13 97 TRUE multicoverage_timepoint_cage
+cobinning_cage_treat_C03M1CD_subsam_contigs.fasta_bin.30 656 TRUE multicoverage_timepoint_cage
+cobinning_cage_treat_C03M1CR_subsam_contigs.fasta_bin.25 104 TRUE multicoverage_timepoint_cage
+cobinning_cage_treat_C03M1HR_subsam_contigs.fasta_bin.3 317 TRUE multicoverage_timepoint_cage
+cobinning_cage_treat_C03M1OP_subsam_contigs.fasta_bin.11 112 TRUE multicoverage_timepoint_cage
+cobinning_cage_treat_C03M1OP_subsam_contigs.fasta_bin.22 262 TRUE multicoverage_timepoint_cage
+cobinning_cage_treat_C03M1OP_subsam_contigs.fasta_bin.5 189 TRUE multicoverage_timepoint_cage
+cobinning_cage_treat_C03M2CD_subsam_contigs.fasta_bin.11 170 TRUE multicoverage_timepoint_cage
+cobinning_cage_treat_C03M2CD_subsam_contigs.fasta_bin.13 110 TRUE multicoverage_timepoint_cage
+cobinning_cage_treat_C03M2CD_subsam_contigs.fasta_bin.19 251 TRUE multicoverage_timepoint_cage
+cobinning_cage_treat_C03M2CD_subsam_contigs.fasta_bin.20 79 TRUE multicoverage_timepoint_cage
+cobinning_cage_treat_C03M2CR_subsam_contigs.fasta_bin.13 73 TRUE multicoverage_timepoint_cage
+cobinning_cage_treat_C03M2HR_subsam_contigs.fasta_bin.24 105 TRUE multicoverage_timepoint_cage
+cobinning_cage_treat_C03M2HR_subsam_contigs.fasta_bin.28 79 FALSE multicoverage_timepoint_cage
+cobinning_cage_treat_C03M2HR_subsam_contigs.fasta_bin.6 365 TRUE multicoverage_timepoint_cage
+cobinning_cage_treat_C03M3CD_subsam_contigs.fasta_bin.17 372 TRUE multicoverage_timepoint_cage
+cobinning_cage_treat_C03M3CD_subsam_contigs.fasta_bin.22 118 TRUE multicoverage_timepoint_cage
+cobinning_cage_treat_C03M3CD_subsam_contigs.fasta_bin.23 235 TRUE multicoverage_timepoint_cage
+cobinning_cage_treat_C03M3HT_subsam_contigs.fasta_bin.28 465 TRUE multicoverage_timepoint_cage
+cobinning_cage_treat_C03M3HT_subsam_contigs.fasta_bin.4 160 TRUE multicoverage_timepoint_cage
+cobinning_cage_treat_C03M3OP_subsam_contigs.fasta_bin.13 5 TRUE multicoverage_timepoint_cage
+cobinning_cage_treat_C03M4CD_subsam_contigs.fasta_bin.14 69 TRUE multicoverage_timepoint_cage
+cobinning_cage_treat_C03M4CR_subsam_contigs.fasta_bin.14 30 TRUE multicoverage_timepoint_cage
+cobinning_cage_treat_C03M4CR_subsam_contigs.fasta_bin.16 88 TRUE multicoverage_timepoint_cage
+cobinning_cage_treat_C03M4CR_subsam_contigs.fasta_bin.2 183 TRUE multicoverage_timepoint_cage
+cobinning_cage_treat_C03M4CR_subsam_contigs.fasta_bin.24 157 TRUE multicoverage_timepoint_cage
+cobinning_cage_treat_C03M4CR_subsam_contigs.fasta_bin.27 551 TRUE multicoverage_timepoint_cage
+cobinning_cage_treat_C03M4CR_subsam_contigs.fasta_bin.7 122 TRUE multicoverage_timepoint_cage
+cobinning_cage_treat_C03M4HT_subsam_contigs.fasta_bin.7 334 TRUE multicoverage_timepoint_cage
+cobinning_cage_treat_C03M4OP_subsam_contigs.fasta_bin.20 285 TRUE multicoverage_timepoint_cage
+cobinning_cage_treat_C03M5CR_subsam_contigs.fasta_bin.10 88 TRUE multicoverage_timepoint_cage
+cobinning_cage_treat_C03M5HT_subsam_contigs.fasta_bin.16 41 TRUE multicoverage_timepoint_cage
+cobinning_cage_treat_C03M5OP_subsam_contigs.fasta_bin.21 127 TRUE multicoverage_timepoint_cage
+cobinning_cage_treat_C05M1CD_subsam_contigs.fasta_bin.23 120 TRUE multicoverage_timepoint_cage
+cobinning_cage_treat_C05M1CR_subsam_contigs.fasta_bin.19 480 TRUE multicoverage_timepoint_cage
+cobinning_cage_treat_C05M1CR_subsam_contigs.fasta_bin.20 58 TRUE multicoverage_timepoint_cage
+cobinning_cage_treat_C05M1CR_subsam_contigs.fasta_bin.28 50 TRUE multicoverage_timepoint_cage
+cobinning_cage_treat_C05M1CR_subsam_contigs.fasta_bin.30 113 TRUE multicoverage_timepoint_cage
+cobinning_cage_treat_C05M1CR_subsam_contigs.fasta_bin.5 129 TRUE multicoverage_timepoint_cage
+cobinning_cage_treat_C05M1HT_subsam_contigs.fasta_bin.17 45 TRUE multicoverage_timepoint_cage
+cobinning_cage_treat_C05M1OP_subsam_contigs.fasta_bin.15 459 TRUE multicoverage_timepoint_cage
+cobinning_cage_treat_C05M2CR_subsam_contigs.fasta_bin.6 209 TRUE multicoverage_timepoint_cage
+cobinning_cage_treat_C05M2OP_subsam_contigs.fasta_bin.29 507 TRUE multicoverage_timepoint_cage
+cobinning_cage_treat_C05M3HR_subsam_contigs.fasta_bin.7 311 TRUE multicoverage_timepoint_cage
+cobinning_cage_treat_C05M4CD_subsam_contigs.fasta_bin.5 460 TRUE multicoverage_timepoint_cage
+cobinning_cage_treat_C05M4HR_subsam_contigs.fasta_bin.18 71 TRUE multicoverage_timepoint_cage
+cobinning_cage_treat_C05M4OP_subsam_contigs.fasta_bin.16 169 TRUE multicoverage_timepoint_cage
+cobinning_cage_treat_C05M4OP_subsam_contigs.fasta_bin.3 74 TRUE multicoverage_timepoint_cage
+cobinning_cage_treat_C05M5CD_subsam_contigs.fasta_bin.18 84 TRUE multicoverage_timepoint_cage
+cobinning_cage_treat_C05M5CD_subsam_contigs.fasta_bin.33 578 TRUE multicoverage_timepoint_cage
+cobinning_cage_treat_C05M5CR_subsam_contigs.fasta_bin.17 62 TRUE multicoverage_timepoint_cage
+cobinning_cage_treat_C05M5CR_subsam_contigs.fasta_bin.25 26 TRUE multicoverage_timepoint_cage
+cobinning_cage_treat_C05M5OP_subsam_contigs.fasta_bin.23 39 TRUE multicoverage_timepoint_cage
+cobinning_cage_treat_C06M1CD_subsam_contigs.fasta_bin.7 267 TRUE multicoverage_timepoint_cage
+cobinning_cage_treat_C06M2CD_subsam_contigs.fasta_bin.4 11 TRUE multicoverage_timepoint_cage
+cobinning_cage_treat_C06M2OP_subsam_contigs.fasta_bin.21 547 TRUE multicoverage_timepoint_cage
+cobinning_cage_treat_C06M3CR_subsam_contigs.fasta_bin.26 67 TRUE multicoverage_timepoint_cage
+cobinning_cage_treat_C06M3HT_subsam_contigs.fasta_bin.17 48 TRUE multicoverage_timepoint_cage
+cobinning_cage_treat_C06M3OP_subsam_contigs.fasta_bin.14 50 TRUE multicoverage_timepoint_cage
+cobinning_cage_treat_C06M3OP_subsam_contigs.fasta_bin.9 162 TRUE multicoverage_timepoint_cage
+cobinning_cage_treat_C06M4HR_subsam_contigs.fasta_bin.15 299 FALSE multicoverage_timepoint_cage
+cobinning_cage_treat_C06M4OP_subsam_contigs.fasta_bin.19 433 TRUE multicoverage_timepoint_cage
+cobinning_cage_treat_C06M5CR_subsam_contigs.fasta_bin.2 526 TRUE multicoverage_timepoint_cage
+cobinning_cage_treat_C06M5HR_subsam_contigs.fasta_bin.15 100 TRUE multicoverage_timepoint_cage
+cobinning_cage_treat_C06M5HT_subsam_contigs.fasta_bin.7 21 TRUE multicoverage_timepoint_cage
+cobinning_cage_treat_C10F1CD_subsam_contigs.fasta_bin.13 515 TRUE multicoverage_timepoint_cage
+cobinning_cage_treat_C10F1CD_subsam_contigs.fasta_bin.7 132 TRUE multicoverage_timepoint_cage
+cobinning_cage_treat_C10F1CR_subsam_contigs.fasta_bin.29 200 TRUE multicoverage_timepoint_cage
+cobinning_cage_treat_C10F1HR_subsam_contigs.fasta_bin.1 216 TRUE multicoverage_timepoint_cage
+cobinning_cage_treat_C10F1OP_subsam_contigs.fasta_bin.21 284 TRUE multicoverage_timepoint_cage
+cobinning_cage_treat_C10F1OP_subsam_contigs.fasta_bin.25 526 TRUE multicoverage_timepoint_cage
+cobinning_cage_treat_C10F1OP_subsam_contigs.fasta_bin.6 99 TRUE multicoverage_timepoint_cage
+cobinning_cage_treat_C10F2CD_subsam_contigs.fasta_bin.3 25 TRUE multicoverage_timepoint_cage
+cobinning_cage_treat_C10F2CR_subsam_contigs.fasta_bin.11 46 TRUE multicoverage_timepoint_cage
+cobinning_cage_treat_C10F2HT_subsam_contigs.fasta_bin.14 11 TRUE multicoverage_timepoint_cage
+cobinning_cage_treat_C10F2OP_subsam_contigs.fasta_bin.10 193 TRUE multicoverage_timepoint_cage
+cobinning_cage_treat_C10F3CD_subsam_contigs.fasta_bin.10 210 TRUE multicoverage_timepoint_cage
+cobinning_cage_treat_C10F3CD_subsam_contigs.fasta_bin.11 79 TRUE multicoverage_timepoint_cage
+cobinning_cage_treat_C10F3CR_subsam_contigs.fasta_bin.12 71 TRUE multicoverage_timepoint_cage
+cobinning_cage_treat_C10F3CR_subsam_contigs.fasta_bin.9 303 TRUE multicoverage_timepoint_cage
+cobinning_cage_treat_C10F3HR_subsam_contigs.fasta_bin.1 161 TRUE multicoverage_timepoint_cage
+cobinning_cage_treat_C10F3HR_subsam_contigs.fasta_bin.12 40 TRUE multicoverage_timepoint_cage
+cobinning_cage_treat_C10F3HR_subsam_contigs.fasta_bin.8 100 TRUE multicoverage_timepoint_cage
+cobinning_cage_treat_C10F4CD_subsam_contigs.fasta_bin.11 525 TRUE multicoverage_timepoint_cage
+cobinning_cage_treat_C10F4CD_subsam_contigs.fasta_bin.21 110 TRUE multicoverage_timepoint_cage
+cobinning_cage_treat_C10F4CD_subsam_contigs.fasta_bin.7 96 TRUE multicoverage_timepoint_cage
+cobinning_cage_treat_C10F4CR_subsam_contigs.fasta_bin.21 109 TRUE multicoverage_timepoint_cage
+cobinning_cage_treat_C10F4HR_subsam_contigs.fasta_bin.12 272 FALSE multicoverage_timepoint_cage
+cobinning_cage_treat_C10F4HR_subsam_contigs.fasta_bin.20 31 TRUE multicoverage_timepoint_cage
+cobinning_cage_treat_C10F4OP_subsam_contigs.fasta_bin.16 87 TRUE multicoverage_timepoint_cage
+cobinning_cage_treat_C10F5CR_subsam_contigs.fasta_bin.1 156 TRUE multicoverage_timepoint_cage
+cobinning_cage_treat_C10F5OP_subsam_contigs.fasta_bin.29 581 TRUE multicoverage_timepoint_cage
+cobinning_cage_treat_C11F1CD_subsam_contigs.fasta_bin.6 508 TRUE multicoverage_timepoint_cage
+cobinning_cage_treat_C11F1OP_subsam_contigs.fasta_bin.20 153 TRUE multicoverage_timepoint_cage
+cobinning_cage_treat_C11F1OP_subsam_contigs.fasta_bin.3 770 FALSE multicoverage_timepoint_cage
+cobinning_cage_treat_C11F2CD_subsam_contigs.fasta_bin.3 239 TRUE multicoverage_timepoint_cage
+cobinning_cage_treat_C11F2CR_subsam_contigs.fasta_bin.10 202 TRUE multicoverage_timepoint_cage
+cobinning_cage_treat_C11F2CR_subsam_contigs.fasta_bin.19 103 TRUE multicoverage_timepoint_cage
+cobinning_cage_treat_C11F2HR_subsam_contigs.fasta_bin.29 135 TRUE multicoverage_timepoint_cage
+cobinning_cage_treat_C11F3HR_subsam_contigs.fasta_bin.10 197 TRUE multicoverage_timepoint_cage
+cobinning_cage_treat_C11F3HT_subsam_contigs.fasta_bin.12 63 TRUE multicoverage_timepoint_cage
+cobinning_cage_treat_C11F3HT_subsam_contigs.fasta_bin.18 33 TRUE multicoverage_timepoint_cage
+cobinning_cage_treat_C11F4HR_subsam_contigs.fasta_bin.5 70 TRUE multicoverage_timepoint_cage
+cobinning_cage_treat_C11F4OP_subsam_contigs.fasta_bin.23 101 TRUE multicoverage_timepoint_cage
+cobinning_cage_treat_C11F5CR_subsam_contigs.fasta_bin.13 444 TRUE multicoverage_timepoint_cage
+cobinning_cage_treat_C11F5CR_subsam_contigs.fasta_bin.14 123 TRUE multicoverage_timepoint_cage
+cobinning_cage_treat_C11F5HT_subsam_contigs.fasta_bin.15 63 TRUE multicoverage_timepoint_cage
+cobinning_cage_treat_C11F5HT_subsam_contigs.fasta_bin.16 212 TRUE multicoverage_timepoint_cage
+cobinning_cage_treat_C11F5OP_subsam_contigs.fasta_bin.12 73 TRUE multicoverage_timepoint_cage
+cobinning_cage_treat_C11F5OP_subsam_contigs.fasta_bin.22 25 TRUE multicoverage_timepoint_cage
+cobinning_cage_treat_C11F5OP_subsam_contigs.fasta_bin.5 210 TRUE multicoverage_timepoint_cage
+cobinning_cage_treat_C12F1CD_subsam_contigs.fasta_bin.20 418 TRUE multicoverage_timepoint_cage
+cobinning_cage_treat_C12F3CR_subsam_contigs.fasta_bin.17 228 TRUE multicoverage_timepoint_cage
+cobinning_cage_treat_C12F3CR_subsam_contigs.fasta_bin.29 738 TRUE multicoverage_timepoint_cage
+cobinning_cage_treat_C12F3CR_subsam_contigs.fasta_bin.31 101 TRUE multicoverage_timepoint_cage
+cobinning_cage_treat_C12F3HR_subsam_contigs.fasta_bin.24 103 TRUE multicoverage_timepoint_cage
+cobinning_cage_treat_C12F3HT_subsam_contigs.fasta_bin.12 28 TRUE multicoverage_timepoint_cage
+cobinning_cage_treat_C12F3HT_subsam_contigs.fasta_bin.4 583 TRUE multicoverage_timepoint_cage
+cobinning_cage_treat_C12F3HT_subsam_contigs.fasta_bin.7 120 TRUE multicoverage_timepoint_cage
+cobinning_cage_treat_C12F3OP_subsam_contigs.fasta_bin.21 126 TRUE multicoverage_timepoint_cage
+cobinning_cage_treat_C12F4CD_subsam_contigs.fasta_bin.15 129 TRUE multicoverage_timepoint_cage
+cobinning_cage_treat_C12F4OP_subsam_contigs.fasta_bin.3 46 TRUE multicoverage_timepoint_cage
+cobinning_cage_treat_C12F5CD_subsam_contigs.fasta_bin.1 791 TRUE multicoverage_timepoint_cage
+cobinning_cage_treat_C12F5CR_subsam_contigs.fasta_bin.15 242 TRUE multicoverage_timepoint_cage
+cobinning_cage_treat_C12F5HT_subsam_contigs.fasta_bin.14 40 TRUE multicoverage_timepoint_cage
+cobinning_cage_treat_C12F5HT_subsam_contigs.fasta_bin.15 45 TRUE multicoverage_timepoint_cage
+cobinning_cage_treat_C12F5OP_subsam_contigs.fasta_bin.11 497 TRUE multicoverage_timepoint_cage
+cobinning_cage_treat_C12F5OP_subsam_contigs.fasta_bin.8 318 TRUE multicoverage_timepoint_cage
+cobinning_long_C03M1CD_subsam_contigs.fasta_bin.10 97 TRUE multicoverage_animal
+cobinning_long_C03M1CD_subsam_contigs.fasta_bin.22 599 TRUE multicoverage_animal
+cobinning_long_C03M1CR_subsam_contigs.fasta_bin.5 504 TRUE multicoverage_animal
+cobinning_long_C03M1OP_subsam_contigs.fasta_bin.17 201 TRUE multicoverage_animal
+cobinning_long_C03M1OP_subsam_contigs.fasta_bin.25 296 TRUE multicoverage_animal
+cobinning_long_C03M2CD_subsam_contigs.fasta_bin.19 79 TRUE multicoverage_animal
+cobinning_long_C03M2CD_subsam_contigs.fasta_bin.3 219 TRUE multicoverage_animal
+cobinning_long_C03M2CD_subsam_contigs.fasta_bin.33 147 TRUE multicoverage_animal
+cobinning_long_C03M2CR_subsam_contigs.fasta_bin.3 71 TRUE multicoverage_animal
+cobinning_long_C03M2HR_subsam_contigs.fasta_bin.27 252 TRUE multicoverage_animal
+cobinning_long_C03M3CD_subsam_contigs.fasta_bin.19 253 TRUE multicoverage_animal
+cobinning_long_C03M3CD_subsam_contigs.fasta_bin.3 298 TRUE multicoverage_animal
+cobinning_long_C03M3HT_subsam_contigs.fasta_bin.31 24 TRUE multicoverage_animal
+cobinning_long_C03M3HT_subsam_contigs.fasta_bin.8 152 TRUE multicoverage_animal
+cobinning_long_C03M3HT_subsam_contigs.fasta_bin.9 489 FALSE multicoverage_animal
+cobinning_long_C03M3OP_subsam_contigs.fasta_bin.15 5 TRUE multicoverage_animal
+cobinning_long_C03M4CR_subsam_contigs.fasta_bin.11 144 TRUE multicoverage_animal
+cobinning_long_C03M4CR_subsam_contigs.fasta_bin.14 604 TRUE multicoverage_animal
+cobinning_long_C03M4CR_subsam_contigs.fasta_bin.19 215 TRUE multicoverage_animal
+cobinning_long_C03M4CR_subsam_contigs.fasta_bin.21 122 TRUE multicoverage_animal
+cobinning_long_C03M4CR_subsam_contigs.fasta_bin.36 31 TRUE multicoverage_animal
+cobinning_long_C03M4HT_subsam_contigs.fasta_bin.12 334 TRUE multicoverage_animal
+cobinning_long_C03M4OP_subsam_contigs.fasta_bin.6 284 TRUE multicoverage_animal
+cobinning_long_C03M5CR_subsam_contigs.fasta_bin.4 80 TRUE multicoverage_animal
+cobinning_long_C05M1CD_subsam_contigs.fasta_bin.2 73 TRUE multicoverage_animal
+cobinning_long_C05M1CR_subsam_contigs.fasta_bin.10 120 TRUE multicoverage_animal
+cobinning_long_C05M1CR_subsam_contigs.fasta_bin.17 444 TRUE multicoverage_animal
+cobinning_long_C05M1CR_subsam_contigs.fasta_bin.18 96 TRUE multicoverage_animal
+cobinning_long_C05M1CR_subsam_contigs.fasta_bin.2 384 TRUE multicoverage_animal
+cobinning_long_C05M1CR_subsam_contigs.fasta_bin.22 53 TRUE multicoverage_animal
+cobinning_long_C05M1CR_subsam_contigs.fasta_bin.24 132 TRUE multicoverage_animal
+cobinning_long_C05M1CR_subsam_contigs.fasta_bin.4 48 TRUE multicoverage_animal
+cobinning_long_C05M1OP_subsam_contigs.fasta_bin.24 506 TRUE multicoverage_animal
+cobinning_long_C05M2CR_subsam_contigs.fasta_bin.14 212 TRUE multicoverage_animal
+cobinning_long_C05M2CR_subsam_contigs.fasta_bin.29 44 TRUE multicoverage_animal
+cobinning_long_C05M2OP_subsam_contigs.fasta_bin.16 467 TRUE multicoverage_animal
+cobinning_long_C05M3HR_subsam_contigs.fasta_bin.16 108 TRUE multicoverage_animal
+cobinning_long_C05M3HR_subsam_contigs.fasta_bin.5 102 TRUE multicoverage_animal
+cobinning_long_C05M3HR_subsam_contigs.fasta_bin.7 304 TRUE multicoverage_animal
+cobinning_long_C05M4CD_subsam_contigs.fasta_bin.3 463 FALSE multicoverage_animal
+cobinning_long_C05M4HR_subsam_contigs.fasta_bin.25 84 TRUE multicoverage_animal
+cobinning_long_C05M4OP_subsam_contigs.fasta_bin.17 162 TRUE multicoverage_animal
+cobinning_long_C05M5CD_subsam_contigs.fasta_bin.1 37 TRUE multicoverage_animal
+cobinning_long_C05M5CD_subsam_contigs.fasta_bin.25 74 TRUE multicoverage_animal
+cobinning_long_C05M5CR_subsam_contigs.fasta_bin.12 206 TRUE multicoverage_animal
+cobinning_long_C05M5CR_subsam_contigs.fasta_bin.31 45 TRUE multicoverage_animal
+cobinning_long_C05M5CR_subsam_contigs.fasta_bin.7 51 TRUE multicoverage_animal
+cobinning_long_C05M5OP_subsam_contigs.fasta_bin.23 40 TRUE multicoverage_animal
+cobinning_long_C06M1CD_subsam_contigs.fasta_bin.10 269 TRUE multicoverage_animal
+cobinning_long_C06M1HR_subsam_contigs.fasta_bin.2 130 TRUE multicoverage_animal
+cobinning_long_C06M1OP_subsam_contigs.fasta_bin.18 875 TRUE multicoverage_animal
+cobinning_long_C06M2CD_subsam_contigs.fasta_bin.16 11 TRUE multicoverage_animal
+cobinning_long_C06M2CD_subsam_contigs.fasta_bin.21 118 TRUE multicoverage_animal
+cobinning_long_C06M2CR_subsam_contigs.fasta_bin.21 96 TRUE multicoverage_animal
+cobinning_long_C06M2HR_subsam_contigs.fasta_bin.16 101 TRUE multicoverage_animal
+cobinning_long_C06M2OP_subsam_contigs.fasta_bin.13 597 TRUE multicoverage_animal
+cobinning_long_C06M3HT_subsam_contigs.fasta_bin.6 48 TRUE multicoverage_animal
+cobinning_long_C06M3OP_subsam_contigs.fasta_bin.4 51 TRUE multicoverage_animal
+cobinning_long_C06M3OP_subsam_contigs.fasta_bin.5 149 TRUE multicoverage_animal
+cobinning_long_C06M4CD_subsam_contigs.fasta_bin.5 82 FALSE multicoverage_animal
+cobinning_long_C06M4HT_subsam_contigs.fasta_bin.7 36 TRUE multicoverage_animal
+cobinning_long_C06M4OP_subsam_contigs.fasta_bin.12 448 TRUE multicoverage_animal
+cobinning_long_C06M5CR_subsam_contigs.fasta_bin.2 433 TRUE multicoverage_animal
+cobinning_long_C06M5HT_subsam_contigs.fasta_bin.2 60 TRUE multicoverage_animal
+cobinning_long_C06M5HT_subsam_contigs.fasta_bin.3 21 TRUE multicoverage_animal
+cobinning_long_C06M5OP_subsam_contigs.fasta_bin.4 199 TRUE multicoverage_animal
+cobinning_long_C10F1CD_subsam_contigs.fasta_bin.13 131 TRUE multicoverage_animal
+cobinning_long_C10F1HR_subsam_contigs.fasta_bin.19 246 TRUE multicoverage_animal
+cobinning_long_C10F1OP_subsam_contigs.fasta_bin.10 59 TRUE multicoverage_animal
+cobinning_long_C10F1OP_subsam_contigs.fasta_bin.11 330 FALSE multicoverage_animal
+cobinning_long_C10F1OP_subsam_contigs.fasta_bin.33 576 TRUE multicoverage_animal
+cobinning_long_C10F1OP_subsam_contigs.fasta_bin.5 534 TRUE multicoverage_animal
+cobinning_long_C10F1OP_subsam_contigs.fasta_bin.7 110 TRUE multicoverage_animal
+cobinning_long_C10F2CD_subsam_contigs.fasta_bin.3 23 TRUE multicoverage_animal
+cobinning_long_C10F2CR_subsam_contigs.fasta_bin.15 161 TRUE multicoverage_animal
+cobinning_long_C10F2CR_subsam_contigs.fasta_bin.25 549 TRUE multicoverage_animal
+cobinning_long_C10F2HR_subsam_contigs.fasta_bin.12 360 TRUE multicoverage_animal
+cobinning_long_C10F2HT_subsam_contigs.fasta_bin.10 12 TRUE multicoverage_animal
+cobinning_long_C10F2OP_subsam_contigs.fasta_bin.10 92 TRUE multicoverage_animal
+cobinning_long_C10F3CD_subsam_contigs.fasta_bin.24 128 TRUE multicoverage_animal
+cobinning_long_C10F3CR_subsam_contigs.fasta_bin.18 57 TRUE multicoverage_animal
+cobinning_long_C10F3CR_subsam_contigs.fasta_bin.22 344 TRUE multicoverage_animal
+cobinning_long_C10F3CR_subsam_contigs.fasta_bin.23 236 TRUE multicoverage_animal
+cobinning_long_C10F3HR_subsam_contigs.fasta_bin.12 93 TRUE multicoverage_animal
+cobinning_long_C10F3HT_subsam_contigs.fasta_bin.12 28 TRUE multicoverage_animal
+cobinning_long_C10F3OP_subsam_contigs.fasta_bin.7 71 TRUE multicoverage_animal
+cobinning_long_C10F4CD_subsam_contigs.fasta_bin.8 481 TRUE multicoverage_animal
+cobinning_long_C10F4HR_subsam_contigs.fasta_bin.25 99 TRUE multicoverage_animal
+cobinning_long_C10F4OP_subsam_contigs.fasta_bin.25 87 TRUE multicoverage_animal
+cobinning_long_C10F5CD_subsam_contigs.fasta_bin.10 343 TRUE multicoverage_animal
+cobinning_long_C10F5CR_subsam_contigs.fasta_bin.18 171 TRUE multicoverage_animal
+cobinning_long_C10F5CR_subsam_contigs.fasta_bin.24 118 TRUE multicoverage_animal
+cobinning_long_C10F5HR_subsam_contigs.fasta_bin.27 621 TRUE multicoverage_animal
+cobinning_long_C10F5OP_subsam_contigs.fasta_bin.4 534 TRUE multicoverage_animal
+cobinning_long_C11F1CD_subsam_contigs.fasta_bin.19 478 TRUE multicoverage_animal
+cobinning_long_C11F1CD_subsam_contigs.fasta_bin.22 237 TRUE multicoverage_animal
+cobinning_long_C11F1CR_subsam_contigs.fasta_bin.1 621 TRUE multicoverage_animal
+cobinning_long_C11F1CR_subsam_contigs.fasta_bin.18 64 TRUE multicoverage_animal
+cobinning_long_C11F1OP_subsam_contigs.fasta_bin.24 680 TRUE multicoverage_animal
+cobinning_long_C11F2CR_subsam_contigs.fasta_bin.6 58 TRUE multicoverage_animal
+cobinning_long_C11F2HR_subsam_contigs.fasta_bin.6 130 TRUE multicoverage_animal
+cobinning_long_C11F2HR_subsam_contigs.fasta_bin.7 48 TRUE multicoverage_animal
+cobinning_long_C11F3HR_subsam_contigs.fasta_bin.6 312 TRUE multicoverage_animal
+cobinning_long_C11F3HT_subsam_contigs.fasta_bin.2 39 TRUE multicoverage_animal
+cobinning_long_C11F3OP_subsam_contigs.fasta_bin.7 426 TRUE multicoverage_animal
+cobinning_long_C11F4CR_subsam_contigs.fasta_bin.5 112 TRUE multicoverage_animal
+cobinning_long_C11F4OP_subsam_contigs.fasta_bin.26 79 TRUE multicoverage_animal
+cobinning_long_C11F4OP_subsam_contigs.fasta_bin.6 616 TRUE multicoverage_animal
+cobinning_long_C11F5CR_subsam_contigs.fasta_bin.13 395 TRUE multicoverage_animal
+cobinning_long_C11F5CR_subsam_contigs.fasta_bin.27 113 TRUE multicoverage_animal
+cobinning_long_C11F5HT_subsam_contigs.fasta_bin.14 443 TRUE multicoverage_animal
+cobinning_long_C11F5HT_subsam_contigs.fasta_bin.3 192 TRUE multicoverage_animal
+cobinning_long_C11F5HT_subsam_contigs.fasta_bin.4 223 TRUE multicoverage_animal
+cobinning_long_C11F5OP_subsam_contigs.fasta_bin.11 56 TRUE multicoverage_animal
+cobinning_long_C11F5OP_subsam_contigs.fasta_bin.31 219 TRUE multicoverage_animal
+cobinning_long_C11F5OP_subsam_contigs.fasta_bin.6 23 TRUE multicoverage_animal
+cobinning_long_C12F1OP_subsam_contigs.fasta_bin.5 94 TRUE multicoverage_animal
+cobinning_long_C12F3CR_subsam_contigs.fasta_bin.15 819 TRUE multicoverage_animal
+cobinning_long_C12F3CR_subsam_contigs.fasta_bin.18 223 TRUE multicoverage_animal
+cobinning_long_C12F3CR_subsam_contigs.fasta_bin.33 78 TRUE multicoverage_animal
+cobinning_long_C12F3HR_subsam_contigs.fasta_bin.8 182 TRUE multicoverage_animal
+cobinning_long_C12F3HT_subsam_contigs.fasta_bin.15 29 TRUE multicoverage_animal
+cobinning_long_C12F3HT_subsam_contigs.fasta_bin.16 629 TRUE multicoverage_animal
+cobinning_long_C12F3HT_subsam_contigs.fasta_bin.28 88 TRUE multicoverage_animal
+cobinning_long_C12F3HT_subsam_contigs.fasta_bin.3 837 FALSE multicoverage_animal
+cobinning_long_C12F3HT_subsam_contigs.fasta_bin.5 116 TRUE multicoverage_animal
+cobinning_long_C12F3OP_subsam_contigs.fasta_bin.28 135 TRUE multicoverage_animal
+cobinning_long_C12F4HR_subsam_contigs.fasta_bin.18 157 TRUE multicoverage_animal
+cobinning_long_C12F5CD_subsam_contigs.fasta_bin.12 679 TRUE multicoverage_animal
+cobinning_long_C12F5CD_subsam_contigs.fasta_bin.18 33 TRUE multicoverage_animal
+cobinning_long_C12F5CR_subsam_contigs.fasta_bin.17 152 TRUE multicoverage_animal
+cobinning_long_C12F5CR_subsam_contigs.fasta_bin.6 76 TRUE multicoverage_animal
+cobinning_long_C12F5HT_subsam_contigs.fasta_bin.15 593 TRUE multicoverage_animal
+cobinning_long_C12F5HT_subsam_contigs.fasta_bin.6 38 TRUE multicoverage_animal
+cobinning_long_C12F5HT_subsam_contigs.fasta_bin.8 40 TRUE multicoverage_animal
+cobinning_long_C12F5OP_subsam_contigs.fasta_bin.20 175 TRUE multicoverage_animal
+cobinning_long_C12F5OP_subsam_contigs.fasta_bin.4 79 TRUE multicoverage_animal
+cobinning_treat_C03M1CD_subsam_contigs.fasta_bin.12 100 TRUE multicoverage_timepoint_all
+cobinning_treat_C03M1CD_subsam_contigs.fasta_bin.16 136 TRUE multicoverage_timepoint_all
+cobinning_treat_C03M1CD_subsam_contigs.fasta_bin.20 85 TRUE multicoverage_timepoint_all
+cobinning_treat_C03M1CD_subsam_contigs.fasta_bin.23 797 TRUE multicoverage_timepoint_all
+cobinning_treat_C03M1CD_subsam_contigs.fasta_bin.28 472 TRUE multicoverage_timepoint_all
+cobinning_treat_C03M1CD_subsam_contigs.fasta_bin.6 130 TRUE multicoverage_timepoint_all
+cobinning_treat_C03M1CD_subsam_contigs.fasta_bin.7 545 TRUE multicoverage_timepoint_all
+cobinning_treat_C03M1CD_subsam_contigs.fasta_bin.9 7 TRUE multicoverage_timepoint_all
+cobinning_treat_C03M1CR_subsam_contigs.fasta_bin.14 482 TRUE multicoverage_timepoint_all
+cobinning_treat_C03M1CR_subsam_contigs.fasta_bin.16 770 TRUE multicoverage_timepoint_all
+cobinning_treat_C03M1CR_subsam_contigs.fasta_bin.7 84 TRUE multicoverage_timepoint_all
+cobinning_treat_C03M1HR_subsam_contigs.fasta_bin.11 41 TRUE multicoverage_timepoint_all
+cobinning_treat_C03M1HR_subsam_contigs.fasta_bin.2 245 TRUE multicoverage_timepoint_all
+cobinning_treat_C03M1HR_subsam_contigs.fasta_bin.8 66 TRUE multicoverage_timepoint_all
+cobinning_treat_C03M1HT_subsam_contigs.fasta_bin.1 109 FALSE multicoverage_timepoint_all
+cobinning_treat_C03M1HT_subsam_contigs.fasta_bin.11 6 TRUE multicoverage_timepoint_all
+cobinning_treat_C03M1HT_subsam_contigs.fasta_bin.12 288 TRUE multicoverage_timepoint_all
+cobinning_treat_C03M1HT_subsam_contigs.fasta_bin.15 51 TRUE multicoverage_timepoint_all
+cobinning_treat_C03M1HT_subsam_contigs.fasta_bin.16 71 TRUE multicoverage_timepoint_all
+cobinning_treat_C03M1HT_subsam_contigs.fasta_bin.7 182 TRUE multicoverage_timepoint_all
+cobinning_treat_C03M1OP_subsam_contigs.fasta_bin.1 359 TRUE multicoverage_timepoint_all
+cobinning_treat_C03M1OP_subsam_contigs.fasta_bin.2 453 TRUE multicoverage_timepoint_all
+cobinning_treat_C03M1OP_subsam_contigs.fasta_bin.24 204 TRUE multicoverage_timepoint_all
+cobinning_treat_C03M1OP_subsam_contigs.fasta_bin.26 79 TRUE multicoverage_timepoint_all
+cobinning_treat_C03M1OP_subsam_contigs.fasta_bin.5 139 TRUE multicoverage_timepoint_all
+cobinning_treat_C03M1OP_subsam_contigs.fasta_bin.6 19 TRUE multicoverage_timepoint_all
+cobinning_treat_C03M1OP_subsam_contigs.fasta_bin.9 143 TRUE multicoverage_timepoint_all
+cobinning_treat_C05M1CD_subsam_contigs.fasta_bin.26 113 TRUE multicoverage_timepoint_all
+cobinning_treat_C05M1CD_subsam_contigs.fasta_bin.28 140 TRUE multicoverage_timepoint_all
+cobinning_treat_C05M1CD_subsam_contigs.fasta_bin.4 172 TRUE multicoverage_timepoint_all
+cobinning_treat_C05M1CD_subsam_contigs.fasta_bin.8 109 TRUE multicoverage_timepoint_all
+cobinning_treat_C05M1CR_subsam_contigs.fasta_bin.19 114 TRUE multicoverage_timepoint_all
+cobinning_treat_C05M1CR_subsam_contigs.fasta_bin.21 51 TRUE multicoverage_timepoint_all
+cobinning_treat_C05M1CR_subsam_contigs.fasta_bin.24 50 TRUE multicoverage_timepoint_all
+cobinning_treat_C05M1CR_subsam_contigs.fasta_bin.25 415 TRUE multicoverage_timepoint_all
+cobinning_treat_C05M1CR_subsam_contigs.fasta_bin.29 436 TRUE multicoverage_timepoint_all
+cobinning_treat_C05M1CR_subsam_contigs.fasta_bin.3 157 TRUE multicoverage_timepoint_all
+cobinning_treat_C05M1CR_subsam_contigs.fasta_bin.5 117 TRUE multicoverage_timepoint_all
+cobinning_treat_C05M1CR_subsam_contigs.fasta_bin.7 16 TRUE multicoverage_timepoint_all
+cobinning_treat_C05M1HR_subsam_contigs.fasta_bin.11 179 TRUE multicoverage_timepoint_all
+cobinning_treat_C05M1HR_subsam_contigs.fasta_bin.13 91 TRUE multicoverage_timepoint_all
+cobinning_treat_C05M1HR_subsam_contigs.fasta_bin.15 316 TRUE multicoverage_timepoint_all
+cobinning_treat_C05M1HR_subsam_contigs.fasta_bin.6 250 TRUE multicoverage_timepoint_all
+cobinning_treat_C05M1HT_subsam_contigs.fasta_bin.10 52 TRUE multicoverage_timepoint_all
+cobinning_treat_C05M1HT_subsam_contigs.fasta_bin.20 78 TRUE multicoverage_timepoint_all
+cobinning_treat_C05M1HT_subsam_contigs.fasta_bin.27 140 TRUE multicoverage_timepoint_all
+cobinning_treat_C05M1OP_subsam_contigs.fasta_bin.27 440 TRUE multicoverage_timepoint_all
+cobinning_treat_C06M1CD_subsam_contigs.fasta_bin.4 258 TRUE multicoverage_timepoint_all
+cobinning_treat_C06M1CR_subsam_contigs.fasta_bin.23 273 TRUE multicoverage_timepoint_all
+cobinning_treat_C06M1CR_subsam_contigs.fasta_bin.27 108 TRUE multicoverage_timepoint_all
+cobinning_treat_C06M1CR_subsam_contigs.fasta_bin.9 237 TRUE multicoverage_timepoint_all
+cobinning_treat_C06M1HR_subsam_contigs.fasta_bin.1 103 TRUE multicoverage_timepoint_all
+cobinning_treat_C06M1HR_subsam_contigs.fasta_bin.10 426 TRUE multicoverage_timepoint_all
+cobinning_treat_C06M1HT_subsam_contigs.fasta_bin.26 120 TRUE multicoverage_timepoint_all
+cobinning_treat_C06M1HT_subsam_contigs.fasta_bin.5 307 TRUE multicoverage_timepoint_all
+cobinning_treat_C06M1HT_subsam_contigs.fasta_bin.8 415 TRUE multicoverage_timepoint_all
+cobinning_treat_C06M1OP_subsam_contigs.fasta_bin.16 130 TRUE multicoverage_timepoint_all
+cobinning_treat_C06M1OP_subsam_contigs.fasta_bin.2 950 TRUE multicoverage_timepoint_all
+cobinning_treat_C06M1OP_subsam_contigs.fasta_bin.3 124 TRUE multicoverage_timepoint_all
+cobinning_treat_C10F1CD_subsam_contigs.fasta_bin.12 179 TRUE multicoverage_timepoint_all
+cobinning_treat_C10F1CR_subsam_contigs.fasta_bin.1 177 TRUE multicoverage_timepoint_all
+cobinning_treat_C10F1CR_subsam_contigs.fasta_bin.13 366 TRUE multicoverage_timepoint_all
+cobinning_treat_C10F1CR_subsam_contigs.fasta_bin.16 174 TRUE multicoverage_timepoint_all
+cobinning_treat_C10F1CR_subsam_contigs.fasta_bin.18 453 TRUE multicoverage_timepoint_all
+cobinning_treat_C10F1CR_subsam_contigs.fasta_bin.19 88 TRUE multicoverage_timepoint_all
+cobinning_treat_C10F1CR_subsam_contigs.fasta_bin.26 56 TRUE multicoverage_timepoint_all
+cobinning_treat_C10F1CR_subsam_contigs.fasta_bin.30 199 TRUE multicoverage_timepoint_all
+cobinning_treat_C10F1HR_subsam_contigs.fasta_bin.18 217 TRUE multicoverage_timepoint_all
+cobinning_treat_C10F1HR_subsam_contigs.fasta_bin.5 57 TRUE multicoverage_timepoint_all
+cobinning_treat_C10F1HR_subsam_contigs.fasta_bin.6 392 TRUE multicoverage_timepoint_all
+cobinning_treat_C10F1HT_subsam_contigs.fasta_bin.19 82 TRUE multicoverage_timepoint_all
+cobinning_treat_C10F1OP_subsam_contigs.fasta_bin.10 406 TRUE multicoverage_timepoint_all
+cobinning_treat_C10F1OP_subsam_contigs.fasta_bin.11 310 TRUE multicoverage_timepoint_all
+cobinning_treat_C10F1OP_subsam_contigs.fasta_bin.17 313 FALSE multicoverage_timepoint_all
+cobinning_treat_C10F1OP_subsam_contigs.fasta_bin.19 104 TRUE multicoverage_timepoint_all
+cobinning_treat_C10F1OP_subsam_contigs.fasta_bin.24 239 TRUE multicoverage_timepoint_all
+cobinning_treat_C10F1OP_subsam_contigs.fasta_bin.25 534 TRUE multicoverage_timepoint_all
+cobinning_treat_C10F1OP_subsam_contigs.fasta_bin.28 356 TRUE multicoverage_timepoint_all
+cobinning_treat_C10F1OP_subsam_contigs.fasta_bin.30 628 TRUE multicoverage_timepoint_all
+cobinning_treat_C10F1OP_subsam_contigs.fasta_bin.31 874 TRUE multicoverage_timepoint_all
+cobinning_treat_C10F1OP_subsam_contigs.fasta_bin.4 129 TRUE multicoverage_timepoint_all
+cobinning_treat_C11F1CD_subsam_contigs.fasta_bin.13 259 TRUE multicoverage_timepoint_all
+cobinning_treat_C11F1CD_subsam_contigs.fasta_bin.19 510 TRUE multicoverage_timepoint_all
+cobinning_treat_C11F1CD_subsam_contigs.fasta_bin.20 137 TRUE multicoverage_timepoint_all
+cobinning_treat_C11F1CR_subsam_contigs.fasta_bin.1 119 TRUE multicoverage_timepoint_all
+cobinning_treat_C11F1CR_subsam_contigs.fasta_bin.21 566 TRUE multicoverage_timepoint_all
+cobinning_treat_C11F1CR_subsam_contigs.fasta_bin.23 228 TRUE multicoverage_timepoint_all
+cobinning_treat_C11F1CR_subsam_contigs.fasta_bin.3 541 TRUE multicoverage_timepoint_all
+cobinning_treat_C11F1HT_subsam_contigs.fasta_bin.10 40 TRUE multicoverage_timepoint_all
+cobinning_treat_C11F1HT_subsam_contigs.fasta_bin.13 375 TRUE multicoverage_timepoint_all
+cobinning_treat_C11F1HT_subsam_contigs.fasta_bin.14 738 TRUE multicoverage_timepoint_all
+cobinning_treat_C11F1HT_subsam_contigs.fasta_bin.2 44 TRUE multicoverage_timepoint_all
+cobinning_treat_C11F1OP_subsam_contigs.fasta_bin.24 524 TRUE multicoverage_timepoint_all
+cobinning_treat_C11F1OP_subsam_contigs.fasta_bin.25 164 TRUE multicoverage_timepoint_all
+individual_C03M1CD_subsam_bin.10 83 TRUE single_coverage
+individual_C03M1OP_subsam_bin.20 163 TRUE single_coverage
+individual_C03M1OP_subsam_bin.23 419 TRUE single_coverage
+individual_C03M2CD_subsam_bin.13 116 TRUE single_coverage
+individual_C03M2CD_subsam_bin.23 161 TRUE single_coverage
+individual_C03M2CD_subsam_bin.3 96 TRUE single_coverage
+individual_C03M2CR_subsam_bin.8 68 TRUE single_coverage
+individual_C03M2HR_subsam_bin.25 57 TRUE single_coverage
+individual_C03M2HR_subsam_bin.7 120 TRUE single_coverage
+individual_C03M2HT_subsam_bin.4 75 FALSE single_coverage
+individual_C03M2OP_subsam_bin.13 740 TRUE single_coverage
+individual_C03M3CD_subsam_bin.13 352 TRUE single_coverage
+individual_C03M3CD_subsam_bin.24 485 TRUE single_coverage
+individual_C03M3HT_subsam_bin.8 255 TRUE single_coverage
+individual_C03M3OP_subsam_bin.11 5 TRUE single_coverage
+individual_C03M3OP_subsam_bin.9 98 TRUE single_coverage
+individual_C03M4CD_subsam_bin.15 192 TRUE single_coverage
+individual_C03M4CR_subsam_bin.15 126 TRUE single_coverage
+individual_C03M4CR_subsam_bin.17 30 TRUE single_coverage
+individual_C03M4CR_subsam_bin.20 197 TRUE single_coverage
+individual_C03M4CR_subsam_bin.26 506 TRUE single_coverage
+individual_C03M4HT_subsam_bin.14 393 TRUE single_coverage
+individual_C03M4OP_subsam_bin.16 222 TRUE single_coverage
+individual_C03M5CR_subsam_bin.18 90 TRUE single_coverage
+individual_C03M5HT_subsam_bin.7 28 TRUE single_coverage
+individual_C03M5OP_subsam_bin.14 83 TRUE single_coverage
+individual_C05M1CR_subsam_bin.1 53 TRUE single_coverage
+individual_C05M1CR_subsam_bin.20 48 TRUE single_coverage
+individual_C05M1CR_subsam_bin.4 109 TRUE single_coverage
+individual_C05M1HT_subsam_bin.5 59 TRUE single_coverage
+individual_C05M1OP_subsam_bin.1 31 TRUE single_coverage
+individual_C05M2OP_subsam_bin.12 795 TRUE single_coverage
+individual_C05M2OP_subsam_bin.2 206 TRUE single_coverage
+individual_C05M2OP_subsam_bin.20 97 TRUE single_coverage
+individual_C05M3CR_subsam_bin.14 306 TRUE single_coverage
+individual_C05M3HR_subsam_bin.28 276 TRUE single_coverage
+individual_C05M3HT_subsam_bin.17 95 TRUE single_coverage
+individual_C05M3HT_subsam_bin.24 205 TRUE single_coverage
+individual_C05M4CD_subsam_bin.2 58 TRUE single_coverage
+individual_C05M4HR_subsam_bin.19 70 TRUE single_coverage
+individual_C05M4OP_subsam_bin.17 160 TRUE single_coverage
+individual_C05M5CR_subsam_bin.17 28 TRUE single_coverage
+individual_C05M5CR_subsam_bin.33 48 TRUE single_coverage
+individual_C05M5OP_subsam_bin.4 42 TRUE single_coverage
+individual_C06M1CD_subsam_bin.9 120 TRUE single_coverage
+individual_C06M1HR_subsam_bin.2 200 TRUE single_coverage
+individual_C06M1OP_subsam_bin.25 718 TRUE single_coverage
+individual_C06M2CD_subsam_bin.17 270 TRUE single_coverage
+individual_C06M2CD_subsam_bin.18 9 TRUE single_coverage
+individual_C06M2HR_subsam_bin.21 94 TRUE single_coverage
+individual_C06M2HT_subsam_bin.11 62 TRUE single_coverage
+individual_C06M2OP_subsam_bin.17 549 TRUE single_coverage
+individual_C06M3CR_subsam_bin.4 71 TRUE single_coverage
+individual_C06M3HT_subsam_bin.10 48 TRUE single_coverage
+individual_C06M3OP_subsam_bin.15 49 TRUE single_coverage
+individual_C06M3OP_subsam_bin.18 109 TRUE single_coverage
+individual_C06M4HR_subsam_bin.1 105 TRUE single_coverage
+individual_C06M4OP_subsam_bin.7 416 TRUE single_coverage
+individual_C06M5CR_subsam_bin.18 454 TRUE single_coverage
+individual_C10F1CD_subsam_bin.10 127 TRUE single_coverage
+individual_C10F1CD_subsam_bin.19 133 TRUE single_coverage
+individual_C10F1CR_subsam_bin.9 121 TRUE single_coverage
+individual_C10F1HR_subsam_bin.17 201 TRUE single_coverage
+individual_C10F1OP_subsam_bin.10 207 TRUE single_coverage
+individual_C10F1OP_subsam_bin.23 1307 TRUE single_coverage
+individual_C10F1OP_subsam_bin.24 102 TRUE single_coverage
+individual_C10F2CD_subsam_bin.15 22 TRUE single_coverage
+individual_C10F2CD_subsam_bin.7 12 TRUE single_coverage
+individual_C10F2CR_subsam_bin.1 89 TRUE single_coverage
+individual_C10F2HR_subsam_bin.15 280 TRUE single_coverage
+individual_C10F2OP_subsam_bin.13 97 TRUE single_coverage
+individual_C10F3CR_subsam_bin.15 61 TRUE single_coverage
+individual_C10F3CR_subsam_bin.33 179 TRUE single_coverage
+individual_C10F3OP_subsam_bin.13 108 TRUE single_coverage
+individual_C10F3OP_subsam_bin.4 64 TRUE single_coverage
+individual_C10F4HR_subsam_bin.25 236 FALSE single_coverage
+individual_C10F4HT_subsam_bin.5 95 TRUE single_coverage
+individual_C10F4OP_subsam_bin.16 80 TRUE single_coverage
+individual_C10F5CR_subsam_bin.19 99 TRUE single_coverage
+individual_C10F5CR_subsam_bin.7 142 TRUE single_coverage
+individual_C10F5HR_subsam_bin.21 232 TRUE single_coverage
+individual_C10F5OP_subsam_bin.20 422 TRUE single_coverage
+individual_C10F5OP_subsam_bin.29 137 TRUE single_coverage
+individual_C11F1CD_subsam_bin.3 60 TRUE single_coverage
+individual_C11F1CD_subsam_bin.9 381 TRUE single_coverage
+individual_C11F1CR_subsam_bin.23 512 TRUE single_coverage
+individual_C11F1CR_subsam_bin.6 49 TRUE single_coverage
+individual_C11F1OP_subsam_bin.18 161 TRUE single_coverage
+individual_C11F2CD_subsam_bin.15 35 TRUE single_coverage
+individual_C11F2CR_subsam_bin.19 135 TRUE single_coverage
+individual_C11F2HR_subsam_bin.12 49 TRUE single_coverage
+individual_C11F2HR_subsam_bin.16 399 TRUE single_coverage
+individual_C11F3HR_subsam_bin.4 255 TRUE single_coverage
+individual_C11F3HT_subsam_bin.20 67 TRUE single_coverage
+individual_C11F3HT_subsam_bin.3 63 TRUE single_coverage
+individual_C11F4CR_subsam_bin.13 47 TRUE single_coverage
+individual_C11F4CR_subsam_bin.2 82 TRUE single_coverage
+individual_C11F4HT_subsam_bin.17 1374 TRUE single_coverage
+individual_C11F4OP_subsam_bin.24 110 TRUE single_coverage
+individual_C11F5CR_subsam_bin.2 112 TRUE single_coverage
+individual_C11F5CR_subsam_bin.3 436 TRUE single_coverage
+individual_C11F5CR_subsam_bin.5 160 TRUE single_coverage
+individual_C11F5OP_subsam_bin.10 203 TRUE single_coverage
+individual_C11F5OP_subsam_bin.16 115 FALSE single_coverage
+individual_C11F5OP_subsam_bin.26 22 TRUE single_coverage
+individual_C12F1CD_subsam_bin.9 276 TRUE single_coverage
+individual_C12F1OP_subsam_bin.11 85 TRUE single_coverage
+individual_C12F2HR_subsam_bin.26 33 TRUE single_coverage
+individual_C12F2HT_subsam_bin.23 258 TRUE single_coverage
+individual_C12F3CR_subsam_bin.14 961 FALSE single_coverage
+individual_C12F3CR_subsam_bin.7 66 TRUE single_coverage
+individual_C12F3HR_subsam_bin.12 94 TRUE single_coverage
+individual_C12F3HT_subsam_bin.10 27 TRUE single_coverage
+individual_C12F3HT_subsam_bin.24 150 TRUE single_coverage
+individual_C12F4CD_subsam_bin.21 484 TRUE single_coverage
+individual_C12F4HR_subsam_bin.10 144 TRUE single_coverage
+individual_C12F5CR_subsam_bin.16 230 TRUE single_coverage
+individual_C12F5HT_subsam_bin.2 37 TRUE single_coverage
+individual_C12F5HT_subsam_bin.5 45 TRUE single_coverage
+individual_C12F5OP_subsam_bin.18 145 TRUE single_coverage
+individual_C12F5OP_subsam_bin.4 496 TRUE single_coverage
+vamb_cage_treat_C03_CD_vae_1007 129 TRUE multisplit_timepoint_cage
+vamb_cage_treat_C03_CD_vae_1055 327 TRUE multisplit_timepoint_cage
+vamb_cage_treat_C03_CD_vae_1115 187 TRUE multisplit_timepoint_cage
+vamb_cage_treat_C03_CD_vae_1287 120 TRUE multisplit_timepoint_cage
+vamb_cage_treat_C03_CD_vae_17951 186 TRUE multisplit_timepoint_cage
+vamb_cage_treat_C03_CD_vae_2348 116 TRUE multisplit_timepoint_cage
+vamb_cage_treat_C03_CD_vae_2453 243 TRUE multisplit_timepoint_cage
+vamb_cage_treat_C03_CD_vae_367 69 TRUE multisplit_timepoint_cage
+vamb_cage_treat_C03_CD_vae_846 114 TRUE multisplit_timepoint_cage
+vamb_cage_treat_C03_CR_vae_12918 463 TRUE multisplit_timepoint_cage
+vamb_cage_treat_C03_CR_vae_1441 85 TRUE multisplit_timepoint_cage
+vamb_cage_treat_C03_CR_vae_157 27 TRUE multisplit_timepoint_cage
+vamb_cage_treat_C03_CR_vae_5877 118 TRUE multisplit_timepoint_cage
+vamb_cage_treat_C03_HR_vae_13543 80 TRUE multisplit_timepoint_cage
+vamb_cage_treat_C03_HT_vae_20 31 TRUE multisplit_timepoint_cage
+vamb_cage_treat_C03_HT_vae_2521 339 TRUE multisplit_timepoint_cage
+vamb_cage_treat_C03_HT_vae_4163 68 TRUE multisplit_timepoint_cage
+vamb_cage_treat_C03_HT_vae_6478 143 TRUE multisplit_timepoint_cage
+vamb_cage_treat_C03_HT_vae_9172 328 TRUE multisplit_timepoint_cage
+vamb_cage_treat_C03_OP_vae_118 5 TRUE multisplit_timepoint_cage
+vamb_cage_treat_C03_OP_vae_1426 163 TRUE multisplit_timepoint_cage
+vamb_cage_treat_C03_OP_vae_17543 351 TRUE multisplit_timepoint_cage
+vamb_cage_treat_C03_OP_vae_4880 226 TRUE multisplit_timepoint_cage
+vamb_cage_treat_C03_OP_vae_4907 88 TRUE multisplit_timepoint_cage
+vamb_cage_treat_C03_OP_vae_5589 104 TRUE multisplit_timepoint_cage
+vamb_cage_treat_C03_OP_vae_9691 157 TRUE multisplit_timepoint_cage
+vamb_cage_treat_C05_CD_vae_13985 323 TRUE multisplit_timepoint_cage
+vamb_cage_treat_C05_CD_vae_18831 111 TRUE multisplit_timepoint_cage
+vamb_cage_treat_C05_CD_vae_4911 127 TRUE multisplit_timepoint_cage
+vamb_cage_treat_C05_CD_vae_717 69 TRUE multisplit_timepoint_cage
+vamb_cage_treat_C05_CD_vae_758 34 TRUE multisplit_timepoint_cage
+vamb_cage_treat_C05_CR_vae_1948 46 TRUE multisplit_timepoint_cage
+vamb_cage_treat_C05_CR_vae_1971 44 TRUE multisplit_timepoint_cage
+vamb_cage_treat_C05_CR_vae_3705 32 TRUE multisplit_timepoint_cage
+vamb_cage_treat_C05_CR_vae_876 49 TRUE multisplit_timepoint_cage
+vamb_cage_treat_C05_HR_vae_1207 236 TRUE multisplit_timepoint_cage
+vamb_cage_treat_C05_HR_vae_4659 68 TRUE multisplit_timepoint_cage
+vamb_cage_treat_C05_HR_vae_5309 195 TRUE multisplit_timepoint_cage
+vamb_cage_treat_C05_HR_vae_692 96 TRUE multisplit_timepoint_cage
+vamb_cage_treat_C05_HR_vae_7645 122 TRUE multisplit_timepoint_cage
+vamb_cage_treat_C05_HT_vae_13587 54 TRUE multisplit_timepoint_cage
+vamb_cage_treat_C05_HT_vae_5858 90 TRUE multisplit_timepoint_cage
+vamb_cage_treat_C05_HT_vae_627 41 TRUE multisplit_timepoint_cage
+vamb_cage_treat_C05_OP_vae_10804 144 TRUE multisplit_timepoint_cage
+vamb_cage_treat_C05_OP_vae_1156 39 TRUE multisplit_timepoint_cage
+vamb_cage_treat_C05_OP_vae_724 176 TRUE multisplit_timepoint_cage
+vamb_cage_treat_C06_CD_vae_11973 87 TRUE multisplit_timepoint_cage
+vamb_cage_treat_C06_CD_vae_15493 73 TRUE multisplit_timepoint_cage
+vamb_cage_treat_C06_CD_vae_16455 114 TRUE multisplit_timepoint_cage
+vamb_cage_treat_C06_CD_vae_233 9 TRUE multisplit_timepoint_cage
+vamb_cage_treat_C06_CR_vae_18631 53 TRUE multisplit_timepoint_cage
+vamb_cage_treat_C06_CR_vae_2190 68 TRUE multisplit_timepoint_cage
+vamb_cage_treat_C06_HR_vae_13822 216 TRUE multisplit_timepoint_cage
+vamb_cage_treat_C06_HR_vae_16915 32 TRUE multisplit_timepoint_cage
+vamb_cage_treat_C06_HT_vae_3256 57 TRUE multisplit_timepoint_cage
+vamb_cage_treat_C06_HT_vae_457 21 TRUE multisplit_timepoint_cage
+vamb_cage_treat_C06_HT_vae_504 46 TRUE multisplit_timepoint_cage
+vamb_cage_treat_C06_OP_vae_1469 338 TRUE multisplit_timepoint_cage
+vamb_cage_treat_C06_OP_vae_2464 59 TRUE multisplit_timepoint_cage
+vamb_cage_treat_C06_OP_vae_2747 143 TRUE multisplit_timepoint_cage
+vamb_cage_treat_C06_OP_vae_552 51 TRUE multisplit_timepoint_cage
+vamb_cage_treat_C10_CD_vae_1319 23 TRUE multisplit_timepoint_cage
+vamb_cage_treat_C10_CD_vae_1490 77 TRUE multisplit_timepoint_cage
+vamb_cage_treat_C10_CD_vae_538 57 TRUE multisplit_timepoint_cage
+vamb_cage_treat_C10_CD_vae_960 13 TRUE multisplit_timepoint_cage
+vamb_cage_treat_C10_CR_vae_1076 122 TRUE multisplit_timepoint_cage
+vamb_cage_treat_C10_CR_vae_4897 53 TRUE multisplit_timepoint_cage
+vamb_cage_treat_C10_CR_vae_5003 169 TRUE multisplit_timepoint_cage
+vamb_cage_treat_C10_CR_vae_5309 267 TRUE multisplit_timepoint_cage
+vamb_cage_treat_C10_HR_vae_1121 310 TRUE multisplit_timepoint_cage
+vamb_cage_treat_C10_HR_vae_12804 291 FALSE multisplit_timepoint_cage
+vamb_cage_treat_C10_HR_vae_1587 84 TRUE multisplit_timepoint_cage
+vamb_cage_treat_C10_HR_vae_4383 78 TRUE multisplit_timepoint_cage
+vamb_cage_treat_C10_HR_vae_5479 116 TRUE multisplit_timepoint_cage
+vamb_cage_treat_C10_HR_vae_859 175 TRUE multisplit_timepoint_cage
+vamb_cage_treat_C10_OP_vae_12880 135 TRUE multisplit_timepoint_cage
+vamb_cage_treat_C10_OP_vae_1368 89 TRUE multisplit_timepoint_cage
+vamb_cage_treat_C10_OP_vae_2401 229 TRUE multisplit_timepoint_cage
+vamb_cage_treat_C10_OP_vae_256 92 TRUE multisplit_timepoint_cage
+vamb_cage_treat_C10_OP_vae_295 104 TRUE multisplit_timepoint_cage
+vamb_cage_treat_C10_OP_vae_4406 431 TRUE multisplit_timepoint_cage
+vamb_cage_treat_C11_CR_vae_1015 86 TRUE multisplit_timepoint_cage
+vamb_cage_treat_C11_CR_vae_13630 344 TRUE multisplit_timepoint_cage
+vamb_cage_treat_C11_CR_vae_15801 130 TRUE multisplit_timepoint_cage
+vamb_cage_treat_C11_CR_vae_16418 77 TRUE multisplit_timepoint_cage
+vamb_cage_treat_C11_CR_vae_16882 76 TRUE multisplit_timepoint_cage
+vamb_cage_treat_C11_CR_vae_414 48 TRUE multisplit_timepoint_cage
+vamb_cage_treat_C11_HR_vae_1325 35 TRUE multisplit_timepoint_cage
+vamb_cage_treat_C11_HR_vae_1338 246 TRUE multisplit_timepoint_cage
+vamb_cage_treat_C11_HR_vae_5726 84 TRUE multisplit_timepoint_cage
+vamb_cage_treat_C11_HT_vae_1580 105 TRUE multisplit_timepoint_cage
+vamb_cage_treat_C11_HT_vae_4716 14 TRUE multisplit_timepoint_cage
+vamb_cage_treat_C11_OP_vae_1624 72 TRUE multisplit_timepoint_cage
+vamb_cage_treat_C11_OP_vae_2262 219 TRUE multisplit_timepoint_cage
+vamb_cage_treat_C11_OP_vae_2483 115 TRUE multisplit_timepoint_cage
+vamb_cage_treat_C11_OP_vae_7296 196 TRUE multisplit_timepoint_cage
+vamb_cage_treat_C12_CD_vae_10183 520 TRUE multisplit_timepoint_cage
+vamb_cage_treat_C12_CD_vae_12881 154 TRUE multisplit_timepoint_cage
+vamb_cage_treat_C12_CD_vae_1556 312 TRUE multisplit_timepoint_cage
+vamb_cage_treat_C12_CD_vae_233 126 TRUE multisplit_timepoint_cage
+vamb_cage_treat_C12_CR_vae_1194 179 TRUE multisplit_timepoint_cage
+vamb_cage_treat_C12_CR_vae_229 57 TRUE multisplit_timepoint_cage
+vamb_cage_treat_C12_HR_vae_1725 198 TRUE multisplit_timepoint_cage
+vamb_cage_treat_C12_HR_vae_7538 83 TRUE multisplit_timepoint_cage
+vamb_cage_treat_C12_HT_vae_221 106 TRUE multisplit_timepoint_cage
+vamb_cage_treat_C12_HT_vae_3259 24 TRUE multisplit_timepoint_cage
+vamb_cage_treat_C12_OP_vae_315 97 TRUE multisplit_timepoint_cage
+vamb_cage_treat_C12_OP_vae_5425 150 TRUE multisplit_timepoint_cage
+vamb_cage_treat_C12_OP_vae_5780 360 TRUE multisplit_timepoint_cage
+vamb_cage_treat_C12_OP_vae_610 36 TRUE multisplit_timepoint_cage
+vamb_long_C03M1_vae_1056 105 TRUE multisplit_animal
+vamb_long_C03M1_vae_16416 154 TRUE multisplit_animal
+vamb_long_C03M1_vae_641 169 TRUE multisplit_animal
+vamb_long_C03M1_vae_7918 55 TRUE multisplit_animal
+vamb_long_C03M2_vae_13899 193 TRUE multisplit_animal
+vamb_long_C03M2_vae_1437 94 TRUE multisplit_animal
+vamb_long_C03M2_vae_159 142 TRUE multisplit_animal
+vamb_long_C03M2_vae_388 66 TRUE multisplit_animal
+vamb_long_C03M2_vae_416 31 TRUE multisplit_animal
+vamb_long_C03M2_vae_601 92 TRUE multisplit_animal
+vamb_long_C03M2_vae_6535 207 TRUE multisplit_animal
+vamb_long_C03M3_vae_1043 34 TRUE multisplit_animal
+vamb_long_C03M3_vae_17856 147 TRUE multisplit_animal
+vamb_long_C03M3_vae_21537 78 TRUE multisplit_animal
+vamb_long_C03M3_vae_30 115 TRUE multisplit_animal
+vamb_long_C03M3_vae_4874 116 TRUE multisplit_animal
+vamb_long_C03M3_vae_5424 49 TRUE multisplit_animal
+vamb_long_C03M3_vae_58 4 TRUE multisplit_animal
+vamb_long_C03M3_vae_587 320 TRUE multisplit_animal
+vamb_long_C03M4_vae_15476 252 TRUE multisplit_animal
+vamb_long_C03M4_vae_1659 196 TRUE multisplit_animal
+vamb_long_C03M4_vae_4633 31 TRUE multisplit_animal
+vamb_long_C03M4_vae_784 115 TRUE multisplit_animal
+vamb_long_C03M5_vae_19583 71 TRUE multisplit_animal
+vamb_long_C03M5_vae_7411 390 TRUE multisplit_animal
+vamb_long_C05M1_vae_13214 135 TRUE multisplit_animal
+vamb_long_C05M1_vae_15820 116 TRUE multisplit_animal
+vamb_long_C05M1_vae_2380 118 TRUE multisplit_animal
+vamb_long_C05M1_vae_317 45 TRUE multisplit_animal
+vamb_long_C05M1_vae_4614 72 TRUE multisplit_animal
+vamb_long_C05M1_vae_5516 102 TRUE multisplit_animal
+vamb_long_C05M1_vae_6076 210 TRUE multisplit_animal
+vamb_long_C05M2_vae_16103 194 TRUE multisplit_animal
+vamb_long_C05M3_vae_1521 257 TRUE multisplit_animal
+vamb_long_C05M4_vae_16532 60 TRUE multisplit_animal
+vamb_long_C05M4_vae_17114 95 TRUE multisplit_animal
+vamb_long_C05M4_vae_20057 72 TRUE multisplit_animal
+vamb_long_C05M4_vae_3651 140 TRUE multisplit_animal
+vamb_long_C05M5_vae_16955 53 TRUE multisplit_animal
+vamb_long_C05M5_vae_17393 95 TRUE multisplit_animal
+vamb_long_C05M5_vae_21148 147 TRUE multisplit_animal
+vamb_long_C05M5_vae_39 71 TRUE multisplit_animal
+vamb_long_C05M5_vae_4152 26 TRUE multisplit_animal
+vamb_long_C05M5_vae_6962 68 TRUE multisplit_animal
+vamb_long_C05M5_vae_7388 45 TRUE multisplit_animal
+vamb_long_C05M5_vae_978 88 TRUE multisplit_animal
+vamb_long_C06M1_vae_13751 247 TRUE multisplit_animal
+vamb_long_C06M1_vae_2949 135 TRUE multisplit_animal
+vamb_long_C06M2_vae_133 76 TRUE multisplit_animal
+vamb_long_C06M2_vae_15533 548 TRUE multisplit_animal
+vamb_long_C06M2_vae_1846 49 TRUE multisplit_animal
+vamb_long_C06M2_vae_22007 86 TRUE multisplit_animal
+vamb_long_C06M2_vae_444 9 TRUE multisplit_animal
+vamb_long_C06M3_C06M3_vae_1672 53 TRUE multisplit_animal
+vamb_long_C06M4_vae_22445 192 TRUE multisplit_animal
+vamb_long_C06M4_vae_5628 341 TRUE multisplit_animal
+vamb_long_C06M5_C06M5_vae_1154 75 FALSE multisplit_animal
+vamb_long_C06M5_C06M5_vae_351 20 TRUE multisplit_animal
+vamb_long_C06M5_C06M5_vae_5756 161 TRUE multisplit_animal
+vamb_long_C06M5_C06M5_vae_5819 47 TRUE multisplit_animal
+vamb_long_C10F1_vae_1071 97 TRUE multisplit_animal
+vamb_long_C10F1_vae_238 127 TRUE multisplit_animal
+vamb_long_C10F1_vae_5286 161 TRUE multisplit_animal
+vamb_long_C10F1_vae_724 44 TRUE multisplit_animal
+vamb_long_C10F1_vae_8693 193 TRUE multisplit_animal
+vamb_long_C10F2_vae_2929 9 TRUE multisplit_animal
+vamb_long_C10F2_vae_30755 63 TRUE multisplit_animal
+vamb_long_C10F2_vae_3777 184 TRUE multisplit_animal
+vamb_long_C10F3_vae_11601 92 TRUE multisplit_animal
+vamb_long_C10F3_vae_182 54 TRUE multisplit_animal
+vamb_long_C10F3_vae_247 27 TRUE multisplit_animal
+vamb_long_C10F3_vae_25476 70 TRUE multisplit_animal
+vamb_long_C10F3_vae_28153 83 TRUE multisplit_animal
+vamb_long_C10F3_vae_30 49 TRUE multisplit_animal
+vamb_long_C10F4_vae_19790 90 TRUE multisplit_animal
+vamb_long_C10F4_vae_47 83 TRUE multisplit_animal
+vamb_long_C10F5_vae_1461 121 TRUE multisplit_animal
+vamb_long_C10F5_vae_18548 503 TRUE multisplit_animal
+vamb_long_C10F5_vae_18565 397 TRUE multisplit_animal
+vamb_long_C10F5_vae_19384 76 TRUE multisplit_animal
+vamb_long_C10F5_vae_732 122 TRUE multisplit_animal
+vamb_long_C11F1_vae_1119 53 TRUE multisplit_animal
+vamb_long_C11F1_vae_1833 100 TRUE multisplit_animal
+vamb_long_C11F1_vae_2277 437 TRUE multisplit_animal
+vamb_long_C11F1_vae_2313 513 TRUE multisplit_animal
+vamb_long_C11F2_C11F2_vae_143 38 TRUE multisplit_animal
+vamb_long_C11F2_C11F2_vae_2607 48 TRUE multisplit_animal
+vamb_long_C11F4_vae_1743 91 TRUE multisplit_animal
+vamb_long_C11F4_vae_19836 62 TRUE multisplit_animal
+vamb_long_C11F4_vae_2879 94 TRUE multisplit_animal
+vamb_long_C11F5_vae_10964 147 TRUE multisplit_animal
+vamb_long_C11F5_vae_16201 124 TRUE multisplit_animal
+vamb_long_C11F5_vae_20246 175 TRUE multisplit_animal
+vamb_long_C11F5_vae_21910 161 TRUE multisplit_animal
+vamb_long_C11F5_vae_24111 215 TRUE multisplit_animal
+vamb_long_C11F5_vae_672 68 TRUE multisplit_animal
+vamb_long_C11F5_vae_8351 408 TRUE multisplit_animal
+vamb_long_C12F1_vae_19122 105 TRUE multisplit_animal
+vamb_long_C12F1_vae_21169 279 TRUE multisplit_animal
+vamb_long_C12F1_vae_721 87 TRUE multisplit_animal
+vamb_long_C12F3_vae_134 27 TRUE multisplit_animal
+vamb_long_C12F3_vae_14835 91 TRUE multisplit_animal
+vamb_long_C12F3_vae_22051 63 TRUE multisplit_animal
+vamb_long_C12F4_vae_16684 16 TRUE multisplit_animal
+vamb_long_C12F5_vae_124 53 TRUE multisplit_animal
+vamb_long_C12F5_vae_17965 127 TRUE multisplit_animal
+vamb_long_C12F5_vae_23772 37 TRUE multisplit_animal
+vamb_treat_CD_vae_1022 298 TRUE multisplit_timepoint_all
+vamb_treat_CD_vae_111 42 TRUE multisplit_timepoint_all
+vamb_treat_CD_vae_1293 330 TRUE multisplit_timepoint_all
+vamb_treat_CD_vae_1368 482 TRUE multisplit_timepoint_all
+vamb_treat_CD_vae_1498 107 TRUE multisplit_timepoint_all
+vamb_treat_CD_vae_1692 362 TRUE multisplit_timepoint_all
+vamb_treat_CD_vae_1766 207 TRUE multisplit_timepoint_all
+vamb_treat_CD_vae_2043 163 TRUE multisplit_timepoint_all
+vamb_treat_CD_vae_2073 129 TRUE multisplit_timepoint_all
+vamb_treat_CD_vae_2310 92 TRUE multisplit_timepoint_all
+vamb_treat_CD_vae_2358 283 TRUE multisplit_timepoint_all
+vamb_treat_CD_vae_260 436 FALSE multisplit_timepoint_all
+vamb_treat_CD_vae_2606 190 TRUE multisplit_timepoint_all
+vamb_treat_CD_vae_2650 132 TRUE multisplit_timepoint_all
+vamb_treat_CD_vae_2800 813 TRUE multisplit_timepoint_all
+vamb_treat_CD_vae_2842 60 TRUE multisplit_timepoint_all
+vamb_treat_CD_vae_6144 277 TRUE multisplit_timepoint_all
+vamb_treat_CD_vae_878 169 TRUE multisplit_timepoint_all
+vamb_treat_CD_vae_981 14 TRUE multisplit_timepoint_all
+vamb_treat_CR_vae_1012 234 TRUE multisplit_timepoint_all
+vamb_treat_CR_vae_1030 118 TRUE multisplit_timepoint_all
+vamb_treat_CR_vae_1062 50 TRUE multisplit_timepoint_all
+vamb_treat_CR_vae_1112 39 TRUE multisplit_timepoint_all
+vamb_treat_CR_vae_1296 265 TRUE multisplit_timepoint_all
+vamb_treat_CR_vae_1406 48 TRUE multisplit_timepoint_all
+vamb_treat_CR_vae_1492 132 TRUE multisplit_timepoint_all
+vamb_treat_CR_vae_1512 186 TRUE multisplit_timepoint_all
+vamb_treat_CR_vae_1734 158 TRUE multisplit_timepoint_all
+vamb_treat_CR_vae_1918 406 TRUE multisplit_timepoint_all
+vamb_treat_CR_vae_2139 296 TRUE multisplit_timepoint_all
+vamb_treat_CR_vae_214 120 TRUE multisplit_timepoint_all
+vamb_treat_CR_vae_2201 451 TRUE multisplit_timepoint_all
+vamb_treat_CR_vae_2661 369 TRUE multisplit_timepoint_all
+vamb_treat_CR_vae_2687 219 TRUE multisplit_timepoint_all
+vamb_treat_CR_vae_3078 354 TRUE multisplit_timepoint_all
+vamb_treat_CR_vae_330 616 TRUE multisplit_timepoint_all
+vamb_treat_CR_vae_388 50 TRUE multisplit_timepoint_all
+vamb_treat_CR_vae_415 34 TRUE multisplit_timepoint_all
+vamb_treat_CR_vae_4218 85 TRUE multisplit_timepoint_all
+vamb_treat_CR_vae_4629 134 TRUE multisplit_timepoint_all
+vamb_treat_CR_vae_464 47 TRUE multisplit_timepoint_all
+vamb_treat_CR_vae_498 48 TRUE multisplit_timepoint_all
+vamb_treat_CR_vae_5176 97 TRUE multisplit_timepoint_all
+vamb_treat_CR_vae_52 44 TRUE multisplit_timepoint_all
+vamb_treat_CR_vae_523 82 TRUE multisplit_timepoint_all
+vamb_treat_CR_vae_540 44 TRUE multisplit_timepoint_all
+vamb_treat_CR_vae_563 132 TRUE multisplit_timepoint_all
+vamb_treat_CR_vae_574 114 TRUE multisplit_timepoint_all
+vamb_treat_CR_vae_5845 216 TRUE multisplit_timepoint_all
+vamb_treat_CR_vae_616 53 TRUE multisplit_timepoint_all
+vamb_treat_CR_vae_65 511 TRUE multisplit_timepoint_all
+vamb_treat_CR_vae_697 45 TRUE multisplit_timepoint_all
+vamb_treat_CR_vae_729 13 TRUE multisplit_timepoint_all
+vamb_treat_CR_vae_766 120 TRUE multisplit_timepoint_all
+vamb_treat_CR_vae_775 199 TRUE multisplit_timepoint_all
+vamb_treat_CR_vae_786 112 TRUE multisplit_timepoint_all
+vamb_treat_CR_vae_802 96 TRUE multisplit_timepoint_all
+vamb_treat_CR_vae_829 210 TRUE multisplit_timepoint_all
+vamb_treat_CR_vae_856 68 TRUE multisplit_timepoint_all
+vamb_treat_CR_vae_869 122 TRUE multisplit_timepoint_all
+vamb_treat_CR_vae_9 6 TRUE multisplit_timepoint_all
+vamb_treat_CR_vae_913 63 TRUE multisplit_timepoint_all
+vamb_treat_HR_vae_1066 37 TRUE multisplit_timepoint_all
+vamb_treat_HR_vae_1119 274 TRUE multisplit_timepoint_all
+vamb_treat_HR_vae_1672 266 TRUE multisplit_timepoint_all
+vamb_treat_HR_vae_1867 283 TRUE multisplit_timepoint_all
+vamb_treat_HR_vae_2225 173 TRUE multisplit_timepoint_all
+vamb_treat_HR_vae_2412 217 TRUE multisplit_timepoint_all
+vamb_treat_HR_vae_2484 159 TRUE multisplit_timepoint_all
+vamb_treat_HR_vae_265 260 TRUE multisplit_timepoint_all
+vamb_treat_HR_vae_4177 59 TRUE multisplit_timepoint_all
+vamb_treat_HR_vae_4212 117 TRUE multisplit_timepoint_all
+vamb_treat_HR_vae_476 91 TRUE multisplit_timepoint_all
+vamb_treat_HR_vae_4770 74 TRUE multisplit_timepoint_all
+vamb_treat_HR_vae_873 97 TRUE multisplit_timepoint_all
+vamb_treat_HR_vae_979 51 TRUE multisplit_timepoint_all
+vamb_treat_HT_vae_11 20 TRUE multisplit_timepoint_all
+vamb_treat_HT_vae_1704 158 TRUE multisplit_timepoint_all
+vamb_treat_HT_vae_215 355 TRUE multisplit_timepoint_all
+vamb_treat_HT_vae_2588 263 TRUE multisplit_timepoint_all
+vamb_treat_HT_vae_306 71 TRUE multisplit_timepoint_all
+vamb_treat_HT_vae_3159 138 TRUE multisplit_timepoint_all
+vamb_treat_HT_vae_320 129 TRUE multisplit_timepoint_all
+vamb_treat_HT_vae_3236 114 TRUE multisplit_timepoint_all
+vamb_treat_HT_vae_329 47 TRUE multisplit_timepoint_all
+vamb_treat_HT_vae_373 31 TRUE multisplit_timepoint_all
+vamb_treat_HT_vae_575 47 TRUE multisplit_timepoint_all
+vamb_treat_HT_vae_7404 63 TRUE multisplit_timepoint_all
+vamb_treat_HT_vae_756 451 FALSE multisplit_timepoint_all
+vamb_treat_HT_vae_927 165 TRUE multisplit_timepoint_all
+vamb_treat_OP_OP_vae_1049 135 TRUE multisplit_timepoint_all
+vamb_treat_OP_OP_vae_1073 111 TRUE multisplit_timepoint_all
+vamb_treat_OP_OP_vae_1081 5 TRUE multisplit_timepoint_all
+vamb_treat_OP_OP_vae_111 184 TRUE multisplit_timepoint_all
+vamb_treat_OP_OP_vae_1149 69 TRUE multisplit_timepoint_all
+vamb_treat_OP_OP_vae_1256 235 TRUE multisplit_timepoint_all
+vamb_treat_OP_OP_vae_1389 586 TRUE multisplit_timepoint_all
+vamb_treat_OP_OP_vae_1467 409 TRUE multisplit_timepoint_all
+vamb_treat_OP_OP_vae_1746 275 TRUE multisplit_timepoint_all
+vamb_treat_OP_OP_vae_181 52 TRUE multisplit_timepoint_all
+vamb_treat_OP_OP_vae_1878 236 TRUE multisplit_timepoint_all
+vamb_treat_OP_OP_vae_2047 226 TRUE multisplit_timepoint_all
+vamb_treat_OP_OP_vae_2363 121 TRUE multisplit_timepoint_all
+vamb_treat_OP_OP_vae_2476 173 TRUE multisplit_timepoint_all
+vamb_treat_OP_OP_vae_2579 179 TRUE multisplit_timepoint_all
+vamb_treat_OP_OP_vae_2695 174 TRUE multisplit_timepoint_all
+vamb_treat_OP_OP_vae_296 161 TRUE multisplit_timepoint_all
+vamb_treat_OP_OP_vae_2993 323 TRUE multisplit_timepoint_all
+vamb_treat_OP_OP_vae_3220 72 TRUE multisplit_timepoint_all
+vamb_treat_OP_OP_vae_3759 208 TRUE multisplit_timepoint_all
+vamb_treat_OP_OP_vae_448 60 TRUE multisplit_timepoint_all
+vamb_treat_OP_OP_vae_556 363 TRUE multisplit_timepoint_all
+vamb_treat_OP_OP_vae_627 277 TRUE multisplit_timepoint_all
+vamb_treat_OP_OP_vae_715 233 TRUE multisplit_timepoint_all
+vamb_treat_OP_OP_vae_755 772 TRUE multisplit_timepoint_all
+vamb_treat_OP_OP_vae_784 83 TRUE multisplit_timepoint_all
+vamb_treat_OP_OP_vae_787 367 TRUE multisplit_timepoint_all
+vamb_treat_OP_OP_vae_894 116 TRUE multisplit_timepoint_all
+vamb_treat_OP_OP_vae_995 699 TRUE multisplit_timepoint_all

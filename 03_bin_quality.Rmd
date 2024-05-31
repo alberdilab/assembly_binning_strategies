@@ -66,3 +66,35 @@ bin_metadata %>%
               theme_classic()
 ```
 
+```{r GUNC, fig.height=4, fig.width=10, fig.fullwidth=TRUE}
+
+gunc <- read_delim("data/gunc_summary.tsv")
+
+gunc %>% 
+  summarise(n = n(), .by = c(overall_strategy, pass.GUNC)) %>%
+  ggplot(aes(x = overall_strategy, y = n, fill = pass.GUNC)) +
+  geom_bar(stat = "identity", position = position_stack(reverse = FALSE)) +
+  theme_classic() +
+  theme(axis.text.x = element_text(angle = 45, size = 14, hjust = 1),
+        axis.text.y = element_text(size = 14),
+        axis.title = element_text(size = 16, face = "bold")) +
+  labs(y = "Number of bins", x = "Overall strategy")
+
+
+gunc_fail <- gunc %>%
+  filter(pass.GUNC == F) %>% 
+  summarise(n_failed = n(), .by = overall_strategy)
+
+gunc_pass <- gunc %>%
+  filter(pass.GUNC == T) %>% 
+  summarise(n_pass = n(), .by = overall_strategy)
+
+gunc_fail %>%
+  inner_join(., gunc_pass, by = join_by(overall_strategy)) %>%
+  mutate(percent_passed_GUNC = (1 - (n_failed / n_pass)) * 100) %>%
+  tt()
+
+
+```
+
+

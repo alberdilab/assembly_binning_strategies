@@ -56,6 +56,9 @@ for (strategy in strategies){
 all_p_values <- imap_dfr(community_kegg_comparison_list, ~ .x %>%
   mutate(strategy = .y))
 
+# Stored so that the manuscript numbers chapter can reuse the results without refitting the models
+save(all_p_values, file = "results/casestudy2_kegg_comparison.Rdata")
+
 all_p_values %>%
   mutate(trend=ifelse(p_value_adj<0.05 & estimate>0,"hot","neutral")) %>%
   mutate(trend=ifelse(p_value_adj<0.05 & estimate<0,"cold",trend)) %>%
@@ -97,4 +100,33 @@ gheatmap(functional_tree, functional_trends, offset=0.15, colnames=FALSE, width=
   geom_tiplab(size=2, align=TRUE) +
   scale_fill_manual(values=c("#78bacf","#e0766e","#f4f4f4"))
 
+```
+
+### Highlighted modules: M00082 and M00093
+
+Per-strategy outcome of the hot vs. cold comparison for the two modules highlighted in Fig. 4b: M00082 (fatty acid biosynthesis) and M00093 (phosphatidylethanolamine biosynthesis). Estimates are for hot (HT) relative to cold (CT) conditions; "hot" and "cold" indicate significantly higher fullness (Bonferroni-adjusted p < 0.05) under that condition.
+
+```{r case2_highlighted_modules, comment="", message=FALSE, warning=FALSE, fig.height=3, fig.width=10, fig.fullwidth=TRUE}
+highlight_modules <- c("M00082","M00093")
+
+highlight_table <- all_p_values %>%
+  filter(trait %in% highlight_modules) %>%
+  mutate(trend=ifelse(p_value_adj<0.05 & estimate>0,"hot","neutral")) %>%
+  mutate(trend=ifelse(p_value_adj<0.05 & estimate<0,"cold",trend)) %>%
+  mutate(strategy=factor(strategy,levels=strategies)) %>%
+  arrange(trait,strategy)
+
+highlight_table %>%
+  mutate(estimate=round(estimate,4), p_value_adj=signif(p_value_adj,3)) %>%
+  tt() |>
+  style_tt(i = which(highlight_table$trend == "hot"), background = "#e0766e") |>
+  style_tt(i = which(highlight_table$trend == "cold"), background = "#78bacf")
+
+highlight_table %>%
+  ggplot(aes(x=strategy, y=trait, fill=trend)) +
+    geom_tile(color="white") +
+    scale_fill_manual(values=c(hot="#e0766e",cold="#78bacf",neutral="#f4f4f4")) +
+    theme_minimal() +
+    theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+    labs(x="Strategy", y="KEGG module", fill="Trend")
 ```

@@ -89,9 +89,16 @@ gunc_pass <- gunc %>%
   filter(pass.GUNC == T) %>% 
   summarise(n_pass = n(), .by = overall_strategy)
 
-gunc_fail %>%
-  inner_join(., gunc_pass, by = join_by(overall_strategy)) %>%
-  mutate(percent_passed_GUNC = (1 - (n_failed / n_pass)) * 100) %>%
+# Percentage of bins passing GUNC = passed / (passed + failed).
+# full_join + replace_na so that strategies without any failed (or passed) bin are kept with 0.
+gunc_pass_rate <- gunc_fail %>%
+  full_join(gunc_pass, by = join_by(overall_strategy)) %>%
+  mutate(across(c(n_failed, n_pass), ~replace_na(., 0))) %>%
+  mutate(percent_passed_GUNC = n_pass / (n_pass + n_failed) * 100) %>%
+  arrange(overall_strategy)
+
+gunc_pass_rate %>%
+  mutate(percent_passed_GUNC = round(percent_passed_GUNC, 1)) %>%
   tt()
 
 

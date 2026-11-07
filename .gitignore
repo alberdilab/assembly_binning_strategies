@@ -5,3 +5,10 @@ assembly_binning_strategies.Rproj
 .Ruserdata
 data/taxonomy_tables
 data/trees
+
+# Codeome agent jobs
+.codeome/jobs/
+.codeome/worktrees/
+.codeome/plans/
+.codeome/context/
+.codeome/touched/

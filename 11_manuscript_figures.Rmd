@@ -1,0 +1,840 @@
+# Manuscript figures
+
+This chapter assembles Figures 2 and 3 of the manuscript from the saved data objects (`data/data.Rdata`, `results/alpha_diversity.Rdata`, `results/beta_procrustes.Rdata`). It does not recompute any heavy analysis. The layout, chart types, colours and the order of strategies follow the original figures (`figures/mag_recovery.png` and `figures/composition.png`), whose hand-made illustrator elements (strategy colour strips, headers, diagonal labels, arrows, phylum key) are reproduced in R. Only the data and statistics that were corrected are new: the cluster tables after the fix of the bin metadata, the PCoA that replaces the t-SNE (Figure 2d) and the Procrustes analysis run on aligned samples (Figure 3b). Figures are written to `figures/` as `Figure2_v6` and `Figure3_v6`, 210 mm (A4 width) wide (vector PDF, 300 dpi PNG and SVG); existing figure files are never overwritten.
+
+```{r fig_setup, comment="", message=FALSE, warning=FALSE}
+library(tidyverse)
+library(ape)
+library(phytools)
+library(ggtree)
+library(ggh4x)
+library(ggnewscale)
+library(patchwork)
+library(tinytable)
+
+load("data/data.Rdata")
+load("results/alpha_diversity.Rdata")
+load("results/beta_procrustes.Rdata")
+load("results/casestudy2_kegg_comparison.Rdata")   # all_p_values (chapter 8), used by Figure 4b
+
+# Order of strategies used in the original Figure 2e, 3a (and the colour keys)
+stopifnot(setequal(strategies, names(strategy_colors)))
+
+# Named phylum colours (EHI scheme stored in data.Rdata; alphabetical order of the phyla present)
+phylum_names <- cluster_taxonomy %>% filter(!is.na(Phylum)) %>% pull(Phylum) %>% unique() %>% sort()
+stopifnot(length(phylum_names) == length(phylum_colors))
+phylum_pal <- c(setNames(phylum_colors, phylum_names), `No taxonomy` = "#BDBDBD")
+
+# Cluster-to-phylum table; clusters without taxonomy are kept grey (not relabelled)
+cluster_phylum <- tibble(secondary_cluster = unique(bin_metadata$secondary_cluster)) %>%
+  left_join(cluster_taxonomy %>% select(secondary_cluster, Phylum) %>% distinct(), by = "secondary_cluster") %>%
+  mutate(Phylum = replace_na(Phylum, "No taxonomy"))
+
+# Clusters recovered per strategy and number of strategies recovering each cluster (all MAGs)
+cluster_presence <- bin_metadata %>% distinct(secondary_cluster, overall_strategy)
+cluster_n_strategy <- cluster_presence %>% count(secondary_cluster, name = "n_strategy")
+strategy_n_clusters <- cluster_presence %>% count(overall_strategy, name = "n") %>% arrange(desc(n))
+
+stopifnot(n_distinct(cluster_presence$secondary_cluster) == 235,
+          nrow(bin_metadata) == 25983,
+          strategy_n_clusters$n[strategy_n_clusters$overall_strategy == "coassembly_timepoint_all"] == 179)
+
+# ---- One shared style for all panels (sizes in pt, line widths in pt, point diameters in mm) ----
+# Helvetica if the system has it (embedded by cairo_pdf, kept as text in the SVG), otherwise Arial, otherwise the default sans
+fig_font <- local({
+  for (f in c("Helvetica", "Arial")) if (grepl(f, basename(systemfonts::match_fonts(f)$path), ignore.case = TRUE)) return(f)
+  "sans"
+})
+pt <- function(x) x / ggplot2::.pt                   # font size in pt -> geom_text size in mm
+lw <- function(x) x / 0.75 / ggplot2::.pt            # line width in pt -> ggplot linewidth (R lwd 1 = 0.75 pt, linewidth is in mm * .pt)
+dsize <- function(d) d / 0.753                       # point diameter in mm -> ggplot size (shapes 16 and 21)
+sz <- list(tick = 6, axis = 7, legend = 6, legend_title = 7, strip = 7, row = 6, tag = 10)
+col_text <- "grey10"; col_grid <- "grey90"; col_bar <- "grey40"
+fig_w <- 210                                         # A4 width in mm
+margin_mm <- 3.5
+
+theme_fig <- function() {
+  theme_minimal(base_size = sz$tick, base_family = fig_font) +
+    theme(text = element_text(colour = col_text),
+          axis.text = element_text(size = sz$tick, colour = col_text),
+          axis.title = element_text(size = sz$axis, colour = "black"),
+          axis.ticks = element_blank(),
+          axis.ticks.length = unit(1, "mm"),
+          axis.line = element_blank(),
+          panel.grid.major = element_line(colour = col_grid, linewidth = lw(0.25)),
+          panel.grid.minor = element_blank(),
+          legend.text = element_text(size = sz$legend), legend.title = element_text(size = sz$legend_title),
+          strip.text = element_text(size = sz$strip, colour = "black"),
+          plot.margin = margin(0.5, 0.5, 0.5, 0.5, "mm"))
+}
+theme_axes <- function() theme_fig() +            # classic variant: thin axis lines, no grid
+  theme(panel.grid = element_blank(), axis.line = element_line(linewidth = lw(0.4), colour = col_text),
+        axis.ticks = element_line(linewidth = lw(0.4), colour = col_text))
+theme_void_fig <- function() theme_void(base_size = sz$tick, base_family = fig_font) +
+  theme(plot.margin = margin(0, 0, 0, 0))
+tag_theme <- theme(plot.tag = element_text(face = "bold", size = sz$tag, family = fig_font, colour = "black"))
+
+# Empty cell without the default 5.5 pt margins
+spc <- function() plot_spacer() + theme(plot.margin = margin(0, 0, 0, 0), plot.background = element_blank(), panel.background = element_blank())
+
+# Row labels (right aligned) and the narrow strategy colour strip, shared by panels a and e
+strategy_labels <- function(order) {
+  tibble(y = factor(order, levels = rev(order))) %>%
+    ggplot(aes(y = y)) +
+    geom_text(aes(x = 0.97, label = y), hjust = 1, size = pt(sz$row), family = fig_font, colour = col_text) +
+    scale_x_continuous(limits = c(0, 1), expand = c(0, 0)) + scale_y_discrete(expand = expansion(add = 0.5)) +
+    coord_cartesian(clip = "off") + theme_void_fig()
+}
+strategy_strip <- function(order, height = 0.94) {
+  tibble(y = factor(order, levels = rev(order))) %>%
+    ggplot(aes(y = y, fill = y)) +
+    geom_tile(aes(x = 1), width = 1, height = height) +
+    scale_fill_manual(values = strategy_colors) +
+    scale_x_continuous(limits = c(0.5, 0.5 + 4 / 3), expand = c(0, 0)) + scale_y_discrete(expand = expansion(add = 0.5)) +   # 3 mm block + 1 mm gap
+    theme_void_fig() + theme(legend.position = "none")
+}
+# Compact horizontal colour bar with ticks and labels underneath (replaces ggplot's guide, which cannot be placed this precisely)
+colourbar <- function(fill_scale, lo, hi, ticks, labels, reverse = FALSE, title = NULL, inset = c(0.04, 0.96), width_mm = 36) {
+  d <- tibble(x = seq(0, 1, length.out = 150)) %>% mutate(v = if (reverse) hi - x * (hi - lo) else lo + x * (hi - lo),
+                                                         xp = inset[1] + x * diff(inset))
+  tk <- tibble(v = ticks, lab = labels) %>% mutate(xp = inset[1] + (if (reverse) (hi - v) else (v - lo)) / (hi - lo) * diff(inset))
+  ggplot() +
+    geom_tile(data = d, aes(x = xp, y = 7.2, fill = v), width = diff(inset) / 150 * 1.6, height = 2.6) +
+    fill_scale +
+    geom_segment(data = tk, aes(x = xp, xend = xp, y = 5.9, yend = 5.1), linewidth = lw(0.4), colour = col_text) +
+    geom_text(data = mutate(tk, hj = case_when(xp == min(xp) ~ 0, xp == max(xp) ~ 1, TRUE ~ 0.5)), aes(x = xp, y = 4.7, label = lab, hjust = hj), vjust = 1, size = pt(sz$legend), family = fig_font, colour = col_text) +
+    {if (!is.null(title)) annotate("text", x = inset[1], y = 12.5, label = title, hjust = 0, vjust = 1,
+                                   size = pt(sz$legend_title), family = fig_font, colour = "black")} +
+    scale_x_continuous(limits = c(0, 1), expand = c(0, 0)) + scale_y_continuous(limits = c(0, 13), expand = c(0, 0)) +
+    coord_cartesian(clip = "off") + theme_void_fig() + theme(legend.position = "none")
+}
+```
+
+## Panel a: genome clusters per strategy
+
+Rows are ordered by the number of clusters recovered, columns follow the cluster tree (made ultrametric as in the functional heatmap of chapter 4), cells are coloured by phylum and clusters without taxonomy are grey. The bars on top show the relative abundance of each cluster (maximum read count across strategies, scaled to sum to one, as in the cluster abundance plot of chapter 2) and the bars on the right the number of clusters. Tree, abundance bars and heatmap share the same x scale (one unit per cluster), so that they align column by column.
+
+```{r fig2_a, comment="", message=FALSE, warning=FALSE}
+# Strategy order of panel a (most clusters on top)
+row_order <- strategy_n_clusters$overall_strategy
+
+# Tree restricted to the clusters in the catalogue, ultrametric so that tips align
+tree_tips <- keep.tip(cluster_tree, intersect(cluster_tree$tip.label, cluster_presence$secondary_cluster))
+tree_tips <- force.ultrametric(tree_tips, method = "extend", message = FALSE)
+n_tips <- length(tree_tips$tip.label)
+node_x <- ggtree(tree_tips)$data %>% select(node, x)          # distance from the root
+
+# Rotate the branches so that the phyla appear in the order of the original figure (Bacillota, Bacillota_B,
+# Bacillota_A / no taxonomy, Actinomycetota, Pseudomonadota, Bacteroidota, Verrucomicrobiota): at every node the
+# children are sorted by the mean phylum rank of their tips. This only changes the order of branches, not the topology.
+phylum_rank <- c(Bacillota = 1, Bacillota_B = 2, Bacillota_A = 3, `No taxonomy` = 3, Actinomycetota = 4,
+                 Pseudomonadota = 5, Bacteroidota = 6, Verrucomicrobiota = 7)
+tip_rank <- tibble(label = tree_tips$tip.label) %>%
+  left_join(cluster_phylum, by = c("label" = "secondary_cluster")) %>%
+  mutate(rank = unname(phylum_rank[Phylum]))
+children <- split(tree_tips$edge[, 2], tree_tips$edge[, 1])
+node_rank <- function(n) if (n <= n_tips) tip_rank$rank[n] else mean(sapply(children[[as.character(n)]], node_rank))
+tip_order <- function(n) {
+  if (n <= n_tips) return(n)
+  ch <- children[[as.character(n)]]
+  ch <- ch[order(sapply(ch, node_rank), ch)]
+  unlist(lapply(ch, tip_order))
+}
+root_node <- n_tips + 1
+tip_ids <- tip_order(root_node)
+node_pos <- setNames(rep(NA_real_, max(tree_tips$edge)), seq_len(max(tree_tips$edge)))
+node_pos[as.character(tip_ids)] <- seq_along(tip_ids)
+set_pos <- function(n) {
+  if (n <= n_tips) return(node_pos[[as.character(n)]])
+  v <- mean(sapply(children[[as.character(n)]], set_pos)); node_pos[[as.character(n)]] <<- v; v
+}
+invisible(set_pos(root_node))
+
+tip_pos <- tibble(secondary_cluster = tree_tips$tip.label[tip_ids], pos = seq_along(tip_ids))
+tree_data <- tibble(node = as.integer(names(node_pos)), pos = unname(node_pos)) %>%
+  left_join(node_x, by = "node") %>%
+  left_join(as_tibble(tree_tips$edge, .name_repair = ~ c("parent", "node")), by = "node")
+
+tree_stem <- tree_data %>% filter(!is.na(parent)) %>%
+  left_join(tree_data %>% select(node, parent_x = x), by = c("parent" = "node"))
+tree_bar <- tree_stem %>% group_by(parent, parent_x) %>%
+  summarise(pmin = min(pos), pmax = max(pos), .groups = "drop")
+
+xlim_tips <- c(0.5, n_tips + 0.5)
+
+# Dendrogram below the heatmap (tips against the heatmap, root at the bottom), drawn in the coordinates of the heatmap columns
+# with 0.25 pt lines. Topology and leaf order are those of the heatmap columns. Heights are the distance from the tips, drawn on a
+# square-root scale (tree_height) so that the many near-zero branches at the tips do not collapse into a comb; set it to identity
+# to draw the branch lengths linearly.
+tree_height <- sqrt
+tip_x <- max(tree_data$x, na.rm = TRUE)
+tree_y <- function(x) -tree_height(pmax(tip_x - x, 0))
+p_tree <- ggplot() +
+  geom_segment(data = tree_stem, aes(x = pos, xend = pos, y = tree_y(parent_x), yend = tree_y(x)), linewidth = lw(0.25),
+               colour = "grey20", lineend = "butt") +
+  geom_segment(data = tree_bar, aes(x = pmin, xend = pmax, y = tree_y(parent_x), yend = tree_y(parent_x)), linewidth = lw(0.25),
+               colour = "grey20", lineend = "butt") +
+  scale_x_continuous(expand = c(0, 0)) + coord_cartesian(xlim = xlim_tips, expand = FALSE) +
+  scale_y_continuous(expand = c(0, 0)) +
+  theme_void_fig() + theme(plot.margin = margin(1.2, 0, 0, 0, "mm"))
+
+# Relative abundance per cluster across the top
+cluster_abundance <- cluster_counts %>%
+  group_by(secondary_cluster) %>% summarise(read_count = max(read_count), .groups = "drop") %>%
+  mutate(relative = read_count / sum(read_count)) %>%
+  inner_join(tip_pos, by = "secondary_cluster")
+
+p_abund <- ggplot(cluster_abundance, aes(x = pos, y = relative)) +
+  annotate("segment", x = xlim_tips[1], xend = xlim_tips[2], y = 0, yend = 0, linewidth = lw(0.25), colour = "grey70") +
+  geom_col(fill = "grey45", width = 0.8) +
+  scale_x_continuous(expand = c(0, 0)) + coord_cartesian(xlim = xlim_tips, expand = FALSE) +
+  scale_y_continuous(expand = expansion(mult = c(0, 0.03))) +
+  theme_void_fig() + theme(plot.margin = margin(0, 0, 1, 0, "mm"))
+
+# Presence/absence heatmap coloured by phylum (no cell borders, thin white gaps between rows only)
+heat_data <- cluster_presence %>%
+  inner_join(tip_pos, by = "secondary_cluster") %>%
+  left_join(cluster_phylum, by = "secondary_cluster") %>%
+  mutate(overall_strategy = factor(overall_strategy, levels = rev(row_order)))
+
+p_heat <- ggplot(heat_data, aes(x = pos, y = overall_strategy, fill = Phylum)) +
+  geom_tile(width = 1.02, height = 0.94) +
+  scale_fill_manual(values = phylum_pal) +
+  scale_x_continuous(expand = c(0, 0)) + coord_cartesian(xlim = xlim_tips, expand = FALSE) +
+  scale_y_discrete(expand = expansion(add = 0.5)) +
+  theme_void_fig() + theme(legend.position = "none")
+
+# Number of clusters on the right; the axis (ticks 120 and 180) is drawn by hand just below the bars so it does not push the layout
+tree_rows <- length(row_order)   # the count panel spans the heatmap and the tree rows (heights 43 and 19), so its axis fits inside it
+n_lim <- c(90, max(strategy_n_clusters$n) + 25)
+p_ncl <- strategy_n_clusters %>%
+  mutate(y = match(overall_strategy, rev(row_order))) %>%
+  ggplot() +
+  geom_rect(aes(xmin = n_lim[1], xmax = n, ymin = y - 0.4, ymax = y + 0.4), fill = "grey45") +
+  annotate("segment", x = n_lim[1], xend = n_lim[2], y = 0.38, yend = 0.38, linewidth = lw(0.4), colour = col_text) +
+  annotate("segment", x = c(120, 180), xend = c(120, 180), y = 0.38, yend = 0.1, linewidth = lw(0.4), colour = col_text) +
+  annotate("text", x = c(120, 180), y = -0.05, label = c("120", "180"), vjust = 1, size = pt(sz$tick), family = fig_font, colour = col_text) +
+  scale_x_continuous(limits = n_lim, expand = c(0, 0)) + scale_y_continuous(limits = c(0.5 - tree_rows * 19 / 43, length(row_order) + 0.5), expand = c(0, 0)) +
+  coord_cartesian(clip = "off") +
+  theme_void_fig()
+
+title_box <- function(label, hjust, y = 0.02) {
+  ggplot() + annotate("text", x = hjust, y = y, label = label, hjust = hjust, vjust = 0, size = pt(sz$legend), fontface = "bold",
+                      family = fig_font, lineheight = 0.95, colour = "black") +
+    scale_x_continuous(limits = c(0, 1), expand = c(0, 0)) + scale_y_continuous(limits = c(0, 1), expand = c(0, 0)) +
+    coord_cartesian(clip = "off") + theme_void_fig()
+}
+p_title_abund <- title_box("Relative\nabundance", 0.97, y = 0.22)
+p_title_ncl <- title_box("Number of\nclusters", 0.04, y = 0.22)
+
+# Phylum key: round keys of 3.5 mm, 6 pt text, evenly spaced over the width of the panel (positions in mm)
+key_phyla <- c("Bacillota", "Bacillota_B", "Bacillota_A", "Actinomycetota", "Pseudomonadota", "Bacteroidota", "Verrucomicrobiota")
+key_phyla <- c(key_phyla, if (any(cluster_phylum$Phylum == "No taxonomy")) "No taxonomy")
+key_w_total <- fig_w - 2 * margin_mm                                  # width of panel a in mm
+grDevices::pdf(NULL)                                                  # Helvetica metrics of the labels, in mm
+key_txt <- sapply(key_phyla, function(s) grid::convertWidth(grid::grobWidth(grid::textGrob(s, gp = grid::gpar(fontsize = sz$legend, fontfamily = "Helvetica"))), "mm", valueOnly = TRUE))
+grDevices::dev.off()
+key_item <- 3.5 + 1.3 + key_txt                                       # circle + gap + text
+key_gap <- (key_w_total - 3.0 - sum(key_item)) / (length(key_phyla) - 1)
+key_df <- tibble(Phylum = key_phyla, w = key_item) %>%
+  mutate(x0 = 1.75 + cumsum(lag(w + key_gap, default = 0)))          # centre of the circle
+
+p_key <- ggplot(key_df) +
+  geom_point(aes(x = x0, y = 0, colour = Phylum), size = dsize(3.5), shape = 16) +
+  geom_text(aes(x = x0 + 2.9, y = 0, label = Phylum), hjust = 0, size = pt(sz$legend), family = fig_font, colour = col_text) +
+  scale_colour_manual(values = phylum_pal) +
+  scale_x_continuous(limits = c(0, key_w_total), expand = c(0, 0)) +
+  scale_y_continuous(limits = c(-1, 1), expand = c(0, 0)) +
+  coord_cartesian(clip = "off") +
+  theme_void_fig() + theme(legend.position = "none")
+
+# Columns (mm): row labels | strategy strip | heatmap (rest) | gap | cluster counts. Rows: abundance | heatmap | tree | key
+w_lab <- 31; w_strip <- 4; w_gap <- 1.2; w_right <- 24
+fig2_a <- wrap_plots(p_title_abund, spc(), p_abund, spc(), p_title_ncl,
+                     strategy_labels(row_order), strategy_strip(row_order), p_heat, spc(), p_ncl,
+                     spc(), spc(), p_tree, spc(),
+                     p_key,
+                     design = "ABCDE\nFGHIJ\nKLMNJ\nPPPPP") +
+  plot_layout(widths = unit(c(w_lab, w_strip, 1, w_gap, w_right), c("mm", "mm", "null", "mm", "mm")),
+              heights = c(11, 43, 19, 6)) +
+  plot_annotation(theme = theme(panel.spacing = unit(0, "mm"), plot.margin = margin(0, 2, 0, 0, "mm")))
+```
+
+## Panels b and c: genome quality
+
+Boxplots show the quartiles, with whiskers to the most extreme value within 1.5 IQR (as `geom_boxplot`); they are drawn from these statistics so that whiskers can be thinner than the boxes. The dense point clouds are rasterised (300 dpi) with `ggrastr`.
+
+```{r fig2_bc, comment="", message=FALSE, warning=FALSE}
+# Order of the original: single | multi-coverage | coassembly | multi-split, each animal, time point (all), time point (cage)
+quality_order <- c("single_coverage",
+                   "multicoverage_animal", "multicoverage_timepoint_all", "multicoverage_timepoint_cage",
+                   "coassembly_animal", "coassembly_timepoint_all", "coassembly_timepoint_cage",
+                   "multisplit_animal", "multisplit_timepoint_all", "multisplit_timepoint_cage")
+stopifnot(setequal(quality_order, strategies))
+group_levels <- c("Single", "Multi-coverage", "Coassembly", "Multi-split")
+group_colors <- c(Single = "#5254A3", `Multi-coverage` = "#8CA252", Coassembly = "#BD9E39", `Multi-split` = "#AD494A")
+sub_labels <- setNames(c("", rep(c("animal", "timepoint\nall", "timepoint\ncage"), 3)), quality_order)
+
+quality_data <- bin_metadata %>%
+  mutate(overall_strategy = factor(overall_strategy, levels = quality_order),
+         group = factor(case_when(grepl("^single", overall_strategy) ~ "Single",
+                                  grepl("^multicoverage", overall_strategy) ~ "Multi-coverage",
+                                  grepl("^coassembly", overall_strategy) ~ "Coassembly",
+                                  TRUE ~ "Multi-split"), levels = group_levels))
+
+# Boxplot statistics as computed by ggplot2 (type 7 quartiles, whiskers within 1.5 IQR)
+box_stats <- function(x) {
+  q <- quantile(x, c(0.25, 0.5, 0.75), names = FALSE); iqr <- q[3] - q[1]
+  tibble(lower = q[1], middle = q[2], upper = q[3], ymin = min(x[x >= q[1] - 1.5 * iqr]), ymax = max(x[x <= q[3] + 1.5 * iqr]))
+}
+
+set.seed(1)
+quality_plot <- function(var, ylab, ylim, breaks, labels = waiver(), header = TRUE) {
+  bs <- quality_data %>% group_by(overall_strategy, group) %>% reframe(box_stats(.data[[var]]))
+  p <- ggplot(quality_data, aes(x = overall_strategy, colour = overall_strategy)) +
+    ggrastr::geom_point_rast(aes(y = .data[[var]]), position = position_jitter(width = 0.38, height = 0), shape = 16,
+                             size = dsize(0.55), alpha = 0.27, raster.dpi = 300) +
+    geom_segment(data = bs, aes(xend = overall_strategy, y = upper, yend = ymax), linewidth = lw(0.25), lineend = "butt") +
+    geom_segment(data = bs, aes(xend = overall_strategy, y = lower, yend = ymin), linewidth = lw(0.25), lineend = "butt") +
+    geom_crossbar(data = bs, aes(y = middle, ymin = lower, ymax = upper), fill = "white", width = 0.8,
+                  linewidth = lw(0.4), fatten = 1.6) +
+    scale_colour_manual(values = strategy_colors) +
+    scale_y_continuous(breaks = breaks, labels = labels) +
+    coord_cartesian(ylim = ylim) +
+    labs(x = NULL, y = ylab) +
+    theme_axes() +
+    theme(legend.position = "none", panel.spacing.x = unit(1.6, "mm"), axis.ticks.length = unit(0.8, "mm"))
+  # b and c are built with exactly the same facet and axis structure (c only hides the header and the labels above the panel),
+  # so that patchwork gives them identical panel geometry
+  hdr_fill <- if (header) unname(group_colors) else rep("transparent", 4)
+  p <- p + facet_grid2(. ~ group, scales = "free_x", space = "free_x",
+                       strip = strip_themed(background_x = elem_list_rect(fill = hdr_fill, colour = rep("transparent", 4)),
+                                            text_x = elem_list_text(colour = rep(if (header) "white" else "transparent", 4),
+                                                                    size = rep(if (header) sz$strip else 0.5, 4), face = rep("bold", 4)),
+                                            clip = "off")) +
+    scale_x_discrete(labels = sub_labels, position = "top", expand = c(0.1, 0.1)) +
+    guides(x.sec = "axis") +
+    theme(axis.text.x.top = element_text(size = sz$tick, lineheight = 0.9, vjust = 0, margin = margin(b = 1)),
+          axis.text.x.bottom = element_blank(), axis.title.x = element_blank(),
+          axis.line.x.top = element_blank(), axis.ticks.x.top = element_blank(),
+          strip.text.x = element_text(margin = margin(1.3, 0, 1.3, 0, "mm")),
+          strip.placement = "outside", panel.spacing.y = unit(1, "mm"))
+  if (!header) {
+    p <- p + theme(axis.text.x.top = element_text(colour = "transparent", size = 0.5, margin = margin(0, 0, 0, 0)), strip.text.x = element_text(margin = margin(0, 0, 0, 0)))   # same space as in b, nothing drawn
+  }
+  p
+}
+fig2_b <- quality_plot("completeness", "Completeness", c(70, 100), c(70, 80, 90, 100))
+fig2_c <- quality_plot("contamination", "Contamination", c(0, 10), seq(0, 10, 2.5),
+                       labels = c("0.0", "2.5", "5.0", "7.5", "10.0"), header = FALSE)
+```
+
+## Panel d: functional ordination (PCoA)
+
+The t-SNE of the original is replaced by a principal coordinates analysis (PCoA) on the Euclidean distance between clusters in the cluster x KEGG module fullness matrix (maximum fullness across strategies), i.e. the same input and distance as the t-SNE.
+
+```{r fig2_d, comment="", message=FALSE, warning=FALSE}
+cluster_kegg_max <- cluster_kegg %>%
+  filter(!is.na(secondary_cluster)) %>%
+  select(-overall_strategy) %>%
+  group_by(secondary_cluster) %>%
+  summarise(across(everything(), ~ max(., na.rm = TRUE)))
+
+kegg_matrix <- cluster_kegg_max %>% column_to_rownames("secondary_cluster")
+stopifnot(!anyNA(kegg_matrix), all(is.finite(as.matrix(kegg_matrix))))
+
+pcoa_kegg <- pcoa(dist(kegg_matrix), correction = "none")
+pcoa_var <- pcoa_kegg$values$Relative_eig * 100
+pcoa_negative_eig <- sum(pcoa_kegg$values$Eigenvalues < -1e-8)
+
+fig2_d <- pcoa_kegg$vectors[, 1:2] %>%
+  as.data.frame() %>%
+  rownames_to_column("secondary_cluster") %>%
+  left_join(cluster_phylum, by = "secondary_cluster") %>%
+  left_join(cluster_n_strategy, by = "secondary_cluster") %>%
+  arrange(desc(n_strategy)) %>%     # small points on top of large ones
+  ggplot(aes(x = Axis.1, y = Axis.2, fill = Phylum, size = n_strategy)) +
+  geom_point(shape = 21, colour = "white", stroke = 0.2, alpha = 0.85) +
+  scale_fill_manual(values = phylum_pal) +
+  scale_size_continuous(range = c(dsize(0.8), dsize(3)), breaks = c(1, 3, 5, 7, 9)) +
+  scale_x_continuous(expand = expansion(mult = 0.04)) +
+  scale_y_continuous(expand = expansion(mult = c(0.2, 0.04))) +
+  theme_fig() +
+  theme(legend.position = "inside", legend.position.inside = c(0.99, 0.01), legend.justification = c(1, 0),
+        legend.background = element_blank(), legend.key = element_blank(), legend.margin = margin(0, 0, 0, 0),
+        legend.key.size = unit(3.2, "mm"), legend.key.spacing.y = unit(0, "mm"),
+        legend.title = element_text(size = sz$legend_title, lineheight = 0.95),
+        legend.text = element_text(size = sz$legend)) +
+  labs(x = sprintf("PCoA1 (%.1f%%)", pcoa_var[1]), y = sprintf("PCoA2 (%.1f%%)", pcoa_var[2]),
+       size = "Number of\nstrategies") +
+  guides(fill = "none", size = guide_legend(override.aes = list(fill = "grey35", colour = "white", alpha = 1)))
+```
+
+## Panels e and f: function recovery
+
+Function recovery is the module fullness of a cluster in a strategy relative to the maximum obtained by any strategy, as in chapter 4, using the clusters recovered by all ten strategies. Panel e shows, for every KEGG module, the mean of that ratio over these clusters (clusters in which the module is absent in every strategy, i.e. 0/0, are excluded from the mean of that module; modules absent in all clusters are dropped). Panel f uses the average over all modules and clusters, as in chapter 4.
+
+```{r fig2_ef, comment="", message=FALSE, warning=FALSE}
+all_strategy_clusters <- cluster_n_strategy %>% filter(n_strategy == length(strategies)) %>% pull(secondary_cluster)
+
+recovery_modules <- cluster_kegg %>%
+  filter(!is.na(secondary_cluster), secondary_cluster %in% all_strategy_clusters) %>%
+  group_by(secondary_cluster) %>%
+  mutate(across(where(is.numeric), ~ . / max(., na.rm = TRUE))) %>%      # 0/0 gives NaN
+  ungroup()
+
+# Per cluster and strategy average over modules (as chapter 4)
+recovery <- recovery_modules %>%
+  rowwise() %>%
+  mutate(average = rowMeans(across(where(is.numeric)), na.rm = TRUE)) %>%
+  ungroup() %>%
+  select(secondary_cluster, overall_strategy, average)
+
+# Modules shown in panel e: those present (fullness > 0 in at least one strategy) in at least 60 of the 96 clusters
+# recovered by all strategies. Rarer modules are dominated by one or two clusters and are not informative.
+module_prevalence <- recovery_modules %>%
+  select(-secondary_cluster, -overall_strategy) %>%
+  summarise(across(everything(), ~ sum(!is.nan(.)) / length(strategies))) %>%
+  pivot_longer(everything(), names_to = "module", values_to = "n_clusters") %>%
+  filter(n_clusters >= 60)
+
+# Per strategy and module mean over clusters (panel e)
+module_recovery <- recovery_modules %>%
+  select(-secondary_cluster) %>%
+  pivot_longer(-overall_strategy, names_to = "module", values_to = "recovery") %>%
+  group_by(overall_strategy, module) %>%
+  summarise(recovery = if (all(is.nan(recovery))) NA_real_ else mean(recovery, na.rm = TRUE), .groups = "drop") %>%
+  group_by(module) %>% filter(!all(is.na(recovery))) %>% ungroup() %>%
+  semi_join(module_prevalence, by = "module") %>%
+  mutate(overall_strategy = factor(overall_strategy, levels = rev(strategies)))
+
+# Panel e only: the module with by far the lowest mean recovery (clearly separated from all other modules) drives the whole colour range,
+# so it is left out of the heatmap. It stays in every statistic (panel f and chapter 4 use all modules); see the table at the end of the chapter.
+module_mean <- module_recovery %>% group_by(module) %>% summarise(mean_recovery = mean(recovery, na.rm = TRUE)) %>% arrange(mean_recovery)
+excluded_module <- module_mean$module[1]
+excluded_module_values <- module_recovery %>% filter(module == excluded_module) %>%
+  arrange(factor(overall_strategy, levels = strategies)) %>% select(overall_strategy, recovery)
+excluded_module_clusters <- recovery_modules %>% filter(!is.na(.data[[excluded_module]])) %>% distinct(secondary_cluster) %>% nrow()   # of the clusters recovered by all strategies
+module_recovery_e <- module_recovery %>% filter(module != excluded_module)
+n_modules_e <- n_distinct(module_recovery_e$module)
+
+# Colour scale refitted to the remaining modules: minimum rounded down to a multiple of 5 percentage points, up to 100%
+kegg_lo <- floor(min(module_recovery_e$recovery, na.rm = TRUE) * 20) / 20
+
+kegg_scale <- function() scale_fill_distiller(palette = "GnBu", direction = -1, limits = c(kegg_lo, 1), oob = scales::squish,
+                                              na.value = "white", guide = "none")
+
+p_heat_e <- ggplot(module_recovery_e, aes(x = module, y = overall_strategy, fill = recovery)) +
+  geom_tile(width = 1.02, height = 0.94) +
+  kegg_scale() +
+  scale_x_discrete(expand = c(0, 0)) + scale_y_discrete(expand = expansion(add = 0.5)) +
+  theme_void_fig()
+
+p_kegg_lab <- ggplot() + annotate("text", x = 0.5, y = 0.85, label = "KEGG modules", vjust = 1, size = pt(sz$axis),
+                                  family = fig_font, colour = "black") +
+  scale_x_continuous(limits = c(0, 1), expand = c(0, 0)) + scale_y_continuous(limits = c(0, 1), expand = c(0, 0)) + theme_void_fig()
+
+kegg_ticks <- seq(kegg_lo, 1, 0.05)
+p_cbar_e <- colourbar(kegg_scale(), kegg_lo, 1, ticks = kegg_ticks,
+                      labels = c(sprintf("%d%%", round(kegg_lo * 100)), rep("", length(kegg_ticks) - 2), "100%"))
+
+fig2_e <- wrap_plots(strategy_labels(strategies), strategy_strip(strategies), p_heat_e,
+                     p_cbar_e, p_kegg_lab, design = "ABC\nDDE") +
+  plot_layout(widths = unit(c(w_lab, w_strip, 1), c("mm", "mm", "null")), heights = c(43, 13)) +
+  # the left margin keeps the row labels clear of the panel letter; the right margin makes the heatmap end exactly where the panels of b and c end (the wrapped element spans the gap between columns)
+  plot_annotation(theme = theme(panel.spacing = unit(0, "mm"), plot.margin = margin(0, 1.9, 0, 7, "mm")))
+
+# Panel f: average function recovery versus average genome completeness
+completeness_stats <- bin_metadata %>% group_by(overall_strategy) %>% summarise(completeness = mean(completeness))
+functions_stats <- recovery %>% group_by(overall_strategy) %>% summarise(functions = mean(average))
+recovery_vs_completeness <- full_join(completeness_stats, functions_stats, by = "overall_strategy")
+lm_all <- lm(completeness ~ functions, data = recovery_vs_completeness)
+r_fc <- cor.test(recovery_vs_completeness$functions, recovery_vs_completeness$completeness)
+recovery_vs_completeness$residual <- resid(lm_all)
+
+# Outliers for the arrows: the two strategies with the largest absolute residual of the all-strategy fit
+arrow_strategies <- recovery_vs_completeness %>% slice_max(abs(residual), n = 2) %>% pull(overall_strategy)
+
+# Reference line (the diagonal of the original): regression on the remaining strategies, i.e. the expected
+# relationship between function recovery and completeness against which the two outliers are pointed out
+lm_fc <- lm(completeness ~ functions, data = filter(recovery_vs_completeness, !overall_strategy %in% arrow_strategies))
+r_ref <- cor(filter(recovery_vs_completeness, !overall_strategy %in% arrow_strategies)[c("functions", "completeness")])[1, 2]
+
+# Arrows start next to the point and stop short of the regression line (perpendicular in plot space)
+rx <- diff(range(recovery_vs_completeness$functions)); ry <- diff(range(recovery_vs_completeness$completeness))
+arrow_df <- recovery_vs_completeness %>%
+  filter(overall_strategy %in% arrow_strategies) %>%
+  mutate(px = functions / rx, py = completeness / ry,                      # normalised coordinates
+         b = coef(lm_fc)[[2]] * rx / ry, a0 = coef(lm_fc)[[1]] / ry,
+         fx = (px + b * (py - a0)) / (1 + b^2), fy = a0 + b * fx,           # foot on the line
+         x0 = (px + 0.10 * (fx - px)) * rx, y0 = (py + 0.10 * (fy - py)) * ry,
+         x1 = (px + 0.88 * (fx - px)) * rx, y1 = (py + 0.88 * (fy - py)) * ry)
+
+line_df <- tibble(functions = range(recovery_vs_completeness$functions) + c(-0.12, 0.12) * rx) %>%
+  mutate(completeness = predict(lm_fc, newdata = .))
+
+# Names of the two arrowed strategies, set beside their points (the colours of the others are given by the strips of a and e)
+label_df <- arrow_df %>%
+  mutate(above = completeness > mean(recovery_vs_completeness$completeness),
+         hj = if_else(above, 0, 1), vj = if_else(above, 0, 0.5),
+         lx = functions - if_else(above, 0.0003, 0.0016), ly = completeness + if_else(above, 0.07, 0) * ry / 1.6)
+
+fig2_f <- ggplot(recovery_vs_completeness, aes(x = functions, y = completeness)) +
+  geom_line(data = line_df, colour = "grey35", linewidth = lw(0.4), lineend = "butt") +
+  geom_segment(data = arrow_df, aes(x = x0, y = y0, xend = x1, yend = y1), colour = "grey20", linewidth = lw(0.4),
+               arrow = arrow(length = unit(1.6, "mm"), angle = 18, type = "closed")) +
+  geom_point(aes(fill = overall_strategy), shape = 21, size = dsize(2.2), colour = "grey20", stroke = 0.25) +
+  geom_text(data = label_df, aes(label = overall_strategy, hjust = hj, vjust = vj, x = lx, y = ly), size = pt(sz$legend),
+            family = fig_font, colour = "grey25") +
+  scale_fill_manual(values = strategy_colors) +
+  scale_x_continuous(expand = expansion(mult = 0.06)) +
+  scale_y_continuous(expand = expansion(mult = 0.06)) +
+  theme_fig() +
+  theme(legend.position = "none") +
+  labs(x = "Average function recovery", y = "Average genome completeness")
+```
+
+## Figure 2
+
+```{r fig2_assemble, comment="", message=FALSE, warning=FALSE, fig.width=8.27, fig.height=9.1}
+fig2_h <- 238                                                   # mm
+fig2_layout <- "
+AA
+BD
+CD
+EF
+"
+fig2 <- wrap_plots(A = wrap_elements(full = fig2_a), B = fig2_b, C = fig2_c, D = fig2_d,
+                   E = wrap_elements(full = fig2_e), `F` = fig2_f, design = fig2_layout) +
+  plot_layout(widths = c(130, 70), heights = c(81, 52, 38, 56)) +
+  plot_annotation(tag_levels = "a", theme = theme(plot.margin = margin(margin_mm, margin_mm, margin_mm, margin_mm, "mm"),
+                                                  panel.spacing = unit(2, "mm"))) &
+  tag_theme
+fig2
+```
+
+## Figure 3
+
+Panel a keeps the chart of the original (jittered points and boxplot per strategy, one facet per Hill-number metric). Panel b shows the lower-triangle matrix of Procrustes dissimilarity between the NMDS ordinations of the strategies, computed on the aligned samples (chapter 6). **Dissimilarity is the Procrustes sum of squares, `ss = 1 - r^2`, where `r` is the Procrustes correlation stored in `procrustes_mat` (`protest()$t0`).** The permutation p-values of all pairwise tests are 0.001 (999 permutations, the minimum attainable), as checked below. Panels a and b are stacked in one patchwork so that their facet columns are aligned exactly.
+
+```{r fig3_a, comment="", message=FALSE, warning=FALSE}
+alpha_labels <- c(richness = "Richness", neutral = "Neutral diversity", phylo = "Phylogenetic diversity")
+
+alpha_long <- alpha_div %>%
+  pivot_longer(!c(strategy, sample), names_to = "metric", values_to = "value") %>%
+  mutate(metric = factor(alpha_labels[metric], levels = alpha_labels),
+         strategy = factor(strategy, levels = rev(strategies)))
+alpha_box <- alpha_long %>% group_by(strategy, metric) %>% reframe(box_stats(value))
+
+set.seed(1)
+fig3_a <- ggplot(alpha_long, aes(y = strategy, colour = strategy)) +
+  ggrastr::geom_point_rast(aes(x = value), position = position_jitter(width = 0, height = 0.27), shape = 16,
+                           size = dsize(0.8), alpha = 0.35, raster.dpi = 300) +
+  geom_segment(data = alpha_box, aes(yend = strategy, x = upper, xend = ymax), linewidth = lw(0.25)) +
+  geom_segment(data = alpha_box, aes(yend = strategy, x = lower, xend = ymin), linewidth = lw(0.25)) +
+  geom_crossbar(data = alpha_box, aes(x = middle, xmin = lower, xmax = upper), orientation = "y", fill = "white", alpha = 0.7,
+                width = 0.6, linewidth = lw(0.4), fatten = 1.6) +
+  scale_colour_manual(values = strategy_colors) +
+  facet_wrap(~metric, scales = "free_x", nrow = 1) +
+  theme_fig() +
+  theme(legend.position = "none", panel.spacing.x = unit(6, "mm"),
+        axis.line.x = element_line(colour = col_text, linewidth = lw(0.4)),
+        axis.ticks.y = element_blank(), axis.ticks.x = element_line(colour = col_text, linewidth = lw(0.4)),
+        axis.ticks.length.x = unit(0.8, "mm"), axis.title.x = element_text(size = sz$axis, margin = margin(t = 1.5, unit = "mm")),
+        strip.text = element_text(size = sz$strip, margin = margin(0, 0, 1.5, 0, "mm"))) +
+  labs(y = "Strategy", x = "Effective number of MAGs")
+```
+
+```{r fig3_b, comment="", message=FALSE, warning=FALSE}
+procrustes_labels <- c(q0n = "Richness", q1n = "Neutral diversity", q1p = "Phylogenetic diversity")
+stopifnot(all(sapply(procrustes_p, function(x) all(x[upper.tri(x)] == 0.001))))   # all permutation p = 0.001
+
+# As in the original, strategies keep alphabetical (factor) order: columns coassembly_animal ... single_coverage left to right,
+# rows single_coverage (top) ... coassembly_animal (bottom); the lower triangle (including the diagonal) is shown
+tri_levels <- sort(strategies)
+
+procrustes_long <- purrr::map_dfr(names(procrustes_mat), function(m) {
+  as.data.frame(as.table(procrustes_mat[[m]])) %>%
+    rename(v1 = Var1, v2 = Var2, correlation = Freq) %>%
+    mutate(metric = procrustes_labels[[m]])
+}) %>%
+  mutate(dissimilarity = 1 - correlation^2,              # Procrustes sum of squares
+         i1 = match(v1, tri_levels), i2 = match(v2, tri_levels),
+         metric = factor(metric, levels = procrustes_labels)) %>%
+  filter(i1 <= i2)
+
+diag_df <- procrustes_long %>% filter(i1 == i2) %>% select(metric, strategy = v1, i1, i2)
+off_df <- procrustes_long %>% filter(i1 < i2)
+
+# Sequential yellow (low dissimilarity) -> dark blue (high), ColorBrewer YlGnBu, shared 0-1 scale for the three matrices
+dis_scale <- function() scale_fill_distiller(palette = "YlGnBu", direction = 1, limits = c(0, 1), guide = "none")
+
+# Colour bar drawn in the data coordinates of the last matrix, in its empty lower-right corner (aligned with the tiles)
+lg_x <- c(6.85, 10.45); lg_n <- 60
+lg_bar <- tibble(metric = factor(procrustes_labels[3], levels = procrustes_labels),
+                 x = seq(lg_x[1], lg_x[2], length.out = lg_n), v = seq(0, 1, length.out = lg_n))
+lg_ticks <- tibble(metric = factor(procrustes_labels[3], levels = procrustes_labels), v = c(0, 0.25, 0.5, 0.75, 1),
+                   lab = c("0", "0.25", "0.5", "0.75", "1")) %>%
+  mutate(x = lg_x[1] + v * diff(lg_x), hj = c(0, 0.5, 0.5, 0.5, 1))
+
+fig3_b <- ggplot() +
+  geom_tile(data = off_df, aes(x = i1, y = i2, fill = dissimilarity), colour = "white", linewidth = lw(0.2)) +
+  geom_tile(data = lg_bar, aes(x = x, y = 1.55, fill = v), width = diff(lg_x) / lg_n * 1.5, height = 0.5) +
+  dis_scale() +
+  geom_segment(data = lg_ticks, aes(x = x, xend = x, y = 1.25, yend = 1.0), linewidth = lw(0.4), colour = col_text) +
+  geom_text(data = lg_ticks, aes(x = x, y = 0.9, label = lab, hjust = hj), vjust = 1, size = pt(sz$legend), family = fig_font, colour = col_text) +
+  geom_text(data = lg_ticks[1, ], aes(x = lg_x[1], y = 2.35, label = "Dissimilarity"), hjust = 0, vjust = 0.5, size = pt(sz$legend_title),
+            family = fig_font, colour = "black") +
+  new_scale_fill() +
+  geom_tile(data = diag_df, aes(x = i1, y = i2, fill = strategy), colour = "white", linewidth = lw(0.4)) +
+  scale_fill_manual(values = strategy_colors, guide = "none") +
+  geom_text(data = diag_df, aes(x = i1, y = i2 - 0.62, label = strategy), angle = 90, hjust = 1, vjust = 0.5,
+            size = pt(sz$row), colour = col_text, family = fig_font) +
+  scale_x_continuous(breaks = NULL, expand = c(0, 0), limits = c(0.5, 10.5)) +
+  scale_y_continuous(breaks = seq_along(tri_levels), labels = tri_levels, expand = c(0, 0), limits = c(-4.4, 10.5)) +
+  facet_wrap(~metric, nrow = 1) +
+  theme_void_fig() +
+  theme(strip.text = element_blank(),
+        axis.text.y = element_text(colour = col_text, size = sz$row, hjust = 1, margin = margin(r = 1.5, unit = "mm")),
+        # hjust centres the title on the heatmap rows, not on rows + rotated labels: rows are centred at 66.5% of the panel height and
+        # hjust also shifts the text by (0.5 - hjust) x its length, hence 0.689 instead of 0.665 (checked visually)
+        axis.title.y = element_text(size = sz$axis, angle = 90, hjust = 0.689, margin = margin(r = 2, unit = "mm")),
+        panel.spacing.x = unit(6, "mm")) +
+  labs(y = "Strategy")
+```
+
+```{r fig3_assemble, comment="", message=FALSE, warning=FALSE, fig.width=8.27, fig.height=6.8}
+fig3_h <- 150                                                   # mm
+fig3 <- fig3_a / fig3_b +
+  plot_layout(heights = c(62, 78)) +
+  plot_annotation(tag_levels = "a", theme = theme(plot.margin = margin(margin_mm, margin_mm, margin_mm, margin_mm, "mm"),
+                                                  panel.spacing = unit(2, "mm"))) &
+  tag_theme
+fig3
+```
+
+## Figure 4
+
+Panel a is the community turnover (Sørensen-type overlap-complement, `hilldiss(metric = "C", q = 0)`, richness, the metric tested in chapter 7) between the three sampling points (OP, HR, CR) of each animal, females versus males (15 and 15 animals), for each processing strategy. The asterisks come from the Kruskal-Wallis test of turnover by sex within each strategy (alpha = 0.05, no correction for multiple testing; `ns` otherwise). Panel b shows, for every strategy and KEGG module, the outcome of the hot versus cold comparison of community-weighted module fullness (chapter 8: `lmer(value ~ treatment + (1 | animal))`, Bonferroni correction within strategy, modules with a mean community fullness above 0.3), read from `results/casestudy2_kegg_comparison.Rdata`. Strategies are ordered by the hierarchical clustering of the Euclidean distances between their estimate vectors (as in chapter 8) and modules by identifier.
+
+```{r fig4_a, comment="", message=FALSE, warning=FALSE}
+library(hilldiv2)
+
+sub_names4 <- setNames(c("", rep(c("animal", "timepoint_all", "timepoint_cage"), 3)), quality_order)
+
+# Turnover between the sampling points of every animal, per strategy (richness, q = 0)
+sample_list <- bin_counts %>% select(sample) %>% unique() %>%
+  mutate(animal = substr(sample, 1, 5), timepoint = substr(sample, 6, 7)) %>%
+  filter(timepoint %in% c("OP", "HR", "CR")) %>%
+  group_by(animal) %>% group_split() %>% set_names(map_chr(., ~ .x$animal[1]))
+
+turnover <- map_dfr(strategies, function(st) {
+  map_dfr(names(sample_list), function(an) {
+    counts <- bin_counts_norm_filt %>%
+      filter(overall_strategy == st, sample %in% sample_list[[an]]$sample) %>%
+      select(secondary_cluster, sample, read_count) %>%
+      pivot_wider(names_from = "sample", values_from = "read_count", values_fn = sum) %>%
+      mutate(across(where(is.double), ~ . / sum(.))) %>%
+      column_to_rownames("secondary_cluster")
+    tibble(animal = an, strategy = st, turnover = suppressMessages(hilldiss(data = counts, metric = "C", q = 0)))
+  })
+}) %>%
+  mutate(sex = substr(animal, 4, 4), strategy = factor(strategy, levels = quality_order),
+         group = factor(case_when(grepl("^single", strategy) ~ "Single", grepl("^multicoverage", strategy) ~ "Multi-coverage",
+                                  grepl("^coassembly", strategy) ~ "Coassembly", TRUE ~ "Multi-split"), levels = group_levels),
+         sub = factor(sub_names4[as.character(strategy)], levels = unique(sub_names4)))
+
+# Kruskal-Wallis test of turnover by sex within each strategy (alpha = 0.05, no multiple-testing correction)
+turnover_tests <- turnover %>% group_by(strategy, group, sub) %>%
+  summarise(p_value = kruskal.test(turnover ~ sex)$p.value, n_F = sum(sex == "F"), n_M = sum(sex == "M"), .groups = "drop") %>%
+  mutate(significant = p_value < 0.05)
+
+turnover_box <- turnover %>% group_by(strategy, group, sub, sex) %>% reframe(box_stats(turnover))
+y_top <- max(turnover_box$ymax)
+bracket <- turnover_tests %>% mutate(y = y_top + 0.012, label = if_else(significant, "*", "ns"),
+                                     col = if_else(significant, "black", "grey55"))
+
+fig4_a <- ggplot(turnover_box, aes(x = sex, colour = strategy, fill = strategy)) +
+  geom_segment(aes(xend = sex, y = upper, yend = ymax), linewidth = lw(0.3), lineend = "butt") +
+  geom_segment(aes(xend = sex, y = lower, yend = ymin), linewidth = lw(0.3), lineend = "butt") +
+  geom_crossbar(aes(y = middle, ymin = lower, ymax = upper), width = 0.7, linewidth = lw(0.4), fatten = 1.8) +
+  geom_segment(data = bracket, aes(x = 1, xend = 2, y = y, yend = y, colour = NULL, fill = NULL), colour = bracket$col, linewidth = lw(0.4)) +
+  geom_segment(data = bracket, aes(x = 1, xend = 1, y = y, yend = y - 0.004, colour = NULL, fill = NULL), colour = bracket$col, linewidth = lw(0.4)) +
+  geom_segment(data = bracket, aes(x = 2, xend = 2, y = y, yend = y - 0.004, colour = NULL, fill = NULL), colour = bracket$col, linewidth = lw(0.4)) +
+  geom_text(data = bracket, aes(x = 1.5, y = y + 0.002, label = label, colour = NULL, fill = NULL), colour = bracket$col,
+            vjust = if_else(bracket$significant, 0.15, 0), size = pt(if_else(bracket$significant, 8, sz$tick)), family = fig_font) +
+  scale_colour_manual(values = strategy_colors) +
+  scale_fill_manual(values = scales::alpha(strategy_colors, 0.3)) +
+  scale_y_continuous(breaks = seq(0.10, 0.25, 0.05), labels = c("0.10", "0.15", "0.20", "0.25")) +
+  coord_cartesian(ylim = c(min(turnover_box$ymin) - 0.004, y_top + 0.03)) +
+  ggh4x::facet_nested(. ~ group + sub, scales = "fixed",
+                      strip = ggh4x::strip_nested(
+                        background_x = c(lapply(unname(group_colors), function(f) element_rect(fill = f, colour = NA)),
+                                         rep(list(element_blank()), 10)),
+                        text_x = c(rep(list(element_text(colour = "white", size = sz$strip, face = "bold")), 4),
+                                   rep(list(element_text(colour = "black", size = sz$tick)), 10)),
+                        clip = "off")) +
+  labs(x = "Sex", y = "Community turnover") +
+  theme_fig() +
+  theme(legend.position = "none", panel.spacing.x = unit(1.2, "mm"),
+        panel.border = element_rect(colour = "grey70", fill = NA, linewidth = lw(0.4)),
+        axis.ticks = element_line(colour = "grey50", linewidth = lw(0.4)), axis.ticks.length = unit(0.8, "mm"),
+        strip.text.x = element_text(margin = margin(0.8, 0, 0.8, 0, "mm")), ggh4x.facet.nestline = element_blank())
+```
+
+```{r fig4_b, comment="", message=FALSE, warning=FALSE}
+# Outcome per strategy and module: blue = significantly higher under cold, red = significantly higher under hot (Bonferroni p < 0.05)
+trend_cols <- c(cold = "#78bacf", hot = "#e0766e", neutral = "#f4f4f4")
+module_trend <- all_p_values %>%
+  mutate(trend = case_when(p_value_adj < 0.05 & estimate > 0 ~ "hot", p_value_adj < 0.05 & estimate < 0 ~ "cold", TRUE ~ "neutral"))
+modules_b <- sort(unique(module_trend$trait))
+n_mod <- length(modules_b); n_str <- length(strategies)
+
+# Strategy dendrogram: Euclidean distance between the vectors of estimates, hierarchical clustering (as in chapter 8)
+est_matrix <- all_p_values %>% select(-p_value_adj) %>% pivot_wider(names_from = "trait", values_from = "estimate") %>%
+  column_to_rownames("strategy")
+dend <- ape::as.phylo(hclust(dist(est_matrix)))
+dend_data <- ggtree::ggtree(dend)$data
+row_y <- dend_data %>% filter(isTip) %>% select(strategy = label, y)             # one row per strategy; y = row position
+dend_edges <- dend_data %>% filter(parent != node) %>%
+  left_join(dend_data %>% select(node, px = x), by = c("parent" = "node"))
+dend_vert <- dend_edges %>% group_by(parent, px) %>% summarise(y0 = min(y), y1 = max(y), .groups = "drop")
+dend_w <- max(dend_data$x)
+
+p_dend <- ggplot() +
+  geom_segment(data = dend_edges, aes(x = px, xend = x, y = y, yend = y), linewidth = lw(0.25), colour = "grey20", lineend = "butt") +
+  geom_segment(data = dend_vert, aes(x = px, xend = px, y = y0, yend = y1), linewidth = lw(0.25), colour = "grey20", lineend = "butt") +
+  scale_x_continuous(expand = c(0, 0)) + scale_y_continuous(expand = c(0, 0)) +
+  coord_cartesian(xlim = c(0, dend_w), ylim = c(0.5, n_str + 0.5), expand = FALSE) + theme_void_fig()
+
+p_strip4 <- ggplot(row_y, aes(fill = strategy)) +
+  geom_tile(aes(x = 1, y = y), width = 1, height = 0.94) +
+  scale_fill_manual(values = strategy_colors) +
+  scale_x_continuous(limits = c(0.5, 0.5 + 4 / 3), expand = c(0, 0)) + scale_y_continuous(limits = c(0.5, n_str + 0.5), expand = c(0, 0)) +
+  theme_void_fig() + theme(legend.position = "none")
+
+p_lab4 <- ggplot(row_y) +
+  geom_text(aes(x = 0.02, y = y, label = strategy), hjust = 0, size = pt(sz$row), family = fig_font, colour = col_text) +
+  scale_x_continuous(limits = c(0, 1), expand = c(0, 0)) + scale_y_continuous(limits = c(0.5, n_str + 0.5), expand = c(0, 0)) +
+  coord_cartesian(clip = "off") + theme_void_fig()
+
+heat4 <- module_trend %>% left_join(row_y, by = "strategy") %>% mutate(x = match(trait, modules_b))
+p_heat4 <- ggplot(heat4, aes(x = x, y = y, fill = trend)) +
+  geom_tile(width = 1, height = 0.94) +
+  scale_fill_manual(values = trend_cols) +
+  coord_cartesian(xlim = c(0.5, n_mod + 0.5), ylim = c(0.5, n_str + 0.5), expand = FALSE) +
+  theme_void_fig() + theme(legend.position = "none")
+
+# Highlighted modules (arrows above the heatmap) and module identifiers below it
+hl <- tibble(module = c("M00082", "M00093"), label = c("Fatty acid biosynthesis", "Phosphatidylethanolamine (PE) biosynthesis"),
+             col = c("#1f5f73", "#8f2d2d"), x = match(module, modules_b), side = c("left", "right"))
+stopifnot(!anyNA(hl$x))
+hl_head <- arrow(length = unit(1.4, "mm"), angle = 20, type = "closed")
+p_ann4 <- ggplot() +
+  geom_segment(data = hl %>% mutate(x0 = if_else(side == "left", x - 4, x + 4)), aes(x = x0, xend = x, y = 0.55, yend = 0.55),
+               linewidth = lw(0.5), colour = "black", lineend = "butt") +
+  geom_segment(data = hl, aes(x = x, xend = x, y = 0.55, yend = 0.04), linewidth = lw(0.5), colour = "black", arrow = hl_head) +
+  geom_text(data = hl %>% mutate(xt = if_else(side == "left", x - 4.8, x + 4.8)), aes(x = xt, y = 0.55, label = label, colour = col,
+            hjust = if_else(side == "left", 1, 0)), size = pt(sz$tick), family = fig_font) +
+  scale_colour_identity() +
+  coord_cartesian(xlim = c(0.5, n_mod + 0.5), ylim = c(0, 1), expand = FALSE) + theme_void_fig()
+
+# One label per two modules (6 pt identifiers need about 2 mm per column, a column is about 1.5 mm); highlighted modules are always labelled
+lab_idx <- sort(unique(c(seq(1, n_mod, 2), hl$x)))
+lab_idx <- lab_idx[!(lab_idx %in% (c(hl$x - 1, hl$x + 1)))]
+modlab <- tibble(x = lab_idx, module = modules_b[lab_idx], bold = module %in% hl$module)
+p_mod4 <- ggplot(modlab) +
+  geom_segment(aes(x = x, xend = x, y = 1, yend = 0.93), linewidth = lw(0.25), colour = "grey50") +
+  geom_text(aes(x = x, y = 0.88, label = module, fontface = if_else(bold, "bold", "plain")), angle = 90, hjust = 1, vjust = 0.5,
+            size = pt(sz$tick), family = fig_font, colour = col_text) +
+  coord_cartesian(xlim = c(0.5, n_mod + 0.5), ylim = c(0, 1), expand = FALSE) + theme_void_fig()
+
+fig4_b <- wrap_plots(spc(), spc(), spc(), p_ann4,
+                     p_dend, p_strip4, p_lab4, p_heat4,
+                     spc(), spc(), spc(), p_mod4, design = "ABCD\nEFGH\nIJKL") +
+  plot_layout(widths = unit(c(15, 4, 33, 1), c("mm", "mm", "mm", "null")), heights = c(7, 60, 11)) +
+  plot_annotation(theme = theme(panel.spacing = unit(0, "mm"), plot.margin = margin(0, 1.9, 0, 0, "mm")))   # heatmap ends where the panels of a end
+```
+
+```{r fig4_assemble, comment="", message=FALSE, warning=FALSE, fig.width=8.27, fig.height=6.3}
+fig4_h <- 158                                                   # mm
+fig4 <- fig4_a / wrap_elements(full = fig4_b) +
+  plot_layout(heights = c(72, 78)) +
+  plot_annotation(tag_levels = "a", theme = theme(plot.margin = margin(margin_mm, margin_mm, margin_mm, margin_mm, "mm"),
+                                                  panel.spacing = unit(2, "mm"))) &
+  tag_theme
+fig4
+```
+
+## Export
+
+Journal-style export: 210 mm (A4 width) wide, vector PDF (Cairo, fonts embedded), 300 dpi PNG and SVG (text kept as text). The dense jittered point clouds of panels 2b, 2c and 3a are raster layers inside the vector files.
+
+```{r fig_export, comment="", message=FALSE, warning=FALSE}
+dir.create("figures", showWarnings = FALSE)
+
+save_fig <- function(plot, name, width_mm, height_mm) {
+  stopifnot(name %in% "Figure4_v1")   # never overwrite the existing figure files (Figures 2 and 3 are final as Figure2_v6 / Figure3_v5)
+  ggsave(paste0("figures/", name, ".pdf"), plot, width = width_mm, height = height_mm, units = "mm", device = cairo_pdf)
+  ggsave(paste0("figures/", name, ".png"), plot, width = width_mm, height = height_mm, units = "mm", dpi = 300, bg = "white")
+  if (requireNamespace("svglite", quietly = TRUE)) {
+    ggsave(paste0("figures/", name, ".svg"), plot, width = width_mm, height = height_mm, units = "mm", device = svglite::svglite)
+  }
+}
+
+# Figures 2 and 3 are already written (Figure2_v6, Figure3_v5); to regenerate them, save under a new name:
+# save_fig(fig2, "Figure2_v7", fig_w, fig2_h); save_fig(fig3, "Figure3_v6", fig_w, fig3_h)
+save_fig(fig4, "Figure4_v1", fig_w, fig4_h)
+```
+
+## Values quoted in the legends
+
+```{r fig_numbers, comment="", message=FALSE, warning=FALSE}
+tibble(
+  quantity = c("Clusters", "MAGs", "Completeness mean (%)", "Completeness SD", "Contamination mean (%)", "Contamination SD",
+               "Clusters in coassembly_timepoint_all", "Clusters recovered by all 10 strategies",
+               "PCoA axis 1 (% variance)", "PCoA axis 2 (% variance)", "PCoA axes with negative eigenvalues",
+               "Correlation function recovery vs completeness (r, 10 strategies)", "Correlation excluding the two arrowed strategies (r, 8 strategies)"),
+  value = c(n_distinct(cluster_presence$secondary_cluster), nrow(bin_metadata),
+            mean(bin_metadata$completeness), sd(bin_metadata$completeness),
+            mean(bin_metadata$contamination), sd(bin_metadata$contamination),
+            strategy_n_clusters$n[strategy_n_clusters$overall_strategy == "coassembly_timepoint_all"],
+            length(all_strategy_clusters), pcoa_var[1], pcoa_var[2], pcoa_negative_eig, unname(r_fc$estimate), r_ref)
+) %>%
+  mutate(value = round(value, 2)) %>%
+  tt()
+```
+
+Module left out of the heatmap of Figure 2e (it is kept in all statistics): its ID, the number of the clusters recovered by all strategies that carry it, and its mean recovery per strategy.
+
+```{r fig_excluded_module, comment="", message=FALSE, warning=FALSE}
+tibble(module = excluded_module, clusters_carrying_it = excluded_module_clusters,
+       colour_scale_min_panel_e = kegg_lo, next_lowest_module_mean = module_mean$mean_recovery[2]) %>% tt()
+excluded_module_values %>% mutate(recovery = round(recovery, 3)) %>% tt()
+```
+
+Values quoted in the legend of Figure 4 (panel a: Kruskal-Wallis test of turnover by sex within each strategy, 15 females and 15 males, no correction for multiple testing; panel b: hot versus cold comparison, Bonferroni correction within strategy over the modules tested).
+
+```{r fig4_numbers, comment="", message=FALSE, warning=FALSE}
+turnover_tests %>% transmute(strategy, n_females = n_F, n_males = n_M, kruskal_wallis_p = signif(p_value, 3), significant) %>% tt()
+
+module_summary <- module_trend %>% group_by(trait) %>% summarise(n_significant = sum(trend != "neutral"), .groups = "drop")
+tibble(
+  quantity = c("Strategies", "Modules shown in panel b (mean fullness > 0.3, per strategy)", "Tests per strategy (Bonferroni family)",
+               "Strategies significant in panel a (richness, p < 0.05)",
+               "Modules whose significance differs among strategies (significant in some, not all)", "Modules significant in all strategies",
+               "Modules significant in no strategy", "M00082: strategies with significantly higher fullness under cold",
+               "M00082: strategies with significantly higher fullness under hot", "M00093: strategies with a significant difference",
+               "M00093: strategy with the significant difference"),
+  value = c(n_str, n_mod, n_mod, sum(turnover_tests$significant),
+            sum(module_summary$n_significant > 0 & module_summary$n_significant < n_str), sum(module_summary$n_significant == n_str),
+            sum(module_summary$n_significant == 0),
+            sum(module_trend$trait == "M00082" & module_trend$trend == "cold"), sum(module_trend$trait == "M00082" & module_trend$trend == "hot"),
+            sum(module_trend$trait == "M00093" & module_trend$trend != "neutral"),
+            paste(module_trend$strategy[module_trend$trait == "M00093" & module_trend$trend != "neutral"], collapse = ", ")) %>% as.character()
+) %>% tt()
+
+module_trend %>% group_by(strategy) %>%
+  summarise(n_significant = sum(trend != "neutral"), percent_significant = 100 * mean(trend != "neutral"), .groups = "drop") %>%
+  arrange(desc(percent_significant)) %>% mutate(percent_significant = round(percent_significant, 1)) %>% tt()
+```

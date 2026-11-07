@@ -92,3 +92,34 @@ alpha_test %>%
   anova() %>%
   broom::tidy()
 ```
+
+## Omnibus test of the strategy effect
+
+Omnibus test of the effect of processing strategy on each Hill number metric. Linear mixed model with sample as random intercept (`value ~ strategy + (1 | sample)`), fitted with lmerTest; the F-test uses Type III sums of squares with Satterthwaite's approximation for the denominator degrees of freedom. The table reports the values to be quoted in the manuscript as F[numDF, denDF] = value, p.
+
+```{r alpha_diversity_test_omnibus, comment="", message=FALSE, warning=FALSE}
+load("results/alpha_diversity.Rdata")
+
+alpha_omnibus <- alpha_div %>%
+  pivot_longer(!c(strategy,sample),names_to = "metric",values_to = "value") %>%
+  mutate(strategy=factor(strategy,levels=strategies)) %>%
+  mutate(metric=factor(metric,levels=c("richness","neutral","phylo"))) %>%
+  group_by(metric) %>%
+  group_modify(~ lmerTest::lmer(value ~ strategy + (1 | sample), data = .x) %>%
+                 anova(type = 3, ddf = "Satterthwaite") %>%
+                 as.data.frame() %>%
+                 rownames_to_column("term")) %>%
+  ungroup() %>%
+  transmute(metric,
+            term,
+            `num df` = NumDF,
+            `den df` = round(DenDF, 1),
+            `F value` = round(`F value`, 2),
+            `p value` = `Pr(>F)`,
+            `manuscript format` = paste0("F[", NumDF, ",", round(DenDF, 1), "]=", round(`F value`, 2),
+                                         ", p ", ifelse(`Pr(>F)` < 0.001, "< 0.001", paste0("= ", signif(`Pr(>F)`, 2)))))
+
+alpha_omnibus %>%
+  mutate(`p value` = format.pval(`p value`, digits = 3, eps = 1e-16)) %>%
+  tt()
+```

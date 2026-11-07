@@ -34,130 +34,93 @@ for (strategy in strategies){
 }
 
 names(beta_div) <- strategies
+```
+
+The distance matrices of the different strategies list the samples in different orders (only `single_coverage` and the three coassemblies share the same order). `protest()` compares the configurations row by row, so all matrices must be reindexed to a common sample order **before** the NMDS ordinations are computed. Otherwise the Procrustes comparison relates different samples to each other.
+
+```{r beta_diversity_align, comment="", message=FALSE, warning=FALSE, eval=FALSE}
+# Common sample order (sorted sample names)
+sample_order <- sort(labels(beta_div[[1]]$q0n))
+
+align_dist <- function(d, ord) {
+  stopifnot(setequal(labels(d), ord))
+  as.dist(as.matrix(d)[ord, ord])
+}
+
+beta_div <- lapply(beta_div, function(x) lapply(x, align_dist, ord = sample_order))
+
+# Every matrix must now carry the same labels in the same order
+stopifnot(all(sapply(beta_div, function(x) all(sapply(x, function(d) identical(labels(d), sample_order))))))
 save(beta_div,file="results/beta_diversity.Rdata")
 ```
 ## Procrustes analysis
 
-### Richness
+Non-metric multidimensional scaling (NMDS, `metaMDS`, k = 2, `trymax` = 999, seed 1) was computed on the (aligned) distance matrix of each strategy and every pair of ordinations was compared with a Procrustes test (`protest`, 999 permutations). The statistic reported is the **Procrustes correlation** `sqrt(1 - m12^2)` (`protest()$t0`; 1 = identical configurations), together with the permutation p-value. The Procrustes scale factor is not a measure of similarity and is not shown. The computation is heavy and is stored in `results/beta_procrustes.Rdata`.
 
-```{r beta_diversity_nmds_procrustes_q0n, comment="", message=FALSE, warning=FALSE}
+```{r beta_diversity_procrustes, comment="", message=FALSE, warning=FALSE, eval=FALSE}
 load("results/beta_diversity.Rdata")
 
-#Generate NMDS ordinations
-nmds_q0n <- list()
-for(strategy in strategies){
-  set.seed(1)
-  nmds_q0n[[strategy]] <- beta_div[[strategy]]$q0n %>%
-  metaMDS(.,trymax = 999, k=2, trace=0)
+metrics <- c(q0n="Richness (q0)", q1n="Neutral (q1)", q1p="Phylogenetic (q1 + tree)")
+
+# Pairwise Procrustes correlation (lower triangle computed, matrix symmetric) and permutation p
+procrustes_mat <- list(); procrustes_p <- list(); nmds_list <- list()
+for(metric in names(metrics)){
+  nmds <- list()
+  for(strategy in strategies){
+    set.seed(1)
+    nmds[[strategy]] <- metaMDS(beta_div[[strategy]][[metric]], trymax = 999, k=2, trace=0)
+  }
+  cor_mat <- matrix(1, length(strategies), length(strategies), dimnames=list(strategies, strategies))
+  p_mat <- matrix(NA_real_, length(strategies), length(strategies), dimnames=list(strategies, strategies))
+  for(i in seq_along(strategies)){
+    for(j in seq_along(strategies)){
+      if(i < j){
+        set.seed(1)
+        pt <- protest(nmds[[i]], nmds[[j]], permutations = 999)
+        cor_mat[i,j] <- cor_mat[j,i] <- pt$t0
+        p_mat[i,j] <- p_mat[j,i] <- pt$signif
+      }
+    }
+  }
+  procrustes_mat[[metric]] <- cor_mat
+  procrustes_p[[metric]] <- p_mat
+  nmds_list[[metric]] <- sapply(nmds, function(x) x$stress)
 }
-
-#Procrustes analysis 
-combinations <- expand.grid(seq(1, 10), seq(1, 10))
-protest_q0n <- tibble(
-  v1 = character(),
-  v2 = character(),
-  scale = numeric(),
-  sig = numeric()
-)
-
-for(i in c(1:100)){
-  x<-combinations[i,1]
-  y<-combinations[i,2]
-  protest <- protest(nmds_q0n[[x]], nmds_q0n[[y]])
-  protest_q0n <- bind_rows(protest_q0n,tibble(v1=names(nmds_q0n)[x],v2=names(nmds_q0n)[y],scale=protest$scale,sig=protest$signif))
-}
-
+save(procrustes_mat, procrustes_p, nmds_list, file="results/beta_procrustes.Rdata")
 ```
 
-```{r beta_diversity_nmds_procrustes_q0n_plot, comment="", message=FALSE, warning=FALSE}
-colfunc<-colorRampPalette(c("#44ce1b","#bbdb44","#f7e379","#f2a134","#e51f1f"))
-protest_q0n %>%
-  ggplot(aes(x=v1,y=v2,fill=sig)) +
+### Procrustes correlation heatmaps
+
+```{r beta_diversity_procrustes_plot, comment="", message=FALSE, warning=FALSE, fig.height=4.5, fig.width=14, fig.fullwidth=TRUE}
+load("results/beta_procrustes.Rdata")
+
+# Strategies grouped by bioinformatic strategy
+strategy_order <- c("single_coverage",
+                    "coassembly_animal","coassembly_timepoint_all","coassembly_timepoint_cage",
+                    "multicoverage_animal","multicoverage_timepoint_all","multicoverage_timepoint_cage",
+                    "multisplit_animal","multisplit_timepoint_all","multisplit_timepoint_cage")
+metric_labels <- c(q0n="Richness (q0)", q1n="Neutral (q1)", q1p="Phylogenetic (q1 + tree)")
+
+procrustes_long <- purrr::map_dfr(names(procrustes_mat), function(m){
+  as.data.frame(as.table(procrustes_mat[[m]])) %>%
+    rename(v1=Var1, v2=Var2, correlation=Freq) %>%
+    mutate(metric=metric_labels[[m]])
+}) %>%
+  mutate(v1=factor(v1,levels=strategy_order), v2=factor(v2,levels=rev(strategy_order)),
+         metric=factor(metric,levels=metric_labels))
+
+procrustes_long %>%
+  ggplot(aes(x=v1,y=v2,fill=correlation)) +
     geom_tile(colour = "white") +
-    scale_fill_gradientn(colours=colfunc(10)) +
-    theme_minimal() + 
-    theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1)) + 
-    labs(x=NULL,y=NULL)
+    geom_text(aes(label=sprintf("%.2f",correlation)), size=2.5) +
+    scale_fill_gradientn(colours=c("#e51f1f","#f2a134","#f7e379","#bbdb44","#44ce1b"), limits=c(0.5,1)) +
+    facet_wrap(~metric) +
+    theme_minimal() +
+    theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1)) +
+    labs(x=NULL,y=NULL,fill="Procrustes\ncorrelation")
+
+# Range of permutation p-values (off-diagonal)
+sapply(procrustes_p, range, na.rm=TRUE)
 ```
 
-### Neutral
-
-```{r beta_diversity_nmds_procrustes_q1n, comment="", message=FALSE, warning=FALSE}
-load("results/beta_diversity.Rdata")
-
-#Generate NMDS ordinations
-nmds_q1n <- list()
-for(strategy in strategies){
-  set.seed(1)
-  nmds_q1n[[strategy]] <- beta_div[[strategy]]$q1n %>%
-  metaMDS(.,trymax = 999, k=2, trace=0)
-}
-
-#Procrustes analysis 
-combinations <- expand.grid(seq(1, 10), seq(1, 10))
-protest_q1n <- tibble(
-  v1 = character(),
-  v2 = character(),
-  scale = numeric(),
-  sig= numeric()
-)
-
-for(i in c(1:100)){
-  x<-combinations[i,1]
-  y<-combinations[i,2]
-  protest <- protest(nmds_q1n[[x]], nmds_q1n[[y]])
-  protest_q1n <- bind_rows(protest_q1n,tibble(v1=names(nmds_q1n)[x],v2=names(nmds_q1n)[y],scale=protest$scale,sig=protest$signif))
-}
-```
-
-```{r beta_diversity_nmds_procrustes_q1n_plot, comment="", message=FALSE, warning=FALSE}
-colfunc<-colorRampPalette(c("#44ce1b","#bbdb44","#f7e379","#f2a134","#e51f1f"))
-protest_q1n %>%
-  ggplot(aes(x=v1,y=v2,fill=sig)) +
-    geom_tile(colour = "white") +
-    scale_fill_gradientn(colours=colfunc(10)) +
-    theme_minimal() + 
-    theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1)) + 
-    labs(x=NULL,y=NULL)
-```
-
-### Phylogenetic
-
-```{r beta_diversity_nmds_procrustes_q1p, comment="", message=FALSE, warning=FALSE}
-load("results/beta_diversity.Rdata")
-
-#Generate NMDS ordinations
-nmds_q1p <- list()
-for(strategy in strategies){
-  set.seed(1)
-  nmds_q1p[[strategy]] <- beta_div[[strategy]]$q1p %>%
-  metaMDS(.,trymax = 999, k=2, trace=0)
-}
-
-#Procrustes analysis 
-combinations <- expand.grid(seq(1, 10), seq(1, 10))
-protest_q1p <- tibble(
-  v1 = character(),
-  v2 = character(),
-  scale = numeric(),
-  sig= numeric()
-)
-
-for(i in c(1:100)){
-  x<-combinations[i,1]
-  y<-combinations[i,2]
-  protest <- protest(nmds_q1p[[x]], nmds_q1p[[y]])
-  protest_q1p <- bind_rows(protest_q1p,tibble(v1=names(nmds_q1p)[x],v2=names(nmds_q1p)[y],scale=protest$scale,sig=protest$signif))
-}
-```
-
-```{r beta_diversity_nmds_procrustes_q1p_plot, comment="", message=FALSE, warning=FALSE}
-colfunc<-colorRampPalette(c("#44ce1b","#bbdb44","#f7e379","#f2a134","#e51f1f"))
-protest_q1p %>%
-  ggplot(aes(x=v1,y=v2,fill=sig)) +
-    geom_tile(colour = "white") +
-    scale_fill_gradientn(colours=colfunc(10)) +
-    theme_minimal() + 
-    theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1)) + 
-    labs(x=NULL,y=NULL)
-```
+After aligning the samples, the community ordinations of the ten strategies are almost identical for neutral (q1) and phylogenetic (q1 + tree) diversity (Procrustes correlations 0.95-1.00 for all pairs). Richness (q0) is less congruent, mainly because of `multicoverage_timepoint_all`, whose ordination correlates less with the other strategies. All permutation p-values are 0.001 (the minimum with 999 permutations). Note that previous versions of this chapter compared ordinations whose samples were in different order and are invalid (kept as `results/beta_diversity_misaligned_OLD.Rdata`).

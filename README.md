@@ -1,8 +1,6 @@
 # Assembly binning strategies
 Main repository for the study *Different assembly and binning strategies recover contrasting genome catalogues and community profiles* (Eisenhofer, Alberdi and Aizpurua). It holds the most up-to-date code for the genome-resolved metagenomics pipeline and for every analysis, figure and number in the manuscript, and the source of the bookdown webbook.
 
-This repository supersedes [EisenRa/2023_BeHo_scrutinising_assembly](https://github.com/EisenRa/2023_BeHo_scrutinising_assembly), which is kept only as the original development record.
-
 Raw sequencing data are archived at the ENA under BioProject PRJEB77276.
 
 ## Repository structure

@@ -1,8 +1,9 @@
 # Code for the main bioinformatic processing
 ### Raphael Eisenhofer
 
-## Get the raw data
-git clone https://github.com/EisenRa/2023_BeHo_scrutinising_assembly.git && cd 2023_BeHo_scrutinising_assembly
+## Get the code and raw data
+git clone https://github.com/alberdilab/assembly_binning_strategies.git && cd assembly_binning_strategies
+# Raw reads are archived at the ENA under BioProject PRJEB77276
 
 ## Preprocessing of data
 I used the EHI_bioinformatics preprocessing pipeline: https://github.com/earthhologenome/EHI_bioinformatics.git

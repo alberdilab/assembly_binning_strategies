@@ -347,6 +347,8 @@ mean_mapping_cage <- mean(mapping_cage$time_s)
 # more samples combined = larger reference = longer mapping time
 # Find scaling exponent (note, treat has 30 samples, cage_treat 5)
 alpha <- log(mean_mapping_all / mean_mapping_cage) / log(30 / 5)
+# Per-sample mapping time scales as n^alpha; total mapping time of n samples therefore scales as n^(1 + alpha)
+cat("Scaling exponent of the mapping time per sample (alpha):", round(alpha, 3), "\n")
 
 # Calculate a proportionality constant (choose cage_treat arbitrarily)
 k <- mean_mapping_cage / (5) ^ alpha

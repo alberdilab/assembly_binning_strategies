@@ -1,0 +1,276 @@
+# Supplementary figures
+
+This chapter regenerates the supplementary figures of the manuscript from the saved data objects (`data/data.Rdata`), the GUNC summary (`data/gunc_summary.tsv`) and the runtime tables (`data/runtime/`). Figures are numbered in the order in which the manuscript cites them and written to `figures/supplementary/` (300 dpi PNG and vector PDF).
+
+| Supplementary figure | Content | Chunk it was reproduced from |
+|---|---|---|
+| S1 | Cluster abundance versus number of strategies recovering the cluster | `read_count_vs_frequency` (chapter 2; previous S1 and S6, which were the same plot) |
+| S2 | Cluster abundances across samples, grouped by time point | `read_abundances_timepoint` (chapter 2) |
+| S3 | CheckM2 completeness and contamination of all bins | `bin_quality_biplot` (chapter 3) |
+| S4 | GUNC outcome of the bins of each strategy (new; the manuscript quotes the pass rates) | `GUNC` (chapter 3) |
+| S5 | KEGG module fullness of the clusters | `function_overview_heatmap` (chapter 4) |
+| S6 | Cluster abundances ordered by rank, per strategy | new (no code existed for the previous S5) |
+| S7 | Computational time per strategy and estimates for other designs | chapter 9 |
+
+```{r supp_setup, comment="", message=FALSE, warning=FALSE}
+library(tidyverse)
+library(ape)
+library(phytools)
+library(ggtree)
+library(ggh4x)
+library(patchwork)
+library(tinytable)
+
+load("data/data.Rdata")
+
+dir.create("figures/supplementary", recursive = TRUE, showWarnings = FALSE)
+supp_w <- 180   # mm, fits the text width of a portrait page with 15 mm margins
+
+# Helvetica if the system has it, otherwise Arial, otherwise the default sans (as in chapter 11)
+supp_font <- local({
+  for (f in c("Helvetica", "Arial")) if (grepl(f, basename(systemfonts::match_fonts(f)$path), ignore.case = TRUE)) return(f)
+  "sans"
+})
+
+theme_supp <- function() {
+  theme_classic(base_size = 8, base_family = supp_font) +
+    theme(axis.text = element_text(colour = "grey10"),
+          axis.title = element_text(colour = "black"),
+          legend.key.size = unit(3.5, "mm"),
+          strip.background = element_rect(fill = "grey90", colour = NA),
+          plot.tag = element_text(face = "bold", size = 10, family = supp_font))
+}
+
+save_supp <- function(plot, name, height_mm, width_mm = supp_w) {
+  ggsave(paste0("figures/supplementary/", name, ".png"), plot, width = width_mm, height = height_mm, units = "mm", dpi = 300, bg = "white")
+  ggsave(paste0("figures/supplementary/", name, ".pdf"), plot, width = width_mm, height = height_mm, units = "mm", device = cairo_pdf)
+}
+
+# Phylum colours (EHI scheme, as in chapter 11); clusters without taxonomy stay grey
+phylum_names <- cluster_taxonomy %>% filter(!is.na(Phylum)) %>% pull(Phylum) %>% unique() %>% sort()
+stopifnot(length(phylum_names) == length(phylum_colors))
+phylum_pal <- c(setNames(phylum_colors, phylum_names), `No taxonomy` = "#BDBDBD")
+
+cluster_phylum <- tibble(secondary_cluster = unique(bin_metadata$secondary_cluster)) %>%
+  left_join(cluster_taxonomy %>% select(secondary_cluster, Phylum) %>% distinct(), by = "secondary_cluster") %>%
+  mutate(Phylum = replace_na(Phylum, "No taxonomy"))
+
+# Number of strategies in which each cluster was recovered (all MAGs, as in Figure 2 and the text)
+cluster_n_strategy <- bin_metadata %>% distinct(secondary_cluster, overall_strategy) %>% count(secondary_cluster, name = "n_strategy")
+
+# Bioinformatic approach of each strategy
+approach_levels <- c("Single-coverage", "Multi-coverage", "Co-assembly", "Multi-split")
+strategy_approach <- tibble(strategy = strategies) %>%
+  mutate(approach = factor(case_when(str_starts(strategy, "single") ~ "Single-coverage",
+                                     str_starts(strategy, "multicoverage") ~ "Multi-coverage",
+                                     str_starts(strategy, "coassembly") ~ "Co-assembly",
+                                     str_starts(strategy, "multisplit") ~ "Multi-split"), levels = approach_levels))
+```
+
+## Figure S1: cluster abundance and strategy prevalence
+
+Abundance of a cluster is its maximum total genome count (read counts normalised by genome length, summed over the 150 samples) among the strategies; prevalence is the number of strategies that recovered at least one MAG of the cluster.
+
+```{r supp_s1, comment="", message=FALSE, warning=FALSE, fig.height=5.5, fig.width=7}
+s1_data <- cluster_counts %>%
+  summarise(abundance = max(read_count), .by = secondary_cluster) %>%
+  inner_join(cluster_n_strategy, by = "secondary_cluster") %>%
+  left_join(cluster_phylum, by = "secondary_cluster")
+
+cat("Clusters shown (n):", nrow(s1_data), "of", n_distinct(bin_metadata$secondary_cluster), "in the catalogue; the rest received no reads in any strategy\n")
+s1_cor <- cor.test(s1_data$abundance, s1_data$n_strategy, method = "spearman", exact = FALSE)
+s1_cor
+
+fig_s1 <- ggplot(s1_data, aes(x = abundance, y = n_strategy, group = n_strategy)) +
+  geom_boxplot(colour = "#999999", fill = "#f4f4f4", outlier.shape = NA, linewidth = 0.4) +
+  geom_point(aes(colour = Phylum), size = 1.4, position = position_jitter(width = 0, height = 0.25, seed = 1)) +
+  scale_y_continuous(breaks = 1:10) +
+  scale_colour_manual(values = phylum_pal) +
+  labs(x = "Cluster abundance (maximum genome count across strategies)", y = "Number of strategies recovering the cluster") +
+  theme_supp()
+fig_s1
+save_supp(fig_s1, "FigureS1", 105)
+```
+
+## Figure S2: cluster abundances across samples and time points
+
+For every sample and cluster the highest genome count among the ten strategies is shown, so that a cluster that only some strategies recovered is displayed wherever it was recovered. Clusters follow the phylogeny, samples are grouped by sampling time point (T1-T5) and ordered by cage and animal. The colour scale is square-root transformed because a few clusters dominate the communities.
+
+```{r supp_s2, comment="", message=FALSE, warning=FALSE, fig.height=9, fig.width=7}
+timepoints <- c("OP", "HT", "HR", "CT", "CR")   # sample-name codes, shown as T1-T5
+
+s2_data <- bin_counts_norm_filt %>%
+  filter(!is.na(overall_strategy)) %>%
+  summarise(count = sum(read_count), .by = c(sample, secondary_cluster, overall_strategy)) %>%
+  summarise(abundance = max(count), .by = c(sample, secondary_cluster)) %>%
+  mutate(timepoint = factor(substr(sample, 6, 7), levels = timepoints, labels = paste0("T", seq_along(timepoints))),
+         secondary_cluster = factor(secondary_cluster, levels = cluster_tree$tip.label)) %>%
+  filter(!is.na(secondary_cluster)) %>%
+  mutate(sample = factor(sample, levels = sort(unique(sample))))
+stopifnot(!anyNA(s2_data$timepoint))
+
+fig_s2 <- ggplot(s2_data, aes(x = secondary_cluster, y = sample, fill = abundance)) +
+  geom_tile() +
+  scale_fill_distiller(palette = "GnBu", direction = 1, transform = "sqrt", breaks = c(0, 10, 50, 150, 300)) +
+  facet_grid(timepoint ~ ., scales = "free_y", space = "free_y") +
+  labs(x = "Clusters (phylogenetic order)", y = "Samples", fill = "Genome count") +
+  theme_supp() +
+  theme(axis.text = element_blank(), axis.ticks = element_blank(), axis.line = element_blank(),
+        strip.text.y = element_text(angle = 0), panel.spacing.y = unit(1, "mm"))
+fig_s2
+save_supp(fig_s2, "FigureS2", 200)
+```
+
+## Figure S3: CheckM2 completeness and contamination of all bins
+
+```{r supp_s3, comment="", message=FALSE, warning=FALSE, fig.height=5, fig.width=7}
+fig_s3 <- bin_metadata %>%
+  mutate(overall_strategy = factor(overall_strategy, levels = strategies)) %>%
+  ggplot(aes(x = completeness, y = contamination, colour = overall_strategy)) +
+  geom_point(alpha = 0.3, size = 1) +
+  scale_colour_manual(values = strategy_colors) +
+  scale_y_reverse(limits = c(10, 0)) +
+  guides(colour = guide_legend(override.aes = list(alpha = 1, size = 2))) +
+  labs(x = "Completeness (%)", y = "Contamination (%)", colour = "Strategy") +
+  theme_supp()
+fig_s3
+save_supp(fig_s3, "FigureS3", 100)
+```
+
+## Figure S4: GUNC outcome per strategy
+
+GUNC was run on the dereplicated bins of each strategy. The percentage above each bar is the share of bins passing GUNC.
+
+```{r supp_s4, comment="", message=FALSE, warning=FALSE, fig.height=4, fig.width=7}
+gunc <- read_delim("data/gunc_summary.tsv", show_col_types = FALSE) %>%
+  mutate(overall_strategy = factor(overall_strategy, levels = strategies),
+         GUNC = factor(ifelse(pass.GUNC, "Pass", "Fail"), levels = c("Fail", "Pass")))
+
+gunc_rate <- gunc %>%
+  summarise(n = n(), passed = sum(pass.GUNC), .by = overall_strategy) %>%
+  mutate(percent = passed / n * 100)
+
+fig_s4 <- ggplot(gunc, aes(x = overall_strategy, fill = GUNC)) +
+  geom_bar(width = 0.8) +
+  geom_text(data = gunc_rate, aes(x = overall_strategy, y = n, label = sprintf("%.1f%%", percent)),
+            inherit.aes = FALSE, vjust = -0.4, size = 2.5, family = supp_font) +
+  scale_fill_manual(values = c(Pass = "grey70", Fail = "#B2182B")) +
+  scale_y_continuous(expand = expansion(mult = c(0, 0.1))) +
+  labs(x = NULL, y = "Number of bins", fill = "GUNC") +
+  theme_supp() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+fig_s4
+save_supp(fig_s4, "FigureS4", 90)
+
+gunc_rate %>% arrange(overall_strategy) %>% mutate(percent = round(percent, 1)) %>% tt()
+```
+
+## Figure S5: KEGG module fullness of the genome clusters
+
+Fullness of each KEGG module (columns) in each cluster (rows, phylogenetic order), taking for every cluster the maximum across the strategies that recovered it. Clusters without taxonomic annotation or functional annotation are omitted, as in chapter 4.
+
+```{r supp_s5, comment="", message=FALSE, warning=FALSE, fig.height=7.5, fig.width=7}
+cluster_kegg_max <- cluster_kegg %>%
+  filter(!is.na(secondary_cluster)) %>%
+  ungroup() %>%
+  select(-overall_strategy) %>%
+  group_by(secondary_cluster) %>%
+  summarise(across(everything(), ~ max(.x, na.rm = TRUE)))
+
+s5_phylum <- cluster_phylum %>%
+  filter(secondary_cluster %in% cluster_tree$tip.label, secondary_cluster %in% cluster_kegg_max$secondary_cluster) %>%
+  arrange(match(secondary_cluster, cluster_tree$tip.label)) %>%
+  mutate(Phylum = factor(Phylum, levels = unique(Phylum))) %>%
+  column_to_rownames("secondary_cluster")
+
+s5_tree <- force.ultrametric(keep.tip(cluster_tree, rownames(s5_phylum)), method = "extend")
+s5_table <- cluster_kegg_max %>% filter(secondary_cluster %in% s5_tree$tip.label)
+nrow(s5_table); ncol(s5_table) - 1
+
+# Row order is that of the tree; the three plots share it and are aligned by fixing the limits of the vertical axis
+tree_plot <- ggtree(s5_tree, size = 0.3)
+row_order <- tree_plot$data %>% filter(isTip) %>% arrange(desc(y)) %>% pull(label)   # top to bottom
+n_rows <- length(row_order)
+
+p_tree <- tree_plot + scale_y_continuous(limits = c(0.5, n_rows + 0.5), expand = c(0, 0)) + theme(plot.margin = margin(0, 0, 0, 0))
+
+p_phylum <- s5_phylum %>% rownames_to_column("secondary_cluster") %>%
+  mutate(secondary_cluster = factor(secondary_cluster, levels = rev(row_order))) %>%
+  ggplot(aes(x = 1, y = secondary_cluster, fill = Phylum)) +
+  geom_tile() +
+  scale_fill_manual(values = phylum_pal) +
+  scale_x_continuous(expand = c(0, 0)) + scale_y_discrete(expand = c(0, 0)) +
+  theme_void(base_family = supp_font, base_size = 8) + theme(legend.key.size = unit(3.5, "mm"))
+
+p_kegg <- s5_table %>%
+  pivot_longer(-secondary_cluster, names_to = "module", values_to = "fullness") %>%
+  mutate(secondary_cluster = factor(secondary_cluster, levels = rev(row_order)),
+         module = factor(module, levels = setdiff(colnames(s5_table), "secondary_cluster"))) %>%
+  ggplot(aes(x = module, y = secondary_cluster, fill = fullness)) +
+  geom_tile() +
+  scale_fill_gradient(low = "#f4f4f4", high = "steelblue", na.value = "white", limits = c(0, 1)) +
+  scale_x_discrete(expand = c(0, 0)) + scale_y_discrete(expand = c(0, 0)) +
+  labs(fill = "Module\nfullness") +
+  theme_void(base_family = supp_font, base_size = 8) + theme(legend.key.size = unit(3.5, "mm"))
+
+fig_s5 <- p_tree + p_phylum + p_kegg + plot_layout(widths = c(1.2, 0.2, 8), guides = "collect")
+fig_s5
+save_supp(fig_s5, "FigureS5", 170)
+```
+
+## Figure S6: cluster abundances per strategy
+
+Clusters are ordered by their maximum genome count across strategies (as in Figure S1); gaps are clusters that the strategy did not recover.
+
+```{r supp_s6, comment="", message=FALSE, warning=FALSE, fig.height=7.5, fig.width=7}
+cluster_order <- cluster_counts %>%
+  summarise(abundance = max(read_count), .by = secondary_cluster) %>%
+  arrange(desc(abundance)) %>%
+  pull(secondary_cluster)
+
+s6_data <- cluster_counts %>%
+  complete(secondary_cluster, overall_strategy, fill = list(read_count = 0)) %>%
+  mutate(secondary_cluster = factor(secondary_cluster, levels = cluster_order),
+         overall_strategy = factor(overall_strategy, levels = strategies))
+
+fig_s6 <- ggplot(s6_data, aes(x = secondary_cluster, y = read_count, fill = overall_strategy)) +
+  geom_col(width = 1) +
+  scale_fill_manual(values = strategy_colors, guide = "none") +
+  facet_grid(overall_strategy ~ ., scales = "free_y", switch = "y") +
+  scale_y_continuous(breaks = c(0, 5000, 10000), labels = scales::comma) +
+  labs(x = "Clusters, ordered by abundance", y = "Genome count") +
+  theme_supp() +
+  theme(axis.text.x = element_blank(), axis.ticks.x = element_blank(), axis.line.x = element_blank(),
+        strip.placement = "outside", strip.text.y.left = element_text(angle = 0, hjust = 1, size = 6.5),
+        strip.background = element_blank(), panel.spacing.y = unit(0.8, "mm"))
+fig_s6
+save_supp(fig_s6, "FigureS6", 170)
+```
+
+## Figure S7: computational time
+
+The data import and panels of chapter 9 are reused as they are; the code of that chapter is run here and its panels are tagged (a: total time per strategy and job; b: estimated time for other numbers of samples and groups).
+
+```{r supp_s7, comment="", message=FALSE, warning=FALSE, fig.height=10, fig.width=7}
+runtime_env <- new.env()
+options(knitr.duplicate.label = "allow")  # chapter 9 chunk labels are already in use when the book is knitted
+sys.source(knitr::purl("09_comp_resources.Rmd", output = tempfile(fileext = ".R"), quiet = TRUE), envir = runtime_env)
+
+# Sizes of chapter 9 (14 pt text for a 12 inch wide figure) reduced for a page-wide figure, and strategy names as in the manuscript
+small <- theme(axis.text = element_text(size = 8), axis.text.x = element_text(size = 8), axis.text.y = element_text(size = 8), axis.title = element_text(size = 9, face = "bold"),
+               plot.title = element_text(size = 9), legend.text = element_text(size = 7), legend.title = element_text(size = 8))
+manuscript_name <- function(x) str_replace_all(x, c("single-coverage" = "single_coverage", "multi-coverage" = "multicoverage", "multi-split" = "multisplit"))
+strategy_limits <- c("single-coverage", "multi-coverage_animal", "multi-coverage_timepoint_all", "multi-coverage_timepoint_cage",
+                     "coassembly_animal", "coassembly_timepoint_all", "coassembly_timepoint_cage",
+                     "multi-split_animal", "multi-split_timepoint_all", "multi-split_timepoint_cage")
+
+fig_s7 <- with(runtime_env, {
+  panel_a <- fig_a + scale_x_discrete(limits = strategy_limits, labels = manuscript_name) + labs(fill = "Job") + small
+  panel_b <- (fig_b + fig_c + fig_d + fig_e) + plot_layout(guides = "collect") & small & labs(colour = "Number of\ngroups")
+  wrap_elements(full = panel_a) / wrap_elements(full = panel_b) +
+    plot_layout(heights = c(1, 1.2)) +
+    plot_annotation(tag_levels = "a") & theme(plot.tag = element_text(face = "bold", size = 11))
+})
+fig_s7
+save_supp(fig_s7, "FigureS7", 220)
+```

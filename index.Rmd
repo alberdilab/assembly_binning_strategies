@@ -2,7 +2,7 @@
 title: "AlberdiLab | Eisenhofer et al. 2027"
 subtitle: "Contrasting assembly and binning strategies recover different genome catalogues "
 author:
-  - Raphael Eisenhofer^[University of Copenhagen, raphael.eisenhofer@sund.ku.dk], Antton Alberdi^[University of Copenhagen, antton.alberdi@sund.ku.dk], Ostaizka Aizpurua^[University of Copenhagen, ostaizka.aizpurua@sund.ku.dk]
+  - Raphael Eisenhofer^[University of Copenhagen, raphael.eisenhofer@sund.ku.dk], Antton Alberdi*^[University of Copenhagen, antton.alberdi@sund.ku.dk], Ostaizka Aizpurua^[University of Copenhagen, ostaizka.aizpurua@sund.ku.dk]
 date: "Latest update: `r Sys.Date()`"
 site: bookdown::bookdown_site
 documentclass: book
@@ -25,7 +25,9 @@ knitr::opts_chunk$set(
 
 This webbook contains all the code used for data analysis in the study *Different assembly and binning strategies recover contrasting genome catalogues and community profiles*. The study compares ten assembly, binning and grouping strategies (single-coverage, co-assembly, multi-coverage and multi-split, each grouped by animal, time point or cage and time point) using shotgun metagenomic data from a longitudinal experiment in which 30 mice were exposed to hot and cold stress (BioProject PRJEB77276). It evaluates the recovered genome catalogues, community profiles, biological inference and computational cost.
 
-The code that generates the genome catalogues from the raw reads (preprocessing, assembly, binning, dereplication) is stored in the `pipeline` directory. The chapters of this webbook start from the dereplicated catalogue and its read counts, annotations and quality statistics, which are stored in the `data` directory. Chapter *Numbers reported in the manuscript* lists each number quoted in the manuscript next to the code that computes it. Cited works are: Eisenhofer, Alberdi and Woodcroft (2024) [@eisenhofer2024damr], Eisenhofer, Odriozola and Alberdi (2023) [@eisenhofer2023completeness].
+\* Corresponding author: Antton Alberdi (antton.alberdi@sund.ku.dk).
+
+The code that generates the genome catalogues from the raw reads (preprocessing, assembly, binning, dereplication) is stored in the `pipeline` directory. The chapters of this webbook start from the dereplicated catalogue and its read counts, annotations and quality statistics, which are stored in the `data` directory. Cited works are: Eisenhofer, Alberdi and Woodcroft (2024) [@eisenhofer2024damr], Eisenhofer, Odriozola and Alberdi (2023) [@eisenhofer2023completeness].
 
 ## Prepare the R environment
 

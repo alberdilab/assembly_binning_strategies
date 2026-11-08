@@ -12,3 +12,14 @@ data/trees
 .codeome/plans/
 .codeome/context/
 .codeome/touched/
+
+# macOS, scratch and superseded files
+.DS_Store
+Rplots.pdf
+_main.Rmd
+_bookdown_files/
+data/cluster_kegg_old.tsv
+results/beta_diversity_misaligned_OLD.Rdata
+
+# Private checks, not part of the public webbook
+private/

@@ -56,7 +56,7 @@ beta_tests <- beta_dissimilarities %>%
     rowwise() %>%
     mutate(richess_estimate = unlist(model_richness)[1],richness_pvalue = unlist(model_richness)[3]) %>%
     mutate(neutral_estimate = unlist(model_neutral)[1],neutral_pvalue = unlist(model_neutral)[3]) %>%
-    mutate(phylo_estimate = unlist(model_phylo)[1],phylo_estimate = unlist(model_phylo)[3])
+    mutate(phylo_estimate = unlist(model_phylo)[1],phylo_pvalue = unlist(model_phylo)[3])
 
 beta_tests %>%
   select(strategy,richess_estimate,richness_pvalue) %>%
@@ -64,6 +64,16 @@ beta_tests %>%
       style_tt(
         i = which(beta_tests$richness_pvalue > 0.05),
         background = "#ffd7cf")
+```
+
+Kruskal-Wallis tests for the three diversity metrics (neutral and phylogenetic turnover were not significant in any strategy, as stated in the manuscript).
+
+```{r case1_beta_test_all, comment="", message=FALSE, warning=FALSE}
+beta_tests %>%
+  ungroup() %>%
+  select(strategy, richness_pvalue, neutral_pvalue, phylo_pvalue) %>%
+  mutate(across(where(is.numeric), ~ signif(., 3))) %>%
+  tt()
 ```
 
 ```{r case1_beta_plot, comment="", message=FALSE, warning=FALSE, fig.height=4, fig.width=10, fig.fullwidth=TRUE}

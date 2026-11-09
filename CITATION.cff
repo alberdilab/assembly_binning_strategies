@@ -1,0 +1,18 @@
+cff-version: 1.2.0
+message: "If you use this code or data, please cite it as below."
+title: "Assembly and binning strategies: code and analyses for 'Different assembly and binning strategies recover contrasting genome catalogues and community profiles'"
+type: software
+authors:
+  - family-names: Eisenhofer
+    given-names: Raphael
+    affiliation: "University of Copenhagen"
+  - family-names: Alberdi
+    given-names: Antton
+    affiliation: "University of Copenhagen"
+  - family-names: Aizpurua
+    given-names: Ostaizka
+    affiliation: "University of Copenhagen"
+repository-code: "https://github.com/alberdilab/assembly_binning_strategies"
+url: "https://alberdilab.github.io/assembly_binning_strategies"
+version: 1.0.0
+date-released: 2026-11-09

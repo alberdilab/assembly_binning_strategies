@@ -1,6 +1,7 @@
 # Assembly binning strategies
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24074915.svg)](https://doi.org/10.5281/zenodo.24074915)
+
 Main repository for the study *Different assembly and binning strategies recover contrasting genome catalogues and community profiles* (Eisenhofer, Alberdi and Aizpurua). It holds the most up-to-date code for the genome-resolved metagenomics pipeline and for every analysis, figure and number in the manuscript, and the source of the bookdown webbook.
 
 This release (v1.0.0) is archived at Zenodo: [10.5281/zenodo.24074916](https://doi.org/10.5281/zenodo.24074916). The badge above resolves to the latest version.
